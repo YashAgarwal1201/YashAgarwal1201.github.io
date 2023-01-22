@@ -6,8 +6,64 @@
 	<meta name="keywords" content="HTML, CSS, JavaScript">
 	<meta name="description" content="Free Web tutorials">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
+	<div id="root-element" class="root-element w3-teal"></div>
+	
+	<script src="index.js"></script>
+	<script type="text/babel">
+		const { useState, useEffect } = React
 
+		function Home () {
+			const val = 99
+			return (
+				<>
+					<Layout val={val}>home</Layout>
+				</>
+			)
+		}
+
+		function Layout({children, val}) {
+
+			return (
+				<div>
+					{val + children}
+				</div>
+			)
+		}
+
+		function Component() {
+			const [clickState, setClickState] = useState('home')
+			const mainNavBtn = {
+				Styles: `w3-bar-item w3-button w3-hover-white material-icons-outlined w3-padding-16`,
+				title: `Click to view this Category`
+			}
+			return (
+				<>
+				<div className={`w3-bar`} id="main-nav-id">
+					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('home')}>home</button>
+					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('about')}>person</button>
+					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('work')}>work</button>
+					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('feedback')}>rate_review</button>
+				</div>
+				<div className={`w3-container`} id="main-content-id">
+					{(clickState === "home") ? <Home/> : 
+						((clickState === "about") ? <About/> : 
+							(((clickState === "work") ? <Work/> : 
+								<Feedback/>)
+						)
+					)}
+				</div>
+				</>
+			)
+		}
+
+		const root = ReactDOM.createRoot(document.getElementById('root-element'))
+		root.render(<Component/>)
+	</script>
 </body>
 </html>

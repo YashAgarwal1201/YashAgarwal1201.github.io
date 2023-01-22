@@ -1,0 +1,28 @@
+
+
+/* w3.css import */
+@import url(https://www.w3schools.com/w3css/4/w3.css);
+/* google icons */
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+}
+
+.root-element {
+	width: 100%;
+	height: 100%;
+}
+
+.w3-bar {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
