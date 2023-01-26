@@ -1,116 +1,20 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en-US">
 <head>
-	<title>my site (static)</title>
 	<meta charset="utf-8">
+	<title>my site (static)</title>
 	<meta name="keywords" content="HTML, CSS, JavaScript, ReactJS, Gatsby">
 	<meta name="description" content="Personal Portfolio (under development)">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<!-- for production, replace "development.js" with "production.js" -->
-	<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin=""></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin=""></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 	<div id="root-element" class="root-element w3-teal"></div>
 	
-	<script src="index.js"></script>
-	<script type="text/babel">
-		const { useState, useEffect } = React
-
-		function Home () {
-			const title = <h1>Yash Agarwal</h1>
-			const content = <><h1>UI Developer - Intern</h1><p>@ Techolution</p></>
-			const imagePath = "url"
-			return (
-				<>
-					<Layout title={title} content={content} image={"apple"}> </Layout>
-				</>
-			)
-		}
-
-		function About () {
-			const title = <h1>About</h1>
-			const content = <></>
-			const imagePath = "url"
-			return (
-				<>
-					<Layout title={title} content={content} image={imagePath}></Layout>
-				</>
-			)
-		}
-
-		function Work () {
-			const title = <h1>Work</h1>
-			const content = <></>
-			const imagePath = "url"
-			return (
-				<>
-					<Layout title={title} content={content} image={imagePath}></Layout>
-				</>
-			)
-		}
-
-		function Feedback () {
-			const title = <h1>Feedbackk</h1>
-			const content = <></>
-			const imagePath = "url"
-			return (
-				<>
-					<Layout title={title} content={content} image={imagePath}></Layout>
-				</>
-			)
-		}
-
-		function Layout({children, title, content}) {
-			const sectionStyles = `w3-padding w3-border w3-round-large w3-margin-top w3-margin-bottom`
-			return (
-				<>
-				<div className={`section-header ${sectionStyles}`}>
-					<div className={`section-img`}></div>
-					<div className={`section-title`}>
-						{title}
-						<div className={`section-btns`}>
-							{children}
-						</div>
-					</div>
-				</div>
-				<div className={`section-content ${sectionStyles}`}>
-					{content}
-				</div>
-				</>
-			)
-		}
-
-		function Component() {
-			const [clickState, setClickState] = useState('home')
-			const mainNavBtn = {
-				Styles: `w3-bar-item w3-button w3-hover-white material-icons-outlined w3-padding-16`,
-				title: `Click to view this Category`
-			}
-			return (
-				<>
-				<div className={`w3-bar`} id="main-nav-id">
-					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('home')}>home</button>
-					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('about')}>person</button>
-					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('work')}>work</button>
-					<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('feedback')}>rate_review</button>
-				</div>
-				<div className={`w3-container main-content`} id="main-content-id">
-					{(clickState === "home") ? <Home/> : 
-						((clickState === "about") ? <About/> : 
-							(((clickState === "work") ? <Work/> : 
-								<Feedback/>)
-						)
-					)}
-				</div>
-				</>
-			)
-		}
-
-		const root = ReactDOM.createRoot(document.getElementById('root-element'))
-		root.render(<Component/>)
-	</script>
+	<script src="index.js" type="text/babel" data-type="module"></script>
 </body>
 </html>
