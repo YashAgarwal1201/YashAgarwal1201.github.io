@@ -11,13 +11,12 @@
 }
 
 html, body {
-	width: 100vw;
-	height: 100vh;
+	scroll-behavior: smooth;
+	width: 100vw;	height: clamp(100vh, 100vh, 100vh);
 }
 
 .root-element {
-	width: 100%;
-	height: 100%;
+	width: 100%;	height: 100%;
 }
 
 .w3-bar {
@@ -25,4 +24,23 @@ html, body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.main-content {
+	height: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+.section-header, .section-content {
+	height: 100%;	width: 50%;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.section-img {
+	width: 70%; height: auto;
 }
