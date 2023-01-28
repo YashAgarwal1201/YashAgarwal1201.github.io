@@ -18,6 +18,9 @@ html, body {
 .root-element {
 	width: 100%;	height: 100%;
 	background-color: teal;
+	display: flex;
+	flex-flow: column;
+	overflow: hidden;
 }
 
 .w3-bar {
@@ -28,9 +31,9 @@ html, body {
 }
 
 .main-content {
-	height: 100%;
+	width: 100%; height: 100%;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	justify-content: space-around;
 	align-items: center;
 }
@@ -45,7 +48,7 @@ html, body {
 .section-img {
 	width: clamp(60%,60%, 100%); padding-top: 60%;
 	position: relative;
-	margin: auto;
+	margin: 0px auto;
 }
 .ib {
 	width: 50%;	height: 50%;
