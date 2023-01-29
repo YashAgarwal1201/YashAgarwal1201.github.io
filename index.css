@@ -106,7 +106,7 @@ html, body {
 
 /* content cards (about and work sections) */
 .content-cards {
-	width: 95%;	overflow-y: auto; overflow-x: hidden;	height: 500px;
+	width: 95%;	overflow-y: auto; overflow-x: hidden;	height: 500px; white-space: pre-line;
 }
 
 /* media queries */
@@ -121,5 +121,8 @@ html, body {
 	.section-header, .section-content {
 		width: 100%; height: auto;
 		justify-content: flex-start;
+	}
+	.section-img {
+		width: 100%; padding-top: 100%;
 	}
 }
