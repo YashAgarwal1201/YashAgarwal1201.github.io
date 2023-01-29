@@ -1,5 +1,5 @@
 export var work = {
-    title: "<h1>work</h1>",
+    title: "Work",
+    imagePath: "./images/Work.png",
     content: "",
-    imagePath: ""
 }

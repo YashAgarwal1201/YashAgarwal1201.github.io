@@ -1,10 +1,9 @@
 
-
 /* w3.css import */
 @import url(https://www.w3schools.com/w3css/4/w3.css);
 /* google icons */
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons+Round);
 
 * {
 	box-sizing: border-box;
@@ -94,4 +93,8 @@ html, body {
 	width: auto;	height: 100%;
 	margin: auto;
 	position: absolute;	top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.section-btns {
+	width: 100%;
 }

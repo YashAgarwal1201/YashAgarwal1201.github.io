@@ -4,10 +4,13 @@ import { work } from "./work.js"
 
 const { useState, useEffect } = React
 
+// Home Page
 function Home ({home}) {
 	const title = <h1>{home.title}</h1>
 	const imagePath = <img src={home.imagePath}/>
+	
 	const content = <><h2>{home.content}</h2><p>{home.subContent}</p><p>Quote</p></>
+	
 	return (
 		<>
 			<Layout title={title} content={content} imagePath={imagePath}> </Layout>
@@ -15,20 +18,19 @@ function Home ({home}) {
 	)
 }
 
+// About Section
 function About ({about}) {
 	const title = <h1>{about.title}</h1>
-	const imagePath = <img src={about.imagePath}/>
+	const imagePath = <img src={about.imagePath} href="image for about section"/>
 
 	const aboutNavBtn = {
-		Styles: `w3-bar-item w3-button w3-hover-white material-icons-outlined w3-padding-16`,
+		styles: `w3-bar-item w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding-16`,
 		title: `Click to view this Category`
 	}
-	const btns = Object.values(about.content).map((value) => {
-		<button styles={aboutNavBtn.Styles} title={aboutNavBtn.title}>{value.btnTitle}</button>
-	})
-	const content = Object.values(about.content).map((value) => {
-		<><p>{value.heading}</p></>
-	})
+	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} title={aboutNavBtn.title}>{value.btnTitle}</button> )
+	
+	const content = Object.values(about.content).map((value, key) => <p key={key}>{value.heading}</p>)
+	
 	return (
 		<>
 			<Layout title={title} content={content} imagePath={imagePath} btns={btns}></Layout>
@@ -36,14 +38,26 @@ function About ({about}) {
 	)
 }
 
+// Work Section
 function Work ({work}) {
+	const title= <h1>{work.title}</h1>
+	const imagePath = <img src={work.imagePath} href="image for work section"/>
+
+	const aboutNavBtn = {
+		Styles: `w3-bar-item w3-button w3-white w3-round-large w3-hover-white w3-padding-16`,
+		title: `Click to view this Category`
+	}
+	const btns = ""//Object.values(about.content).map((value, key) => <button key={key} styles={aboutNavBtn.Styles} title={aboutNavBtn.title}>{value.btnTitle}</button> )
+	
+	const content = ""//Object.values(about.content).map((value, key) => <p key={key}>{value.heading}</p>)
 	return (
 		<>
-			<Layout title={work.title} content={work.content} imagePath={work.imagePath}></Layout>
+			<Layout title={title} content={content} imagePath={imagePath} btns={btns}></Layout>
 		</>
 	)
 }
 
+// Feedback Form
 function Feedback () {
 	const title = <h1>Feedbackk</h1>
 	const content = <></>
@@ -55,6 +69,7 @@ function Feedback () {
 	)
 }
 
+// Layout for the contant
 function Layout({title, content, imagePath, btns}) {
 	const sectionStyles = `w3-border w3-padding w3-margin-top w3-margin-bottom`
 	return (
@@ -73,17 +88,18 @@ function Layout({title, content, imagePath, btns}) {
 			</div>
 		</div>
 		<div className={`section-content ${sectionStyles}`}>
-			<div className={`section-btns`}>{ btns }</div>
+			<div className={`section-btns w3-bar`}>{ btns }</div>
 			{content}
 		</div>
 		</>
 	)
 }
 
+// Main Component
 const Component = () => {
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-bar-item w3-button w3-hover-white material-icons-outlined w3-padding-16`,
+		Styles: `w3-bar-item w3-button w3-hover-white material-icons-round w3-padding-16`,
 		title: `Click to view this Category`
 	}
 	return (
