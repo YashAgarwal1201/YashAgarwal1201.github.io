@@ -1,40 +1,43 @@
 
 var education = {
     1: {
-        year: "May, 2016",
-        value: "Completed 10th standard from Modern Era Public School, Bijnor"
+        heading: "May, 2016",
+        value: "Completed 10th standard from Modern Era Public School, Bijnor",
+        links: ""
     },
     2: {
-        year: "May, 2018",
-        value: "Completed 12th standard from Modern Era Public School, Bijnor"
+        heading: "May, 2018",
+        value: "Completed 12th standard from Modern Era Public School, Bijnor",
+        links: ""
     },
     3: {
-        year: "August, 2018",
-        value: "Started Under-Graduation at DIT University, Dehradun"
+        heading: "August, 2018",
+        value: "Started Under-Graduation at DIT University, Dehradun",
+        links: ""
     },
     4: {
-        year: "2020 - 2021",
+        heading: "2020 - 2021",
         value: "A study project for understanding implementation of facial recognition in attendance systems (Role: Group Manager).",
         links: ""
     },
     5: {
-        year: "2022",
+        heading: "2022",
         value: "'RON - a frinedly chabot', an academic project using both face recognition and speech recognition to make a friendly chatbot.\
                 (Role: Group Leader).",
         links: ""
     },
     6: {
-        year: "June, 2022",
+        heading: "June, 2022",
         value: "Graduated from DIT University, Dehradun",
         links: ""
     },
     7: {
-        year: "2022 (Not under active development)",
+        heading: "2022 (Not under active development)",
         value: "TvMovieDb - A TV Shows & Movies Database web app using google sheets and glide (Role: Developer).",
         links: ""
     },
     8: {
-        year: "2022 - ongoing (on hold)",
+        heading: "2022 - ongoing (on hold)",
         value: "Blueberry - Speech Recognition chatbot project (Role: Developer).",
         links: ""
     }

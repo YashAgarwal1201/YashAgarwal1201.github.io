@@ -20,20 +20,41 @@ function Home ({home}) {
 
 // About Section
 function About ({about}) {
+	const [aboutState, setAboutState] = useState(0)
+
 	const title = <h1>{about.title}</h1>
 	const imagePath = <img src={about.imagePath} href="image for about section"/>
 
 	const aboutNavBtn = {
-		styles: `w3-bar-item w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding-16`,
+		styles: `w3-bar-item w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
 		title: `Click to view this Category`
 	}
-	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} title={aboutNavBtn.title}>{value.btnTitle}</button> )
+	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={()=> setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button> )
 	
-	const content = Object.values(about.content).map((value, key) => <p key={key}>{value.heading}</p>)
+	let contentF = (valueVar, keyVar) => {
+		const contentCardsStyle = `w3-padding w3-margin w3-white w3-round content-cards`
+		if(keyVar == aboutState)
+			if(valueVar.subContent instanceof Object)
+				return <>
+					<div className={`${contentCardsStyle}`}>
+						<h2>{valueVar.heading}</h2>
+						{	Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
+							<h3 className={`w3-border-bottom`}>{value.heading}</h3><p>{value.value}</p>
+						</section>)	}
+					</div>
+				</>
+			else
+				return <>
+					<div className={` w3-display-container ${contentCardsStyle}`} key={keyVar}>
+						<h2 className={`w3-display-middle`}>{valueVar.subContent}</h2>
+					</div>
+				</>	
+	}
+	const content = Object.values(about.content).map((value, key) => contentF(value, key))
 	
 	return (
 		<>
-			<Layout title={title} content={content} imagePath={imagePath} btns={btns}></Layout>
+			<Layout title={title} content={content} imagePath={imagePath} btns={btns}>{aboutState}</Layout>
 		</>
 	)
 }
@@ -70,7 +91,7 @@ function Feedback () {
 }
 
 // Layout for the contant
-function Layout({title, content, imagePath, btns}) {
+function Layout({title, content, imagePath, btns, children}) {
 	const sectionStyles = `w3-border w3-padding w3-margin-top w3-margin-bottom`
 	return (
 		<>
@@ -99,7 +120,7 @@ function Layout({title, content, imagePath, btns}) {
 const Component = () => {
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-bar-item w3-button w3-hover-white material-icons-round w3-padding-16`,
+		Styles: `w3-button w3-hover-white material-icons-round w3-padding-16`,
 		title: `Click to view this Category`
 	}
 	return (

@@ -65,16 +65,14 @@ html, body {
 	border-top-right-radius: 50%;
 }
 #ib3 {
-	width: 48%;	height: 48%;
-	margin: auto;
+	width: 48%;	height: 48%;	margin: auto;
 	top: 0; left: 0; bottom: 0; right: 0;
 	z-index: 10;
 	background-color: transparent;
 	border: none;
 }
 #ib4 {
-	width: 53%;	height: 53%;
-	margin: auto;
+	width: 53%;	height: 53%;	margin: auto;
 	top: 0; left: 0; bottom: 0; right: 0;
 	z-index: 5;
 	background-color: teal;
@@ -90,11 +88,38 @@ html, body {
 	background: conic-gradient(at top, transparent 0deg 90deg , white 90deg 115deg, transparent 115deg 122deg, white 122deg 147deg, transparent 147deg 155deg, white 155deg 180deg, white 180deg 360deg) no-repeat bottom;
 }
 .ib img {
-	width: auto;	height: 100%;
-	margin: auto;
+	width: auto;	height: 100%;	margin: auto;
 	position: absolute;	top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .section-btns {
 	width: 100%;
+	overflow-x: scroll; white-space: nowrap;
+	-ms-overflow-style: none;  /* IE and Edge */
+  	scrollbar-width: none;  /* Firefox */
+}::-webkit-scrollbar {
+	display: none;
+}
+.section-btns button {
+	min-width: -webkit-fill-available; min-width: -moz-fit-content; min-width: fit-content;	width: -moz-fit-content;	width: fit-content;	margin-right: 7px;
+}
+
+/* content cards (about and work sections) */
+.content-cards {
+	width: 95%;	overflow-y: auto; overflow-x: hidden;	height: 500px;
+}
+
+/* media queries */
+@media screen and (max-width: 770px) {
+	.main-content {
+		height: auto;
+		overflow: scroll;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin: 0.0;
+	}
+	.section-header, .section-content {
+		width: 100%; height: auto;
+		justify-content: flex-start;
+	}
 }
