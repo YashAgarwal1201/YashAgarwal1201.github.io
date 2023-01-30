@@ -88,7 +88,9 @@ function Work ({work}) {
 			else
 				return <>
 					<div className={` w3-display-container ${contentCardsStyle}`} key={keyVar}>
-						<h2 className={`w3-display-middle`}>{valueVar.subContent}</h2>
+						<h2>{valueVar.heading}</h2>
+						<p>{valueVar.subContent}</p>
+						<button className={`w3-button w3-padding-16 w3-light-green w3-text-black w3-hover-black w3-display-middle w3-circle material-icons-round`} onClick={() => window.open(valueVar.links, '_blank')}>launch</button>
 					</div>
 				</>	
 		}

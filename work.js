@@ -11,14 +11,15 @@ export var work = {
     imagePath: "./images/Work.png",
     content: {
         industry: {
-            btnTitle: "Industrial Work",
-            heading: "Industrial Work (or, experience)",
+            btnTitle: "Work Experience",
+            heading: "Work Experience",
             subContent: industry
         },
         designs: {
             btnTitle: "Banana",
             heading: "Banana",
-            subContent:  ""
+            subContent: "Image Backgrounds and some random designs using 'css' and 'w3.css'. Click the below button to check them out.\n",
+            links:  "https://yashagarwal1201.github.io/Banana/"
         },
         glide: {
             btnTitle: "Glide",
@@ -28,17 +29,20 @@ export var work = {
         marigold: {
             btnTitle: "Marigold",
             heading: "Marigold",
-            subContent: ""
+            subContent: "Some mini and random reactJS projects. Click the below button to check it out.\n",
+            links: "https://agarwalyash.epizy.com/Marigold/"
         },
         blueberry: {
             btnTitle: "Blueberry",
             heading: "Blueberry",
-            subContent: ""
+            subContent: "A mini speech recognition project using Javascript (and, jQuery). Click the below button to check it out.\n",
+            links: "https://agarwalyash.epizy.com/Blueberry/"
         },
         wheat: {
             btnTitle: "Wheat",
             heading: "Wheat",
-            subContent: ""
+            subContent: "A mini project to type, view and download simple html files. Click to check this out.\n",
+            links: "https://yashagarwal1201.github.io/Wheat/index-js.html"
         },
         extra: {
             btnTitle: "Extras",
