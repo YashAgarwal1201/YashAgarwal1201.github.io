@@ -1,9 +1,10 @@
 
 /* w3.css import */
 @import url(https://www.w3schools.com/w3css/4/w3.css);
-/* google icons */
+/* google fonts & icons */
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons+Round);
+@import url(https://fonts.googleapis.com/css2?family=Fresca&family=Signika+Negative:wght@300&family=Spline+Sans+Mono:wght@300&display=swap);
 
 * {
 	box-sizing: border-box;
@@ -14,9 +15,37 @@ html, body {
 	width: 100%; max-height: 100%;	height: 100%;
 }
 
+h1, h2, h3, i, iframe {
+	font-family: 'Signika Negative', sans-serif; 
+}
+p, button, a, span, summary, details, label, ul, li, div, content *, section { 
+	font-family: 'Fresca', sans-serif;
+	font-size: 20px;
+}
+input::placeholder, textarea::placeholder, input, textarea {
+	font-family: 'Spline Sans Mono', monospace;
+}
+h1 {
+	font-size: 60px;
+}
+h2 {
+	font-size: 45px;
+}
+h3 {
+	font-size: 32px;
+}
+h4 {
+	font-size: 22px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 8px;
+}
+
 .root-element {
 	width: 100%;	height: 100%;
-	background-color: teal;
 	display: flex;
 	flex-flow: column;
 	overflow: hidden;
@@ -53,7 +82,7 @@ html, body {
 	width: 50%;	height: 50%;
 	margin:	auto;
 	position: absolute;
-	border: 5px solid teal;
+	border: 5px solid transparent;
 }
 #ib1 {
 	bottom: 50%; right: 50%;

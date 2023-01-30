@@ -1,4 +1,10 @@
-
+var industry = {
+    1: {
+        heading: "December, 2022 - till now",
+        value: "UI Developer - Intern @ Techolution India",
+        links: ""
+    }
+}
 
 export var work = {
     title: "Work",
@@ -7,7 +13,7 @@ export var work = {
         industry: {
             btnTitle: "Industrial Work",
             heading: "Industrial Work (or, experience)",
-            subContent: ""
+            subContent: industry
         },
         designs: {
             btnTitle: "Banana",
@@ -32,6 +38,11 @@ export var work = {
         wheat: {
             btnTitle: "Wheat",
             heading: "Wheat",
+            subContent: ""
+        },
+        extra: {
+            btnTitle: "Extras",
+            heading: "Extras",
             subContent: ""
         }
     }
