@@ -9,7 +9,7 @@ function Home ({home}) {
 	const title = <h1>{home.title}</h1>
 	const imagePath = <img src={home.imagePath}/>
 	
-	const content = <><h2>{home.content}</h2><p>{home.subContent}</p><p>Quote</p></>
+	const content = <div style={{ whiteSpace: 'pre-line', textAlign: 'center'}}><h2>{home.content}</h2><p>{home.subContent}</p><p>Quote</p></div>
 	
 	return (
 		<>
@@ -26,7 +26,7 @@ function About ({about}) {
 	const imagePath = <img src={about.imagePath} href="image for about section"/>
 
 	const aboutNavBtn = {
-		styles: `w3-bar-item w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
+		styles: `w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={()=> setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button> )
@@ -68,7 +68,7 @@ function Work ({work}) {
 	const imagePath = <img src={work.imagePath} href="image for work section"/>
 
 	const workNavBtn = {
-		styles: `w3-bar-item w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
+		styles: `w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(work.content).map((value, key) => <button key={key} className={workNavBtn.styles} onClick={()=> setWorkState(key)} title={workNavBtn.title}>{value.btnTitle}</button> )
@@ -120,7 +120,7 @@ function Layout({title, content, imagePath, btns}) {
 	const sectionStyles = `w3-padding w3-margin-top w3-margin-bottom`
 	return (
 		<>
-		<div className={`section-header ${sectionStyles}`}>
+		<div className={`${sectionStyles} section-header `}>
 			<div className={`section-img`}>
 				<div className="ib" id="ib1"></div>
 				<div className="ib" id="ib2"></div>
@@ -133,8 +133,8 @@ function Layout({title, content, imagePath, btns}) {
 				{title}
 			</div>
 		</div>
-		<div className={`section-content ${sectionStyles}`}>
-			<div className={`section-btns w3-bar`}>{ btns }</div>
+		<div className={`${sectionStyles} section-content `}>
+			<div className={`section-btns`}>{ btns }</div>
 			{content}
 		</div>
 		</>
@@ -156,7 +156,7 @@ const Component = () => {
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('work')}>work</button>
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('feedback')}>rate_review</button>
 		</div>
-		<div className={`w3-container w3-margin-bottom main-content`} id="main-content-id">
+		<div className={`w3-margin-bottom main-content`} id="main-content-id">
 			{(clickState === "home") ? <Home home={home}/> : 
 				((clickState === "about") ? <About about={about}/> : 
 					(((clickState === "work") ? <Work work={work}/> : 
