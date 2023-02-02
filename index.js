@@ -38,9 +38,16 @@ function About ({about}) {
 				return <>
 					<div className={`${contentCardsStyle}`}>
 						<h2>{valueVar.heading}</h2>
-						{	Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
-							<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
-						</section>)	}
+						{	Object.values(valueVar.subContent).map((value, key) => 
+								(value.links == "" || value.links == undefined) ? 
+								<section className={`w3-padding-16`} key={key}>
+									<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
+								</section> : 
+								<section className={`w3-padding-16`} key={key}>
+									<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3>
+									<p onClick={() => {window.open(value.links, '_blank')}} style={{cursor: 'pointer'}}>{value.value}</p>
+								</section>)
+						}
 					</div>
 				</>
 			else
