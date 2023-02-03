@@ -1,15 +1,36 @@
 import { home } from "./home.js"
 import { about } from "./about.js"
 import { work } from "./work.js"
+import { quoteObj } from "./quotes.js"
 
 const { useState, useEffect } = React
 
 // Home Page
-function Home ({home}) {
+function Home ({home, quoteVar}) {
 	const title = <h1>{home.title}</h1>
 	const imagePath = <img src={home.imagePath}/>
 	
-	const content = <div style={{ whiteSpace: 'pre-line', textAlign: 'center'}}><h2>{home.content}</h2><p>{home.subContent}</p><p>Quote</p></div>
+	const [quoteState, setQuoteState] = useState({
+		quote: quoteVar[1].quote,
+		quoteS: quoteVar[1].speaker
+	})
+	
+	useEffect(() => {
+		const interval = setTimeout(() => {
+			let length = (Math.floor(Math.random() * ((Object.keys(quoteVar).length))) + 1)
+			setQuoteState({
+				quote: quoteVar[length].quote,
+				quoteS: quoteVar[length].speaker
+			})
+		}, 3500)
+
+		return () => clearInterval(interval)
+	},[quoteState])
+	
+	const content = <div style={{ whiteSpace: 'pre-line', textAlign: 'center'}}>
+		<h2>{home.content}</h2><p>{home.subContent}</p><br/>
+		<div style={{height: 'fit-content', width: '95%', margin: '0px auto'}}><i>{quoteState.quote}</i>{quoteState.quoteS}</div>
+	</div>
 	
 	return (
 		<>
@@ -164,7 +185,7 @@ const Component = () => {
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('feedback')}>rate_review</button>
 		</div>
 		<div className={`w3-margin-bottom main-content`} id="main-content-id">
-			{(clickState === "home") ? <Home home={home}/> : 
+			{(clickState === "home") ? <Home home={home} quoteVar={quoteObj}/> : 
 				((clickState === "about") ? <About about={about}/> : 
 					(((clickState === "work") ? <Work work={work}/> : 
 						<Feedback/>)

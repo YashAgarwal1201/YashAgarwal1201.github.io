@@ -44,6 +44,12 @@ export var work = {
             subContent: "A mini project to type, view and download simple html files. Click to check this out.\n",
             links: "https://yashagarwal1201.github.io/Wheat/index-js.html"
         },
+        canva: {
+            btnTitle: "Canva",
+            heading: "Canva",
+            subContent: "Some designs on Canva.\n",
+            links: "https://legoyashx1.my.canva.site/"
+        },
         extra: {
             btnTitle: "Extras",
             heading: "Extras",
