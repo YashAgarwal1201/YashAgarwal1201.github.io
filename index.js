@@ -2,6 +2,7 @@ import { home } from "./home.js"
 import { about } from "./about.js"
 import { work } from "./work.js"
 import { quoteObj } from "./quotes.js"
+import { feedback } from "./feedback.js"
 
 const { useState, useEffect } = React
 
@@ -132,10 +133,34 @@ function Work ({work}) {
 }
 
 // Feedback Form
-function Feedback () {
-	const title = <h1>Feedbackk</h1>
-	const content = <></>
-	const imagePath = "url"
+function Feedback ({feedback}) {
+	const title = <h1>{feedback.title}</h1>
+	const imagePath = <img src={feedback.imagePath} href="image for feedback section"/>
+
+	const formBtnStyles = `w3-button w3-round-xxlarge w3-light-green w3-hover-black material-icons-round w3-padding-large w3-margin-right`
+	const formInputStyles = `w3-input w3-border-black`
+	const formLabelStyles = `w3-text-light-green`
+	const formDivStyles = `w3-margin`
+	const content = <div className={`form-section`}>
+		<form className={`w3-card w3-white w3-round w3-padding-large`}>
+			<div className={formDivStyles}>
+				<label className={formLabelStyles}>Your Email Address:</label><br/>
+				<input className={formInputStyles} type='email' name="Email" required />
+			</div>
+			<div className={formDivStyles}>
+				<label className={formLabelStyles}>Your Name:</label><br/>
+				<input className={formInputStyles} type='text' name="Name"/>
+			</div>
+			<div className={formDivStyles}>
+				<label className={formLabelStyles}>Your Email Address:</label><br/>
+				<textarea className={formInputStyles} required></textarea>
+			</div>
+			<div className={formDivStyles}>
+				<button className={formBtnStyles} type="submit">send</button>
+				<button className={formBtnStyles} type="reset">delete</button>
+			</div>
+		</form>
+	</div>
 	return (
 		<>
 			<Layout title={title} content={content} imagePath={imagePath}></Layout>
@@ -188,7 +213,7 @@ const Component = () => {
 			{(clickState === "home") ? <Home home={home} quoteVar={quoteObj}/> : 
 				((clickState === "about") ? <About about={about}/> : 
 					(((clickState === "work") ? <Work work={work}/> : 
-						<Feedback/>)
+						<Feedback feedback={feedback}/>)
 				)
 			)}
 		</div>

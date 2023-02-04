@@ -138,6 +138,16 @@ h6 {
 	width: 95%;	overflow-y: auto; overflow-x: hidden;	height: 500px; white-space: pre-line;
 }
 
+.form-section {
+	width: 100%;	padding: 20px;
+}
+.form-section form {
+	width: 95%;		margin: auto;	height: 100%;
+}
+.form-section form textarea {
+	resize: none; 	height: 170px;
+}
+
 /* media queries */
 @media screen and (max-width: 770px) {
 	.main-content {
