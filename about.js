@@ -124,7 +124,7 @@ var contact = {
 }
 
 export var about = {
-    title: "About",
+    title: "AbouT",
     imagePath: "./images/Bio.png",
     content: {
         aboutMe: {

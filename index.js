@@ -141,11 +141,23 @@ function Feedback ({feedback}) {
 	const formInputStyles = `w3-input w3-border-black`
 	const formLabelStyles = `w3-text-light-green`
 	const formDivStyles = `w3-margin`
+
+	const handleSubmit = (event) => {
+		event.preventDefault()
+		console.log(event.target.Name.value)
+		var userEmailId = event.target.Email.value
+		var userName = event.target.Name.value
+		//var bcc = feedback.content.bcc
+		var emailBody = encodeURIComponent(`${event.target.Msg.value}\r\n\r\nUser Entered Email: ${userEmailId}\r\nUser's Entered Name: ${userName}\r\n`)
+
+		window.open(`mailto:${feedback.content.mailTo}?subject=feedback_from_${userEmailId}&body=${emailBody}`,`_blank`)
+		event.target.reset()
+	}
 	const content = <div className={`form-section`}>
-		<form className={`w3-card w3-white w3-round w3-padding-large`}>
+		<form className={`w3-card w3-white w3-round w3-padding-large`} onSubmit={handleSubmit}>
 			<div className={formDivStyles}>
 				<label className={formLabelStyles}>Your Email Address:</label><br/>
-				<input className={formInputStyles} type='email' name="Email" required />
+				<input className={formInputStyles} type='email' name="Email"/>
 			</div>
 			<div className={formDivStyles}>
 				<label className={formLabelStyles}>Your Name:</label><br/>
@@ -153,12 +165,14 @@ function Feedback ({feedback}) {
 			</div>
 			<div className={formDivStyles}>
 				<label className={formLabelStyles}>Your Email Address:</label><br/>
-				<textarea className={formInputStyles} required></textarea>
+				<textarea className={formInputStyles} name="Msg"></textarea>
 			</div>
 			<div className={formDivStyles}>
 				<button className={formBtnStyles} type="submit">send</button>
 				<button className={formBtnStyles} type="reset">delete</button>
 			</div>
+			<p>Note: clicking submit button will open the email client of your device. 
+			If there's any issue with this, you may try different modes of communication</p>
 		</form>
 	</div>
 	return (

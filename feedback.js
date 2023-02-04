@@ -1,8 +1,8 @@
 export var feedback = {
-    title: "Feedback",
+    title: "FeedbacK",
     imagePath: "./images/Cont.png",
     content: {
         mailTo: 'legoyashx@hotmail.com',
-        cc: 'legoyashx@yahoo.com'
+        bcc: 'legoyashx@yahoo.com'
     }
 }

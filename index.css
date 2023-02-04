@@ -145,7 +145,7 @@ h6 {
 	width: 95%;		margin: auto;	height: 100%;
 }
 .form-section form textarea {
-	resize: none; 	height: 170px;
+	resize: none; 	height: 150px;
 }
 
 /* media queries */
