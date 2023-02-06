@@ -12,7 +12,7 @@
 
 html, body {
 	scroll-behavior: smooth;
-	width: 100%;	min-height: 100vh; height: 100%; margin: 0.0;
+	width: 100%;	min-height: 100%; height: 100%; margin: 0.0;
 }
 
 h1, h2, h3, i, iframe {
@@ -47,13 +47,13 @@ h6 {
 .root-element {
 	width: 100%;	height: 100%;
 	display: flex;
-	flex-flow: column;
+	flex-flow: row; justify-content: flex-start; align-items: center;
 	overflow: auto;
 }
 
 .w3-bar {
-	width: 100%;
-	display: flex;
+	width: auto;
+	display: flex;	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -82,7 +82,7 @@ h6 {
 	width: 50%;	height: 50%;
 	margin:	auto;
 	position: absolute;
-	border: 5px solid transparent;
+	border: 5px solid #8bc34a;
 }
 #ib1 {
 	bottom: 50%; right: 50%;
@@ -104,7 +104,7 @@ h6 {
 	width: 53%;	height: 53%;	margin: auto;
 	top: 0; left: 0; bottom: 0; right: 0;
 	z-index: 5;
-	background-color: teal;
+	background-color: black;
 	border: none;
 }
 #ib5 {
@@ -150,6 +150,12 @@ h6 {
 
 /* media queries */
 @media screen and (max-width: 770px) {
+	.root-element {
+		flex-direction: column;
+	}
+	.w3-bar {
+		flex-direction: row;	width: 100%;
+	}
 	.main-content {
 		height: auto;
 		overflow: scroll;
@@ -163,6 +169,12 @@ h6 {
 	}
 	.section-img {
 		width: 100%; padding-top: 100%;
+	}
+	.form-section {
+		padding: 5px;
+	}
+	.form-section form {
+		width: 100%;	padding: 10px;
 	}
 }
 

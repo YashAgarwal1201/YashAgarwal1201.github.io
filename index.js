@@ -58,7 +58,7 @@ function About ({about}) {
 		if(keyVar == aboutState) {
 			if(valueVar.subContent instanceof Object)
 				return <>
-					<div className={`${contentCardsStyle}`}>
+					<div className={`${contentCardsStyle}`} key={keyVar}>
 						<h2>{valueVar.heading}</h2>
 						{	Object.values(valueVar.subContent).map((value, key) => 
 								(value.links == "" || value.links == undefined) ? 
@@ -107,7 +107,7 @@ function Work ({work}) {
 		if(keyVar == workState) {
 			if(valueVar.subContent instanceof Object)
 				return <>
-					<div className={`${contentCardsStyle}`}>
+					<div className={`${contentCardsStyle}`} key={keyVar}>
 						<h2>{valueVar.heading}</h2>
 						{	Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
 							<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
@@ -154,7 +154,7 @@ function Feedback ({feedback}) {
 		event.target.reset()
 	}
 	const content = <div className={`form-section`}>
-		<form className={`w3-card w3-white w3-round w3-padding-large`} onSubmit={handleSubmit}>
+		<form className={`w3-card w3-white w3-round w3-padding-large w3-mobile`} onSubmit={handleSubmit}>
 			<div className={formDivStyles}>
 				<label className={formLabelStyles}>Your Email Address:</label><br/>
 				<input className={formInputStyles} type='email' name="Email"/>
@@ -164,15 +164,14 @@ function Feedback ({feedback}) {
 				<input className={formInputStyles} type='text' name="Name"/>
 			</div>
 			<div className={formDivStyles}>
-				<label className={formLabelStyles}>Your Email Address:</label><br/>
+				<label className={formLabelStyles}>Your Message:</label><br/>
 				<textarea className={formInputStyles} name="Msg"></textarea>
 			</div>
 			<div className={formDivStyles}>
 				<button className={formBtnStyles} type="submit">send</button>
 				<button className={formBtnStyles} type="reset">delete</button>
 			</div>
-			<p>Note: clicking submit button will open the email client of your device. 
-			If there's any issue with this, you may try different modes of communication</p>
+			<p>Note: clicking submit button will open the email client of your device.</p>
 		</form>
 	</div>
 	return (
