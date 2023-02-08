@@ -53,31 +53,32 @@ function About ({about}) {
 	}
 	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={()=> setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button> )
 	
+	/*useEffect(()=>{
+		//
+	}, aboutState)*/
+
 	let contentF = (valueVar, keyVar) => {
 		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
 		if(keyVar == aboutState) {
-			if(valueVar.subContent instanceof Object)
-				return <>
-					<div className={`${contentCardsStyle}`} key={keyVar}>
-						<h2>{valueVar.heading}</h2>
-						{	Object.values(valueVar.subContent).map((value, key) => 
-								(value.links == "" || value.links == undefined) ? 
-								<section className={`w3-padding-16`} key={key}>
-									<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
-								</section> : 
-								<section className={`w3-padding-16`} key={key}>
-									<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3>
-									<p onClick={() => {window.open(value.links, '_blank')}} style={{cursor: 'pointer'}}>{value.value}</p>
-								</section>)
-						}
-					</div>
-				</>
+			if((valueVar.subContent instanceof Object) && valueVar.subContent != null)
+				return <div className={`${contentCardsStyle}`} key={keyVar}>
+					<h2>{valueVar.heading}</h2>
+					{	Object.values(valueVar.subContent).map((value, key) => 
+							(value.links == "" || value.links == undefined) ? 
+							<section className={`w3-padding-16`} key={key}>
+								<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
+							</section> : 
+							<section className={`w3-padding-16`} key={key}>
+								<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3>
+								<p onClick={() => {window.open(value.links, '_blank')}} style={{cursor: 'pointer'}}>{value.value}</p>
+							</section>)
+					}
+				</div>
 			else
-				return <>
-					<div className={`w3-display-container ${contentCardsStyle}`} key={keyVar}>
-						<h2 className={`w3-display-middle`}>{valueVar.subContent}</h2>
-					</div>
-				</>	
+				return <div className={`w3-display-container ${contentCardsStyle}`} key={keyVar}>
+					<h2>{valueVar.heading}</h2>
+					<h2 className={`w3-display-middle`}>{valueVar.subContent}</h2>
+				</div>	
 		}
 	}
 	const content = Object.values(about.content).map((value, key) => contentF(value, key))
@@ -106,22 +107,18 @@ function Work ({work}) {
 		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
 		if(keyVar == workState) {
 			if(valueVar.subContent instanceof Object)
-				return <>
-					<div className={`${contentCardsStyle}`} key={keyVar}>
-						<h2>{valueVar.heading}</h2>
-						{	Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
-							<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
-						</section>)	}
-					</div>
-				</>
+				return <div className={`${contentCardsStyle}`} key={keyVar}>
+					<h2>{valueVar.heading}</h2>
+					{	Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
+						<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
+					</section>)	}
+				</div>
 			else
-				return <>
-					<div className={` w3-display-container ${contentCardsStyle}`} key={keyVar}>
-						<h2>{valueVar.heading}</h2>
-						<p>{valueVar.subContent}</p>
-						<button className={`w3-button w3-padding-16 w3-light-green w3-text-black w3-hover-black w3-display-middle w3-circle material-icons-round`} onClick={() => window.open(valueVar.links, '_blank')}>launch</button>
-					</div>
-				</>	
+				return <div className={` w3-display-container ${contentCardsStyle}`} key={keyVar}>
+					<h2>{valueVar.heading}</h2>
+					<p>{valueVar.subContent}</p>
+					<button className={`w3-button w3-padding-16 w3-light-green w3-text-black w3-hover-black w3-display-middle w3-circle material-icons-round`} onClick={() => window.open(valueVar.links, '_blank')}>launch</button>
+				</div>	
 		}
 	}
 	const content = Object.values(work.content).map((value, key) => contentF(value, key))

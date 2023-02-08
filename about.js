@@ -123,14 +123,18 @@ var contact = {
     }
 }
 
+function stri() {
+    return setTimeout(() => Math.floor(Math.random() * 10), 1000)
+}
+
 export var about = {
     title: "about",
     imagePath: "./images/Bio.png",
     content: {
         aboutMe: {
             btnTitle: "About Me",
-            heading: "About Me",
-            subContent: "string"
+            heading: "",
+            subContent: stri()//"string"
         },
         education: {
             btnTitle: "Education",
@@ -149,8 +153,7 @@ export var about = {
         },
         resume: {
             btnTitle: "Resume",
-            heading: "Resume",
-            subContent: ""
+            subContent: null
         }
     }
 }
