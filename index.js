@@ -211,7 +211,7 @@ function Layout({title, content, imagePath, btns}) {
 const Component = () => {
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-button w3-hover-white material-icons-round w3-padding-24`,
+		Styles: `w3-button w3-hover-white material-icons-round w3-padding-24 w3-padding-large`,
 		title: `Click to view this Category`
 	}
 	return (

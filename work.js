@@ -7,7 +7,7 @@ var industry = {
 }
 
 export var work = {
-    title: "WorK",
+    title: "work",
     imagePath: "./images/Work.png",
     content: {
         industry: {

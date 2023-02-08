@@ -124,7 +124,7 @@ var contact = {
 }
 
 export var about = {
-    title: "AbouT",
+    title: "about",
     imagePath: "./images/Bio.png",
     content: {
         aboutMe: {
@@ -146,6 +146,11 @@ export var about = {
             btnTitle: "Contact",
             heading: "Contact",
             subContent: contact
+        },
+        resume: {
+            btnTitle: "Resume",
+            heading: "Resume",
+            subContent: ""
         }
     }
 }

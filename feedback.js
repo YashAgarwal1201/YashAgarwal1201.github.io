@@ -1,5 +1,5 @@
 export var feedback = {
-    title: "FeedbacK",
+    title: "feedback",
     imagePath: "./images/Cont.png",
     content: {
         mailTo: 'legoyashx@hotmail.com',

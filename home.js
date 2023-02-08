@@ -1,5 +1,5 @@
 export var home = {
-    title: "Yash agarwaL",
+    title: "yash agarwal",
     imagePath: "./images/MyImage.png",
     content: "UI Developer - Intern\n@\nTecholution",
     //subContent: "@ Techolution"
