@@ -130,15 +130,11 @@ export var about = {
         aboutMe: {
             btnTitle: "About Me",
             heading: "About me",
-            subContent: ['Hello there!', 'Want to know about me ?<br>Check this cool animation',
-                'What\'s my name?', 'My name is Yash Agarwal', 'When was I born?', '12th of January, 2000', 
-                'About my Graduation ?', 'Well I started my graduation at DIT University in year 2018. \
-                I started my Bachelor of Technology program in Civil Engineering but before the start of Year 2, I realised my \
-                passion and interest for technology and then I switched to Computer Science & Engineering.', 
-                '...During my graduation... to be continued']
+            subContent: "Hello there! Myself Yash Agarwal. A Star Wars and MCU fan currently working as a UI Developer Intern at Techolution India pvt. ltd.\n\
+                Here you can find some info about me."
         },
         education: {
-            btnTitle: "Education",
+            btnTitle: "Education & Projects",
             heading: "Education & Projects",
             subContent: education
         },
@@ -148,13 +144,9 @@ export var about = {
             subContent: certif
         },
         contact: {
-            btnTitle: "Contact",
-            heading: "Contact",
+            btnTitle: "Contact & Resume",
+            heading: "Contact & Resume",
             subContent: contact
-        },
-        resume: {
-            btnTitle: "Resume",
-            subContent: null
         }
     }
 }

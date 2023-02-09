@@ -23,14 +23,14 @@ function Home ({home, quoteVar}) {
 				quote: quoteVar[length].quote,
 				quoteS: quoteVar[length].speaker
 			})
-		}, 3500)
+		}, 4500)
 
 		return () => clearInterval(interval)
 	},[quoteState])
 	
 	const content = <div style={{ whiteSpace: 'pre-line', textAlign: 'center'}}>
-		<h2>{home.content}</h2><p>{home.subContent}</p><br/>
-		<div style={{height: 'fit-content', width: '95%', margin: '0px auto'}}><i>{quoteState.quote}</i>{quoteState.quoteS}</div>
+		<h2>{home.content}</h2><h3>@</h3><h2>{home.subContent}</h2><br/><br/>
+		<div><i>{quoteState.quote}</i>{quoteState.quoteS}</div>
 	</div>
 	
 	return (
@@ -56,13 +56,7 @@ function About ({about}) {
 	let contentF = (valueVar, keyVar) => {
 		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
 		if(keyVar == aboutState) {
-			if(valueVar.heading.toLowerCase() == "about me")
-				return <div className={`w3-display-container ${contentCardsStyle}`} key={keyVar} id="bio1">{aboutFn()}
-					{/* <h2>{valueVar.heading}</h2> */}
-				<h2 className={`w3-display-middle`} id="about-me-content-id">{valueVar.subContent}</h2>
-			</div>	
-
-			if((valueVar.subContent instanceof Object) && valueVar.subContent != null)
+			if((valueVar.subContent instanceof Object && !Array.isArray(valueVar.subContent)))
 				return <div className={`${contentCardsStyle}`} key={keyVar}>
 					<h2>{valueVar.heading}</h2>
 					{	Object.values(valueVar.subContent).map((value, key) => 
@@ -77,9 +71,9 @@ function About ({about}) {
 					}
 				</div>
 			else
-				return <div className={`w3-display-container ${contentCardsStyle}`} key={keyVar}>
+				return <div className={`${contentCardsStyle}`} key={keyVar}>
 					<h2>{valueVar.heading}</h2>
-					<h2 className={`w3-display-middle`}>{valueVar.subContent}</h2>
+					<p>{valueVar.subContent}</p>
 				</div>	
 		}
 	}
