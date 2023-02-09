@@ -1,5 +1,5 @@
 import { home } from "./home.js"
-import { about } from "./about.js"
+import { about, aboutFn } from "./about.js"
 import { work } from "./work.js"
 import { quoteObj } from "./quotes.js"
 import { feedback } from "./feedback.js"
@@ -52,14 +52,16 @@ function About ({about}) {
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={()=> setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button> )
-	
-	/*useEffect(()=>{
-		//
-	}, aboutState)*/
 
 	let contentF = (valueVar, keyVar) => {
 		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
 		if(keyVar == aboutState) {
+			if(valueVar.heading.toLowerCase() == "about me")
+				return <div className={`w3-display-container ${contentCardsStyle}`} key={keyVar} id="bio1">{aboutFn()}
+					{/* <h2>{valueVar.heading}</h2> */}
+				<h2 className={`w3-display-middle`} id="about-me-content-id">{valueVar.subContent}</h2>
+			</div>	
+
 			if((valueVar.subContent instanceof Object) && valueVar.subContent != null)
 				return <div className={`${contentCardsStyle}`} key={keyVar}>
 					<h2>{valueVar.heading}</h2>
@@ -208,12 +210,12 @@ function Layout({title, content, imagePath, btns}) {
 const Component = () => {
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-button w3-hover-white material-icons-round w3-padding-24 w3-padding-large`,
+		Styles: `w3-button w3-hover-white material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
 		title: `Click to view this Category`
 	}
 	return (
 		<>
-		<div className={`w3-bar`} id="main-nav-id">
+		<div className={`w3-bar-block`} id="main-nav-id">
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('home')}>home</button>
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('about')}>person</button>
 			<button className={`${mainNavBtn.Styles}`} title={`${mainNavBtn.title}`} onClick={() => setClickState('work')}>work</button>

@@ -51,11 +51,9 @@ h6 {
 	overflow: auto;
 }
 
-.w3-bar {
-	width: auto;
-	display: flex;	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+#main-nav-id {
+	width: auto; height: 100%;
+	display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 
 .main-content {
@@ -74,7 +72,7 @@ h6 {
 }
 
 .section-img {
-	width: clamp(60%,60%, 100%); padding-top: 60%;
+	width: clamp(75%,75%, 100%); padding-top: 75%;
 	position: relative;
 	margin: 0px auto;
 }
@@ -153,7 +151,7 @@ h6 {
 	.root-element {
 		flex-direction: column;
 	}
-	.w3-bar {
+	#main-nav-id {
 		flex-direction: row;	width: 100%;
 	}
 	.main-content {
