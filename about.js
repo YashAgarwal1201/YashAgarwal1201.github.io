@@ -129,22 +129,26 @@ export var about = {
     content: {
         aboutMe: {
             btnTitle: "About Me",
+            imagePath: "./images/Bio.png",
             heading: "About me",
             subContent: "Hello there! Myself Yash Agarwal. A Star Wars and MCU fan currently working as a UI Developer Intern at Techolution India pvt. ltd.\n\
                 Here you can find some info about me."
         },
         education: {
             btnTitle: "Education & Projects",
+            imagePath: "./images/Edu.png",
             heading: "Education & Projects",
             subContent: education
         },
         certifications: {
             btnTitle: "Certifications & Achievements",
+            imagePath: "./images/Bio.png",
             heading: "Certifications & Achievements",
             subContent: certif
         },
         contact: {
             btnTitle: "Contact & Resume",
+            imagePath: "./images/Cont.png",
             heading: "Contact & Resume",
             subContent: contact
         }

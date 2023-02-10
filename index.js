@@ -52,7 +52,7 @@ function About ({about}) {
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={()=> setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button> )
-
+	
 	let contentF = (valueVar, keyVar) => {
 		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
 		if(keyVar == aboutState) {
@@ -192,7 +192,7 @@ function Layout({title, content, imagePath, btns}) {
 				{title}
 			</div>
 		</div>
-		<div className={`${sectionStyles} section-content `}>
+		<div className={`${sectionStyles} section-content`}>
 			<div className={`section-btns`}>{ btns }</div>
 			{content}
 		</div>
@@ -204,7 +204,7 @@ function Layout({title, content, imagePath, btns}) {
 const Component = () => {
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-button w3-hover-white material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
+		Styles: `w3-button w3-white w3-hover-black material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
 		title: `Click to view this Category`
 	}
 	return (
