@@ -114,7 +114,7 @@ var contact = {
     4: {
         heading: "My Resume",
         value: "Click here to download my resume",
-        links: ""
+        links: "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link"
     },
     5: {
         heading: "On Telegram",

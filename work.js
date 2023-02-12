@@ -24,7 +24,8 @@ export var work = {
         glide: {
             btnTitle: "Glide",
             heading: "Glide",
-            subContent: ""
+            subContent: "TvMovieDb - TV Shows & Movies Database app made using Google Sheets and Glide (a no-code platform).",
+            links: "https://legoyashx2.glideapp.io"
         },
         marigold: {
             btnTitle: "Marigold",
@@ -53,7 +54,8 @@ export var work = {
         extra: {
             btnTitle: "Extras",
             heading: "Extras",
-            subContent: ""
+            subContent: "Nothing special but you may check the github profile for more.",
+            links: "https://github.com/YashAgarwal1201"
         }
     }
 }
