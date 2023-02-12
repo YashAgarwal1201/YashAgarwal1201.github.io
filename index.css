@@ -12,7 +12,7 @@
 
 html, body {
 	scroll-behavior: smooth;
-	width: 100%; max-height: 100vh; height: 100%; margin: 0.0;
+	width: 100%; min-height: 100vh; margin: 0.0;
 }
 
 h1, h2, h3, i, iframe {
@@ -150,6 +150,9 @@ h6 {
 }
 
 @media screen and (max-width: 1030px) {
+	#main-nav-id button {
+		margin: 5px 2.5px;
+	}
 	.root-element {
 		flex-direction: column;
 	}
@@ -207,6 +210,12 @@ h6 {
 }
 
 @media screen and (max-width: 430px) {
+	.root-element {
+		flex-direction: column-reverse;
+	}
+	#main-nav-id {
+		margin: 5px 2.5px;
+	}
 	.section-content {
 		padding: 8px;
 	}
