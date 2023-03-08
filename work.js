@@ -31,7 +31,7 @@ export var work = {
             btnTitle: "Marigold",
             heading: "Marigold",
             subContent: "Some mini and random reactJS projects. Click the below button to check it out.\n",
-            links: "https://agarwalyash.epizy.com/Marigold/"
+            links: "https://yashagarwal1201.github.io/Marigold/"
         },
         blueberry: {
             btnTitle: "Blueberry",
@@ -43,7 +43,7 @@ export var work = {
             btnTitle: "Wheat",
             heading: "Wheat",
             subContent: "A mini project to type, view and download simple html files. Click to check this out.\n",
-            links: "https://yashagarwal1201.github.io/Wheat/index-js.html"
+            links: "https://yashagarwal1201.github.io/Wheat/"
         },
         canva: {
             btnTitle: "Canva",

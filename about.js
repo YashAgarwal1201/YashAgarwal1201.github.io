@@ -37,7 +37,7 @@ var education = {
         links: "https://legoyashx2.glideapp.io/"
     },
     8: {
-        heading: "2022 - ongoing (on hold)",
+        heading: "2022 (On hold)",
         value: "Blueberry - Speech Recognition chatbot project (Role: Developer).",
         links: ""
     }
@@ -153,37 +153,4 @@ export var about = {
             subContent: contact
         }
     }
-}
-
-export const aboutFn = () => {
-    /*const typeit = new TypeIt('#about-me-content-id', {
-		strings: ['Hello there!', 'Want to know about me ?<br>Check this cool animation',
-			'What\'s my name?', 'My name is Yash Agarwal', 'When was I born?', '12th of January, 2000', 
-			'About my Graduation ?', 'Well I started my graduation at DIT University in year 2018. \
-			I started my Bachelor of Technology program in Civil Engineering but before the start of Year 2, I realised my \
-			passion and interest for technology and then I switched to Computer Science & Engineering.', 
-			'...During my graduation... to be continued'],
-		speed: 150,
-		deleteSpeed: 100,
-		lifeLike: true,
-		cursor: true,
-		cursorSpeed: 1000,
-		breakLines: false,
-		startDelay: 250,
-		loop: false,
-		waitUntilVisible: true,
-		nextStringDelay: 250,
-		loopDelay: 100,
-	})*/
-	/*$('#bio1').hover(() => {
-		typeit.go()
-		if(typeit.is('frozen'))
-			typeit.unfreeze()
-	}, () => {
-		if(typeit.is('started'))
-			typeit.freeze()
-		else
-			typeit.reset()
-	})*/
-    return 99//typeit
 }

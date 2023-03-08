@@ -1,5 +1,5 @@
 import { home } from "./home.js"
-import { about, aboutFn } from "./about.js"
+import { about } from "./about.js"
 import { work } from "./work.js"
 import { quoteObj } from "./quotes.js"
 import { feedback } from "./feedback.js"
