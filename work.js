@@ -19,7 +19,7 @@ export var work = {
             btnTitle: "Banana",
             heading: "Banana",
             subContent: "Image Backgrounds and some random designs using 'css' and 'w3.css'. Click the below button to check them out.\n",
-            links:  "https://yashagarwal1201.github.io/Banana/"
+            links: "https://yashagarwal1201.github.io/Banana/"
         },
         glide: {
             btnTitle: "Glide",

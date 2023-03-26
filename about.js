@@ -41,7 +41,7 @@ var education = {
         value: "Blueberry - Speech Recognition chatbot project (Role: Developer).",
         links: ""
     }
-} 
+}
 
 var certif = {
     1: {
@@ -54,14 +54,14 @@ var certif = {
         value: "\u2022 Received \"Degree of Bachelor of Technology in Computer Science and Engineering\" from DIT University, Dehradun.\n\
             \u2022 Completed Certification titled \"React JS\" on Great Learning Academy.\n\
             \u2022 Completed Certifications titled \"Introduction to Microsoft Excel\" and \"Using Basic Formulas and Functions in Microsoft Excel\" on Coursera.",
-        links: ""    
+        links: ""
     },
     3: {
         heading: "August, 2022",
         value: "\u2022 Completed Certifications for \"Command Line in Linux\" and \"Introduction to Bash Shell Scripting\" on Coursera.\n\
             \u2022 Received \"Canva 100 design Milestone\" certificate from Canva.\n\
             \u2022 Completed certification for \"Web Scraping with Python\" on Great Learning Academy.",
-        links: ""    
+        links: ""
     },
     4: {
         heading: "July, 2022",

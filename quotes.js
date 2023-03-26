@@ -1,5 +1,5 @@
 
-export var quoteObj = {		
+export var quoteObj = {
     1: {
         quote: "'It does not do well to dwell on dreams and forget to live.'\r\n",
         speaker: "Albus Dumbledore"
