@@ -51,6 +51,18 @@ export var work = {
             subContent: "Some designs on Canva.\n",
             links: "https://legoyashx1.my.canva.site/"
         },
+        lotus: {
+            btnTitle: "Lotus",
+            heading: "Lotus",
+            subContent: "Nothing special but my PHP based portfolio website.",
+            links: "https://agarwalyash.epizy.com"
+        },
+        techolution: {
+            btnTitle: "Techolution",
+            heading: "Techolution",
+            subContent: "Link to my Techolution github profile",
+            links: "https://github.com/yashAg-techolution"
+        },
         extra: {
             btnTitle: "Extras",
             heading: "Extras",
