@@ -200,13 +200,45 @@ function Layout({ title, content, imagePath, btns }) {
 	)
 }
 
+// Right Click Menu
+function hideMenu() {
+	document.getElementById("rightClickMenu").style.display = "none"
+}
+function rightClick(e) {
+	e.preventDefault();
+	if (document.getElementById("rightClickMenu").style.display == "flex")
+		hideMenu();
+	else {
+		var menu = document.getElementById("rightClickMenu")
+
+		menu.style.display = 'flex';
+		menu.style.left = e.pageX + "px";
+		menu.style.top = e.pageY + "px";
+	}
+}
+function RightClickMenu() {
+	return (
+		<div className="rightClickMenu rightClickMenu-hover w3-black w3-card w3-round-large" id="rightClickMenu">
+			<span className="w3-hover-light-green" onClick={() => location.reload()}><i className="material-icons-outlined">refresh</i>Reload</span>
+			<span className="w3-hover-light-green" onClick={() => history.go(1)}><i className="material-icons-outlined">arrow_forward</i>Forward</span>
+			<span className="w3-hover-light-green" onClick={() => history.go(-1)}><i className="material-icons-outlined">arrow_back</i>Back</span>
+			<span className="w3-hover-light-green" onClick={() => {
+				document.onclick = hideMenu
+				document.oncontextmenu = () => { return true; }
+			}}><i className="material-icons-outlined">more</i>Default Menu</span>
+		</div>
+	)
+}
+
 // Main Component
 const Component = () => {
 	useEffect(() => {
+		document.onclick = hideMenu;
+		document.oncontextmenu = rightClick;
 		if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
-			document.querySelectorAll('[class*=hover]').forEach((item) => item.className.replace(/-hover/,''))//classList.remove('[class*=hover]'))
+			document.querySelectorAll('*').forEach((item) => item.classList.remove('[class*=hover]'))
 		}
-	})
+	}, [])
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
 		Styles: `w3-button w3-white w3-hover-black material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
@@ -228,6 +260,7 @@ const Component = () => {
 						)
 					)}
 			</div>
+			<RightClickMenu />
 		</>
 	)
 }

@@ -15,6 +15,12 @@ export var work = {
             heading: "Work Experience",
             subContent: industry
         },
+        techolution: {
+            btnTitle: "Techolution",
+            heading: "Techolution",
+            subContent: "Link to my Techolution github profile",
+            links: "https://github.com/yashAg-techolution"
+        },
         designs: {
             btnTitle: "Banana",
             heading: "Banana",
@@ -33,12 +39,12 @@ export var work = {
             subContent: "Some mini and random reactJS projects. Click the below button to check it out.\n",
             links: "https://yashagarwal1201.github.io/Marigold/"
         },
-        blueberry: {
-            btnTitle: "Blueberry",
-            heading: "Blueberry",
-            subContent: "A mini speech recognition project using Javascript (and, jQuery). Click the below button to check it out.\n",
-            links: "https://agarwalyash.epizy.com/Blueberry/"
-        },
+        // blueberry: {
+        //     btnTitle: "Blueberry",
+        //     heading: "Blueberry",
+        //     subContent: "A mini speech recognition project using Javascript (and, jQuery). Click the below button to check it out.\n",
+        //     links: "https://agarwalyash.epizy.com/Blueberry/"
+        // },
         wheat: {
             btnTitle: "Wheat",
             heading: "Wheat",
@@ -56,12 +62,6 @@ export var work = {
             heading: "Lotus",
             subContent: "Nothing special but my PHP based portfolio website.",
             links: "https://agarwalyash.epizy.com"
-        },
-        techolution: {
-            btnTitle: "Techolution",
-            heading: "Techolution",
-            subContent: "Link to my Techolution github profile",
-            links: "https://github.com/yashAg-techolution"
         },
         extra: {
             btnTitle: "Extras",
