@@ -48,31 +48,31 @@ function About({ about }) {
 	const imagePath = <img src={about.imagePath} href="image for about section" />
 
 	const aboutNavBtn = {
-		styles: `w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
+		styles: `w3-button w3-theme-l1 w3-round-xxlarge w3-padding`,
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(about.content).map((value, key) => <button key={key} className={aboutNavBtn.styles} onClick={() => setAboutState(key)} title={aboutNavBtn.title}>{value.btnTitle}</button>)
 
 	let contentF = (valueVar, keyVar) => {
-		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
+		const contentCardsStyle = `w3-card w3-padding w3-margin w3-theme-l2 w3-round content-cards`
 		if (keyVar == aboutState) {
 			if ((valueVar.subContent instanceof Object && !Array.isArray(valueVar.subContent)))
 				return <div className={`${contentCardsStyle}`} key={keyVar}>
-					<h2>{valueVar.heading}</h2>
+					<h2 className="w3-text-theme">{valueVar.heading}</h2>
 					{Object.values(valueVar.subContent).map((value, key) =>
 						(value.links == "" || value.links == undefined) ?
 							<section className={`w3-padding-16`} key={key}>
-								<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
+								<h3 className={`w3-border-bottom w3-border-theme w3-text-theme`}>{value.heading}</h3><p>{value.value}</p>
 							</section> :
 							<section className={`w3-padding-16`} key={key}>
-								<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3>
+								<h3 className={`w3-border-bottom w3-border-theme w3-text-theme`}>{value.heading}</h3>
 								<p onClick={() => { window.open(value.links, '_blank') }} style={{ cursor: 'pointer' }}>{value.value}</p>
 							</section>)
 					}
 				</div>
 			else
 				return <div className={`${contentCardsStyle}`} key={keyVar}>
-					<h2>{valueVar.heading}</h2>
+					<h2 className="w3-text-theme">{valueVar.heading}</h2>
 					<p>{valueVar.subContent}</p>
 				</div>
 		}
@@ -94,26 +94,26 @@ function Work({ work }) {
 	const imagePath = <img src={work.imagePath} href="image for work section" />
 
 	const workNavBtn = {
-		styles: `w3-button w3-white w3-hover-black w3-round-xxlarge w3-hover-white w3-padding`,
+		styles: `w3-button w3-theme-l1 w3-round-xxlarge w3-padding`,
 		title: `Click to view this Category`
 	}
 	const btns = Object.values(work.content).map((value, key) => <button key={key} className={workNavBtn.styles} onClick={() => setWorkState(key)} title={workNavBtn.title}>{value.btnTitle}</button>)
 
 	let contentF = (valueVar, keyVar) => {
-		const contentCardsStyle = `w3-card w3-padding w3-margin w3-white w3-round content-cards`
+		const contentCardsStyle = `w3-card w3-padding w3-margin w3-theme-l2 w3-round content-cards`
 		if (keyVar == workState) {
 			if (valueVar.subContent instanceof Object)
 				return <div className={`${contentCardsStyle}`} key={keyVar}>
-					<h2>{valueVar.heading}</h2>
+					<h2 className="w3-text-theme">{valueVar.heading}</h2>
 					{Object.values(valueVar.subContent).map((value, key) => <section className={`w3-padding-16`} key={key}>
-						<h3 className={`w3-border-bottom w3-border-light-green w3-text-light-green`}>{value.heading}</h3><p>{value.value}</p>
+						<h3 className={`w3-border-bottom w3-border-theme w3-text-theme`}>{value.heading}</h3><p>{value.value}</p>
 					</section>)}
 				</div>
 			else
 				return <div className={` w3-display-container ${contentCardsStyle}`} key={keyVar}>
-					<h2>{valueVar.heading}</h2>
+					<h2 className="w3-text-theme">{valueVar.heading}</h2>
 					<p>{valueVar.subContent}</p>
-					<button className={`w3-button w3-padding-16 w3-light-green w3-text-black w3-hover-black w3-display-middle w3-circle material-icons-round`} onClick={() => window.open(valueVar.links, '_blank')}>launch</button>
+					<button className={`w3-button w3-padding-16 w3-theme-l5 w3-text-theme w3-display-middle w3-circle material-icons-round`} onClick={() => window.open(valueVar.links, '_blank')}>launch</button>
 				</div>
 		}
 	}
@@ -130,9 +130,9 @@ function Feedback({ feedback }) {
 	const title = <h1>{feedback.title}</h1>
 	const imagePath = <img src={feedback.imagePath} href="image for feedback section" />
 
-	const formBtnStyles = `w3-button w3-round-xxlarge w3-light-green w3-hover-black material-icons-round w3-padding-large w3-margin-right`
-	const formInputStyles = `w3-input w3-border-black`
-	const formLabelStyles = `w3-text-light-green`
+	const formBtnStyles = `w3-button w3-round-xxlarge w3-theme-l1 material-icons-round w3-padding-large w3-margin-right`
+	const formInputStyles = `w3-input w3-theme-l2 w3-border-theme`
+	const formLabelStyles = `w3-text-theme`
 	const formDivStyles = `w3-margin`
 
 	const handleSubmit = (event) => {
@@ -147,7 +147,7 @@ function Feedback({ feedback }) {
 		event.target.reset()
 	}
 	const content = <div className={`form-section`}>
-		<form className={`w3-card w3-white w3-round w3-padding-large w3-mobile`} onSubmit={handleSubmit}>
+		<form className={`w3-card w3-theme-l2 w3-round w3-padding-large w3-mobile`} onSubmit={handleSubmit}>
 			<div className={formDivStyles}>
 				<label className={formLabelStyles}>Your Email Address:</label><br />
 				<input className={formInputStyles} type='email' name="Email" />
@@ -184,7 +184,7 @@ function Layout({ title, content, imagePath, btns }) {
 					<div className="ib" id="ib1"></div>
 					<div className="ib" id="ib2"></div>
 					<div className="ib" id="ib3">{imagePath}</div>
-					<div className="ib w3-black" id="ib4"></div>
+					<div className="ib w3-theme-dark" id="ib4"></div>
 					<div className="ib" id="ib5"></div>
 					<div className="ib" id="ib6"></div>
 				</div>
@@ -217,12 +217,13 @@ function rightClick(e) {
 	}
 }
 function RightClickMenu() {
+	const rightClickMenuStyles = "w3-round-large w3-button w3-theme-l1"
 	return (
-		<div className="rightClickMenu rightClickMenu-hover w3-black w3-card w3-round-large" id="rightClickMenu">
-			<span className="w3-hover-light-green" onClick={() => location.reload()}><i className="material-icons-outlined">refresh</i>Reload</span>
-			<span className="w3-hover-light-green" onClick={() => history.go(1)}><i className="material-icons-outlined">arrow_forward</i>Forward</span>
-			<span className="w3-hover-light-green" onClick={() => history.go(-1)}><i className="material-icons-outlined">arrow_back</i>Back</span>
-			<span className="w3-hover-light-green" onClick={() => {
+		<div className="rightClickMenu rightClickMenu-hover w3-theme-l2 w3-card w3-round-large" id="rightClickMenu">
+			<span className={rightClickMenuStyles} onClick={() => location.reload()}><i className="material-icons-outlined">refresh</i>Reload</span>
+			<span className={rightClickMenuStyles} onClick={() => history.go(1)}><i className="material-icons-outlined">arrow_forward</i>Forward</span>
+			<span className={rightClickMenuStyles} onClick={() => history.go(-1)}><i className="material-icons-outlined">arrow_back</i>Back</span>
+			<span className={rightClickMenuStyles} onClick={() => {
 				document.onclick = hideMenu
 				document.oncontextmenu = () => { return true; }
 			}}><i className="material-icons-outlined">more</i>Default Menu</span>
@@ -241,7 +242,7 @@ const Component = () => {
 	}, [])
 	const [clickState, setClickState] = useState('home')
 	const mainNavBtn = {
-		Styles: `w3-button w3-white w3-hover-black material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
+		Styles: `w3-button w3-theme-l1 material-icons-round w3-padding-24 w3-padding-large w3-round-large`,
 		title: `Click to view this Category`
 	}
 	return (

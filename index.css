@@ -1,5 +1,6 @@
 /* w3.css import */
 @import url(https://www.w3schools.com/w3css/4/w3.css);
+@import url(https://www.w3schools.com/lib/w3-theme-black.css);
 /* google fonts & icons */
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons+Round);
@@ -12,10 +13,10 @@
 html,
 body {
 	scroll-behavior: smooth;
-	width: 100%;
-	min-height: 100vh;
-	height: 100%;
-	margin: 0.0;
+	width: 100vw;
+	/* min-height: 100vh; */
+	/* height: 100%; */
+	height: 100vh;
 }
 
 @media (hover: hover) {
@@ -86,7 +87,7 @@ h6 {
 	flex-flow: row;
 	justify-content: flex-start;
 	align-items: center;
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 #main-nav-id {
@@ -133,7 +134,8 @@ h6 {
 	height: 50%;
 	margin: auto;
 	position: absolute;
-	border: 5px solid #8bc34a;
+	/* border: 5px solid #8bc34a; */
+	border: 5px solid black;
 }
 
 #ib1 {
@@ -204,9 +206,7 @@ h6 {
 	overflow-x: scroll;
 	white-space: nowrap;
 	-ms-overflow-style: none;
-	/* IE and Edge */
 	scrollbar-width: none;
-	/* Firefox */
 }
 
 ::-webkit-scrollbar {
@@ -249,6 +249,7 @@ h6 {
 
 /* Right Click Menu */
 .rightClickMenu {
+	padding: 2.5px 5px;
 	width: 250px;
 	position: absolute;
 	z-index: 100;
@@ -257,7 +258,9 @@ h6 {
 	justify-content: space-around;
 	align-items: flex-start;
 }
+
 .rightClickMenu span {
+	margin: 2.5px 0px;
 	text-align: right;
 	width: 100%;
 	height: 100%;
@@ -266,9 +269,17 @@ h6 {
 	line-height: 25px;
 	vertical-align: middle;
 }
+
 .rightClickMenu i {
 	float: left;
 	vertical-align: middle;
+}
+
+@media screen and (hover: hover) {
+	#main-nav-id button:hover {
+		background-color: #cccccc;
+		color: #000;
+	}
 }
 
 @media screen and (max-width: 1030px) {
