@@ -19,12 +19,6 @@ body {
 	height: 100vh;
 }
 
-@media (hover: hover) {
-	*[className*=hover] {
-		pointer-events: none;
-	}
-}
-
 h1,
 h2,
 h3,
@@ -275,12 +269,6 @@ h6 {
 	vertical-align: middle;
 }
 
-@media screen and (hover: hover) {
-	#main-nav-id button:hover {
-		background-color: #cccccc;
-		color: #000;
-	}
-}
 
 @media screen and (max-width: 1030px) {
 	.root-element {
