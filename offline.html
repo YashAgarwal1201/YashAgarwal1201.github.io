@@ -19,16 +19,10 @@
 </head>
 
 <body>
-	<div id="root-element" class="root-element w3-theme-dark"></div>
+	<!-- <div id="root-element" class="root-element w3-theme-dark"></div> -->
+    <div class="w3-card w3-theme-l2">You are offline</div>
 
 	<script src="index.js" type="text/babel" data-type="module"></script>
-	<script>
-		if (!navigator.serviceWorker.controller) {
-			navigator.serviceWorker.register("/sw.js").then(function (reg) {
-				console.log("Service worker has been registered for scope: " + reg.scope);
-			});
-		}
-	</script>
 </body>
 
 </html>
