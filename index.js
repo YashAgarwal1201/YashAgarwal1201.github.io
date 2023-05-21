@@ -362,7 +362,7 @@ function KeyboardShortcuts() {
   //
   return (
     <div
-      className="keyboardShortcuts w3-panel w3-round w3-theme-l2"
+      className="keyboardShortcuts w3-panel w3-round w3-theme-l2 w3-card"
       id="keyboardShortcuts"
     >
       <span
@@ -373,8 +373,25 @@ function KeyboardShortcuts() {
       >
         &times;
       </span>
-	  <h2>Keyboard shortcuts for this site</h2>
-      <p>Work in Progress...</p>
+      <h2>Keyboard shortcuts for this site</h2>
+      <ul>
+        <li>
+          Press <code className="w3-codespan">Shift</code> +{" "}
+          <code className="w3-codespan">h</code> to go to "home" page.
+        </li>
+        <li>
+          Press <code className="w3-codespan">Shift</code> +{" "}
+          <code className="w3-codespan">a</code> to go to "about me" page.
+        </li>
+        <li>
+          Press <code className="w3-codespan">Shift</code> +{" "}
+          <code className="w3-codespan">w</code> to go to "work & experience" page.
+        </li>
+        <li>
+          Press <code className="w3-codespan">Shift</code> +{" "}
+          <code className="w3-codespan">f</code> to go to "work & experience" page.
+        </li>
+      </ul>
     </div>
   );
 }
@@ -384,6 +401,26 @@ const Component = () => {
   useEffect(() => {
     document.onclick = hideMenu;
     document.oncontextmenu = rightClick;
+
+    document.onkeyup = (event) => {
+      console.log(event.key);
+      if (event.key.toLowerCase() == "h" && event.shiftKey) {
+        setClickState("home");
+      }
+      else if (event.key.toLowerCase() == "a" && event.shiftKey) {
+        setClickState("about");
+      }
+      else if (event.key.toLowerCase() == "w" && event.shiftKey) {
+        setClickState("work");
+      }
+      else if (event.key.toLowerCase() == "f" && event.shiftKey) {
+        setClickState("feedback");
+      }
+      else {
+
+      }
+    };
+
     if (
       "ontouchstart" in window ||
       navigator.maxTouchPoints > 0 ||
