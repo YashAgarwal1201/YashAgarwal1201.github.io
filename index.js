@@ -359,7 +359,6 @@ function RightClickMenu() {
 }
 
 function KeyboardShortcuts() {
-  //
   return (
     <div
       className="keyboardShortcuts w3-panel w3-round w3-theme-l2 w3-card"
@@ -385,11 +384,18 @@ function KeyboardShortcuts() {
         </li>
         <li>
           Press <code className="w3-codespan">Shift</code> +{" "}
-          <code className="w3-codespan">w</code> to go to "work & experience" page.
+          <code className="w3-codespan">w</code> to go to "work & experience"
+          page.
         </li>
         <li>
           Press <code className="w3-codespan">Shift</code> +{" "}
-          <code className="w3-codespan">f</code> to go to "work & experience" page.
+          <code className="w3-codespan">f</code> to go to "work & experience"
+          page.
+        </li>
+        <li>
+          Press <code className="w3-codespan">Shift</code> +{" "}
+          <code className="w3-codespan">k</code> to see "keyboard shortcuts"
+          page.
         </li>
       </ul>
     </div>
@@ -406,18 +412,13 @@ const Component = () => {
       console.log(event.key);
       if (event.key.toLowerCase() == "h" && event.shiftKey) {
         setClickState("home");
-      }
-      else if (event.key.toLowerCase() == "a" && event.shiftKey) {
+      } else if (event.key.toLowerCase() == "a" && event.shiftKey) {
         setClickState("about");
-      }
-      else if (event.key.toLowerCase() == "w" && event.shiftKey) {
+      } else if (event.key.toLowerCase() == "w" && event.shiftKey) {
         setClickState("work");
-      }
-      else if (event.key.toLowerCase() == "f" && event.shiftKey) {
+      } else if (event.key.toLowerCase() == "f" && event.shiftKey) {
         setClickState("feedback");
-      }
-      else {
-
+      } else {
       }
     };
 
@@ -472,7 +473,7 @@ const Component = () => {
           title={`${mainNavBtn.title} keyboard shortcuts`}
           onClick={() =>
             (document.getElementById("keyboardShortcuts").style.display =
-              "block")
+              "flex")
           }
         >
           shortcut

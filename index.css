@@ -308,14 +308,13 @@ h6 {
 }
 
 .keyboardShortcuts {
-  display: none;
   width: 50%;
   height: fit-content;
   max-height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 10;
   position: absolute;
   margin: auto;
