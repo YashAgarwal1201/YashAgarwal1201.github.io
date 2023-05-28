@@ -409,7 +409,7 @@ const Component = () => {
     document.oncontextmenu = rightClick;
 
     document.onkeyup = (event) => {
-      console.log(event.key);
+      // console.log(event.key);
       if (event.key.toLowerCase() == "h" && event.shiftKey) {
         setClickState("home");
       } else if (event.key.toLowerCase() == "a" && event.shiftKey) {
@@ -418,6 +418,8 @@ const Component = () => {
         setClickState("work");
       } else if (event.key.toLowerCase() == "f" && event.shiftKey) {
         setClickState("feedback");
+      } else if (event.key.toLowerCase() == "k" && event.shiftKey) {
+        document.getElementById("keyboardShortcuts").style.display = "flex";
       } else {
       }
     };
