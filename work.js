@@ -18,7 +18,7 @@ export var work = {
         techolution: {
             btnTitle: "Techolution",
             heading: "Techolution",
-            subContent: "Link to my Techolution github profile",
+            subContent: "Projects I have been part of: \"One Stop Demo Shop\", \"HR policy dashboard\".\n Link to my Techolution github profile",
             links: "https://github.com/yashAg-techolution"
         },
         designs: {

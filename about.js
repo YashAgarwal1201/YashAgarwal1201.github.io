@@ -101,22 +101,27 @@ var contact = {
         value: "You can e-mail me @ legoyashx@hotmail.com",
         links: ""
     },
-    2: {
+    3: {
         heading: "My Github Account",
         value: "Link to my Github Account",
         links: "https://github.com/YashAgarwal1201"
     },
-    3: {
+    2: {
+        heading: "My Work Github Account",
+        value: "Link to my work Github Account",
+        links: "https://github.com/yashAg-techolution"
+    },
+    4: {
         heading: "Link to my LinkedIn",
         value: "Click here to check out my LinkedIn profile",
         links: "https://www.linkedin.com/in/yash-a-a669b2237"
     },
-    4: {
+    5: {
         heading: "My Resume",
         value: "Click here to download my resume",
         links: "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link"
     },
-    5: {
+    6: {
         heading: "On Telegram",
         value: "Click here to connect on Telegram",
         links: "https://t.me/legoyashx"

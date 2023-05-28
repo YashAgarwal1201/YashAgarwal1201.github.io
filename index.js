@@ -184,7 +184,7 @@ function Work({ work }) {
       else
         return (
           <div
-            className={` w3-display-container ${contentCardsStyle}`}
+            className={`${contentCardsStyle} w3-display-container `}
             key={keyVar}
           >
             <h2 className="w3-text-theme">{valueVar.heading}</h2>
@@ -304,7 +304,9 @@ function Layout({ title, content, imagePath, btns }) {
         <div className={`section-title`}>{title}</div>
       </div>
       <div className={`${sectionStyles} section-content`}>
-        <div className={`section-btns`}>{btns}</div>
+        <div className={`section-btns`}>{btns}
+        {/* {btns} */}
+        </div>
         {content}
       </div>
     </>
@@ -396,6 +398,10 @@ function KeyboardShortcuts() {
           Press <code className="w3-codespan">Shift</code> +{" "}
           <code className="w3-codespan">k</code> to see "keyboard shortcuts"
           page.
+        </li>
+        <li>
+          Use <code className="w3-codespan">Shift</code> with mouse scroll for
+          horizontal scroll while using mouse.
         </li>
       </ul>
     </div>
