@@ -8,12 +8,12 @@ const { useState, useEffect } = React;
 
 // Home Page
 function Home({ home, quoteVar }) {
-  const title = <h1>{home.title}</h1>;
-  const imagePath = <img src={home.imagePath} />;
+  const title = <h1>{home?.title}</h1>;
+  const imagePath = <img src={home?.imagePath} />;
 
   const [quoteState, setQuoteState] = useState({
-    quote: quoteVar[1].quote,
-    quoteS: quoteVar[1].speaker,
+    quote: quoteVar[1]?.quote,
+    quoteS: quoteVar[1]?.speaker,
   });
 
   useEffect(() => {
@@ -30,14 +30,14 @@ function Home({ home, quoteVar }) {
 
   const content = (
     <div style={{ whiteSpace: "pre-line", textAlign: "center" }}>
-      <h2>{home.content}</h2>
+      <h2>{home?.content}</h2>
       <h3>@</h3>
-      <h2>{home.subContent}</h2>
+      <h2>{home?.subContent}</h2>
       <br />
       <br />
       <div>
-        <i>{quoteState.quote}</i>
-        {quoteState.quoteS}
+        <i>{quoteState?.quote}</i>
+        {quoteState?.quoteS}
       </div>
     </div>
   );
@@ -57,21 +57,21 @@ function About({ about }) {
 
   const title = <h1>{about.title}</h1>;
   const imagePath = (
-    <img src={about.imagePath} href="image for about section" />
+    <img src={about?.imagePath} href="image for about section" />
   );
 
   const aboutNavBtn = {
     styles: `w3-button w3-theme-l1 w3-round-xxlarge w3-padding`,
     title: `Click to view this Category`,
   };
-  const btns = Object.values(about.content).map((value, key) => (
+  const btns = Object.values(about?.content).map((value, key) => (
     <button
       key={key}
       className={aboutNavBtn.styles}
       onClick={() => setAboutState(key)}
-      title={aboutNavBtn.title}
+      title={aboutNavBtn?.title}
     >
-      {value.btnTitle}
+      {value?.btnTitle}
     </button>
   ));
 
@@ -80,27 +80,27 @@ function About({ about }) {
     if (keyVar == aboutState) {
       if (
         valueVar.subContent instanceof Object &&
-        !Array.isArray(valueVar.subContent)
+        !Array.isArray(valueVar?.subContent)
       )
         return (
           <div className={`${contentCardsStyle}`} key={keyVar}>
             <h2 className="w3-text-theme">{valueVar.heading}</h2>
-            {Object.values(valueVar.subContent).map((value, key) =>
+            {Object.values(valueVar?.subContent).map((value, key) =>
               value.links == "" || value.links == undefined ? (
                 <section className={`w3-padding-16`} key={key}>
                   <h3
                     className={`w3-border-bottom w3-border-theme w3-text-theme`}
                   >
-                    {value.heading}
+                    {value?.heading ? value.heading : "No heading"}
                   </h3>
-                  <p>{value.value}</p>
+                  <p>{value?.value ? value.value : "No content"}</p>
                 </section>
               ) : (
                 <section className={`w3-padding-16`} key={key}>
                   <h3
                     className={`w3-border-bottom w3-border-theme w3-text-theme`}
                   >
-                    {value.heading}
+                    {value?.heading ? value.heading : "No heading"}
                   </h3>
                   <p
                     onClick={() => {
@@ -108,7 +108,7 @@ function About({ about }) {
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    {value.value}
+                    {value?.value ? value.value : "No content"}
                   </p>
                 </section>
               )
@@ -118,13 +118,15 @@ function About({ about }) {
       else
         return (
           <div className={`${contentCardsStyle}`} key={keyVar}>
-            <h2 className="w3-text-theme">{valueVar.heading}</h2>
-            <p>{valueVar.subContent}</p>
+            <h2 className="w3-text-theme">
+              {valueVar?.heading ? valueVar.heading : "No heading"}
+            </h2>
+            <p>{valueVar?.subContent ? valueVar.subContent : "No content"}</p>
           </div>
         );
     }
   };
-  const content = Object.values(about.content).map((value, key) =>
+  const content = Object.values(about?.content).map((value, key) =>
     contentF(value, key)
   );
 
@@ -144,21 +146,21 @@ function About({ about }) {
 function Work({ work }) {
   const [workState, setWorkState] = useState(0);
 
-  const title = <h1>{work.title}</h1>;
-  const imagePath = <img src={work.imagePath} href="image for work section" />;
+  const title = <h1>{work?.title}</h1>;
+  const imagePath = <img src={work?.imagePath} href="image for work section" />;
 
   const workNavBtn = {
     styles: `w3-button w3-theme-l1 w3-round-xxlarge w3-padding`,
     title: `Click to view this Category`,
   };
-  const btns = Object.values(work.content).map((value, key) => (
+  const btns = Object.values(work?.content).map((value, key) => (
     <button
       key={key}
-      className={workNavBtn.styles}
+      className={workNavBtn?.styles}
       onClick={() => setWorkState(key)}
-      title={workNavBtn.title}
+      title={workNavBtn?.title}
     >
-      {value.btnTitle}
+      {value?.btnTitle}
     </button>
   ));
 
@@ -168,15 +170,15 @@ function Work({ work }) {
       if (valueVar.subContent instanceof Object)
         return (
           <div className={`${contentCardsStyle}`} key={keyVar}>
-            <h2 className="w3-text-theme">{valueVar.heading}</h2>
-            {Object.values(valueVar.subContent).map((value, key) => (
+            <h2 className="w3-text-theme">{valueVar?.heading}</h2>
+            {Object.values(valueVar?.subContent).map((value, key) => (
               <section className={`w3-padding-16`} key={key}>
                 <h3
                   className={`w3-border-bottom w3-border-theme w3-text-theme`}
                 >
-                  {value.heading}
+                  {value?.heading ? value.heading : "No heading"}
                 </h3>
-                <p>{value.value}</p>
+                <p>{value?.value ? value.value : "No content"}</p>
               </section>
             ))}
           </div>
@@ -187,11 +189,13 @@ function Work({ work }) {
             className={`${contentCardsStyle} w3-display-container `}
             key={keyVar}
           >
-            <h2 className="w3-text-theme">{valueVar.heading}</h2>
-            <p>{valueVar.subContent}</p>
+            <h2 className="w3-text-theme">
+              {valueVar?.heading ? valueVar.heading : "No heading"}
+            </h2>
+            <p>{valueVar?.subContent ? valueVar.subContent : "No content"}</p>
             <button
               className={`w3-button w3-padding-16 w3-theme-l5 w3-text-theme w3-display-middle w3-circle material-icons-round`}
-              onClick={() => window.open(valueVar.links, "_blank")}
+              onClick={() => window.open(valueVar?.links, "_blank")}
             >
               launch
             </button>
@@ -228,7 +232,7 @@ function Feedback({ feedback }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.Name.value);
+    // console.log(event.target.Name.value);
     var userEmailId = event.target.Email.value;
     var userName = event.target.Name.value;
     //var bcc = feedback.content.bcc
@@ -304,8 +308,9 @@ function Layout({ title, content, imagePath, btns }) {
         <div className={`section-title`}>{title}</div>
       </div>
       <div className={`${sectionStyles} section-content`}>
-        <div className={`section-btns`}>{btns}
-        {/* {btns} */}
+        <div className={`section-btns`}>
+          {btns}
+          {/* {btns} */}
         </div>
         {content}
       </div>
@@ -415,15 +420,18 @@ const Component = () => {
     document.oncontextmenu = rightClick;
 
     document.onkeyup = (event) => {
-      // console.log(event.key);
       if (event.key.toLowerCase() == "h" && event.shiftKey) {
         setClickState("home");
+        document.getElementById("keyboardShortcuts").style.display = "none";
       } else if (event.key.toLowerCase() == "a" && event.shiftKey) {
         setClickState("about");
+        document.getElementById("keyboardShortcuts").style.display = "none";
       } else if (event.key.toLowerCase() == "w" && event.shiftKey) {
         setClickState("work");
+        document.getElementById("keyboardShortcuts").style.display = "none";
       } else if (event.key.toLowerCase() == "f" && event.shiftKey) {
         setClickState("feedback");
+        document.getElementById("keyboardShortcuts").style.display = "none";
       } else if (event.key.toLowerCase() == "k" && event.shiftKey) {
         document.getElementById("keyboardShortcuts").style.display = "flex";
       } else {
@@ -451,28 +459,40 @@ const Component = () => {
         <button
           className={`${mainNavBtn.Styles}`}
           title={`${mainNavBtn.title} home page`}
-          onClick={() => setClickState("home")}
+          onClick={() => {
+            setClickState("home");
+            document.getElementById("keyboardShortcuts").style.display = "none";
+          }}
         >
           home
         </button>
         <button
           className={`${mainNavBtn.Styles}`}
           title={`${mainNavBtn.title} about me page`}
-          onClick={() => setClickState("about")}
+          onClick={() => {
+            setClickState("about");
+            document.getElementById("keyboardShortcuts").style.display = "none";
+          }}
         >
           person
         </button>
         <button
           className={`${mainNavBtn.Styles}`}
           title={`${mainNavBtn.title} work and experience page`}
-          onClick={() => setClickState("work")}
+          onClick={() => {
+            setClickState("work");
+            document.getElementById("keyboardShortcuts").style.display = "none";
+          }}
         >
           work
         </button>
         <button
           className={`${mainNavBtn.Styles}`}
           title={`${mainNavBtn.title} feedback page`}
-          onClick={() => setClickState("feedback")}
+          onClick={() => {
+            setClickState("feedback");
+            document.getElementById("keyboardShortcuts").style.display = "none";
+          }}
         >
           rate_review
         </button>

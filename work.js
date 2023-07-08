@@ -29,19 +29,19 @@ export var work = {
         "Image Backgrounds and some random designs using 'css' and 'w3.css'. Click the below button to check them out.\n",
       links: "https://yashagarwal1201.github.io/Banana/",
     },
-    glide: {
-      btnTitle: "Glide",
-      heading: "Glide",
-      subContent:
-        "TvMovieDb - TV Shows & Movies Database app made using Google Sheets and Glide (a no-code platform).",
-      links: "https://legoyashx2.glideapp.io",
-    },
     marigold: {
       btnTitle: "Marigold",
       heading: "Marigold",
       subContent:
         "Some mini and random reactJS projects. Click the below button to check it out.\n",
       links: "https://yashagarwal1201.github.io/Marigold/",
+    },
+    tulip: {
+      btnTitle: "Tulip",
+      heading: "Tulip",
+      subContent:
+        "",
+      links: "https://yashagarwal1201.github.io/Tulip/",
     },
     // blueberry: {
     //     btnTitle: "Blueberry",
@@ -61,6 +61,13 @@ export var work = {
       heading: "Canva",
       subContent: "Some designs on Canva.\n",
       links: "https://legoyashx1.my.canva.site/",
+    },
+    glide: {
+      btnTitle: "Glide",
+      heading: "Glide",
+      subContent:
+        "TvMovieDb - TV Shows & Movies Database app made using Google Sheets and Glide (a no-code platform).",
+      links: "https://legoyashx2.glideapp.io",
     },
     lotus: {
       btnTitle: "Lotus",
