@@ -1,11 +1,38 @@
 var industry = {
   1: {
-    heading: "December, 2022 - till now",
+    heading: "July, 2023 - present",
+    value: "Associate UI Developer @ Techolution India",
+    links: "",
+  },
+  2: {
+    heading: "December, 2022 - June, 2023",
     value: "UI Developer - Intern @ Techolution India",
     links: "",
   },
 };
 
+var techolution = {
+  1: {
+    heading: "August, 2023 - present",
+    value: "Owens & Minors (client project)",
+    links: ""
+  },
+  2: {
+    heading: "May, 2023 - present",
+    value: "Alan for Talent Fountain (Internal Project)",
+    links: "",
+  },
+  3: {
+    heading: "May, 2023 - June, 2023",
+    value: "Know your Way at Techoution - Employee Handbook (Internal Project)",
+    links: "",
+  },
+  4: {
+    heading: "December, 2023 - May, 2023",
+    value: "One Stop Demo Shop - (Internal Project)",
+    links: "",
+  },
+};
 export var work = {
   title: "work",
   imagePath: "./images/Work.png",
@@ -17,10 +44,9 @@ export var work = {
     },
     techolution: {
       btnTitle: "Techolution",
-      heading: "Techolution",
-      subContent:
-        'Projects I have been part of: "One Stop Demo Shop", "HR policy dashboard", "Skills competancy dashboard", "Techo sales dashboard".\n Link to my Techolution github profile',
-      links: "https://github.com/yashAg-techolution",
+      heading: "Journey at Techolution",
+      subContent: techolution,
+      // links: "https://github.com/yashAg-techolution",
     },
     designs: {
       btnTitle: "Banana",
@@ -39,8 +65,7 @@ export var work = {
     tulip: {
       btnTitle: "Tulip",
       heading: "Tulip",
-      subContent:
-        "",
+      subContent: "",
       links: "https://yashagarwal1201.github.io/Tulip/",
     },
     // blueberry: {

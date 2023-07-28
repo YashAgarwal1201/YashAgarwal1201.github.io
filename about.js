@@ -45,50 +45,55 @@ var education = {
 
 var certif = {
     1: {
-        heading: "December, 2022",
-        value: "\u2022 Internship at \"Techolution India Pvt. Ltd.\"",
+        heading: "July, 2023",
+        value: "\u2022 Started work as an Associate UI Developer at \"Techolution India Pvt. Ltd.\"",
         links: ""
     },
     2: {
+        heading: "December, 2022",
+        value: "\u2022 Started Internship at \"Techolution India Pvt. Ltd.\"",
+        links: ""
+    },
+    3: {
         heading: "October, 2022",
         value: "\u2022 Received \"Degree of Bachelor of Technology in Computer Science and Engineering\" from DIT University, Dehradun.\n\
             \u2022 Completed Certification titled \"React JS\" on Great Learning Academy.\n\
             \u2022 Completed Certifications titled \"Introduction to Microsoft Excel\" and \"Using Basic Formulas and Functions in Microsoft Excel\" on Coursera.",
         links: ""
     },
-    3: {
+    4: {
         heading: "August, 2022",
         value: "\u2022 Completed Certifications for \"Command Line in Linux\" and \"Introduction to Bash Shell Scripting\" on Coursera.\n\
             \u2022 Received \"Canva 100 design Milestone\" certificate from Canva.\n\
             \u2022 Completed certification for \"Web Scraping with Python\" on Great Learning Academy.",
         links: ""
     },
-    4: {
+    5: {
         heading: "July, 2022",
         value: "\u2022 Completed certification for \"UI/UX\" on Great Learning Academy.",
         links: ""
     },
-    5: {
+    6: {
         heading: "June, 2022",
         value: "\u2022 Published article titled \"RON - (a friendly chatbot)\" on IJSREM.",
         links: ""
     },
-    6: {
+    7: {
         heading: "January, 2022",
         value: "\u2022 Received \"Canva 50 design Milestone\" certificate from Canva.",
         links: ""
     },
-    7: {
+    8: {
         heading: "October, 2021",
         value: "\u2022 Completed certifications for \"PHP\" on Great Learing Academy.",
         links: ""
     },
-    8: {
+    9: {
         heading: "September, 2021",
         value: "\u2022 Completed certifications for \"Introduction to Javascript\" and \"jQuery Tutorial\" on Great Learing Academy.",
         links: ""
     },
-    9: {
+    10: {
         heading: "July, 2020",
         value: "\u2022 Completed certification for \"Crash course on Python by Google\" on Coursera.\n\
             \u2022 Completed certification for \"Introduction to HTML5 by University of Michigan\" on Coursera."
@@ -136,7 +141,7 @@ export var about = {
             btnTitle: "About Me",
             imagePath: "./images/Bio.png",
             heading: "About me",
-            subContent: "Hello there! Myself Yash Agarwal. A Star Wars and MCU fan currently working as a UI Developer Intern at Techolution India pvt. ltd.\n\
+            subContent: "Hello there! Myself Yash Agarwal. A Star Wars and MCU fan currently working as an Associate UI Developer at Techolution India pvt. ltd.\n\
                 Here you can find some info about me."
         },
         education: {
