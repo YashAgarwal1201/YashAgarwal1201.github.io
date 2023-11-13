@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>
-	<meta charset="utf-8">
-	<title>Yash Agarwal - Portfolio</title>
-	<link rel="icon" type="image/x-icon" href="/images/YA Logo.png">
-	<meta name="keywords" content="HTML, CSS, JavaScript, ReactJS, Gatsby">
-	<meta name="description" content="Personal Portfolio">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
-	<link rel="manifest" href="/./manifest.json">
-	<!-- for production, replace "development.js" with "production.js" -->
-	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin=""></script>
-	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin=""></script>
-	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-	<script src="https://unpkg.com/react-transition-group@4.4.5/dist/react-transition-group.js"></script>
-</head>
-
-<body>
-	<div id="root-element" class="root-element w3-theme-dark"></div>
-
-	<script src="index.js" type="text/babel" data-type="module"></script>
-	<!-- <script>
-		if (!navigator.serviceWorker.controller) {
-			navigator.serviceWorker.register("/sw.js").then(function (reg) {
-				console.log("Service worker has been registered for scope: " + reg.scope);
-			});
-		}
-	</script> -->
-</body>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
