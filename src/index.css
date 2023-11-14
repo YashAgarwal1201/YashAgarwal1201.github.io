@@ -1,4 +1,6 @@
-@import url(primeicons/primeicons.css);
+@import "primereact/resources/primereact.min.css";
+@import "primeicons/primeicons.css";
+@import "primereact/resources/themes/tailwind-light/theme.css";
 
 @tailwind base;
 @tailwind components;
