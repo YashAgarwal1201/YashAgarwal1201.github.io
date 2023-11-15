@@ -1,8 +1,11 @@
+@import "primereact/resources/primereact.min.css";
+@import "primeicons/primeicons.css";
+@import "primereact/resources/themes/tailwind-light/theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url(primeicons/primeicons.css);
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
