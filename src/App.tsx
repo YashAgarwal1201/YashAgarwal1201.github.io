@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
+import { Outlet } from "react-router-dom";
+import { Toast } from "primereact/toast";
+// import { useAppContext } from "./Context/AppContext";
+// import useAxiosInterceptor from "./interceptor/interceptor";
+// import { useState } from "react";
 import "./App.scss";
-// import PageNotFound from './Pages/PageNotFound/PageNotFound'
-import { Header } from "./Components/Header/Header";
 
 function App() {
-  const [selectedButton, setSelectedButton] = useState<string>("home");
+  // const { dispatch, state } = useAppContext();
+  const myToast = useRef<Toast>(null);
+
+  useEffect(() => {
+    // dispatch?.({
+    //   type: "SET_TOAST_REF",
+    //   payload: myToast.current as Toast,
+    // });
+  }, []);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem("ObjectCountData", JSON.stringify(state));
+  // }, [state]);
 
   return (
-    <div className="w-screen h-[100dvh] flex flex-col-reverse md:flex-row items-center bg-black">
-      <Header
-        selectedButton={selectedButton}
-        setSelectedButton={setSelectedButton}
-      />
-
-      <div className="h-full w-full flex justify-center items-center text-white border-2 rounded-md mx-1 my-2">
-        <p>{selectedButton}</p>
-      </div>
+    <div className="w-screen h-[100dvh] bg-[#F7F7F7]">
+      <Toast ref={myToast} />
+      <Outlet />
     </div>
   );
 }
