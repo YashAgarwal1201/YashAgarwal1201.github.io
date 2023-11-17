@@ -15,7 +15,7 @@ export const Header = ({
         icon="pi pi-home"
         className={`${
           selectedButton === "home"
-            ? "text-black bg-white border-2 border-white"
+            ? "text-black bg-white border-2 border-solid border-white"
             : "text-white bg-transparent border-2 border-transparent hover:border-white"
         } h-16 w-16 `}
         onClick={() => {
@@ -27,7 +27,7 @@ export const Header = ({
         icon="pi pi-user"
         className={`${
           selectedButton === "about"
-            ? "text-black bg-white border-2 border--white"
+            ? "text-black bg-white border-2 border-solid border-white"
             : "text-white bg-transparent border-2 border-transparent hover:border-white"
         } h-16 w-16 `}
         onClick={() => setSelectedButton("about")}
@@ -42,7 +42,7 @@ export const Header = ({
         icon="pi pi-comment"
         className={`${
           selectedButton === "feedback"
-            ? "text-black bg-white border-2 border-white"
+            ? "text-black bg-white border-2 border-solid border-white"
             : "text-white bg-transparent border-2 border-transparent hover:border-white"
         } h-16 w-16 `}
         onClick={() => setSelectedButton("feedback")}
