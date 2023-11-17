@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 import { Button } from "primereact/button";
 
-const Header = (selectedButton: string, setSelectedButton: React.Dispatch<React.SetStateAction<string>>) => {
-  console.log(selectedButton)
+const Header = (
+  selectedButton: string,
+  setSelectedButton: React.Dispatch<React.SetStateAction<string>>
+) => {
+  // console.log(selectedButton)
   return (
     <div className="w-full md:w-[75px] h[75px] md:h-full flex flex-row md:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 md:gap-x-0">
       <Button
