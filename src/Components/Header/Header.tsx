@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "primereact/button";
+import { useAppContext } from "../../Services/AppContext";
 
 export const Header = ({
   selectedButton,
@@ -8,6 +9,8 @@ export const Header = ({
   selectedButton: string;
   setSelectedButton: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const { state, dispatch } = useAppContext();
+
   return (
     <div className="w-full md:w-[75px] h[75px] md:h-full relative">
       <div className="w-full md:w-[75px] h[75px] md:h-full flex flex-row md:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 md:gap-x-0">
@@ -52,13 +55,18 @@ export const Header = ({
       <div className="absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
           title="dark mode"
-          icon="pi pi-moon"
+          icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
           className={`${
             selectedButton === ""
               ? "text-black bg-white border-2 border-solid border-white"
               : "text-white bg-transparent border-2 border-transparent hover:border-white"
           } h-16 w-16 `}
-          // onClick={() => setSelectedButton("feedback")}
+          onClick={() =>
+            dispatch({
+              type: "SET_MODE_SELECTED",
+              payload: state.modeSelected === "dark" ? "light" : "dark",
+            })
+          }
         />
       </div>
     </div>
