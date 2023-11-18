@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "primereact/button";
+import { useAppContext } from "../../Services/AppContext";
 
 export const Header = ({
   selectedButton,
@@ -8,6 +9,8 @@ export const Header = ({
   selectedButton: string;
   setSelectedButton: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const { state, dispatch, showToast } = useAppContext();
+
   return (
     <div className="w-full md:w-[75px] h[75px] md:h-full relative">
       <div className="w-full md:w-[75px] h[75px] md:h-full flex flex-row md:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 md:gap-x-0">
@@ -16,8 +19,8 @@ export const Header = ({
           icon="pi pi-home"
           className={`${
             selectedButton === "home"
-              ? "text-black bg-white border-2 border-solid border-white"
-              : "text-white bg-transparent border-2 border-transparent hover:border-white"
+              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              : "text-color5 bg-transparent border-2 border-transparent"
           } h-16 w-16 `}
           onClick={() => {
             setSelectedButton("home");
@@ -28,8 +31,8 @@ export const Header = ({
           icon="pi pi-user"
           className={`${
             selectedButton === "about"
-              ? "text-black bg-white border-2 border-solid border-white"
-              : "text-white bg-transparent border-2 border-transparent hover:border-white"
+              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              : "text-color5 bg-transparent border-2 border-transparent "
           } h-16 w-16 `}
           onClick={() => setSelectedButton("about")}
         />
@@ -43,8 +46,8 @@ export const Header = ({
           icon="pi pi-comment"
           className={`${
             selectedButton === "feedback"
-              ? "text-black bg-white border-2 border-solid border-white"
-              : "text-white bg-transparent border-2 border-transparent hover:border-white"
+              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              : "text-color5 bg-transparent border-2 border-transparent "
           } h-16 w-16 `}
           onClick={() => setSelectedButton("feedback")}
         />
@@ -52,13 +55,20 @@ export const Header = ({
       <div className="absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
           title="dark mode"
-          icon="pi pi-moon"
+          icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
           className={`${
             selectedButton === ""
-              ? "text-black bg-white border-2 border-solid border-white"
-              : "text-white bg-transparent border-2 border-transparent hover:border-white"
+              ? "text-color1 bg-color5 border-2 border-solid border-color1"
+              : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
           } h-16 w-16 `}
-          // onClick={() => setSelectedButton("feedback")}
+          onClick={() =>{
+            dispatch({
+              type: "SET_MODE_SELECTED",
+              payload: state.modeSelected === "dark" ? "light" : "dark",
+            })
+            showToast('success', 'Success', 'Theme changed!')
+            document.querySelector("html")?.setAttribute("data-theme", state.modeSelected)}
+          }
         />
       </div>
     </div>
