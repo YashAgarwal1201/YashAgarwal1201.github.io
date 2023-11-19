@@ -1,0 +1,21 @@
+#aboutContent {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Firefox */
+}
+
+#aboutContent::-webkit-scrollbar {
+  display: none;
+  width: 8px; /* Set the width of the scrollbar */
+  height: 8px;
+}
+
+#aboutContent::-webkit-scrollbar-thumb {
+  background-color: #4a5568; /* Set the color of the thumb */
+  border-radius: 4px; /* Set the border radius of the thumb */
+}
+
+#aboutContent::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the color of the scrollbar track */
+}

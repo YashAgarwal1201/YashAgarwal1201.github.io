@@ -45,7 +45,7 @@ const Content = () => {
       />
 
       <div
-        className={`h-full w-full p-1 text-color5 overflow-y-auto snap-y`}
+        className={`h-full w-full text-color5 overflow-y-auto snap-y`}
       >
         {/* <p>{selectedButton}</p> */}
         <Home reference={homeRef} />

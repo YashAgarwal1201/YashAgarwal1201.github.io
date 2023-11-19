@@ -1,30 +1,34 @@
 import React from "react";
+import { useAppContext } from "../../Services/AppContext";
 
 function Feedback({ reference }: { reference: any }) {
+  const { showToast } = useAppContext();
   return (
     <div
       ref={reference}
-      className="w-full h-full flex justify-center items-center snap-center snap-always"
+      className="w-full h-full pb-1 pr-1 flex justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-1/2 md:h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
         <h1 className="w-full text-6xl">
-          Hey everyone,
+          Thank you,
           <br />
-          Myself Yash Agarwal
+          for visiting this page
         </h1>
         <p className="w-full text-xl text-right text-color4">
-          and, I am currently working as Associate UI Developer
-          <br />
-          <span className="pi pi-at"></span> Techolution, India
+          also, want to share some feedback ? <br /> Please fill out this form
         </p>
       </div>
       <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-end items-end bg-transparent">
         <div className="w-full md:w-2/3 h-full md:h-2/3 relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
-          <div className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 bg-color2 z-10">
+          <div
+            title="Click to open form dialog"
+            className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none"
+            onClick={() => showToast("info", "Info", "Under development")}
+          >
             {/* <img alt="img" src="Test Poster.jpg" /> */}
-            <span className="w-fit h-fit m-auto text-xs">Image not available</span>
+            <span className="m-auto text-5xl pi pi-file-edit"></span>
           </div>
           <div className="cont absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont absolute bottom-0 right-0 bg-color3"></div>
