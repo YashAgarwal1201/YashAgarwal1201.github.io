@@ -19,7 +19,7 @@ export const Header = ({
           icon="pi pi-home"
           className={`${
             selectedButton === "home"
-              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              ? "text-color1 bg-color4 border-2 border-solid border-color4"
               : "text-color5 bg-transparent border-2 border-transparent"
           } h-16 w-16 `}
           onClick={() => {
@@ -31,7 +31,7 @@ export const Header = ({
           icon="pi pi-user"
           className={`${
             selectedButton === "about"
-              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              ? "text-color1 bg-color4 border-2 border-solid border-color4"
               : "text-color5 bg-transparent border-2 border-transparent "
           } h-16 w-16 `}
           onClick={() => setSelectedButton("about")}
@@ -46,7 +46,7 @@ export const Header = ({
           icon="pi pi-comment"
           className={`${
             selectedButton === "feedback"
-              ? "text-color1 bg-color5 border-2 border-solid border-color5"
+              ? "text-color1 bg-color4 border- border-solid border-color4"
               : "text-color5 bg-transparent border-2 border-transparent "
           } h-16 w-16 `}
           onClick={() => setSelectedButton("feedback")}
@@ -58,17 +58,16 @@ export const Header = ({
           icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
           className={`${
             selectedButton === ""
-              ? "text-color1 bg-color5 border-2 border-solid border-color1"
+              ? "text-color1 bg-color4 border-2 border-solid border-color4"
               : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
           } h-16 w-16 `}
-          onClick={() =>{
+          onClick={() => {
             dispatch({
               type: "SET_MODE_SELECTED",
               payload: state.modeSelected === "dark" ? "light" : "dark",
-            })
-            showToast('success', 'Success', 'Theme changed!')
-            document.querySelector("html")?.setAttribute("data-theme", state.modeSelected)}
-          }
+            });
+            showToast("success", "Success", "Theme changed!");
+          }}
         />
       </div>
     </div>
