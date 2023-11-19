@@ -7,7 +7,7 @@ import { useAppContext } from "./Services/AppContext";
 import "./App.scss";
 
 function App() {
-  const { dispatch, state } = useAppContext();
+  const { dispatch, state, showToast } = useAppContext();
   const myToast = useRef<Toast>(null);
 
   useEffect(() => {
@@ -20,6 +20,12 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem("appData", JSON.stringify(state));
   }, [state]);
+
+  useEffect(() => {
+    document
+      .querySelector("html")
+      ?.setAttribute("data-theme", state.modeSelected);
+  }, [state.modeSelected]);
 
   return (
     <div className="w-screen h-[100dvh]">

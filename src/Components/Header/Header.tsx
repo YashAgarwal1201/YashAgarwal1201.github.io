@@ -61,14 +61,13 @@ export const Header = ({
               ? "text-color1 bg-color5 border-2 border-solid border-color1"
               : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
           } h-16 w-16 `}
-          onClick={() =>{
+          onClick={() => {
             dispatch({
               type: "SET_MODE_SELECTED",
               payload: state.modeSelected === "dark" ? "light" : "dark",
-            })
-            showToast('success', 'Success', 'Theme changed!')
-            document.querySelector("html")?.setAttribute("data-theme", state.modeSelected)}
-          }
+            });
+            showToast("success", "Success", "Theme changed!");
+          }}
         />
       </div>
     </div>

@@ -7,8 +7,8 @@ const Content = () => {
   const {state} = useAppContext()
   const [selectedButton, setSelectedButton] = useState<string>("home");
 
-  const themeVal = state.modeSelected as string
-  console.log(themeVal)
+  // const themeVal = state.modeSelected as string
+  // console.log(themeVal)
   return (
     <div className={`w-screen h-[100dvh] flex flex-col-reverse md:flex-row items-center bg-color1`}>
       <Header
