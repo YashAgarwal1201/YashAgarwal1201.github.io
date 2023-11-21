@@ -34,6 +34,10 @@
   height: 100dvh;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 .p-button:focus,
 .p-inputtext:enabled:focus,
 .p-link:focus {

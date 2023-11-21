@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppContext } from "../../Services/AppContext";
 
-function Feedback({ reference }: { reference: any }) {
+function Feedback({ reference }: { reference: React.MutableRefObject<null> }) {
   const { showToast } = useAppContext();
   return (
     <div

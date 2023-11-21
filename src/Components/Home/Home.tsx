@@ -2,7 +2,7 @@ import React from "react";
 import { primaryInfo } from "../../Data/Data";
 import "./Home.scss";
 
-function Home({ reference }: { reference: any }) {
+function Home({ reference }: { reference: React.MutableRefObject<null> }) {
   return (
     <div
       ref={reference}
