@@ -39,23 +39,23 @@ function About({ reference }: { reference: any }) {
                 <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                   2007 - 2018
                 </h3>
-                <p className="flex">
+                <div className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                   <p className="ml-12 md:text-base">
                     Modern Era Public School, Bijnor.
                   </p>
-                </p>
+                </div>
                 <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                   2018 - 2022
                 </h3>
-                <p className="flex">
+                <div className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                   <p className="ml-12 text-sm md:text-base">
                     Bachelor of Technology{" "}
                     <span className="pi pi-at text-sm"></span> DIT University,
                     Dehradun.
                   </p>
-                </p>
+                </div>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ function About({ reference }: { reference: any }) {
                 <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
                   Email Address
                 </h3>
-                <p className="flex">
+                <div className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                   <p
                     className="ml-12 cursor-pointer"
@@ -106,11 +106,11 @@ function About({ reference }: { reference: any }) {
                   >
                     legoyashx@hotmail.com
                   </p>
-                </p>
+                </div>
                 <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
                   LinkedIn
                 </h3>
-                <p className="flex">
+                <div className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                   <p
                     className="ml-12 cursor-pointer"
@@ -124,7 +124,7 @@ function About({ reference }: { reference: any }) {
                   >
                     Link to my linkedin profile
                   </p>
-                </p>
+                </div>
               </div>
             </div>
           </div>
