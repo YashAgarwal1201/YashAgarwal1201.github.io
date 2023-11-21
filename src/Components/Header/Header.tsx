@@ -51,8 +51,24 @@ export const Header = ({
           } h-16 w-16 `}
           onClick={() => setSelectedButton("feedback")}
         />
+        <Button
+          title="dark mode"
+          icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
+          className={`${
+            selectedButton === ""
+              ? "text-color1 bg-color4 border-2 border-solid border-color4"
+              : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
+          } block md:hidden h-16 w-16 `}
+          onClick={() => {
+            dispatch({
+              type: "SET_MODE_SELECTED",
+              payload: state.modeSelected === "dark" ? "light" : "dark",
+            });
+            showToast("success", "Success", "Theme changed!");
+          }}
+        />
       </div>
-      <div className="absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
+      <div className="hidden md:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
           title="dark mode"
           icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}

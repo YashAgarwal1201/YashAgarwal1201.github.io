@@ -8,15 +8,15 @@ function About({ reference }: { reference: any }) {
   return (
     <div
       ref={reference}
-      className="w-full h-full pb-1 pr-1 flex justify-center items-center snap-center snap-always"
+      className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
-        <h1 className="w-full text-6xl">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl">
           A little bit,
           <br />
           about me...
         </h1>
-        <p className="w-full text-xl text-right text-color4">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
           and, I am currently working as Associate UI Developer
           <br />
           <span className="pi pi-at"></span> Techolution, India
@@ -28,7 +28,7 @@ function About({ reference }: { reference: any }) {
           <div className=" mt-16 flex space-x-4">
             {/* Education Section */}
             <div className="w-full h-fit flex-shrink-0 snap-center snap-always">
-              <h2 className="text-3xl text-color3">Education</h2>
+              <h2 className="text-xl md:text-3xl text-color3">Education</h2>
               <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                 <Button
                   title="Click to expand"
@@ -36,19 +36,21 @@ function About({ reference }: { reference: any }) {
                   className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
                   onClick={() => showToast("info", "Info", "Under development")}
                 />
-                <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
+                <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                   2007 - 2018
                 </h3>
                 <p className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
-                  <p className="ml-12">Modern Era Public School, Bijnor.</p>
+                  <p className="ml-12 md:text-base">
+                    Modern Era Public School, Bijnor.
+                  </p>
                 </p>
-                <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
+                <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                   2018 - 2022
                 </h3>
                 <p className="flex">
                   {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
-                  <p className="ml-12">
+                  <p className="ml-12 text-sm md:text-base">
                     Bachelor of Technology{" "}
                     <span className="pi pi-at text-sm"></span> DIT University,
                     Dehradun.
@@ -126,7 +128,7 @@ function About({ reference }: { reference: any }) {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 bottom-0 -right-0 flex md:hidden flex-col-reverse gap-2">
+          <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
             <Button
               icon="pi pi-chevron-right"
               className="py-3 bg-color3 rounded-full"
