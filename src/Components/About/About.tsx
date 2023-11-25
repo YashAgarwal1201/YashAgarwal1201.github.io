@@ -105,6 +105,26 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                       showToast("info", "Info", "Under development")
                     }
                   />
+                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
+                    December, 2022 - June, 2023
+                  </h3>
+                  <div className="flex">
+                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
+                    <p className="ml-12 cursor-pointer">
+                      UI Developer - Intern <span className="pi pi-at text-sm"></span>{" "}
+                      Techolution, India.
+                    </p>
+                  </div>
+                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
+                    July, 2022 - present
+                  </h3>
+                  <div className="flex">
+                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
+                    <p className="ml-12 cursor-pointer">
+                      Associate UI Developer <span className="pi pi-at text-sm"></span>{" "}
+                      Techolution, India.
+                    </p>
+                  </div>
                 </div>
               </div>
 
