@@ -12,8 +12,8 @@ export const Header = ({
   const { state, dispatch, showToast } = useAppContext();
 
   return (
-    <div className="w-full md:w-[75px] h[75px] md:h-full relative">
-      <div className="w-full md:w-[75px] h[75px] md:h-full flex flex-row md:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 md:gap-x-0">
+    <div className="w-full lg:w-[75px] h[75px] lg:h-full relative">
+      <div className="w-full lg:w-[75px] h[75px] lg:h-full flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
         <Button
           title="home"
           icon="pi pi-home"
@@ -58,7 +58,7 @@ export const Header = ({
             selectedButton === ""
               ? "text-color1 bg-color4 border-2 border-solid border-color4"
               : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
-          } block md:hidden h-16 w-16 `}
+          } block lg:hidden h-16 w-16 `}
           onClick={() => {
             dispatch({
               type: "SET_MODE_SELECTED",
@@ -68,7 +68,7 @@ export const Header = ({
           }}
         />
       </div>
-      <div className="hidden md:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
+      <div className="hidden lg:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
           title="dark mode"
           icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}

@@ -9,7 +9,7 @@ function About({
   setExpandAboutDialog,
 }: {
   reference: React.MutableRefObject<null>;
-  setExpandAboutDialog: any;
+  setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { showToast, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -107,8 +107,8 @@ function About({
                     title="Click to expand"
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
-                    onClick={() =>{
-                      setExpandAboutDialog(true)
+                    onClick={() => {
+                      setExpandAboutDialog(true);
                       dispatch({
                         type: "SET_MODAL_CONTENT",
                         payload: {
@@ -116,8 +116,7 @@ function About({
                           body: aboutInfo.work,
                         } as any,
                       });
-                    }
-                    }
+                    }}
                   />
                   {aboutInfo.work.map((values, key) => (
                     <>
@@ -211,7 +210,7 @@ function About({
           </div>
         </div>
       </div>
-      <div className="w-full md:w-1/2 h-1/2 md:h-full hidden md:flex justify-end items-end bg-transparent">
+      {/* <div className="w-full md:w-1/2 h-1/2 md:h-full hidden md:flex justify-end items-end bg-transparent">
         <div className="w-full md:w-2/3 h-full md:h-2/3 relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
@@ -234,6 +233,32 @@ function About({
           <div className="cont absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont absolute bottom-0 right-0 bg-color3"></div>
         </div>
+      </div> */}
+      <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-end items-end bg-transparent">
+        <div className="hidden md:block w-[80%] md:w-[500px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+          <div className="cont absolute top-0 left-0 bg-color3"></div>
+          <div className="cont absolute top-0 right-0 bg-transparent"></div>
+          <div className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 bg-color2 z-10">
+            <div className="flex flex-col-reverse justify-center gap-2">
+              <Button
+                // disabled={isScrollLeftDisabled}
+                icon="pi pi-chevron-left"
+                className="py-3 bg-color3 rounded-full"
+                onClick={() => scrollLeft()}
+              />
+              <Button
+                // disabled={isScrollRightDisabled}
+                icon="pi pi-chevron-right"
+                className="py-3 bg-color3 rounded-full"
+                onClick={() => scrollRight()}
+              />
+            </div>
+          </div>
+          <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
+          <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
+        </div>
+
+        
       </div>
     </div>
   );
