@@ -7,7 +7,7 @@ import { useAppContext } from "./Services/AppContext";
 import "./App.scss";
 
 function App() {
-  const { dispatch, state, showToast } = useAppContext();
+  const { dispatch, state } = useAppContext();
   const myToast = useRef<Toast>(null);
 
   useEffect(() => {

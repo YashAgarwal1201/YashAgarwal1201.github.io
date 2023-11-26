@@ -3,8 +3,14 @@ import React, { useRef } from "react";
 import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
 
-function About({ reference }: { reference: React.MutableRefObject<null> }) {
-  const { showToast } = useAppContext();
+function About({
+  reference,
+  setExpandAboutDialog,
+}: {
+  reference: React.MutableRefObject<null>;
+  setExpandAboutDialog: any;
+}) {
+  const { showToast, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
@@ -66,15 +72,19 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                     title="Click to expand"
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
-                    onClick={() =>
-                      showToast("info", "Info", "Under development")
-                    }
+                    onClick={() => {
+                      showToast("info", "Info", "Under development");
+                      setExpandAboutDialog(true)
+                      dispatch({
+                        type: "SET_MODAL_CONTENT",
+                        payload: { header: "Education", body: "temp" } as any,
+                      });
+                    }}
                   />
                   <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                     2007 - 2018
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p className="ml-12 md:text-base">
                       Modern Era Public School, Bijnor.
                     </p>
@@ -83,7 +93,6 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                     2018 - 2022
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p className="ml-12 text-sm md:text-base">
                       Bachelor of Technology{" "}
                       <span className="pi pi-at text-sm"></span> DIT University,
@@ -109,20 +118,20 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                     December, 2022 - June, 2023
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p className="ml-12 cursor-pointer">
-                      UI Developer - Intern <span className="pi pi-at text-sm"></span>{" "}
-                      Techolution, India.
+                      UI Developer - Intern{" "}
+                      <span className="pi pi-at text-sm"></span> Techolution,
+                      India.
                     </p>
                   </div>
                   <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
                     July, 2022 - present
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p className="ml-12 cursor-pointer">
-                      Associate UI Developer <span className="pi pi-at text-sm"></span>{" "}
-                      Techolution, India.
+                      Associate UI Developer{" "}
+                      <span className="pi pi-at text-sm"></span> Techolution,
+                      India.
                     </p>
                   </div>
                 </div>
@@ -144,7 +153,6 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                     Email Address
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p
                       className="ml-12 cursor-pointer"
                       onClick={(e) => {
@@ -173,7 +181,6 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
                     LinkedIn
                   </h3>
                   <div className="flex">
-                    {/* <span className="pi pi-heart-fill pt-1 mr-4"></span> */}
                     <p
                       className="ml-12 cursor-pointer"
                       onClick={() =>
@@ -212,8 +219,6 @@ function About({ reference }: { reference: React.MutableRefObject<null> }) {
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10">
-            {/* <img alt="img" src="Test Poster.jpg" /> */}
-            {/* <span className="w-fit h-fit m-auto text-xs">Image not available</span> */}
             <div className="flex flex-col-reverse justify-center gap-2">
               <Button
                 // disabled={isScrollLeftDisabled}
