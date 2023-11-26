@@ -60,7 +60,7 @@ function About({
         </p>
         <div className="relative w-full h-full">
           <div
-            className="w-full h-full overflow-x-auto overflow-y-hidden snap-x"
+            className="w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
             id="aboutContent"
             ref={containerRef}
           >
@@ -141,9 +141,16 @@ function About({
                     title="Click to expand"
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
-                    onClick={() =>
-                      showToast("info", "Info", "Under development")
-                    }
+                    onClick={() => {
+                      setExpandAboutDialog(true);
+                      dispatch({
+                        type: "SET_MODAL_CONTENT",
+                        payload: {
+                          header: "Contact & Resume",
+                          body: aboutInfo.contact,
+                        } as any,
+                      });
+                    }}
                   />
                   <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
                     Email Address
@@ -233,8 +240,6 @@ function About({
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
         </div>
-
-        
       </div>
     </div>
   );

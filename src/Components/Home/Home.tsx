@@ -7,7 +7,7 @@ function Home({ reference }: { reference: React.MutableRefObject<null> }) {
   return (
     <div
       ref={reference}
-      className="w-full h-full p-1 sm:p-2 md:pb-1 md:pr-1 flex flex-col-reverse md:flex-row items-center snap-center snap-always"
+      className="w-full h-full p-1 sm:p-2 md:pb-1 md:pr-1 flex flex-col-reverse md:flex-row items-center snap-start snap-always"
     >
       <div className="w-full md:w-1/2 h-1/2 md:h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl">
