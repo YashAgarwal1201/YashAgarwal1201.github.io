@@ -2,6 +2,7 @@ import { Button } from "primereact/button";
 import React, { useRef } from "react";
 import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
+import { aboutInfo } from "../../Data/Data";
 
 function About({
   reference,
@@ -73,67 +74,63 @@ function About({
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
                     onClick={() => {
-                      showToast("info", "Info", "Under development");
-                      setExpandAboutDialog(true)
+                      setExpandAboutDialog(true);
                       dispatch({
                         type: "SET_MODAL_CONTENT",
-                        payload: { header: "Education", body: "temp" } as any,
+                        payload: {
+                          header: "Education",
+                          body: aboutInfo.education,
+                        } as any,
                       });
                     }}
                   />
-                  <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
-                    2007 - 2018
-                  </h3>
-                  <div className="flex">
-                    <p className="ml-12 md:text-base">
-                      Modern Era Public School, Bijnor.
-                    </p>
-                  </div>
-                  <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
-                    2018 - 2022
-                  </h3>
-                  <div className="flex">
-                    <p className="ml-12 text-sm md:text-base">
-                      Bachelor of Technology{" "}
-                      <span className="pi pi-at text-sm"></span> DIT University,
-                      Dehradun.
-                    </p>
-                  </div>
+                  {aboutInfo.education.map((values, key) => (
+                    <>
+                      <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                        {values.year}
+                      </h3>
+                      <div className="flex">
+                        <p className="ml-12 md:text-base">
+                          {values.description}
+                        </p>
+                      </div>
+                    </>
+                  ))}
                 </div>
               </div>
 
               {/* Work Section */}
               <div className="w-full h-full flex-shrink-0 snap-center snap-always">
                 <h2 className="text-3xl text-color3">Work</h2>
-                <div className="h-[200px] p-2 flex flex-col gap-y-3 bg-color2 rounded-md relative">
+                <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
-                    onClick={() =>
-                      showToast("info", "Info", "Under development")
+                    onClick={() =>{
+                      setExpandAboutDialog(true)
+                      dispatch({
+                        type: "SET_MODAL_CONTENT",
+                        payload: {
+                          header: "Work",
+                          body: aboutInfo.work,
+                        } as any,
+                      });
+                    }
                     }
                   />
-                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    December, 2022 - June, 2023
-                  </h3>
-                  <div className="flex">
-                    <p className="ml-12 cursor-pointer">
-                      UI Developer - Intern{" "}
-                      <span className="pi pi-at text-sm"></span> Techolution,
-                      India.
-                    </p>
-                  </div>
-                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    July, 2022 - present
-                  </h3>
-                  <div className="flex">
-                    <p className="ml-12 cursor-pointer">
-                      Associate UI Developer{" "}
-                      <span className="pi pi-at text-sm"></span> Techolution,
-                      India.
-                    </p>
-                  </div>
+                  {aboutInfo.work.map((values, key) => (
+                    <>
+                      <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                        {values.year}
+                      </h3>
+                      <div className="flex">
+                        <p className="ml-12 md:text-base">
+                          {values.description}
+                        </p>
+                      </div>
+                    </>
+                  ))}
                 </div>
               </div>
 
