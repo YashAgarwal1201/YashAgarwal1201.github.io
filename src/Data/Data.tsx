@@ -44,6 +44,42 @@ export const aboutInfo = {
 
   contact: [
     { year: <>Email Address</>, description: <>legoyashx@hotmail.com</> },
-    { year: <>LinkedIn</>, description: <>Link to my linkedin profile</> },
+    {
+      year: <>LinkedIn</>,
+      description: (
+        <>
+          <a
+            href="https://www.linkedin.com/in/yash-a-a669b2237"
+            target="_blank"
+            className="font-normal"
+          >
+            Link to my linkedin profile
+          </a>
+        </>
+      ),
+    },
+    {
+      year: <>Github</>,
+      description: (
+        <>
+          <a href="https://github.com/YashAgarwal1201" target="_blank">
+            Link to my personal Github profile
+          </a>
+        </>
+      ),
+    },
+    {
+      year: <>Resume</>,
+      description: (
+        <>
+          <a
+            href="https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link"
+            target="_blank"
+          >
+            Link for my resume
+          </a>
+        </>
+      ),
+    },
   ],
 };
