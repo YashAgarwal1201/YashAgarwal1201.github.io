@@ -10,6 +10,7 @@ export interface State {
   [key: string]: any;
   modeSelected: any;
   toast: Toast | null;
+  modalContent: ModalContent
 }
 
 export interface ToastInterface {
@@ -38,6 +39,11 @@ export interface AppContextType {
     life?: number
   ) => void;
 }
+
+export interface ModalContent {
+  header: any;
+  body: any;
+} 
 
 // export interface Rectangle {
 //   label: string;

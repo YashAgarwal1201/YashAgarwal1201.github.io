@@ -2,13 +2,23 @@ import React, { createContext, useReducer } from "react";
 
 import { Toast } from "primereact/toast/toast";
 
-import { Action, ActionType, AppContextType, State } from "./Interfaces";
+import {
+  Action,
+  ActionType,
+  AppContextType,
+  // ModalContent,
+  State,
+} from "./Interfaces";
 
 const initialState: State = sessionStorage.getItem("appData")
   ? JSON.parse(sessionStorage.getItem("appData") as string)
   : {
       modeSelected: "dark",
       toast: null,
+      modalContent: {
+        header: "",
+        body: ""
+      },
     };
 
 const reducer = (state: State, action: Action<ActionType> | any): State => {
@@ -23,6 +33,13 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       return {
         ...state,
         modeSelected: action.payload as string,
+      };
+    }
+
+    case "SET_MODAL_CONTENT": {
+      return {
+        ...state,
+        modalContent: action.payload as any,
       };
     }
 
