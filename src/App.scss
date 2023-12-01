@@ -51,6 +51,10 @@
   z-index: 10000;
 }
 
+a {
+  font-style: oblique;
+}
+
 @media (hover: hover) {
   .p-button:hover {
     color: #353735 !important;

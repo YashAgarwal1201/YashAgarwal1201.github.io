@@ -43,40 +43,72 @@ export const aboutInfo = {
   ],
 
   contact: [
-    { year: <>Email Address</>, description: <>legoyashx@hotmail.com</> },
     {
-      year: <>LinkedIn</>,
+      year: (
+        <>
+          <span className="mr-3 pi pi-envelope"></span>Email Address
+        </>
+      ),
+      description: (
+        <>
+          legoyashx@hotmail.com<span className="ml-3 pi pi-copy"></span>
+        </>
+      ),
+    },
+    {
+      year: (
+        <>
+          <span className="mr-3 pi pi-linkedin"></span>LinkedIn
+        </>
+      ),
       description: (
         <>
           <a
             href="https://www.linkedin.com/in/yash-a-a669b2237"
             target="_blank"
             className="font-normal"
+            rel="noopener"
           >
             Link to my linkedin profile
+            <span className="ml-3 pi pi-external-link"></span>
           </a>
         </>
       ),
     },
     {
-      year: <>Github</>,
+      year: (
+        <>
+          <span className="mr-3 pi pi-github"></span>Github
+        </>
+      ),
       description: (
         <>
-          <a href="https://github.com/YashAgarwal1201" target="_blank">
+          <a
+            href="https://github.com/YashAgarwal1201"
+            target="_blank"
+            rel="noopener"
+          >
             Link to my personal Github profile
+            <span className="ml-3 pi pi-external-link"></span>
           </a>
         </>
       ),
     },
     {
-      year: <>Resume</>,
+      year: (
+        <>
+          <span className="mr-3 pi pi-id-card"></span>Resume
+        </>
+      ),
       description: (
         <>
           <a
             href="https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link"
+            rel="noopener"
             target="_blank"
           >
             Link for my resume
+            <span className="ml-3 pi pi-external-link"></span>
           </a>
         </>
       ),
