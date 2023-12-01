@@ -1,5 +1,4 @@
 import React from "react";
-import { useAppContext } from "../../Services/AppContext";
 
 function Feedback({
   reference,
@@ -8,7 +7,6 @@ function Feedback({
   reference: React.MutableRefObject<null>;
   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { showToast } = useAppContext();
   return (
     <div
       ref={reference}

@@ -64,11 +64,6 @@ const Content = () => {
         />
       )}
       {expandFeedbackDialog && (
-        // <Dialog
-        //   visible={expandFeedbackDialog}
-        //   onHide={() => setExpandFeedbackDialog(false)}
-        //   draggable={false}
-        // ></Dialog>
         <FeedbackFormDialog
           expandFeedbackDialog={expandFeedbackDialog}
           setExpandFeedbackDialog={setExpandFeedbackDialog}

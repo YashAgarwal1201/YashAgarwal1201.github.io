@@ -92,12 +92,14 @@ const FeedbackFormDialog = ({
           </div>
           <div className="w-full h-12 flex justify-center items-center gap-x-4">
             <Button
+              title="click to send"
               icon="pi pi-send"
               className="h-full px-5 bg-color4 text-color1"
               label="submit"
               type="submit"
             />
             <Button
+              title="click to delete everything"
               icon="pi pi-trash"
               className="h-full px-5 bg-transparent text-color4"
               label="delete"

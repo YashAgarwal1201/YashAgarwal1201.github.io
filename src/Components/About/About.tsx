@@ -205,51 +205,6 @@ function About({
                       }}
                     ></span>
                   </div>
-                  {/* <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    Email Address
-                  </h3>
-                  <div className="flex">
-                    <p
-                      className="ml-12 cursor-pointer"
-                      onClick={(e) => {
-                        if (navigator.clipboard) {
-                          navigator.clipboard.writeText(
-                            e.currentTarget.innerHTML
-                          );
-                          showToast(
-                            "success",
-                            "Success",
-                            "Email address copied"
-                          );
-                        } else {
-                          showToast(
-                            "error",
-                            "Error",
-                            "Sorry, but looks like there's some issue with it"
-                          );
-                        }
-                      }}
-                    >
-                      legoyashx@hotmail.com
-                    </p>
-                  </div>
-                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    LinkedIn
-                  </h3>
-                  <div className="flex">
-                    <p
-                      className="ml-12 cursor-pointer"
-                      onClick={() =>
-                        showToast(
-                          "error",
-                          "Error",
-                          "Sorry but looks like the link is broken"
-                        )
-                      }
-                    >
-                      Link to my linkedin profile
-                    </p>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -257,12 +212,14 @@ function About({
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
             <Button
               // disabled={isScrollLeftDisabled}
+              title="scroll left"
               icon="pi pi-chevron-left"
               className="py-3 bg-color3 rounded-full"
               onClick={() => scrollLeft()}
             />
             <Button
               // disabled={isScrollRightDisabled}
+              title="scroll right"
               icon="pi pi-chevron-right"
               className="py-3 bg-color3 rounded-full"
               onClick={() => scrollRight()}
@@ -281,12 +238,14 @@ function About({
                 icon="pi pi-chevron-left"
                 className="py-3 bg-color3 rounded-full"
                 onClick={() => scrollLeft()}
+                title="scroll left"
               />
               <Button
                 // disabled={isScrollRightDisabled}
                 icon="pi pi-chevron-right"
                 className="py-3 bg-color3 rounded-full"
                 onClick={() => scrollRight()}
+                title="scroll rigth"
               />
             </div>
           </div>
