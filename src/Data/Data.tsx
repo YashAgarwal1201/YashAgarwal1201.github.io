@@ -115,3 +115,11 @@ export const aboutInfo = {
     },
   ],
 };
+
+export const feedback = {
+  title: "feedback",
+  content: {
+    mailTo: "legoyashx@hotmail.com",
+    bcc: "legoyashx@yahoo.com",
+  },
+};

@@ -5,13 +5,14 @@ import "./Content.scss";
 import Home from "../../Components/Home/Home";
 import About from "../../Components/About/About";
 import Feedback from "../../Components/Feedback/Feedback";
-// import { Dialog } from "primereact/dialog";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
+import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
 
 const Content = () => {
   // const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
+  const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
 
   const homeRef = useRef();
   const aboutRef = useRef();
@@ -51,12 +52,26 @@ const Content = () => {
           reference={aboutRef}
           setExpandAboutDialog={setExpandAboutDialog}
         />
-        <Feedback reference={feedbackRef} />
+        <Feedback
+          reference={feedbackRef}
+          setExpandFeedbackDialog={setExpandFeedbackDialog}
+        />
       </div>
       {expandAboutDialog && (
         <MoreDetailsDialog
           expandAboutDialog={expandAboutDialog}
           setExpandAboutDialog={setExpandAboutDialog}
+        />
+      )}
+      {expandFeedbackDialog && (
+        // <Dialog
+        //   visible={expandFeedbackDialog}
+        //   onHide={() => setExpandFeedbackDialog(false)}
+        //   draggable={false}
+        // ></Dialog>
+        <FeedbackFormDialog
+          expandFeedbackDialog={expandFeedbackDialog}
+          setExpandFeedbackDialog={setExpandFeedbackDialog}
         />
       )}
     </div>
