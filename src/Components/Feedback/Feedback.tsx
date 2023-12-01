@@ -1,8 +1,12 @@
 import React from "react";
-import { useAppContext } from "../../Services/AppContext";
 
-function Feedback({ reference }: { reference: React.MutableRefObject<null> }) {
-  const { showToast } = useAppContext();
+function Feedback({
+  reference,
+  setExpandFeedbackDialog,
+}: {
+  reference: React.MutableRefObject<null>;
+  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div
       ref={reference}
@@ -25,7 +29,7 @@ function Feedback({ reference }: { reference: React.MutableRefObject<null> }) {
           <div
             title="Click to open form dialog"
             className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none"
-            onClick={() => showToast("info", "Info", "Under development")}
+            onClick={() => setExpandFeedbackDialog(true)}
           >
             {/* <img alt="img" src="Test Poster.jpg" /> */}
             <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>

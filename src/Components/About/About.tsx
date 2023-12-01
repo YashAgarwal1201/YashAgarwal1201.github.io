@@ -18,7 +18,6 @@ function About({
     const container = containerRef.current;
     if (container && container.parentElement) {
       container.scrollLeft -= container.parentElement.scrollWidth;
-      console.log(container.scrollLeft);
     }
   };
 
@@ -137,7 +136,7 @@ function About({
               <div className="w-full h-full flex-shrink-0 snap-center snap-always">
                 <h2 className="text-3xl text-color3">Contact & Resume</h2>
                 <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
-                  <Button
+                  {/* <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
                     className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
@@ -151,13 +150,11 @@ function About({
                         } as any,
                       });
                     }}
-                  />
-                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    Email Address
-                  </h3>
-                  <div className="flex">
-                    <p
-                      className="ml-12 cursor-pointer"
+                  /> */}
+                  <div className="flex justify-center gap-x-1">
+                    <span
+                      title="Click to copy email-id"
+                      className="pi pi-envelope w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
                       onClick={(e) => {
                         if (navigator.clipboard) {
                           navigator.clipboard.writeText(
@@ -176,26 +173,37 @@ function About({
                           );
                         }
                       }}
-                    >
-                      legoyashx@hotmail.com
-                    </p>
-                  </div>
-                  <h3 className="w-fit pb-1 text-lg font-medium border-b-2 border-color4">
-                    LinkedIn
-                  </h3>
-                  <div className="flex">
-                    <p
-                      className="ml-12 cursor-pointer"
-                      onClick={() =>
-                        showToast(
-                          "error",
-                          "Error",
-                          "Sorry but looks like the link is broken"
-                        )
-                      }
-                    >
-                      Link to my linkedin profile
-                    </p>
+                    ></span>
+                    <span
+                      title="Click to see my linkedin profile"
+                      className="pi pi-linkedin w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      onClick={() => {
+                        window.open(
+                          "https://www.linkedin.com/in/yash-a-a669b2237",
+                          "_blank"
+                        );
+                      }}
+                    ></span>
+                    <span
+                      title="Click to check my github profile"
+                      className="pi pi-github w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      onClick={() => {
+                        window.open(
+                          "https://github.com/YashAgarwal1201",
+                          "_blank"
+                        );
+                      }}
+                    ></span>
+                    <span
+                      title="Click to check my resume"
+                      className="pi pi-id-card w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      onClick={() => {
+                        window.open(
+                          "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link",
+                          "_blank"
+                        );
+                      }}
+                    ></span>
                   </div>
                 </div>
               </div>
@@ -204,12 +212,14 @@ function About({
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
             <Button
               // disabled={isScrollLeftDisabled}
+              title="scroll left"
               icon="pi pi-chevron-left"
               className="py-3 bg-color3 rounded-full"
               onClick={() => scrollLeft()}
             />
             <Button
               // disabled={isScrollRightDisabled}
+              title="scroll right"
               icon="pi pi-chevron-right"
               className="py-3 bg-color3 rounded-full"
               onClick={() => scrollRight()}
@@ -228,12 +238,14 @@ function About({
                 icon="pi pi-chevron-left"
                 className="py-3 bg-color3 rounded-full"
                 onClick={() => scrollLeft()}
+                title="scroll left"
               />
               <Button
                 // disabled={isScrollRightDisabled}
                 icon="pi pi-chevron-right"
                 className="py-3 bg-color3 rounded-full"
                 onClick={() => scrollRight()}
+                title="scroll rigth"
               />
             </div>
           </div>
