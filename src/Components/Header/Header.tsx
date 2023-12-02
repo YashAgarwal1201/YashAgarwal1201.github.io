@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Button } from "primereact/button";
 import { useAppContext } from "../../Services/AppContext";
 
@@ -7,7 +7,7 @@ export const Header = ({
   setSelectedButton,
 }: {
   selectedButton: string;
-  setSelectedButton: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedButton: Function;//React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { state, dispatch, showToast } = useAppContext();
 
@@ -36,11 +36,6 @@ export const Header = ({
           } h-16 w-16 `}
           onClick={() => setSelectedButton("about")}
         />
-        {/* <Button
-        title="work"
-        icon="pi pi-briefcase"
-        className="h-16 w-16 text-white bg-transparent border-2 border-white"
-      /> */}
         <Button
           title="feedback"
           icon="pi pi-comment"

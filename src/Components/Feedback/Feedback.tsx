@@ -1,10 +1,10 @@
-import React from "react";
+import React, { RefObject } from "react";
 
 function Feedback({
   reference,
   setExpandFeedbackDialog,
 }: {
-  reference: React.MutableRefObject<null>;
+  reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
@@ -31,7 +31,6 @@ function Feedback({
             className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none"
             onClick={() => setExpandFeedbackDialog(true)}
           >
-            {/* <img alt="img" src="Test Poster.jpg" /> */}
             <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>
           </div>
           <div className="cont absolute bottom-0 left-0 bg-transparent"></div>
