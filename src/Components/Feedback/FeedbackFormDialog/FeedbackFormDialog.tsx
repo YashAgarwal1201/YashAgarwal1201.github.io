@@ -44,6 +44,7 @@ const FeedbackFormDialog = ({
         onHide={() => {
           setExpandFeedbackDialog(!expandFeedbackDialog);
         }}
+        dismissableMask={true}
         draggable={false}
         header={
           <>
@@ -57,7 +58,6 @@ const FeedbackFormDialog = ({
         className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
       >
         <form
-          // className={`w3-card w3-theme-l2 w3-round w3-padding-large w3-mobile`}
           className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto"
           onSubmit={handleSubmit}
         >

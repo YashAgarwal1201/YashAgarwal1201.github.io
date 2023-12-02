@@ -22,6 +22,7 @@ const MoreDetailsDialog = ({
             payload: { header: "", body: "" } as any,
           });
         }}
+        dismissableMask={true}
         draggable={false}
         header={<div className="text-color5">{state.modalContent.header}</div>}
         className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
