@@ -63,10 +63,10 @@ function About({
             id="aboutContent"
             ref={containerRef}
           >
-            <div className=" mt-16 flex space-x-4">
+            <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
-              <div className="w-full h-fit flex-shrink-0 snap-center snap-always">
-                <h2 className="text-xl md:text-3xl text-color3">Education</h2>
+              <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
+                <h2 className="ml-2 text-xl md:text-3xl text-color3">Education</h2>
                 <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
@@ -99,8 +99,8 @@ function About({
               </div>
 
               {/* Work Section */}
-              <div className="w-full h-full flex-shrink-0 snap-center snap-always">
-                <h2 className="text-3xl text-color3">Work</h2>
+              <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
+                <h2 className="ml-2 text-3xl text-color3">Work</h2>
                 <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
@@ -133,8 +133,8 @@ function About({
               </div>
 
               {/* Contact & Resume Section */}
-              <div className="w-full h-full flex-shrink-0 snap-center snap-always">
-                <h2 className="text-3xl text-color3">Contact & Resume</h2>
+              <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
+                <h2 className="ml-2 text-3xl text-color3">Contact & Resume</h2>
                 <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <div className="flex justify-center gap-x-1">
                     <span
