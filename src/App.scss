@@ -55,6 +55,10 @@ a {
   font-style: oblique;
 }
 
+ul {
+  list-style-type: disc;
+}
+
 @media (hover: hover) {
   .p-button:hover {
     color: #353735 !important;

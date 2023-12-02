@@ -15,7 +15,6 @@ const FeedbackFormDialog = ({
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // console.log(event.target.Name.value);
     const userEmailId = event.target.Email.value;
     const userName = event.target.Name.value;
     //var bcc = feedback.content.bcc
@@ -28,11 +27,14 @@ const FeedbackFormDialog = ({
         `mailto:${feedback.content.mailTo}?subject=feedback_from_${userEmailId}&body=${emailBody}`,
         `_blank`
       );
+      
+      setExpandFeedbackDialog(!expandFeedbackDialog);
+      event.target.reset();
       showToast("info", "Info", "Opening external email client of your device");
     } catch (error) {
       showToast("error", "Error", error as string);
     }
-    event.target.reset();
+    
   };
 
   return (
@@ -68,6 +70,7 @@ const FeedbackFormDialog = ({
                 className="h-10 px-4 bg-color3 text-color5 rounded-lg"
                 type="email"
                 name="Email"
+                required
               />
             </div>
             <div className="w-full md:w-1/2 flex flex-col gap-y-3">
@@ -88,6 +91,7 @@ const FeedbackFormDialog = ({
               title="You message"
               className="h-40 p-4 bg-color3 text-color5 rounded-lg resize-none"
               name="Msg"
+              required
             ></textarea>
           </div>
           <div className="w-full h-12 flex justify-center items-center gap-x-4">

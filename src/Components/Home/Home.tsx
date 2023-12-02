@@ -1,6 +1,6 @@
 import React from "react";
 import { primaryInfo } from "../../Data/Data";
-import logoo from './../../assets/logoo.jpg'
+import logoo from "./../../assets/logoo.jpg";
 import "./Home.scss";
 
 function Home({ reference }: { reference: React.MutableRefObject<null> }) {
@@ -27,9 +27,6 @@ function Home({ reference }: { reference: React.MutableRefObject<null> }) {
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 bg-color2 z-10">
             <img alt="img" src={logoo} className="h-full m-auto rounded-md" />
-            {/* <span className="w-fit h-fit m-auto text-xs">
-              Image not available
-            </span> */}
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
@@ -40,9 +37,6 @@ function Home({ reference }: { reference: React.MutableRefObject<null> }) {
           <div className="cont absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
           <div className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 rounded-2xl bg-color2 z-10">
             <img alt="img" src={logoo} className="h-full m-auto rounded-md" />
-            {/* <span className="w-fit h-fit m-auto text-xs">
-              Image not available
-            </span> */}
           </div>
         </div>
       </div>
