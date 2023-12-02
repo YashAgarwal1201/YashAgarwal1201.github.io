@@ -1,9 +1,9 @@
-import React from "react";
+import { RefObject } from "react";
 import { primaryInfo } from "../../Data/Data";
 import logoo from "./../../assets/logoo.jpg";
 import "./Home.scss";
 
-function Home({ reference }: { reference: React.MutableRefObject<null> }) {
+function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
   return (
     <div
       ref={reference}

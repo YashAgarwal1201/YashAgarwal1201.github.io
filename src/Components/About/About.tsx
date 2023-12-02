@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
 import { aboutInfo } from "../../Data/Data";
@@ -8,7 +8,7 @@ function About({
   reference,
   setExpandAboutDialog,
 }: {
-  reference: React.MutableRefObject<null>;
+  reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { showToast, dispatch } = useAppContext();
@@ -193,10 +193,7 @@ function About({
                       title="Click to connect on telegram"
                       className="pi pi-telegram w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
                       onClick={() => {
-                        window.open(
-                          "https://t.me/legoyashx",
-                          "_blank"
-                        );
+                        window.open("https://t.me/legoyashx", "_blank");
                       }}
                     ></span>
                   </div>
