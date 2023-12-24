@@ -185,7 +185,7 @@ const Content: React.FC = () => {
     <div className={`w-screen h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}>
       <Header selectedButton={selectedButton} setSelectedButton={handleButtonClick} />
 
-      <div className={`h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}>
+      <div className={`contentBody h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}>
         <Home reference={homeRef} />
         <About reference={aboutRef} setExpandAboutDialog={setExpandAboutDialog} />
         <Feedback reference={feedbackRef} setExpandFeedbackDialog={setExpandFeedbackDialog} />
