@@ -7,7 +7,7 @@ export const Header = ({
   setSelectedButton,
 }: {
   selectedButton: string;
-  setSelectedButton: Function;//React.Dispatch<React.SetStateAction<string>>;
+  setSelectedButton: Function; //React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { state, dispatch, showToast } = useAppContext();
 

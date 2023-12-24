@@ -27,14 +27,13 @@ const FeedbackFormDialog = ({
         `mailto:${feedback.content.mailTo}?subject=feedback_from_${userEmailId}&body=${emailBody}`,
         `_blank`
       );
-      
+
       setExpandFeedbackDialog(!expandFeedbackDialog);
       event.target.reset();
       showToast("info", "Info", "Opening external email client of your device");
     } catch (error) {
       showToast("error", "Error", error as string);
     }
-    
   };
 
   return (

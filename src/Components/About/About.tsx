@@ -66,7 +66,9 @@ function About({
             <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
               <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-xl md:text-3xl text-color3">Education</h2>
+                <h2 className="ml-2 text-xl md:text-3xl text-color3">
+                  Education
+                </h2>
                 <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
