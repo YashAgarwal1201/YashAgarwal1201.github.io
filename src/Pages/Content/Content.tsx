@@ -127,12 +127,15 @@ import About from "../../Components/About/About";
 import Feedback from "../../Components/Feedback/Feedback";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
+import { KeyboardShortcuts } from "../../Components/KeyboardShortcuts/KeyboardShortcuts";
 
 const Content: React.FC = () => {
   // const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
+  const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
+    useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -187,25 +190,21 @@ const Content: React.FC = () => {
       W: "about",
       F: "feedback",
       K: "keyboardShortcuts",
-      T: "theme",
+      // T: "theme",
     };
 
     const key = event.key.toUpperCase();
     const section = keyMap[key];
 
     if (section && event.shiftKey) {
-      handleButtonClick(section);
+      // handleButtonClick(section);
 
       // Uncomment the following line if you want to display something with the "K" key
-      // if (section === "theme") {
-      //   dispatch({
-      //     type: "SET_MODE_SELECTED",
-      //     payload: state.modeSelected === "dark" ? "light" : "dark",
-      //   });
-      //   showToast("success", "Success", "Theme changed!");
-      // } else {
-      //   handleButtonClick(section);
-      // }
+      if (section === "keyboardShortcuts") {
+        setExpandKeyboardShortcutsDialog(!expandKeyboardShortcutsDialog);
+      } else {
+        handleButtonClick(section);
+      }
     }
   };
 
@@ -251,6 +250,12 @@ const Content: React.FC = () => {
         <FeedbackFormDialog
           expandFeedbackDialog={expandFeedbackDialog}
           setExpandFeedbackDialog={setExpandFeedbackDialog}
+        />
+      )}
+      {expandKeyboardShortcutsDialog && (
+        <KeyboardShortcuts
+          expandKeyboardShorcutsDialog={expandKeyboardShortcutsDialog}
+          setExpandKeyboardShortcutsDialog={setExpandKeyboardShortcutsDialog}
         />
       )}
     </div>
