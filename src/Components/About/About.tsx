@@ -47,7 +47,7 @@ function About({
       className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
           A little bit,
           <br />
           about me...

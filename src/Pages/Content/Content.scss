@@ -55,3 +55,7 @@ $contentBodyScrollbarHoverColor: var(--color5);
     }
   }
 }
+.p-component-overlay {
+  backdrop-filter: blur(7px);
+  // cursor: pointer;
+}

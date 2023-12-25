@@ -118,7 +118,6 @@
 
 // export default Content;
 
-
 import React, { useEffect, useRef, useState } from "react";
 import { Header } from "./../../Components/Header/Header";
 import "./Content.scss";
@@ -128,12 +127,15 @@ import About from "../../Components/About/About";
 import Feedback from "../../Components/Feedback/Feedback";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
+import { KeyboardShortcuts } from "../../Components/KeyboardShortcuts/KeyboardShortcuts";
 
 const Content: React.FC = () => {
   // const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
+  const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
+    useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -181,14 +183,62 @@ const Content: React.FC = () => {
     };
   }, []);
 
-  return (
-    <div className={`w-screen h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}>
-      <Header selectedButton={selectedButton} setSelectedButton={handleButtonClick} />
+  const handleKeyPress = (event: KeyboardEvent) => {
+    const keyMap: any = {
+      H: "home",
+      A: "about",
+      W: "about",
+      F: "feedback",
+      K: "keyboardShortcuts",
+      // T: "theme",
+    };
 
-      <div className={`contentBody h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}>
+    const key = event.key.toUpperCase();
+    const section = keyMap[key];
+
+    if (section && event.shiftKey) {
+      // handleButtonClick(section);
+
+      // Uncomment the following line if you want to display something with the "K" key
+      if (section === "keyboardShortcuts") {
+        setExpandKeyboardShortcutsDialog(!expandKeyboardShortcutsDialog);
+      } else {
+        handleButtonClick(section);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for key presses
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
+  return (
+    <div
+      className={`w-screen h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
+    >
+      <Header
+        selectedButton={selectedButton}
+        setSelectedButton={handleButtonClick}
+      />
+
+      <div
+        className={`contentBody h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}
+      >
         <Home reference={homeRef} />
-        <About reference={aboutRef} setExpandAboutDialog={setExpandAboutDialog} />
-        <Feedback reference={feedbackRef} setExpandFeedbackDialog={setExpandFeedbackDialog} />
+        <About
+          reference={aboutRef}
+          setExpandAboutDialog={setExpandAboutDialog}
+        />
+        <Feedback
+          reference={feedbackRef}
+          setExpandFeedbackDialog={setExpandFeedbackDialog}
+        />
       </div>
       {expandAboutDialog && (
         <MoreDetailsDialog
@@ -200,6 +250,12 @@ const Content: React.FC = () => {
         <FeedbackFormDialog
           expandFeedbackDialog={expandFeedbackDialog}
           setExpandFeedbackDialog={setExpandFeedbackDialog}
+        />
+      )}
+      {expandKeyboardShortcutsDialog && (
+        <KeyboardShortcuts
+          expandKeyboardShorcutsDialog={expandKeyboardShortcutsDialog}
+          setExpandKeyboardShortcutsDialog={setExpandKeyboardShortcutsDialog}
         />
       )}
     </div>
