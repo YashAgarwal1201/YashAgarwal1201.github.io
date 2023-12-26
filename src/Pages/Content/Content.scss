@@ -13,7 +13,7 @@ $contentBodyScrollbarWidth: 8px;
 $contentBodyScrollbarColor: var(--color4);
 $contentBodyScrollbarHoverColor: var(--color5);
 
-.contentBody {
+.contentBody, .aboutDialog .p-dialog-content div {
   &::-webkit-scrollbar {
     width: $contentBodyScrollbarWidth;
   }
@@ -22,6 +22,7 @@ $contentBodyScrollbarHoverColor: var(--color5);
     width: $contentBodyScrollbarWidth;
     background-color: $contentBodyScrollbarColor;
     border-radius: $contentBodyScrollbarWidth;
+    cursor: pointer;
   }
 
   &::-webkit-scrollbar-thumb:hover {
