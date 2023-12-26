@@ -220,7 +220,7 @@ const Content: React.FC = () => {
 
   return (
     <div
-      className={`w-screen h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
+      className={`w-full h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
     >
       <Header
         selectedButton={selectedButton}

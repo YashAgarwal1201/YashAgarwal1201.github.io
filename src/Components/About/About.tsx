@@ -53,9 +53,10 @@ function About({
           about me...
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
-          and, I am currently working as Associate UI Developer
-          <br />
-          <span className="pi pi-at"></span> Techolution, India
+          my education, working experience, technologies i have worked on <br />
+          and contact and resume
+          {/* <br /> */}
+          {/* <span className="pi pi-at"></span> Techolution, India */}
         </p>
         <div className="relative w-full h-full">
           <div
@@ -66,10 +67,10 @@ function About({
             <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
               <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-xl md:text-3xl text-color3">
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3">
                   Education
                 </h2>
-                <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
@@ -102,8 +103,8 @@ function About({
 
               {/* Work Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-3xl text-color3">Work</h2>
-                <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3">Work</h2>
+                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
@@ -136,12 +137,12 @@ function About({
 
               {/* Contact & Resume Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-3xl text-color3">Contact & Resume</h2>
-                <div className="h-[200px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
-                  <div className="flex justify-center gap-x-1">
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3">Contact & Resume</h2>
+                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                  <div className="flex justify-center gap-x-1 mb-10 sm:mb-0">
                     <span
                       title="Click to copy email-id"
-                      className="pi pi-envelope w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      className="pi pi-envelope w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={(e) => {
                         if (navigator.clipboard) {
                           navigator.clipboard.writeText(
@@ -163,7 +164,7 @@ function About({
                     ></span>
                     <span
                       title="Click to see my linkedin profile"
-                      className="pi pi-linkedin w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      className="pi pi-linkedin w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://www.linkedin.com/in/yash-a-a669b2237",
@@ -173,7 +174,7 @@ function About({
                     ></span>
                     <span
                       title="Click to check my github profile"
-                      className="pi pi-github w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      className="pi pi-github w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://github.com/YashAgarwal1201",
@@ -183,7 +184,7 @@ function About({
                     ></span>
                     <span
                       title="Click to check my resume"
-                      className="pi pi-id-card w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      className="pi pi-id-card w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link",
@@ -193,7 +194,7 @@ function About({
                     ></span>
                     <span
                       title="Click to connect on telegram"
-                      className="pi pi-telegram w-16 h-16 flex justify-center items-center bg-color4 text-color1 text-2xl rounded-full cursor-pointer"
+                      className="pi pi-telegram w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open("https://t.me/legoyashx", "_blank");
                       }}
