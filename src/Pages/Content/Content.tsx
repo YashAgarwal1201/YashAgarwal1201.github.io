@@ -141,9 +141,15 @@ const Content: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
+  const sectionRefs: any = {
+    home: homeRef,
+    about: aboutRef,
+    feedback: feedbackRef,
+  };
+
   const handleButtonClick = (section: string) => {
     setSelectedButton(section);
-    const targetRef = eval(`${section}Ref`);
+    const targetRef = sectionRefs[section]; //eval(`${section}Ref`);
     targetRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
