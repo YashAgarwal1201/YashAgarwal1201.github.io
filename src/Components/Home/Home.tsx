@@ -33,8 +33,8 @@ function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
         </div>
 
         <div className="block md:hidden w-full h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
-          <div className="cont absolute m-auto top-0 left-0 bottom-0 bg-color3"></div>
-          <div className="cont absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
+          <div className="cont pattern absolute m-auto top-0 left-0 bottom-0 bg-color3"></div>
+          <div className="cont pattern absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
           <div className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 rounded-2xl bg-color2 z-10">
             <img alt="img" src={logoo} className="h-full m-auto rounded-md" />
           </div>
