@@ -53,8 +53,9 @@ function About({
           about me...
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
-          my education, working experience, technologies i have worked on <br />
-          and contact and resume
+          my education, working experience,
+          <br />
+          contact and resume
           {/* <br /> */}
           {/* <span className="pi pi-at"></span> Techolution, India */}
         </p>
@@ -137,7 +138,9 @@ function About({
 
               {/* Contact & Resume Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3">Contact & Resume</h2>
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3">
+                  Contact & Resume
+                </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <div className="flex justify-center gap-x-1 mb-10 sm:mb-0">
                     <span
