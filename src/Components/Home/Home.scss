@@ -5,46 +5,8 @@
   border-radius: 16px;
   position: absolute;
 }
-// #c1 {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-// }
-// #c2 {
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-// }
-// #c3 {
-//   width: 45%;
-//   height: 45%;
-//   margin: auto;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-// //   background-color: transparent;
-// }
-// #c4 {
-//   margin: auto;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   z-index: -5;
-// //   background-color: slategrey;
-// }
-// .cont img {
-//   width: auto;
-//   height: 100%;
-//   margin: auto;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   border-radius: 15px;
-//   box-shadow: 10px 10px 10px black;
-// }
+
+.pattern {
+  background-image: radial-gradient(circle, transparent 4px, var(--color1) 4px);
+  background-size: 28px 28px; /* Adjust the size of the dots as needed */
+}
