@@ -1,5 +1,5 @@
 {
-	"short_name": "YashAgarwal Portfolio",
+	"short_name": "Yash Agarwal Portfolio",
 	"name": "Yash Agarwal - Associate UI Developer",
 	"icons": [
 		{
@@ -53,6 +53,6 @@
 	"start_url": "/",
 	"display": "standalone",
 	"theme_color": "#000000",
-	"background_color": "#ffffff",
+	"background_color": "#171717",
 	"prefer-related-application": true
 }
