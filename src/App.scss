@@ -28,6 +28,13 @@
     --color4: #171717;
     --color5: #0a0a0a;
   }
+  html[data-theme='google'] {
+    --color1: #FAFAFA;
+    --color2: #FBBC05;
+    --color3: #34A853;
+    --color4: #4285F4;
+    --color5: #EA4335; 
+  }
 }
 
 #root {
@@ -67,15 +74,7 @@ ul {
     border-color: #f4f4f4;
   }
 }
-// @media (hover: none) {
-//   .p-button {
-//     /* Add your default styles for touchscreens here */
-//     color: transparent; /* Your default color for touchscreens */
-//     background-color: transparent; /* Your default background color for touchscreens */
-//     border-color: transparent; /* Your default border color for touchscreens */
-//     /* Add other variable styles for touchscreens based on your requirements */
-//   }
-// }
+
 @media only screen and (max-width: 520px) {
   .p-toast {
     width: 80%;
