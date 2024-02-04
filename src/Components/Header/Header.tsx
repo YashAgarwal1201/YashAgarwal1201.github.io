@@ -1,15 +1,19 @@
 // import React from "react";
 import { Button } from "primereact/button";
-import { useAppContext } from "../../Services/AppContext";
+// import { useAppContext } from "../../Services/AppContext";
 
 export const Header = ({
   selectedButton,
   setSelectedButton,
+  showMenuDialog,
+  setShowMenuDialog,
 }: {
   selectedButton: string;
   setSelectedButton: Function; //React.Dispatch<React.SetStateAction<string>>;
+  showMenuDialog: boolean;
+  setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { state, dispatch, showToast } = useAppContext();
+  // const { state, dispatch, showToast } = useAppContext();
 
   return (
     <div className="w-full lg:w-[75px] h[75px] lg:h-full relative">
@@ -47,38 +51,18 @@ export const Header = ({
           onClick={() => setSelectedButton("feedback")}
         />
         <Button
-          title="dark mode"
-          icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
-          className={`${
-            selectedButton === ""
-              ? "text-color1 bg-color4 border-2 border-solid border-color4"
-              : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
-          } block lg:hidden h-16 w-16 `}
-          onClick={() => {
-            dispatch({
-              type: "SET_MODE_SELECTED",
-              payload: state.modeSelected === "dark" ? "light" : "dark",
-            });
-            showToast("success", "Success", "Theme changed!");
-          }}
+          title="Configuartion Menu"
+          icon="pi pi-cog"
+          className={`text-color5 bg-transparent border-2 border-transparent hover:border-color5 h-16 w-16 `}
+          onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
       <div className="hidden lg:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
-          title="dark mode"
-          icon={`${state.modeSelected === "dark" ? "pi pi-moon" : "pi pi-sun"}`}
-          className={`${
-            selectedButton === ""
-              ? "text-color1 bg-color4 border-2 border-solid border-color4"
-              : "text-color5 bg-transparent border-2 border-transparent hover:border-color5"
-          } h-16 w-16 `}
-          onClick={() => {
-            dispatch({
-              type: "SET_MODE_SELECTED",
-              payload: state.modeSelected === "dark" ? "light" : "dark",
-            });
-            showToast("success", "Success", "Theme changed!");
-          }}
+          title="Configuartion Menu"
+          icon="pi pi-cog"
+          className={`text-color5 bg-transparent border-2 border-transparent hover:border-color5 h-16 w-16 `}
+          onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
     </div>

@@ -127,15 +127,18 @@ import About from "../../Components/About/About";
 import Feedback from "../../Components/Feedback/Feedback";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
-import { KeyboardShortcuts } from "../../Components/KeyboardShortcuts/KeyboardShortcuts";
+// import { KeyboardShortcuts } from "../../Components/KeyboardShortcuts/KeyboardShortcuts";
+import MenuDialog from "../../Components/Menu/MenuDialog";
 
 const Content: React.FC = () => {
   // const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
-  const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
-    useState(false);
+  // const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
+  //   useState(false);
+
+  const [showMenuDialog, setShowMenuDialog] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -196,6 +199,7 @@ const Content: React.FC = () => {
       W: "about",
       F: "feedback",
       K: "keyboardShortcuts",
+      M: "menu",
       // T: "theme",
     };
 
@@ -206,8 +210,9 @@ const Content: React.FC = () => {
       // handleButtonClick(section);
 
       // Uncomment the following line if you want to display something with the "K" key
-      if (section === "keyboardShortcuts") {
-        setExpandKeyboardShortcutsDialog(!expandKeyboardShortcutsDialog);
+      if (section === "menu" || section === "keyboardShortcuts") {
+        // setExpandKeyboardShortcutsDialog(!expandKeyboardShortcutsDialog);
+        setShowMenuDialog(!showMenuDialog);
       } else {
         handleButtonClick(section);
       }
@@ -231,6 +236,8 @@ const Content: React.FC = () => {
       <Header
         selectedButton={selectedButton}
         setSelectedButton={handleButtonClick}
+        showMenuDialog={showMenuDialog}
+        setShowMenuDialog={setShowMenuDialog}
       />
 
       <div
@@ -258,10 +265,16 @@ const Content: React.FC = () => {
           setExpandFeedbackDialog={setExpandFeedbackDialog}
         />
       )}
-      {expandKeyboardShortcutsDialog && (
+      {/* {expandKeyboardShortcutsDialog && (
         <KeyboardShortcuts
           expandKeyboardShorcutsDialog={expandKeyboardShortcutsDialog}
           setExpandKeyboardShortcutsDialog={setExpandKeyboardShortcutsDialog}
+        />
+      )} */}
+      {showMenuDialog && (
+        <MenuDialog
+          showMenuDialog={showMenuDialog}
+          setShowMenuDialog={setShowMenuDialog}
         />
       )}
     </div>
