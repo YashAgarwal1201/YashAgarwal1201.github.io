@@ -68,7 +68,7 @@ function About({
             <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
               <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3">
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
                   Education
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
@@ -104,7 +104,7 @@ function About({
 
               {/* Work Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3">Work</h2>
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">Work</h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
@@ -138,7 +138,7 @@ function About({
 
               {/* Contact & Resume Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3">
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
                   Contact & Resume
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
