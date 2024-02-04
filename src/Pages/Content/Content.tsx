@@ -135,8 +135,8 @@ const Content: React.FC = () => {
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
-  const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
-    useState(false);
+  // const [expandKeyboardShortcutsDialog, setExpandKeyboardShortcutsDialog] =
+  //   useState(false);
 
   const [showMenuDialog, setShowMenuDialog] = useState(false);
 
