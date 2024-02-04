@@ -55,7 +55,7 @@ export const aboutInfo = {
         <ul>
           <li>One stop demo shop</li>
           <li>Employee Handbook</li>
-          <li>Alan for talent fountaion</li>
+          
         </ul>
       ),
     },
@@ -69,6 +69,7 @@ export const aboutInfo = {
       ),
       projects: (
         <ul>
+          <li>Alan for talent fountaion</li>
           <li>Owens & Minor</li>
         </ul>
       ),
