@@ -53,7 +53,7 @@ export const Header = ({
         <Button
           title="Configuartion Menu"
           icon="pi pi-cog"
-          className={`text-color5 bg-transparent border-2 border-transparent hover:border-color5 h-16 w-16 `}
+          className={`text-color5 bg-transparent border-2 border-transparent hover:border-color5 h-16 w-16 block lg:hidden`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
