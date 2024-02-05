@@ -26,7 +26,7 @@ const MenuDialog = ({
           <AccordionTab
             header={
               <div className="flex justify-between items-center">
-                <span className="text-color3">Theme</span>{" "}
+                <span className="text-color3">Theme</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
                   <div className="w-4 h-4 bg-color2"></div>
