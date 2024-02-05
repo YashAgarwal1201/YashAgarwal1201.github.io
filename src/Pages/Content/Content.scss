@@ -6,8 +6,8 @@
   background-color: var(--color4);
   border-radius: 8px;
 }
-.contentBody::-webkit-scrollbar-thumb:hover{
-    background-color: var(--color5);
+.contentBody::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color5);
 }
 // $contentBodyScrollbarWidth: 8px;
 // $contentBodyScrollbarColor: var(--color4);
@@ -57,6 +57,19 @@
   }
 }
 .p-component-overlay {
+  -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   // cursor: pointer;
+}
+
+.p-accordion-tab .p-accordion-header-link {
+  border-radius: 8px;
+}
+
+.p-accordion-tab-active .p-accordion-header-link {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: #FFFFFF;
 }
