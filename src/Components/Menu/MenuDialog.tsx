@@ -147,6 +147,34 @@ const MenuDialog = ({
                   <div className="w-4 h-4 bg-[#a67c00] rounded-r-md"></div>
                 </div>
               </div>
+
+              <div
+                className="flex flex-col-reverse justify-between items-center"
+                onClick={() => {
+                  dispatch({
+                    type: "SET_MODE_SELECTED",
+                    payload: "vintage",
+                  });
+                  showToast("success", "Success", "Theme changed!");
+                }}
+              >
+                <span
+                  className={`capitalize ${
+                    state.modeSelected === "vintage"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                >
+                  Vintage
+                </span>
+                <div className="flex items-center rounded-md border-2">
+                  <div className="w-4 h-4 bg-[#f5e1b3] rounded-l-md"></div>
+                  <div className="w-4 h-4 bg-[#dbb070]"></div>
+                  <div className="w-4 h-4 bg-[#5a888a]"></div>
+                  <div className="w-4 h-4 bg-[#5f588a]"></div>
+                  <div className="w-4 h-4 bg-[#b8556c] rounded-r-md"></div>
+                </div>
+              </div>
             </div>
           </AccordionTab>
           <AccordionTab

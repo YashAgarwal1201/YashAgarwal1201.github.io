@@ -42,6 +42,13 @@
     --color4: #bf9b30;
     --color5: #a67c00;
   }
+  html[data-theme="vintage"] {
+    --color1: #f5e1b3;
+    --color2: #dbb070;
+    --color3: #5a888a;
+    --color4: #5f588a;
+    --color5: #b8556c;
+  }
 }
 
 #root {
