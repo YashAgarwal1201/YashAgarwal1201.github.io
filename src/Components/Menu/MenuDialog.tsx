@@ -37,7 +37,7 @@ const MenuDialog = ({
               </div>
             }
           >
-            <div className="grid grid-flow-row grid-cols-3">
+            <div className="grid grid-flow-row grid-cols-3 gap-y-3">
               <div
                 className="flex flex-col-reverse justify-between items-center"
                 onClick={() => {
@@ -117,6 +117,34 @@ const MenuDialog = ({
                   <div className="w-4 h-4 bg-[#404040]"></div>
                   <div className="w-4 h-4 bg-[#171717]"></div>
                   <div className="w-4 h-4 bg-[#0a0a0a] rounded-r-md"></div>
+                </div>
+              </div>
+
+              <div
+                className="flex flex-col-reverse justify-between items-center"
+                onClick={() => {
+                  dispatch({
+                    type: "SET_MODE_SELECTED",
+                    payload: "gold",
+                  });
+                  showToast("success", "Success", "Theme changed!");
+                }}
+              >
+                <span
+                  className={`capitalize ${
+                    state.modeSelected === "gold"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                >
+                  Gold
+                </span>
+                <div className="flex items-center rounded-md border-2">
+                  <div className="w-4 h-4 bg-[#ffe878] rounded-l-md"></div>
+                  <div className="w-4 h-4 bg-[#ffd447]"></div>
+                  <div className="w-4 h-4 bg-[#ffbf00]"></div>
+                  <div className="w-4 h-4 bg-[#bf9b30]"></div>
+                  <div className="w-4 h-4 bg-[#a67c00] rounded-r-md"></div>
                 </div>
               </div>
             </div>
