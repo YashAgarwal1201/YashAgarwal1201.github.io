@@ -71,5 +71,10 @@
   border-top-left-radius: 8px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+}
+
+.p-accordion-tab-active .p-accordion-content {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }

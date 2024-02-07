@@ -28,12 +28,26 @@
     --color4: #171717;
     --color5: #0a0a0a;
   }
-  html[data-theme='google'] {
-    --color1: #FAFAFA;
-    --color2: #FBBC05;
-    --color3: #34A853;
-    --color4: #4285F4;
-    --color5: #EA4335; 
+  html[data-theme="google"] {
+    --color1: #fafafa;
+    --color2: #fbbc05;
+    --color3: #34a853;
+    --color4: #4285f4;
+    --color5: #ea4335;
+  }
+  html[data-theme="gold"] {
+    --color1: #ffe879;
+    --color2: #ffd447;
+    --color3: #ffbf00;
+    --color4: #bf9b30;
+    --color5: #a67c00;
+  }
+  html[data-theme="vintage"] {
+    --color1: #f5e1b3;
+    --color2: #dbb070;
+    --color3: #5a888a;
+    --color4: #5f588a;
+    --color5: #b8556c;
   }
 }
 
