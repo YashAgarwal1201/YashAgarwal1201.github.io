@@ -3,15 +3,16 @@ import React from "react";
 import { useAppContext } from "../../Services/AppContext";
 
 import { Accordion, AccordionTab } from "primereact/accordion";
+import { KeyboardShortcuts } from "../KeyboardShortcuts/KeyboardShortcuts";
 
-const MenuDialog = ({
-  showMenuDialog,
-  setShowMenuDialog,
-}: {
+type MenuDialogProps = {
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+};
+
+const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   const { state, dispatch, showToast } = useAppContext();
+
   return (
     <Dialog
       visible={showMenuDialog}
@@ -37,9 +38,13 @@ const MenuDialog = ({
               </div>
             }
           >
-            <div className="grid grid-flow-row grid-cols-3 gap-y-3">
+            <div className="grid grid-flow-row grid-cols-3 gap-y-6">
               <div
-                className="flex flex-col-reverse justify-between items-center"
+                className={`capitalize flex flex-col-reverse justify-between items-center ${
+                  state.modeSelected === "google"
+                    ? "text-blue-800 font-semibold cursor-default"
+                    : "text-[#010101] font-normal cursor-pointer"
+                }`}
                 onClick={() => {
                   dispatch({
                     type: "SET_MODE_SELECTED",
@@ -48,15 +53,7 @@ const MenuDialog = ({
                   showToast("success", "Success", "Theme changed!");
                 }}
               >
-                <span
-                  className={`capitalize ${
-                    state.modeSelected === "google"
-                      ? "text-blue-800 font-semibold cursor-default"
-                      : "text-[#010101] font-normal cursor-pointer"
-                  }`}
-                >
-                  Google
-                </span>
+                <span>Google</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-[#FAFAFA] rounded-l-md"></div>
                   <div className="w-4 h-4 bg-[#FBBC05]"></div>
@@ -65,8 +62,13 @@ const MenuDialog = ({
                   <div className="w-4 h-4 bg-[#EA4335] rounded-r-md"></div>
                 </div>
               </div>
+
               <div
-                className="flex flex-col-reverse justify-between items-center"
+                className={`capitalize flex flex-col-reverse justify-between items-center ${
+                  state.modeSelected === "night"
+                    ? "text-blue-800 font-semibold cursor-default"
+                    : "text-[#010101] font-normal cursor-pointer"
+                }`}
                 onClick={() => {
                   dispatch({
                     type: "SET_MODE_SELECTED",
@@ -75,15 +77,7 @@ const MenuDialog = ({
                   showToast("success", "Success", "Theme changed!");
                 }}
               >
-                <span
-                  className={`capitalize ${
-                    state.modeSelected === "night"
-                      ? "text-blue-800 font-semibold cursor-default"
-                      : "text-[#010101] font-normal cursor-pointer"
-                  }`}
-                >
-                  Classic Night
-                </span>
+                <span>Classic Night</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-[#0a0a0a] rounded-l-md"></div>
                   <div className="w-4 h-4 bg-[#171717]"></div>
@@ -92,8 +86,13 @@ const MenuDialog = ({
                   <div className="w-4 h-4 bg-[#fafafa] rounded-r-md"></div>
                 </div>
               </div>
+
               <div
-                className="flex flex-col-reverse justify-between items-center"
+                className={`capitalize flex flex-col-reverse justify-between items-center ${
+                  state.modeSelected === "light"
+                    ? "text-blue-800 font-semibold cursor-default"
+                    : "text-[#010101] font-normal cursor-pointer"
+                }`}
                 onClick={() => {
                   dispatch({
                     type: "SET_MODE_SELECTED",
@@ -102,15 +101,7 @@ const MenuDialog = ({
                   showToast("success", "Success", "Theme changed!");
                 }}
               >
-                <span
-                  className={`capitalize ${
-                    state.modeSelected === "light"
-                      ? "text-blue-800 font-semibold cursor-default"
-                      : "text-[#010101] font-normal cursor-pointer"
-                  }`}
-                >
-                  Classic Light
-                </span>
+                <span>Classic Light</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-[#fafafa] rounded-l-md"></div>
                   <div className="w-4 h-4 bg-[#a3a3a3]"></div>
@@ -121,7 +112,11 @@ const MenuDialog = ({
               </div>
 
               <div
-                className="flex flex-col-reverse justify-between items-center"
+                className={`capitalize flex flex-col-reverse justify-between items-center ${
+                  state.modeSelected === "gold"
+                    ? "text-blue-800 font-semibold cursor-default"
+                    : "text-[#010101] font-normal cursor-pointer"
+                }`}
                 onClick={() => {
                   dispatch({
                     type: "SET_MODE_SELECTED",
@@ -130,15 +125,7 @@ const MenuDialog = ({
                   showToast("success", "Success", "Theme changed!");
                 }}
               >
-                <span
-                  className={`capitalize ${
-                    state.modeSelected === "gold"
-                      ? "text-blue-800 font-semibold cursor-default"
-                      : "text-[#010101] font-normal cursor-pointer"
-                  }`}
-                >
-                  Gold
-                </span>
+                <span>Gold</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-[#ffe878] rounded-l-md"></div>
                   <div className="w-4 h-4 bg-[#ffd447]"></div>
@@ -149,7 +136,11 @@ const MenuDialog = ({
               </div>
 
               <div
-                className="flex flex-col-reverse justify-between items-center"
+                className={`capitalize flex flex-col-reverse justify-between items-center ${
+                  state.modeSelected === "vintage"
+                    ? "text-blue-800 font-semibold cursor-default"
+                    : "text-[#010101] font-normal cursor-pointer"
+                }`}
                 onClick={() => {
                   dispatch({
                     type: "SET_MODE_SELECTED",
@@ -158,15 +149,7 @@ const MenuDialog = ({
                   showToast("success", "Success", "Theme changed!");
                 }}
               >
-                <span
-                  className={`capitalize ${
-                    state.modeSelected === "vintage"
-                      ? "text-blue-800 font-semibold cursor-default"
-                      : "text-[#010101] font-normal cursor-pointer"
-                  }`}
-                >
-                  Vintage
-                </span>
+                <span>Vintage</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-[#f5e1b3] rounded-l-md"></div>
                   <div className="w-4 h-4 bg-[#dbb070]"></div>
@@ -185,41 +168,7 @@ const MenuDialog = ({
             }
           >
             <div>
-              <ul className="px-3 flex flex-col gap-y-4">
-                <li>
-                  Press{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    Shift
-                  </kbd>{" "}
-                  +{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    h
-                  </kbd>{" "}
-                  for "Home" section.
-                </li>
-                <li>
-                  Press{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    Shift
-                  </kbd>{" "}
-                  +{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    a
-                  </kbd>{" "}
-                  for "About" section.
-                </li>
-                <li>
-                  Press{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    Shift
-                  </kbd>{" "}
-                  +{" "}
-                  <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
-                    f
-                  </kbd>{" "}
-                  for "Feedback" section.
-                </li>
-              </ul>
+              <KeyboardShortcuts />
             </div>
           </AccordionTab>
         </Accordion>

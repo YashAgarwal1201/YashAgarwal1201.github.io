@@ -1,18 +1,19 @@
-// import React from "react";
 import { Button } from "primereact/button";
 // import { useAppContext } from "../../Services/AppContext";
+
+type HeaderProps = {
+  selectedButton: string;
+  setSelectedButton: (section: string) => void; //React.Dispatch<React.SetStateAction<string>>;
+  showMenuDialog: boolean;
+  setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export const Header = ({
   selectedButton,
   setSelectedButton,
   showMenuDialog,
   setShowMenuDialog,
-}: {
-  selectedButton: string;
-  setSelectedButton: Function; //React.Dispatch<React.SetStateAction<string>>;
-  showMenuDialog: boolean;
-  setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+}: HeaderProps) => {
   // const { state, dispatch, showToast } = useAppContext();
 
   return (

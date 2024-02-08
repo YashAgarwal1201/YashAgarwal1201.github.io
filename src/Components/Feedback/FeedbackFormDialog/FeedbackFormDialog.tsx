@@ -4,13 +4,15 @@ import { useAppContext } from "../../../Services/AppContext";
 import { Button } from "primereact/button";
 import { feedback } from "../../../Data/Data";
 
+type FeedbackFormDialogProps = {
+  expandFeedbackDialog: boolean;
+  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 const FeedbackFormDialog = ({
   expandFeedbackDialog,
   setExpandFeedbackDialog,
-}: {
-  expandFeedbackDialog: boolean;
-  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+}: FeedbackFormDialogProps) => {
   const { showToast } = useAppContext();
 
   const handleSubmit = (event: any) => {

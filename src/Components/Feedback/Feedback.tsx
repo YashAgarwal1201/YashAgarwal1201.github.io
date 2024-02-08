@@ -1,12 +1,12 @@
 import React, { RefObject } from "react";
 
-function Feedback({
-  reference,
-  setExpandFeedbackDialog,
-}: {
+type FeedbackProps = {
   reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+};
+
+function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
+  
   return (
     <div
       ref={reference}

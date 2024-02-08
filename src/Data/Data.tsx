@@ -55,7 +55,6 @@ export const aboutInfo = {
         <ul>
           <li>One stop demo shop</li>
           <li>Employee Handbook</li>
-          
         </ul>
       ),
     },

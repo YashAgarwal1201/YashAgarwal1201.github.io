@@ -10,7 +10,7 @@ export interface State {
   [key: string]: any;
   modeSelected: any;
   toast: Toast | null;
-  modalContent: ModalContent
+  modalContent: ModalContent;
 }
 
 export interface ToastInterface {
@@ -27,7 +27,7 @@ export type ActionType =
   | null
   | ToastInterface
   | { title: string; url: string; type: string }
-  | { key: string; value: boolean }
+  | { key: string; value: boolean };
 
 export interface AppContextType {
   state: State;
@@ -43,7 +43,7 @@ export interface AppContextType {
 export interface ModalContent {
   header: any;
   body: any;
-} 
+}
 
 // export interface Rectangle {
 //   label: string;

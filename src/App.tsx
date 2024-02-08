@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import { useAppContext } from "./Services/AppContext";
-// import useAxiosInterceptor from "./interceptor/interceptor";
 // import { useState } from "react";
 import "./App.scss";
 
@@ -18,7 +17,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("appData", JSON.stringify(state));
+    localStorage.setItem(`yashAppData`, JSON.stringify(state)); //(`yashAppData_${window.name}`, JSON.stringify(state));
   }, [state]);
 
   useEffect(() => {
@@ -26,6 +25,12 @@ function App() {
       .querySelector("html")
       ?.setAttribute("data-theme", state.modeSelected);
   }, [state.modeSelected]);
+
+  // if (!window.name) {
+  //   window.name = Math.random().toString(36).substring(7);
+  // }
+
+  // console.log("Tab identifier:", window.name);
 
   return (
     <div className="w-screen h-[100dvh]">
