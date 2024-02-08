@@ -14,6 +14,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
+  const [activeDotIndex, setActiveDotIndex] = useState(0);
 
   const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
@@ -41,6 +42,9 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           container.scrollLeft >=
           container.scrollWidth - container.clientWidth - 1;
         setIsScrollRightDisabled(isScrollRightDisabledVar);
+
+        const index = Math.round(container.scrollLeft / container.clientWidth);
+        setActiveDotIndex(index);
       }
     };
 
@@ -67,7 +71,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           <br />
           about me...
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 select-none">
           my education, working experience,
           <br />
           contact and resume
@@ -220,6 +224,17 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                   </div>
                 </div>
               </div>
+            </div>
+            {/* dots */}
+            <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 md:left-auto right-0">
+              {Object.keys(aboutInfo).map((keys, index) => (
+                <div
+                  key={keys}
+                  className={`rounded-full ${
+                    index === activeDotIndex ? "bg-color4 w-3 h-3" : "bg-color3 w-2 h-2"
+                  }`}
+                ></div>
+              ))}
             </div>
           </div>
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
