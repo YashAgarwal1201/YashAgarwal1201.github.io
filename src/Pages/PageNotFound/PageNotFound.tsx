@@ -8,6 +8,7 @@ const PageNotFound = () => {
     >
       <div className="w-full lg:w-[75px] h-[75px] lg:h-full">
         <Button
+          title="Go back"
           icon="pi pi-arrow-left"
           className="w-16 h-16 bg-transparent text-color5"
           onClick={() => startTransition(() => window.history.go(-1))}
