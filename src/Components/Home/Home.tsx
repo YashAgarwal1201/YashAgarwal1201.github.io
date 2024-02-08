@@ -15,7 +15,7 @@ function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
           <br />
           myself {primaryInfo.name}
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 select-none">
           and, I am currently working as {primaryInfo.currentPosition}
           <br />
           <span className="pi pi-at"></span> {primaryInfo.currentOrganisation}

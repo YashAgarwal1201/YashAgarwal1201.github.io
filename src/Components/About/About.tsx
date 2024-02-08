@@ -71,7 +71,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           <br />
           about me...
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 select-none">
           my education, working experience,
           <br />
           contact and resume
@@ -230,8 +230,8 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
               {Object.keys(aboutInfo).map((keys, index) => (
                 <div
                   key={keys}
-                  className={`w-2 h-2 rounded-full ${
-                    index === activeDotIndex ? "bg-color4" : "bg-color3"
+                  className={`rounded-full ${
+                    index === activeDotIndex ? "bg-color4 w-3 h-3" : "bg-color3 w-2 h-2"
                   }`}
                 ></div>
               ))}
