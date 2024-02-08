@@ -1,44 +1,60 @@
 import { Button } from "primereact/button";
-import React, { RefObject, useRef } from "react";
+import React, { RefObject, useRef, useEffect, useState } from "react";
 import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
 import { aboutInfo } from "../../Data/Data";
 
 type AboutProps = {
-  reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
+  reference: RefObject<HTMLDivElement>;
   setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function About({ reference, setExpandAboutDialog }: AboutProps) {
   const { showToast, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
+  const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
 
-  const scrollLeft = () => {
+  const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
-    if (container && container.parentElement) {
-      container.scrollLeft -= container.parentElement.scrollWidth;
+    if (container) {
+      container.scrollBy({ left: offset, behavior: "smooth" });
+
+      const isScrollLeftDisabledVar = container.scrollLeft <= 0;
+      setIsScrollLeftDisabled(isScrollLeftDisabledVar);
+
+      const isScrollRightDisabledVar =
+        container.scrollLeft >=
+        container.scrollWidth - container.clientWidth - 1;
+      setIsScrollRightDisabled(isScrollRightDisabledVar);
     }
   };
 
-  const scrollRight = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current;
+      if (container && container.parentElement) {
+        const isScrollLeftDisabledVar = container.scrollLeft <= 0;
+        setIsScrollLeftDisabled(isScrollLeftDisabledVar);
+
+        const isScrollRightDisabledVar =
+          container.scrollLeft >=
+          container.scrollWidth - container.clientWidth - 1;
+        setIsScrollRightDisabled(isScrollRightDisabledVar);
+      }
+    };
+
     const container = containerRef.current;
-    if (container && container.parentElement) {
-      container.scrollLeft += container.parentElement.scrollWidth;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
     }
-  };
 
-  // // Calculate disabled state for left scroll button
-  // const isScrollLeftDisabled =
-  //   !containerRef.current ||
-  //   containerRef.current.scrollLeft === 0 ||
-  //   !containerRef.current.parentElement;
-
-  // // Calculate disabled state for right scroll button
-  // const isScrollRightDisabled =
-  //   !containerRef.current ||
-  //   containerRef.current.scrollLeft >=
-  //     containerRef.current.scrollWidth - containerRef.current.clientWidth ||
-  //   !containerRef.current.parentElement;
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -55,8 +71,6 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           my education, working experience,
           <br />
           contact and resume
-          {/* <br /> */}
-          {/* <span className="pi pi-at"></span> Techolution, India */}
         </p>
         <div className="relative w-full h-full">
           <div
@@ -210,18 +224,18 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           </div>
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
             <Button
-              // disabled={isScrollLeftDisabled}
+              disabled={isScrollLeftDisabled}
               title="scroll left"
               icon="pi pi-chevron-left"
               className="py-3 bg-color3 rounded-full"
-              onClick={() => scrollLeft()}
+              onClick={() => scrollLeftRight(-100)}
             />
             <Button
-              // disabled={isScrollRightDisabled}
+              disabled={isScrollRightDisabled}
               title="scroll right"
               icon="pi pi-chevron-right"
               className="py-3 bg-color3 rounded-full"
-              onClick={() => scrollRight()}
+              onClick={() => scrollLeftRight(100)}
             />
           </div>
         </div>
@@ -233,18 +247,18 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10">
             <div className="flex flex-col-reverse justify-center gap-2">
               <Button
-                // disabled={isScrollLeftDisabled}
+                disabled={isScrollLeftDisabled}
                 icon="pi pi-chevron-left"
                 className="py-3 bg-color3 rounded-full"
-                onClick={() => scrollLeft()}
+                onClick={() => scrollLeftRight(-100)}
                 title="scroll left"
               />
               <Button
-                // disabled={isScrollRightDisabled}
+                disabled={isScrollRightDisabled}
                 icon="pi pi-chevron-right"
                 className="py-3 bg-color3 rounded-full"
-                onClick={() => scrollRight()}
-                title="scroll rigth"
+                onClick={() => scrollLeftRight(100)}
+                title="scroll right"
               />
             </div>
           </div>
