@@ -1,4 +1,3 @@
-// import React from "react";
 import { Button } from "primereact/button";
 // import { useAppContext } from "../../Services/AppContext";
 
@@ -9,7 +8,7 @@ export const Header = ({
   setShowMenuDialog,
 }: {
   selectedButton: string;
-    setSelectedButton: (section: string) => void;//React.Dispatch<React.SetStateAction<string>>;
+  setSelectedButton: (section: string) => void; //React.Dispatch<React.SetStateAction<string>>;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {

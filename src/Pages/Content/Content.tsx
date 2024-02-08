@@ -119,6 +119,7 @@
 // export default Content;
 
 import React, { useEffect, useRef, useState } from "react";
+import { debounce } from "lodash";
 import { Header } from "./../../Components/Header/Header";
 import "./Content.scss";
 // import { useAppContext } from "../../Services/AppContext";
@@ -128,6 +129,10 @@ import Feedback from "../../Components/Feedback/Feedback";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
 import MenuDialog from "../../Components/Menu/MenuDialog";
+
+type KeyMapProp = {
+  [key: string]: string;
+};
 
 const Content: React.FC = () => {
   // const { state, dispatch, showToast } = useAppContext();
@@ -140,7 +145,7 @@ const Content: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
-  const sectionRefs: any = {
+  const sectionRefs:{ [key: string]: React.RefObject<HTMLDivElement> } = {
     home: homeRef,
     about: aboutRef,
     feedback: feedbackRef,
@@ -159,24 +164,46 @@ const Content: React.FC = () => {
       threshold: 0.5, // Adjust this threshold as needed
     };
 
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       switch (entry.target) {
+    //         case homeRef.current:
+    //           setSelectedButton("home");
+    //           break;
+    //         case aboutRef.current:
+    //           setSelectedButton("about");
+    //           break;
+    //         case feedbackRef.current:
+    //           setSelectedButton("feedback");
+    //           break;
+    //         default:
+    //           break;
+    //       }
+    //     }
+    //   });
+    // }, observerOptions);
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          switch (entry.target) {
-            case homeRef.current:
-              setSelectedButton("home");
-              break;
-            case aboutRef.current:
-              setSelectedButton("about");
-              break;
-            case feedbackRef.current:
-              setSelectedButton("feedback");
-              break;
-            default:
-              break;
+      debounce(() => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            switch (entry.target) {
+              case homeRef.current:
+                setSelectedButton("home");
+                break;
+              case aboutRef.current:
+                setSelectedButton("about");
+                break;
+              case feedbackRef.current:
+                setSelectedButton("feedback");
+                break;
+              default:
+                break;
+            }
           }
-        }
-      });
+        });
+      }, 100)(); // Adjust debounce delay as needed
     }, observerOptions);
 
     observer.observe(homeRef.current!);
@@ -189,7 +216,7 @@ const Content: React.FC = () => {
   }, []);
 
   const handleKeyPress = (event: KeyboardEvent) => {
-    const keyMap: any = {
+    const keyMap: KeyMapProp = {
       H: "home",
       A: "about",
       W: "about",

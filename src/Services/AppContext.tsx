@@ -10,8 +10,8 @@ import {
   State,
 } from "./Interfaces";
 
-const initialState: State = sessionStorage.getItem("appData")
-  ? JSON.parse(sessionStorage.getItem("appData") as string)
+const initialState: State = localStorage.getItem(`yashAppData`)//(`yashAppData_${window.name}`)
+  ? JSON.parse(localStorage.getItem(`yashAppData`) as string)//(`yashAppData_${window.name}`) as string)
   : {
       modeSelected: "dark",
       toast: null,
