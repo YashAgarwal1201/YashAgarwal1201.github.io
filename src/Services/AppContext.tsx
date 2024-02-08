@@ -17,7 +17,7 @@ const initialState: State = sessionStorage.getItem("appData")
       toast: null,
       modalContent: {
         header: "",
-        body: ""
+        body: "",
       },
     };
 

@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import { useAppContext } from "./Services/AppContext";
-// import useAxiosInterceptor from "./interceptor/interceptor";
 // import { useState } from "react";
 import "./App.scss";
 

@@ -104,7 +104,9 @@ function About({
 
               {/* Work Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">Work</h2>
+                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
+                  Work
+                </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"

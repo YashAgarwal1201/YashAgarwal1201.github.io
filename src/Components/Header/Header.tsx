@@ -9,7 +9,7 @@ export const Header = ({
   setShowMenuDialog,
 }: {
   selectedButton: string;
-  setSelectedButton: Function; //React.Dispatch<React.SetStateAction<string>>;
+    setSelectedButton: (section: string) => void;//React.Dispatch<React.SetStateAction<string>>;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {

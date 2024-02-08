@@ -265,12 +265,6 @@ const Content: React.FC = () => {
           setExpandFeedbackDialog={setExpandFeedbackDialog}
         />
       )}
-      {/* {expandKeyboardShortcutsDialog && (
-        <KeyboardShortcuts
-          expandKeyboardShorcutsDialog={expandKeyboardShortcutsDialog}
-          setExpandKeyboardShortcutsDialog={setExpandKeyboardShortcutsDialog}
-        />
-      )} */}
       {showMenuDialog && (
         <MenuDialog
           showMenuDialog={showMenuDialog}
