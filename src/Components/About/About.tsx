@@ -4,13 +4,12 @@ import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
 import { aboutInfo } from "../../Data/Data";
 
-function About({
-  reference,
-  setExpandAboutDialog,
-}: {
+type AboutProps = {
   reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+};
+
+function About({ reference, setExpandAboutDialog }: AboutProps) {
   const { showToast, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
