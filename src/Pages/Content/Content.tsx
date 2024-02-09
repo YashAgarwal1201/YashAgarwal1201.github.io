@@ -135,7 +135,6 @@ type KeyMapProp = {
 };
 
 const Content: React.FC = () => {
-  // const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
