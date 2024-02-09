@@ -63,7 +63,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   return (
     <div
       ref={reference}
-      className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
+      className="w-full 2xl:w-2/3 m-auto h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
@@ -273,7 +273,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
         </div>
       </div>
 
-      <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-end items-end bg-transparent">
+      <div className="w-0 md:w-1/2 h-1/2 md:h-full hidden md:flex justify-end items-end bg-transparent">
         <div className="hidden md:block w-[80%] md:w-[500px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>

@@ -226,7 +226,7 @@ const Content: React.FC = () => {
       // T: "theme",
     };
 
-    const key = event.key.toUpperCase();
+    const key = event.key?.toUpperCase();
     const section = keyMap[key];
 
     if (section && event.shiftKey) {
