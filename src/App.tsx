@@ -4,6 +4,7 @@ import { Toast } from "primereact/toast";
 import { useAppContext } from "./Services/AppContext";
 // import { useState } from "react";
 import "./App.scss";
+import ErrorBoundary from "./Services/ErrorBoundary";
 
 function App() {
   const { dispatch, state } = useAppContext();
@@ -33,10 +34,12 @@ function App() {
   // console.log("Tab identifier:", window.name);
 
   return (
-    <div className="w-screen h-[100dvh]">
-      <Toast ref={myToast} />
-      <Outlet />
-    </div>
+    <ErrorBoundary>
+      <div className="w-screen h-[100dvh]">
+        <Toast ref={myToast} />
+        <Outlet />
+      </div>
+    </ErrorBoundary>
   );
 }
 

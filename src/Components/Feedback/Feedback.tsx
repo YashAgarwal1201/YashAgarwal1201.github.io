@@ -28,7 +28,7 @@ function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div
             title="Click to open form dialog"
-            className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none"
+            className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none shadow-md"
             onClick={() => setExpandFeedbackDialog(true)}
           >
             <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>
@@ -42,7 +42,7 @@ function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
           <div className="cont absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
           <div
             title="Click to open form dialog"
-            className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center rounded-2xl bg-color2 z-10 cursor-pointer select-none"
+            className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center rounded-2xl bg-color2 z-10 cursor-pointer shadow-md select-none"
             onClick={() => setExpandFeedbackDialog(true)}
           >
             <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>

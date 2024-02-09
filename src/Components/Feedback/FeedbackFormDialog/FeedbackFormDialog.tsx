@@ -49,7 +49,7 @@ const FeedbackFormDialog = ({
         draggable={false}
         header={
           <>
-            <div className="text-color5">Please fill out this form</div>
+            <div className="text-color1">Please fill out this form</div>
             {/* <p className="text-base text-color4">
               Note: clicking submit button will open the email client of your
               device.
@@ -59,7 +59,7 @@ const FeedbackFormDialog = ({
         className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
       >
         <form
-          className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto"
+          className="h-full p-2 md:p-4 flex flex-col gap-y-6 text-color5 bg-color2 rounded-md overflow-y-auto"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col md:flex-row gap-x-3 gap-y-3">
@@ -85,29 +85,29 @@ const FeedbackFormDialog = ({
               />
             </div>
           </div>
-          <div className="w-full flex flex-col">
+          <div className="w-full flex flex-col gap-y-3">
             <label className="text-lg">Your Message:</label>
 
             <textarea
               title="You message"
-              className="h-40 p-4 bg-color3 text-color5 rounded-lg resize-none"
+              className="h-40 p-4 bg-color3 text-color1 rounded-lg resize-none"
               name="Msg"
               required
             ></textarea>
           </div>
-          <div className="w-full h-12 flex justify-center items-center gap-x-4">
+          <div className="w-full h-12 flex flex-row-reverse justify-center items-center gap-x-4">
             <Button
               title="click to send"
               icon="pi pi-send"
               className="h-full px-5 bg-color4 text-color1"
-              label="submit"
+              label="Submit"
               type="submit"
             />
             <Button
               title="click to delete everything"
               icon="pi pi-trash"
               className="h-full px-5 bg-transparent text-color4"
-              label="delete"
+              label="Delete"
               type="reset"
             />
           </div>
