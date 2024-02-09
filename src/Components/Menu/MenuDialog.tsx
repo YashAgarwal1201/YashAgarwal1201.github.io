@@ -21,6 +21,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       draggable={false}
       header={<div className="text-color1">Settings Menu</div>}
       className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
+      position={window.innerWidth < 768 ? 'bottom' : 'center'}
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto">
         <Accordion className="flex flex-col gap-y-2">
@@ -38,7 +39,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
               </div>
             }
           >
-            <div className="grid grid-flow-row grid-cols-3 gap-y-6">
+            <div className="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-y-6">
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
                   state.modeSelected === "google"

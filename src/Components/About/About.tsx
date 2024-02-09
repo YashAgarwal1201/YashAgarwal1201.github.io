@@ -63,7 +63,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   return (
     <div
       ref={reference}
-      className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
+      className="w-full 2xl:w-2/3 m-auto h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
@@ -162,9 +162,9 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <div className="flex justify-center gap-x-1 mb-10 sm:mb-0">
-                    <span
+                    <Button
                       title="Click to copy email-id"
-                      className="pi pi-envelope w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
+                      className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={(e) => {
                         if (navigator.clipboard) {
                           navigator.clipboard.writeText(
@@ -183,44 +183,58 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                           );
                         }
                       }}
-                    ></span>
-                    <span
-                      title="Click to see my linkedin profile"
-                      className="pi pi-linkedin w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
+                    >
+                      <span className="pi pi-envelope md:text-2xl"></span>
+                    </Button>
+
+                    <Button
+                      title="Click to chesee my linkedin profile"
+                      className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://www.linkedin.com/in/yash-a-a669b2237",
                           "_blank"
                         );
                       }}
-                    ></span>
-                    <span
+                    >
+                      <span className="pi pi-linkedin md:text-2xl"></span>
+                    </Button>
+
+                    <Button
                       title="Click to check my github profile"
-                      className="pi pi-github w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
+                      className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://github.com/YashAgarwal1201",
                           "_blank"
                         );
                       }}
-                    ></span>
-                    <span
+                    >
+                      <span className="pi pi-github md:text-2xl"></span>
+                    </Button>
+
+                    <Button
                       title="Click to check my resume"
-                      className="pi pi-id-card w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
+                      className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open(
                           "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link",
                           "_blank"
                         );
                       }}
-                    ></span>
-                    <span
+                    >
+                      <span className="pi pi-id-card md:text-2xl"></span>
+                    </Button>
+
+                    <Button
                       title="Click to connect on telegram"
-                      className="pi pi-telegram w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
+                      className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"
                       onClick={() => {
                         window.open("https://t.me/legoyashx", "_blank");
                       }}
-                    ></span>
+                    >
+                      <span className="pi pi-telegram text-xl md:text-2xl"></span>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -231,12 +245,15 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                 <div
                   key={keys}
                   className={`rounded-full ${
-                    index === activeDotIndex ? "bg-color4 w-3 h-3" : "bg-color3 w-2 h-2"
+                    index === activeDotIndex
+                      ? "bg-color4 w-3 h-3"
+                      : "bg-color3 w-2 h-2"
                   }`}
                 ></div>
               ))}
             </div>
           </div>
+
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
             <Button
               disabled={isScrollLeftDisabled}
@@ -255,11 +272,12 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-end items-end bg-transparent">
+
+      <div className="w-0 md:w-1/2 h-1/2 md:h-full hidden md:flex justify-end items-end bg-transparent">
         <div className="hidden md:block w-[80%] md:w-[500px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
-          <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10">
+          <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">
             <div className="flex flex-col-reverse justify-center gap-2">
               <Button
                 disabled={isScrollLeftDisabled}
