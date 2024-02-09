@@ -10,7 +10,7 @@ function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
   return (
     <div
       ref={reference}
-      className="w-full 2xl:w-2/3 m-auto h-full p-2 md:pb-1 md:pr-1 flex flex-col md:flex-row justify-center items-center snap-center snap-always"
+      className="w-full h-full p-2 md:pb-1 md:pr-1 flex flex-col md:flex-row justify-center items-center snap-center snap-always"
     >
       <div className="w-full md:w-1/2 h-1/2 md:h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5 select-none">
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl">

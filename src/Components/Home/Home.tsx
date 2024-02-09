@@ -3,11 +3,13 @@ import { primaryInfo } from "../../Data/Data";
 import logoo from "./../../assets/logoo.jpg";
 import "./Home.scss";
 
-function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
+type HomeProps = { reference: RefObject<HTMLDivElement> };
+
+function Home({ reference }: HomeProps) {
   return (
     <div
       ref={reference}
-      className="w-full 2xl:w-2/3 m-auto h-full p-1 sm:p-2 md:pb-1 md:pr-1 flex flex-col-reverse md:flex-row items-center snap-start snap-always"
+      className="w-full h-full p-1 sm:p-2 md:pb-1 md:pr-1 flex flex-col-reverse md:flex-row items-center snap-start snap-always"
     >
       <div className="w-full md:w-1/2 h-1/2 md:h-full md:px-5 pt-20 flex flex-col justify-start items-center gap-y-5">
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
@@ -26,7 +28,12 @@ function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 bg-color2 z-10 shadow-md">
-            <img alt="img" src={logoo} className="h-full m-auto rounded-md" />
+            <img
+              alt="img"
+              src={logoo}
+              className="h-full m-auto rounded-md"
+              loading="lazy"
+            />
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
@@ -36,7 +43,12 @@ function Home({ reference }: { reference: RefObject<HTMLDivElement> }) {
           <div className="cont pattern absolute m-auto top-0 left-0 bottom-0 bg-color3"></div>
           <div className="cont pattern absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
           <div className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 rounded-2xl bg-color2 z-10 shadow-md">
-            <img alt="img" src={logoo} className="h-full m-auto rounded-md" />
+            <img
+              alt="img"
+              src={logoo}
+              className="h-full m-auto rounded-md"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
