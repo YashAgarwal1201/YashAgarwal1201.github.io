@@ -1,9 +1,10 @@
 import { Dialog } from "primereact/dialog";
 import React from "react";
 import { useAppContext } from "../../Services/AppContext";
-
+import { SelectButton } from "primereact/selectbutton";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { KeyboardShortcuts } from "../KeyboardShortcuts/KeyboardShortcuts";
+import "./MenuDialog.scss";
 
 type MenuDialogProps = {
   showMenuDialog: boolean;
@@ -12,6 +13,10 @@ type MenuDialogProps = {
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   const { state, dispatch, showToast } = useAppContext();
+  const options = [
+    { label: "Yes", value: true },
+    { label: "No", value: false },
+  ];
 
   return (
     <Dialog
@@ -20,8 +25,12 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       dismissableMask={true}
       draggable={false}
       header={<div className="text-color1">Settings Menu</div>}
-      className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
-      position={window.innerWidth < 768 ? 'bottom' : 'center'}
+      className={`aboutDialog ${
+        state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
+      } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
+      position={
+        window.innerWidth < 768 ? "bottom" : state.easyMode ? "right" : "center"
+      }
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto">
         <Accordion className="flex flex-col gap-y-2">
@@ -42,13 +51,13 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             <div className="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-y-6">
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.modeSelected === "google"
+                  state.themeSelected === "google"
                     ? "text-blue-800 font-semibold cursor-default"
                     : "text-[#010101] font-normal cursor-pointer"
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: "SET_MODE_SELECTED",
+                    type: "SET_THEME_SELECTED",
                     payload: "google",
                   });
                   showToast("success", "Success", "Theme changed!");
@@ -66,13 +75,13 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.modeSelected === "night"
+                  state.themeSelected === "night"
                     ? "text-blue-800 font-semibold cursor-default"
                     : "text-[#010101] font-normal cursor-pointer"
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: "SET_MODE_SELECTED",
+                    type: "SET_THEME_SELECTED",
                     payload: "night",
                   });
                   showToast("success", "Success", "Theme changed!");
@@ -90,13 +99,13 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.modeSelected === "light"
+                  state.themeSelected === "light"
                     ? "text-blue-800 font-semibold cursor-default"
                     : "text-[#010101] font-normal cursor-pointer"
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: "SET_MODE_SELECTED",
+                    type: "SET_THEME_SELECTED",
                     payload: "light",
                   });
                   showToast("success", "Success", "Theme changed!");
@@ -114,13 +123,13 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.modeSelected === "gold"
+                  state.themeSelected === "gold"
                     ? "text-blue-800 font-semibold cursor-default"
                     : "text-[#010101] font-normal cursor-pointer"
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: "SET_MODE_SELECTED",
+                    type: "SET_THEME_SELECTED",
                     payload: "gold",
                   });
                   showToast("success", "Success", "Theme changed!");
@@ -138,13 +147,13 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
               <div
                 className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.modeSelected === "vintage"
+                  state.themeSelected === "vintage"
                     ? "text-blue-800 font-semibold cursor-default"
                     : "text-[#010101] font-normal cursor-pointer"
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: "SET_MODE_SELECTED",
+                    type: "SET_THEME_SELECTED",
                     payload: "vintage",
                   });
                   showToast("success", "Success", "Theme changed!");
@@ -161,6 +170,36 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
               </div>
             </div>
           </AccordionTab>
+
+          <AccordionTab
+            header={
+              <div className="flex justify-between items-center">
+                <span className="text-color3">Easy mode? </span>
+                <span className="text-color3 capitalize">
+                  {state.easyMode ? "Yes" : "No"}
+                </span>
+              </div>
+            }
+          >
+            <div className="flex justify-between items-center">
+              <span>Use easy mode?</span>
+              <span>
+                <SelectButton
+                  value={state.easyMode}
+                  onChange={(e) => {
+                    dispatch({
+                      type: "SET_EASY_MODE",
+                      payload: e.value as boolean,
+                    })
+                    showToast('success', 'Success', `Easy mode turned ${e.value ? 'On' : 'Off'}`) }
+                  }
+                  options={options}
+                  className="border-2 rounded-md text-sm"
+                />
+              </span>
+            </div>
+          </AccordionTab>
+
           <AccordionTab
             header={
               <div className="flex justify-between items-center">

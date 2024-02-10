@@ -27,8 +27,18 @@ const MoreDetailsDialog = ({
         dismissableMask={true}
         draggable={false}
         header={<div className="text-color1">{state.modalContent?.header}</div>}
-        className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
-        position={window.innerWidth < 768 ? "bottom" : "center"}
+        // className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
+        // position={window.innerWidth < 768 ? "bottom" : "center"}
+        className={`aboutDialog ${
+          state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
+        } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
+        position={
+          window.innerWidth < 768
+            ? "bottom"
+            : state.easyMode
+            ? "right"
+            : "center"
+        }
       >
         <div className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto">
           {state.modalContent?.header !== "Contact & Resume" &&

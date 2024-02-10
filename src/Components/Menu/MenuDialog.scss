@@ -1,0 +1,13 @@
+.p-selectbutton {
+    .p-button {
+        padding: 4px 8px !important;
+        // background-color: var(--color4);
+        color: var(--color2);
+        font-size: 0.875rem;
+    }
+    .p-highlight {
+        background-color: rgb(30 64 175);
+        color: #FFFFFF;
+        cursor: default;
+    }
+}
