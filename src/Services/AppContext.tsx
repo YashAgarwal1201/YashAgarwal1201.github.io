@@ -10,15 +10,16 @@ import {
   State,
 } from "./Interfaces";
 
-const initialState: State = localStorage.getItem(`yashAppData`)//(`yashAppData_${window.name}`)
-  ? JSON.parse(localStorage.getItem(`yashAppData`) as string)//(`yashAppData_${window.name}`) as string)
+const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_${window.name}`)
+  ? JSON.parse(localStorage.getItem(`yashAppData`) as string) //(`yashAppData_${window.name}`) as string)
   : {
-      modeSelected: "dark",
+      themeSelected: "dark",
       toast: null,
       modalContent: {
         header: "",
         body: "",
       },
+      easyMode: false,
     };
 
 const reducer = (state: State, action: Action<ActionType> | any): State => {
@@ -29,10 +30,10 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       return { ...state, toast: action.payload as Toast };
     }
 
-    case "SET_MODE_SELECTED": {
+    case "SET_THEME_SELECTED": {
       return {
         ...state,
-        modeSelected: action.payload as string,
+        themeSelected: action.payload as string,
       };
     }
 
@@ -41,6 +42,13 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
         ...state,
         modalContent: action.payload as any,
       };
+    }
+
+    case "SET_EASY_MODE": {
+      return {
+        ...state,
+        easyMode: action.payload as boolean,
+      }
     }
 
     default:

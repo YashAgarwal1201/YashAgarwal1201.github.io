@@ -15,7 +15,7 @@ export const Header = ({
   setShowMenuDialog,
 }: HeaderProps) => {
   // const { state, dispatch, showToast } = useAppContext();
-  const selectedButtonStyles = "text-color1 bg-color4 border-2 border-solid border-color4"
+  const selectedButtonStyles = "text-color1 bg-color4 border-2 border-solid border-color4 shadow-md"
   const normalButtonStyles = "text-color5 bg-transparent border-2 border-transparent"
 
   return (

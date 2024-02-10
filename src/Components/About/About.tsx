@@ -10,7 +10,7 @@ type AboutProps = {
 };
 
 function About({ reference, setExpandAboutDialog }: AboutProps) {
-  const { showToast, dispatch } = useAppContext();
+  const { state, showToast, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
@@ -85,14 +85,20 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
               <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
+                <h2
+                  className={`${
+                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
+                  } text-2xl md:text-3xl text-color3 select-none`}
+                >
                   Education
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
-                    className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
+                    className={`absolute -top-6 ${
+                      state.easyMode ? "left-5 right-auto" : "left-auto right-5"
+                    } py-3 rounded-full bg-color3 -rotate-45`}
                     onClick={() => {
                       setExpandAboutDialog(true);
                       dispatch({
@@ -121,14 +127,20 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
 
               {/* Work Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
+                <h2
+                  className={`${
+                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
+                  } text-2xl md:text-3xl text-color3 select-none`}
+                >
                   Work
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
-                    className="absolute -top-6 right-5 py-3 rounded-full bg-color3 -rotate-45"
+                    className={`absolute -top-6 ${
+                      state.easyMode ? "left-5 right-auto" : "left-auto right-5"
+                    } py-3 rounded-full bg-color3 -rotate-45`}
                     onClick={() => {
                       setExpandAboutDialog(true);
                       dispatch({
@@ -157,7 +169,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
 
               {/* Contact & Resume Section */}
               <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
-                <h2 className="ml-2 text-2xl md:text-3xl text-color3 select-none">
+                <h2
+                  className={`${
+                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
+                  } text-2xl md:text-3xl text-color3 select-none`}
+                >
                   Contact & Resume
                 </h2>
                 <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">

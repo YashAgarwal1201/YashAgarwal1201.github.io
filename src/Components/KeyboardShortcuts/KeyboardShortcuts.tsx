@@ -38,6 +38,17 @@ export const KeyboardShortcuts = () => {
           </kbd>{" "}
           for "Feedback" section.
         </li>
+        <li>
+          Press{" "}
+          <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
+            Shift
+          </kbd>{" "}
+          +{" "}
+          <kbd className="px-2 py-1 font-semibold text-color4 bg-color1 rounded-md">
+            m
+          </kbd>{" "}
+          for "Menu & others".
+        </li>
       </ul>
     </div>
   );

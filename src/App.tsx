@@ -24,8 +24,8 @@ function App() {
   useEffect(() => {
     document
       .querySelector("html")
-      ?.setAttribute("data-theme", state.modeSelected);
-  }, [state.modeSelected]);
+      ?.setAttribute("data-theme", state.themeSelected);
+  }, [state.themeSelected]);
 
   // if (!window.name) {
   //   window.name = Math.random().toString(36).substring(7);

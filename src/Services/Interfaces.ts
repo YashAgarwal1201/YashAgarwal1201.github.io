@@ -8,9 +8,10 @@ export type Action<T> = { type: string; payload?: T };
 
 export interface State {
   [key: string]: any;
-  modeSelected: any;
+  themeSelected: any;
   toast: Toast | null;
   modalContent: ModalContent;
+  easyMode: boolean;
 }
 
 export interface ToastInterface {
