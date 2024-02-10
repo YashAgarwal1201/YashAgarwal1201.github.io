@@ -122,7 +122,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
 import { Header } from "./../../Components/Header/Header";
 import "./Content.scss";
-// import { useAppContext } from "../../Services/AppContext";
+import { useAppContext } from "../../Services/AppContext";
 import Home from "../../Components/Home/Home";
 import About from "../../Components/About/About";
 import Feedback from "../../Components/Feedback/Feedback";
@@ -135,6 +135,7 @@ type KeyMapProp = {
 };
 
 const Content: React.FC = () => {
+  const { state, dispatch, showToast } = useAppContext();
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
@@ -144,7 +145,7 @@ const Content: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
-  const sectionRefs:{ [key: string]: React.RefObject<HTMLDivElement> } = {
+  const sectionRefs: { [key: string]: React.RefObject<HTMLDivElement> } = {
     home: homeRef,
     about: aboutRef,
     feedback: feedbackRef,
@@ -222,6 +223,7 @@ const Content: React.FC = () => {
       F: "feedback",
       K: "keyboardShortcuts",
       M: "menu",
+      E: "easyMode",
       // T: "theme",
     };
 
@@ -234,6 +236,16 @@ const Content: React.FC = () => {
       // Uncomment the following line if you want to display something with the "K" key
       if (section === "menu" || section === "keyboardShortcuts") {
         setShowMenuDialog(!showMenuDialog);
+      } else if (section === "easyMode") {
+        dispatch({
+          type: "SET_EASY_MODE",
+          payload: state.easyMode ? false : true,
+        });
+        showToast(
+          "success",
+          "Success",
+          `Easy mode turned ${state.easyMode ? "Off" : "On"}`
+        );
       } else {
         handleButtonClick(section);
       }
