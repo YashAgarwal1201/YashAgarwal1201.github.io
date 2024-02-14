@@ -82,7 +82,7 @@ ul {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .p-button:hover {
+  .p-button:hover, a:hover {
     color: #353735;
     background-color: #f4f4f4;
     border-color: #f4f4f4;
