@@ -1,13 +1,38 @@
 import { Button } from "primereact/button";
-import React, { RefObject, useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./About.scss";
 import { useAppContext } from "../../Services/AppContext";
 import { aboutInfo } from "../../Data/Data";
 import ContactLinks from "./ContactLinks/ContactLinks";
+import { AboutProps } from "../../Services/Interfaces";
 
-type AboutProps = {
-  reference: RefObject<HTMLDivElement>;
-  setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
+const ScrollLeftRightBtns = ({
+  isScrollLeftDisabled,
+  isScrollRightDisabled,
+  scrollLeftRight,
+}: {
+  isScrollLeftDisabled: boolean;
+  isScrollRightDisabled: boolean;
+  scrollLeftRight: any;
+}) => {
+  return (
+    <>
+      <Button
+        disabled={isScrollLeftDisabled}
+        icon="pi pi-chevron-left"
+        className="py-3 bg-color3 rounded-full"
+        onClick={() => scrollLeftRight(-100)}
+        title="scroll left"
+      />
+      <Button
+        disabled={isScrollRightDisabled}
+        icon="pi pi-chevron-right"
+        className="py-3 bg-color3 rounded-full"
+        onClick={() => scrollLeftRight(100)}
+        title="scroll right"
+      />
+    </>
+  );
 };
 
 function About({ reference, setExpandAboutDialog }: AboutProps) {
@@ -16,6 +41,9 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
+
+  const detailsSubContainersStyles =
+    "w-[97%] h-fit flex-shrink-0 snap-start snap-always";
 
   const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
@@ -85,7 +113,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           >
             <div className=" mt-16 flex space-x-3">
               {/* Education Section */}
-              <div className="w-[97%] h-fit flex-shrink-0 snap-start snap-always">
+              <div className={detailsSubContainersStyles}>
                 <h2
                   className={`${
                     state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
@@ -111,7 +139,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                       });
                     }}
                   />
-                  {aboutInfo.education.map((values) => (
+                  {aboutInfo?.education?.map((values) => (
                     <>
                       <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                         {values.year}
@@ -127,7 +155,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
               </div>
 
               {/* Work Section */}
-              <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
+              <div className={detailsSubContainersStyles}>
                 <h2
                   className={`${
                     state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
@@ -153,7 +181,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                       });
                     }}
                   />
-                  {aboutInfo.work.map((values) => (
+                  {aboutInfo?.work?.map((values) => (
                     <>
                       <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                         {values.year}
@@ -169,7 +197,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
               </div>
 
               {/* Contact & Resume Section */}
-              <div className="w-[97%] h-full flex-shrink-0 snap-start snap-always">
+              <div className={detailsSubContainersStyles}>
                 <h2
                   className={`${
                     state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
@@ -184,7 +212,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             </div>
             {/* dots */}
             <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 md:left-auto right-0">
-              {Object.keys(aboutInfo).map((keys, index) => (
+              {Object.keys(aboutInfo)?.map((keys, index) => (
                 <div
                   key={keys}
                   className={`rounded-full ${
@@ -198,19 +226,10 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           </div>
 
           <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
-            <Button
-              disabled={isScrollLeftDisabled}
-              title="scroll left"
-              icon="pi pi-chevron-left"
-              className="py-3 bg-color3 rounded-full"
-              onClick={() => scrollLeftRight(-100)}
-            />
-            <Button
-              disabled={isScrollRightDisabled}
-              title="scroll right"
-              icon="pi pi-chevron-right"
-              className="py-3 bg-color3 rounded-full"
-              onClick={() => scrollLeftRight(100)}
+            <ScrollLeftRightBtns
+              isScrollLeftDisabled={isScrollLeftDisabled}
+              isScrollRightDisabled={isScrollRightDisabled}
+              scrollLeftRight={scrollLeftRight}
             />
           </div>
         </div>
@@ -222,19 +241,10 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">
             <div className="flex flex-col-reverse justify-center gap-2">
-              <Button
-                disabled={isScrollLeftDisabled}
-                icon="pi pi-chevron-left"
-                className="py-3 bg-color3 rounded-full"
-                onClick={() => scrollLeftRight(-100)}
-                title="scroll left"
-              />
-              <Button
-                disabled={isScrollRightDisabled}
-                icon="pi pi-chevron-right"
-                className="py-3 bg-color3 rounded-full"
-                onClick={() => scrollLeftRight(100)}
-                title="scroll right"
+              <ScrollLeftRightBtns
+                isScrollLeftDisabled={isScrollLeftDisabled}
+                isScrollRightDisabled={isScrollRightDisabled}
+                scrollLeftRight={scrollLeftRight}
               />
             </div>
           </div>

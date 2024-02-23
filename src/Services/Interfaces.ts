@@ -1,14 +1,11 @@
-import { Dispatch } from "react";
-
+import { Dispatch, RefObject } from "react";
 import { Toast } from "primereact/toast";
-
-// import { AxiosResponse } from 'axios';
 
 export type Action<T> = { type: string; payload?: T };
 
 export interface State {
   [key: string]: any;
-  themeSelected: any;
+  themeSelected: string;
   toast: Toast | null;
   modalContent: ModalContent;
   easyMode: boolean;
@@ -46,28 +43,6 @@ export interface ModalContent {
   body: any;
 }
 
-// export interface Rectangle {
-//   label: string;
-//   startX: number;
-//   startY: number;
-//   endX: number;
-//   endY: number;
-//   color: string;
-// }
-
-// export interface Polygon {
-//   bbox: number[];
-//   points: { x: number; y: number }[];
-//   color: string;
-//   label: string;
-//   units: string | number;
-// }
-
-// export interface Point {
-//   x: number;
-//   y: number;
-// }
-
 // export interface FormattedData {
 //   [objectName: string]: {
 //     count: number;
@@ -79,4 +54,16 @@ export type dispatchParamType = {
   type: string;
   contextStateKey: string;
   payload: any;
+};
+
+export type HomeProps = { reference: RefObject<HTMLDivElement> };
+
+export type AboutProps = {
+  reference: RefObject<HTMLDivElement>;
+  setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type FeedbackProps = {
+  reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
+  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };

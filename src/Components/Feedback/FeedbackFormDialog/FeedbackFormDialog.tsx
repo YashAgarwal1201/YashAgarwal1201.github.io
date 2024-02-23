@@ -54,8 +54,6 @@ const FeedbackFormDialog = ({
             <div className="text-color1">Please fill out this form</div>
           </>
         }
-        // className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
-        // position={window.innerWidth < 768 ? 'bottom' : 'center'}
         className={`aboutDialog ${
           state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
         } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}

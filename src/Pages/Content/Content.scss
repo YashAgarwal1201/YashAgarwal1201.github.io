@@ -9,33 +9,6 @@
 .contentBody::-webkit-scrollbar-thumb:hover {
   background-color: var(--color5);
 }
-// $contentBodyScrollbarWidth: 8px;
-// $contentBodyScrollbarColor: var(--color4);
-// $contentBodyScrollbarHoverColor: var(--color5);
-
-// .contentBody, .aboutDialog .p-dialog-content div {
-//   &::-webkit-scrollbar {
-//     width: $contentBodyScrollbarWidth;
-//   }
-
-//   &::-webkit-scrollbar-thumb {
-//     width: $contentBodyScrollbarWidth;
-//     background-color: $contentBodyScrollbarColor;
-//     border-radius: $contentBodyScrollbarWidth;
-//     cursor: pointer;
-//   }
-
-//   &::-webkit-scrollbar-thumb:hover {
-//     background-color: $contentBodyScrollbarHoverColor;
-//   }
-
-//   // Add styles for other browsers
-//   scrollbar-color: $contentBodyScrollbarColor $contentBodyScrollbarHoverColor;
-
-//   & {
-//     scrollbar-width: $contentBodyScrollbarWidth;
-//   }
-// }
 
 .aboutDialog {
   .p-dialog-header {
