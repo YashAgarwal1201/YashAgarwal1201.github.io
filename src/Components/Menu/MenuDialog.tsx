@@ -1,8 +1,8 @@
-import { Dialog } from "primereact/dialog";
 import React from "react";
-import { useAppContext } from "../../Services/AppContext";
-import { SelectButton } from "primereact/selectbutton";
+import { Dialog } from "primereact/dialog";
 import { Accordion, AccordionTab } from "primereact/accordion";
+import { SelectButton } from "primereact/selectbutton";
+import { useAppContext } from "../../Services/AppContext";
 import { KeyboardShortcuts } from "../KeyboardShortcuts/KeyboardShortcuts";
 import "./MenuDialog.scss";
 
@@ -11,12 +11,46 @@ type MenuDialogProps = {
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+const themes = [
+  {
+    name: "Google",
+    value: "google",
+    colors: ["#FAFAFA", "#FBBC05", "#34A853", "#4285F4", "#EA4335"],
+  },
+  {
+    name: "Classic Night",
+    value: "night",
+    colors: ["#0a0a0a", "#171717", "#404040", "#a3a3a3", "#fafafa"],
+  },
+  {
+    name: "Classic Light",
+    value: "light",
+    colors: ["#fafafa", "#a3a3a3", "#404040", "#171717", "#0a0a0a"],
+  },
+  {
+    name: "Gold",
+    value: "gold",
+    colors: ["#ffe878", "#ffd447", "#ffbf00", "#bf9b30", "#a67c00"],
+  },
+  {
+    name: "Vintage",
+    value: "vintage",
+    colors: ["#f5e1b3", "#dbb070", "#5a888a", "#5f588a", "#b8556c"],
+  },
+];
+
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   const { state, dispatch, showToast } = useAppContext();
-  const options = [
-    { label: "Yes", value: true },
-    { label: "No", value: false },
-  ];
+
+  const handleThemeChange = (themeValue: string) => {
+    dispatch({ type: "SET_THEME_SELECTED", payload: themeValue });
+    showToast("success", "Success", "Theme changed!");
+  };
+
+  const handleEasyModeChange = (value: boolean) => {
+    dispatch({ type: "SET_EASY_MODE", payload: value });
+    showToast("success", "Success", `Easy mode turned ${value ? "On" : "Off"}`);
+  };
 
   return (
     <Dialog
@@ -49,125 +83,28 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             }
           >
             <div className="grid grid-flow-row grid-cols-2 sm:grid-cols-3 gap-y-6">
-              <div
-                className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.themeSelected === "google"
-                    ? "text-blue-800 font-semibold cursor-default"
-                    : "text-[#010101] font-normal cursor-pointer"
-                }`}
-                onClick={() => {
-                  dispatch({
-                    type: "SET_THEME_SELECTED",
-                    payload: "google",
-                  });
-                  showToast("success", "Success", "Theme changed!");
-                }}
-              >
-                <span>Google</span>
-                <div className="flex items-center rounded-md border-2">
-                  <div className="w-4 h-4 bg-[#FAFAFA] rounded-l-md"></div>
-                  <div className="w-4 h-4 bg-[#FBBC05]"></div>
-                  <div className="w-4 h-4 bg-[#34A853]"></div>
-                  <div className="w-4 h-4 bg-[#4285F4]"></div>
-                  <div className="w-4 h-4 bg-[#EA4335] rounded-r-md"></div>
+              {themes?.map((theme) => (
+                <div
+                  key={theme.value}
+                  className={`capitalize flex flex-col-reverse justify-between items-center ${
+                    state.themeSelected === theme.value
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                  onClick={() => handleThemeChange(theme.value)}
+                >
+                  <span>{theme.name}</span>
+                  <div className="flex items-center rounded-md border-2">
+                    {theme.colors?.map((color, index) => (
+                      <div
+                        key={index}
+                        className="w-4 h-4"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              <div
-                className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.themeSelected === "night"
-                    ? "text-blue-800 font-semibold cursor-default"
-                    : "text-[#010101] font-normal cursor-pointer"
-                }`}
-                onClick={() => {
-                  dispatch({
-                    type: "SET_THEME_SELECTED",
-                    payload: "night",
-                  });
-                  showToast("success", "Success", "Theme changed!");
-                }}
-              >
-                <span>Classic Night</span>
-                <div className="flex items-center rounded-md border-2">
-                  <div className="w-4 h-4 bg-[#0a0a0a] rounded-l-md"></div>
-                  <div className="w-4 h-4 bg-[#171717]"></div>
-                  <div className="w-4 h-4 bg-[#404040]"></div>
-                  <div className="w-4 h-4 bg-[#a3a3a3]"></div>
-                  <div className="w-4 h-4 bg-[#fafafa] rounded-r-md"></div>
-                </div>
-              </div>
-
-              <div
-                className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.themeSelected === "light"
-                    ? "text-blue-800 font-semibold cursor-default"
-                    : "text-[#010101] font-normal cursor-pointer"
-                }`}
-                onClick={() => {
-                  dispatch({
-                    type: "SET_THEME_SELECTED",
-                    payload: "light",
-                  });
-                  showToast("success", "Success", "Theme changed!");
-                }}
-              >
-                <span>Classic Light</span>
-                <div className="flex items-center rounded-md border-2">
-                  <div className="w-4 h-4 bg-[#fafafa] rounded-l-md"></div>
-                  <div className="w-4 h-4 bg-[#a3a3a3]"></div>
-                  <div className="w-4 h-4 bg-[#404040]"></div>
-                  <div className="w-4 h-4 bg-[#171717]"></div>
-                  <div className="w-4 h-4 bg-[#0a0a0a] rounded-r-md"></div>
-                </div>
-              </div>
-
-              <div
-                className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.themeSelected === "gold"
-                    ? "text-blue-800 font-semibold cursor-default"
-                    : "text-[#010101] font-normal cursor-pointer"
-                }`}
-                onClick={() => {
-                  dispatch({
-                    type: "SET_THEME_SELECTED",
-                    payload: "gold",
-                  });
-                  showToast("success", "Success", "Theme changed!");
-                }}
-              >
-                <span>Gold</span>
-                <div className="flex items-center rounded-md border-2">
-                  <div className="w-4 h-4 bg-[#ffe878] rounded-l-md"></div>
-                  <div className="w-4 h-4 bg-[#ffd447]"></div>
-                  <div className="w-4 h-4 bg-[#ffbf00]"></div>
-                  <div className="w-4 h-4 bg-[#bf9b30]"></div>
-                  <div className="w-4 h-4 bg-[#a67c00] rounded-r-md"></div>
-                </div>
-              </div>
-
-              <div
-                className={`capitalize flex flex-col-reverse justify-between items-center ${
-                  state.themeSelected === "vintage"
-                    ? "text-blue-800 font-semibold cursor-default"
-                    : "text-[#010101] font-normal cursor-pointer"
-                }`}
-                onClick={() => {
-                  dispatch({
-                    type: "SET_THEME_SELECTED",
-                    payload: "vintage",
-                  });
-                  showToast("success", "Success", "Theme changed!");
-                }}
-              >
-                <span>Vintage</span>
-                <div className="flex items-center rounded-md border-2">
-                  <div className="w-4 h-4 bg-[#f5e1b3] rounded-l-md"></div>
-                  <div className="w-4 h-4 bg-[#dbb070]"></div>
-                  <div className="w-4 h-4 bg-[#5a888a]"></div>
-                  <div className="w-4 h-4 bg-[#5f588a]"></div>
-                  <div className="w-4 h-4 bg-[#b8556c] rounded-r-md"></div>
-                </div>
-              </div>
+              ))}
             </div>
           </AccordionTab>
 
@@ -183,29 +120,20 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           >
             <div className="flex justify-between items-center">
               <span>Use easy mode?</span>
-              <span>
-                <SelectButton
-                  value={state.easyMode}
-                  onChange={(e) => {
-                    dispatch({
-                      type: "SET_EASY_MODE",
-                      payload: e.value as boolean,
-                    })
-                    showToast('success', 'Success', `Easy mode turned ${e.value ? 'On' : 'Off'}`) }
-                  }
-                  options={options}
-                  className="border-2 rounded-md text-sm"
-                />
-              </span>
+              <SelectButton
+                value={state.easyMode}
+                onChange={(e) => handleEasyModeChange(e.value)}
+                options={[
+                  { label: "Yes", value: true },
+                  { label: "No", value: false },
+                ]}
+                className="border-2 rounded-md text-sm"
+              />
             </div>
           </AccordionTab>
 
           <AccordionTab
-            header={
-              <div className="flex justify-between items-center">
-                <span className="text-color3">Keyboard shortcuts</span>{" "}
-              </div>
-            }
+            header={<span className="text-color3">Keyboard shortcuts</span>}
           >
             <div>
               <KeyboardShortcuts />

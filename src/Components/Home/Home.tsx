@@ -1,9 +1,7 @@
-import { RefObject } from "react";
 import { primaryInfo } from "../../Data/Data";
 import logoo from "./../../assets/logoo.jpg";
 import "./Home.scss";
-
-type HomeProps = { reference: RefObject<HTMLDivElement> };
+import { HomeProps } from "../../Services/Interfaces";
 
 function Home({ reference }: HomeProps) {
   return (
