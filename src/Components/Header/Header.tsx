@@ -64,7 +64,7 @@ export const Header = ({
         <Button
           title="Settings & others"
           icon="pi pi-cog"
-          className={`${normalButtonStyles} hover:border-color5 h-16 w-16 `}
+          className={`${normalButtonStyles} hover:border-transparent h-16 w-16 `}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
