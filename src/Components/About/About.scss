@@ -19,3 +19,13 @@
 #aboutContent::-webkit-scrollbar-track {
   background-color: transparent; /* Set the color of the scrollbar track */
 }
+
+.active-section {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--color3);
+  // height: 250px;
+
+  // Optional: Add a scale effect or other transformations
+  transform: scaleY(1.01);
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease, border 0.5s ease-in-out;
+}

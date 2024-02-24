@@ -45,6 +45,21 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const detailsSubContainersStyles =
     "w-[97%] h-fit flex-shrink-0 snap-start snap-always";
 
+    const handleDotClick = (index: number) => {
+      const container = containerRef.current;
+      if (container) {
+        // Assuming all your subcontainers have the same width
+        // and are directly adjacent to each other in the scroll container
+        const targetScrollPosition = index * container.clientWidth;
+        container.scrollTo({ left: targetScrollPosition, behavior: "smooth" });
+    
+        // Update the disabled state for the scroll buttons if needed
+        setIsScrollLeftDisabled(index === 0);
+        setIsScrollRightDisabled(index === Object.keys(aboutInfo).length - 1);
+      }
+    };
+    
+
   const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
     if (container) {
@@ -121,7 +136,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                 >
                   Education
                 </h2>
-                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                <div
+                  className={` ${
+                    activeDotIndex === 0 ? "active-section" : ""
+                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative border-2 border-transparent`}
+                >
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
@@ -163,7 +182,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                 >
                   Work
                 </h2>
-                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                <div
+                  className={` ${
+                    activeDotIndex === 1 ? "active-section" : ""
+                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative  border-2 border-transparent`}
+                >
                   <Button
                     title="Click to expand"
                     icon="pi pi-arrows-h"
@@ -205,7 +228,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                 >
                   Contact & Resume
                 </h2>
-                <div className="h-[250px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative">
+                <div
+                  className={` ${
+                    activeDotIndex === 2 ? "active-section" : ""
+                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative border-2 border-transparent`}
+                >
                   <ContactLinks />
                 </div>
               </div>
@@ -217,9 +244,10 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                   key={keys}
                   className={`rounded-full ${
                     index === activeDotIndex
-                      ? "bg-color4 w-3 h-3"
-                      : "bg-color3 w-2 h-2"
+                      ? "bg-color4 w-3 h-3 shadow-md"
+                      : "bg-color3 w-2 h-2 shadow-none"
                   }`}
+                  onClick={() => handleDotClick(index)}
                 ></div>
               ))}
             </div>
