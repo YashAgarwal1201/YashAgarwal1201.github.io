@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from "react";
+
 import { Button } from "primereact/button";
-import { useRef, useEffect, useState } from "react";
+
 import "./About.scss";
-import { useAppContext } from "../../Services/AppContext";
-import { aboutInfo } from "../../Data/Data";
 import ContactLinks from "./ContactLinks/ContactLinks";
+import { aboutInfo } from "../../Data/Data";
+import { useAppContext } from "../../Services/AppContext";
 import { AboutProps } from "../../Services/Interfaces";
 
 const ScrollLeftRightBtns = ({
@@ -45,20 +47,19 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const detailsSubContainersStyles =
     "w-[97%] h-fit flex-shrink-0 snap-start snap-always";
 
-    const handleDotClick = (index: number) => {
-      const container = containerRef.current;
-      if (container) {
-        // Assuming all your subcontainers have the same width
-        // and are directly adjacent to each other in the scroll container
-        const targetScrollPosition = index * container.clientWidth;
-        container.scrollTo({ left: targetScrollPosition, behavior: "smooth" });
-    
-        // Update the disabled state for the scroll buttons if needed
-        setIsScrollLeftDisabled(index === 0);
-        setIsScrollRightDisabled(index === Object.keys(aboutInfo).length - 1);
-      }
-    };
-    
+  const handleDotClick = (index: number) => {
+    const container = containerRef.current;
+    if (container) {
+      // Assuming all your subcontainers have the same width
+      // and are directly adjacent to each other in the scroll container
+      const targetScrollPosition = index * container.clientWidth;
+      container.scrollTo({ left: targetScrollPosition, behavior: "smooth" });
+
+      // Update the disabled state for the scroll buttons if needed
+      setIsScrollLeftDisabled(index === 0);
+      setIsScrollRightDisabled(index === Object.keys(aboutInfo).length - 1);
+    }
+  };
 
   const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
@@ -127,115 +128,71 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             ref={containerRef}
           >
             <div className=" mt-16 flex space-x-3">
-              {/* Education Section */}
-              <div className={detailsSubContainersStyles}>
-                <h2
-                  className={`${
-                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
-                  } text-2xl md:text-3xl text-color3 select-none`}
-                >
-                  Education
-                </h2>
-                <div
-                  className={` ${
-                    activeDotIndex === 0 ? "active-section" : ""
-                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative border-2 border-transparent`}
-                >
-                  <Button
-                    title="Click to expand"
-                    icon="pi pi-arrows-h"
-                    className={`absolute -top-6 ${
-                      state.easyMode ? "left-5 right-auto" : "left-auto right-5"
-                    } py-3 rounded-full bg-color3 -rotate-45`}
-                    onClick={() => {
-                      setExpandAboutDialog(true);
-                      dispatch({
-                        type: "SET_MODAL_CONTENT",
-                        payload: {
-                          header: "Education",
-                          body: aboutInfo.education,
-                        } as any,
-                      });
-                    }}
-                  />
-                  {aboutInfo?.education?.map((values) => (
-                    <>
-                      <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
-                        {values.year}
-                      </h3>
-                      <div className="flex">
-                        <p className="ml-12 md:text-base">
-                          {values.description}
-                        </p>
+              {aboutInfo.map((values, key) => {
+                if (values.header) {
+                  return (
+                    <div className={detailsSubContainersStyles} key={key}>
+                      <h2
+                        className={`${
+                          state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
+                        } text-2xl md:text-3xl font-medium text-color3 select-none`}
+                      >
+                        {values.header}
+                      </h2>
+                      <div
+                        className={` ${
+                          activeDotIndex === key ? "active-section" : ""
+                        } h-[245px] p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
+                      >
+                        {!values.header.includes("Contact") && (
+                          <Button
+                            title="Click to expand"
+                            icon="pi pi-arrows-h"
+                            className={`absolute -top-6 ${
+                              state.easyMode
+                                ? "left-5 right-auto"
+                                : "left-auto right-5"
+                            } py-3 rounded-full bg-color3 -rotate-45`}
+                            onClick={() => {
+                              setExpandAboutDialog(true);
+                              dispatch({
+                                type: "SET_MODAL_CONTENT",
+                                payload: {
+                                  header: values.header,
+                                  body: values.content,
+                                } as any,
+                              });
+                            }}
+                          />
+                        )}
+                        {!values.header.includes("Contact") ? (
+                          values.content?.map(
+                            (val: any, k) =>
+                              val.year &&
+                              val.description && (
+                                <div key={k} className="flex flex-col gap-y-3">
+                                  <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                                    {val.year ? val.year : ""}
+                                  </h3>
+                                  <div className="flex">
+                                    <p className="ml-12 md:text-base">
+                                      {val.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              )
+                          )
+                        ) : (
+                          <ContactLinks
+                            key={key}
+                            contactContent={values.content}
+                          />
+                        )}
                       </div>
-                    </>
-                  ))}
-                </div>
-              </div>
-
-              {/* Work Section */}
-              <div className={detailsSubContainersStyles}>
-                <h2
-                  className={`${
-                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
-                  } text-2xl md:text-3xl text-color3 select-none`}
-                >
-                  Work
-                </h2>
-                <div
-                  className={` ${
-                    activeDotIndex === 1 ? "active-section" : ""
-                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative  border-2 border-transparent`}
-                >
-                  <Button
-                    title="Click to expand"
-                    icon="pi pi-arrows-h"
-                    className={`absolute -top-6 ${
-                      state.easyMode ? "left-5 right-auto" : "left-auto right-5"
-                    } py-3 rounded-full bg-color3 -rotate-45`}
-                    onClick={() => {
-                      setExpandAboutDialog(true);
-                      dispatch({
-                        type: "SET_MODAL_CONTENT",
-                        payload: {
-                          header: "Work",
-                          body: aboutInfo.work,
-                        } as any,
-                      });
-                    }}
-                  />
-                  {aboutInfo?.work?.map((values) => (
-                    <>
-                      <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
-                        {values.year}
-                      </h3>
-                      <div className="flex">
-                        <p className="ml-12 md:text-base">
-                          {values.description}
-                        </p>
-                      </div>
-                    </>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact & Resume Section */}
-              <div className={detailsSubContainersStyles}>
-                <h2
-                  className={`${
-                    state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
-                  } text-2xl md:text-3xl text-color3 select-none`}
-                >
-                  Contact & Resume
-                </h2>
-                <div
-                  className={` ${
-                    activeDotIndex === 2 ? "active-section" : ""
-                  } h-[245px] p-2 flex flex-col justify-center gap-y-3 bg-color2 rounded-md relative border-2 border-transparent`}
-                >
-                  <ContactLinks />
-                </div>
-              </div>
+                    </div>
+                  );
+                }
+              })}
             </div>
             {/* dots */}
             <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 md:left-auto right-0">
