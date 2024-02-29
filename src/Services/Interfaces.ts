@@ -1,4 +1,5 @@
 import { Dispatch, RefObject } from "react";
+
 import { Toast } from "primereact/toast";
 
 export type Action<T> = { type: string; payload?: T };

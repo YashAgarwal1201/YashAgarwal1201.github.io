@@ -1,5 +1,5 @@
-import { primaryInfo } from "../../Data/Data";
 import logoo from "./../../assets/logoo.jpg";
+import { primaryInfo } from "../../Data/Data";
 import "./Home.scss";
 import { HomeProps } from "../../Services/Interfaces";
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import { debounce } from "lodash";
+
 import { Header } from "./../../Components/Header/Header";
 import "./Content.scss";
-import { useAppContext } from "../../Services/AppContext";
-import Home from "../../Components/Home/Home";
 import About from "../../Components/About/About";
-import Feedback from "../../Components/Feedback/Feedback";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
+import Feedback from "../../Components/Feedback/Feedback";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
+import Home from "../../Components/Home/Home";
 import MenuDialog from "../../Components/Menu/MenuDialog";
+import { useAppContext } from "../../Services/AppContext";
 
 type KeyMapProp = {
   [key: string]: string;

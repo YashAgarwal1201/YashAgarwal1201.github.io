@@ -1,7 +1,9 @@
 import React from "react";
-import { Dialog } from "primereact/dialog";
+
 import { Accordion, AccordionTab } from "primereact/accordion";
+import { Dialog } from "primereact/dialog";
 import { SelectButton } from "primereact/selectbutton";
+
 import { useAppContext } from "../../Services/AppContext";
 import { KeyboardShortcuts } from "../KeyboardShortcuts/KeyboardShortcuts";
 import "./MenuDialog.scss";

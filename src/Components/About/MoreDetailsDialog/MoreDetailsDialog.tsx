@@ -1,5 +1,8 @@
 import React from "react";
+
 import { Dialog } from "primereact/dialog";
+import { Link } from "react-router-dom";
+
 import { useAppContext } from "../../../Services/AppContext";
 
 type MoreDetailsDialogProps = {
@@ -41,22 +44,39 @@ const MoreDetailsDialog = ({
         }
       >
         <div className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto">
-          {state.modalContent?.header !== "Contact & Resume" &&
+          {!state.modalContent?.header.includes("Contact") &&
             state.modalContent?.body?.map((values: any) => (
               <>
                 <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
                   {values?.year}
                 </h3>
                 <div className="flex flex-col">
-                  <div className="ml-12 md:text-base">
-                    {values?.description}
+                  <div className="ml-12 md:text-base flex flex-col gap-y-2">
+                    <p className="flex items-center gap-x-5">
+                      <span>{values?.description}</span>
+                      {state.modalContent?.header.includes("Projects") && (
+                        <Link
+                          to={values?.link}
+                          target="_blank"
+                          className="w-10 h-10 flex justify-center items-center rounded-full bg-color3"
+                        >
+                          <span className="pi pi-external-link"></span>
+                        </Link>
+                      )}
+                    </p>
                     {values?.projects && (
-                      <span className="ml-4 mt-3">{values?.projects}</span>
+                      <ul className="ml-4">
+                        {values.projects.map((content: any, k: any) => (
+                          <li key={k}>{content}</li>
+                        ))}
+                      </ul>
                     )}
                     {values?.certifications && (
-                      <span className="ml-4 mt-3">
-                        {values?.certifications}
-                      </span>
+                      <ul className="ml-4">
+                        {values.certifications.map((content: any, k: any) => (
+                          <li key={k}>{content}</li>
+                        ))}
+                      </ul>
                     )}
                   </div>
                 </div>

@@ -1,5 +1,6 @@
-import { Button } from "primereact/button";
 import { startTransition } from "react";
+
+import { Button } from "primereact/button";
 
 const PageNotFound = () => {
   return (
