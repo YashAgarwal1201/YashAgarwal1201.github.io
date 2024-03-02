@@ -18,7 +18,7 @@ type KeyMapProp = {
 
 const Content: React.FC = () => {
   const { state, dispatch, showToast } = useAppContext();
-  const [selectedButton, setSelectedButton] = useState<string>("home");
+  // const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
   const [showMenuDialog, setShowMenuDialog] = useState(false);
@@ -34,8 +34,8 @@ const Content: React.FC = () => {
   };
 
   const handleButtonClick = (section: string) => {
-    setSelectedButton(section);
-    const targetRef = sectionRefs[section]; //eval(`${section}Ref`);
+    dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload: section });
+    const targetRef = sectionRefs[section];
     targetRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -71,21 +71,31 @@ const Content: React.FC = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             switch (entry.target) {
-              case homeRef.current:
-                setSelectedButton("home");
+              case homeRef.current: {
+                // setSelectedButton("home");
+                dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload: "home" });
                 break;
-              case aboutRef.current:
-                setSelectedButton("about");
+              }
+              case aboutRef.current: {
+                dispatch({
+                  type: "SET_SELECTED_CONTENT_BTN",
+                  payload: "about",
+                });
                 break;
-              case feedbackRef.current:
-                setSelectedButton("feedback");
+              }
+              case feedbackRef.current: {
+                dispatch({
+                  type: "SET_SELECTED_CONTENT_BTN",
+                  payload: "feedback",
+                });
                 break;
+              }
               default:
                 break;
             }
           }
         });
-      }, 100)(); // Adjust debounce delay as needed
+      }, 100)();
     }, observerOptions);
 
     observer.observe(homeRef.current!);
@@ -135,13 +145,25 @@ const Content: React.FC = () => {
   };
 
   useEffect(() => {
-    // Add event listener for key presses
     window.addEventListener("keydown", handleKeyPress);
 
-    // Remove event listener when component unmounts
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
+  }, []);
+
+  useEffect(() => {
+    const scrollToSavedSection = () => {
+      const sectionRef = sectionRefs[state.selectedContentBtn];
+      if (sectionRef && sectionRef.current) {
+        sectionRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
+
+    scrollToSavedSection();
   }, []);
 
   return (
@@ -149,7 +171,7 @@ const Content: React.FC = () => {
       className={`w-full h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
     >
       <Header
-        selectedButton={selectedButton}
+        // selectedButton={selectedButton}
         setSelectedButton={handleButtonClick}
         showMenuDialog={showMenuDialog}
         setShowMenuDialog={setShowMenuDialog}

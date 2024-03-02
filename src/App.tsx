@@ -4,7 +4,7 @@ import { Toast } from "primereact/toast";
 import { Outlet } from "react-router-dom";
 
 import { useAppContext } from "./Services/AppContext";
-// import { useState } from "react";
+
 import "./App.scss";
 import ErrorBoundary from "./Services/ErrorBoundary";
 
@@ -20,20 +20,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(`yashAppData`, JSON.stringify(state)); //(`yashAppData_${window.name}`, JSON.stringify(state));
-  }, [state]);
-
-  useEffect(() => {
     document
       .querySelector("html")
       ?.setAttribute("data-theme", state.themeSelected);
   }, [state.themeSelected]);
 
-  // if (!window.name) {
-  //   window.name = Math.random().toString(36).substring(7);
-  // }
-
-  // console.log("Tab identifier:", window.name);
+  useEffect(() => {
+    localStorage.setItem(`yashAppData`, JSON.stringify(state));
+  }, [state]);
 
   return (
     <ErrorBoundary>

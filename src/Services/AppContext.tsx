@@ -14,6 +14,7 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
   ? JSON.parse(localStorage.getItem(`yashAppData`) as string) //(`yashAppData_${window.name}`) as string)
   : {
       themeSelected: "dark",
+      selectedContentBtn: "home",
       toast: null,
       modalContent: {
         header: "",
@@ -37,6 +38,13 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       };
     }
 
+    case "SET_SELECTED_CONTENT_BTN": {
+      return {
+        ...state,
+        selectedContentBtn: action.payload as string,
+      };
+    }
+
     case "SET_MODAL_CONTENT": {
       return {
         ...state,
@@ -48,7 +56,7 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       return {
         ...state,
         easyMode: action.payload as boolean,
-      }
+      };
     }
 
     default:

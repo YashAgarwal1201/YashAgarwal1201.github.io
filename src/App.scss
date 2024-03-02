@@ -35,12 +35,12 @@
     --color4: #4285f4;
     --color5: #ea4335;
   }
-  html[data-theme="gold"] {
-    --color1: #ffe879;
-    --color2: #ffd447;
-    --color3: #ffbf00;
-    --color4: #bf9b30;
-    --color5: #a67c00;
+  html[data-theme="seafog"] {
+    --color1: #7da5aa;
+    --color2: #B8CAD0;
+    --color3: #d5e1e4;
+    --color4: #eeeadd;
+    --color5: #404040;
   }
   html[data-theme="vintage"] {
     --color1: #f5e1b3;
@@ -64,7 +64,6 @@
 .p-link:focus {
   box-shadow: none !important;
   outline: none !important;
-  // border: 2px solid #cb444a;
   border-color: #353735;
   border: 0px;
 }
@@ -82,7 +81,8 @@ ul {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .p-button:hover, a:hover {
+  .p-button:hover,
+  a:hover {
     color: #353735;
     background-color: #f4f4f4;
     border-color: #f4f4f4;
