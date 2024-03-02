@@ -22,14 +22,14 @@ const ScrollLeftRightBtns = ({
       <Button
         disabled={isScrollLeftDisabled}
         icon="pi pi-chevron-left"
-        className="py-3 bg-color3 rounded-full"
+        className="py-3 bg-color3 text-color1 rounded-full"
         onClick={() => scrollLeftRight(-100)}
         title="scroll left"
       />
       <Button
         disabled={isScrollRightDisabled}
         icon="pi pi-chevron-right"
-        className="py-3 bg-color3 rounded-full"
+        className="py-3 bg-color3 text-color1 rounded-full"
         onClick={() => scrollLeftRight(100)}
         title="scroll right"
       />
@@ -152,7 +152,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                               state.easyMode
                                 ? "left-5 right-auto"
                                 : "left-auto right-5"
-                            } py-3 rounded-full bg-color3 -rotate-45`}
+                            } py-3 rounded-full bg-color3 text-color1 -rotate-45`}
                             onClick={() => {
                               setExpandAboutDialog(true);
                               dispatch({

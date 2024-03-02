@@ -30,9 +30,9 @@ const themes = [
     colors: ["#fafafa", "#a3a3a3", "#404040", "#171717", "#0a0a0a"],
   },
   {
-    name: "Gold",
-    value: "gold",
-    colors: ["#ffe878", "#ffd447", "#ffbf00", "#bf9b30", "#a67c00"],
+    name: "Sea Fog",
+    value: "seafog",
+    colors: ["#7da5aa", "#B8CAD0", "#d5e1e4", "#eeeadd", "#404040"],
   },
   {
     name: "Vintage",
@@ -73,7 +73,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <div className="flex justify-between items-center">
-                <span className="text-color3">Theme</span>
+                <span className="text-black">Theme</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
                   <div className="w-4 h-4 bg-color2"></div>
@@ -93,14 +93,20 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
                       ? "text-blue-800 font-semibold cursor-default"
                       : "text-[#010101] font-normal cursor-pointer"
                   }`}
-                  onClick={() => handleThemeChange(theme.value)}
+                  onClick={() => state.themeSelected !== theme.value ? handleThemeChange(theme.value) : ''}
                 >
                   <span>{theme.name}</span>
                   <div className="flex items-center rounded-md border-2">
                     {theme.colors?.map((color, index) => (
                       <div
                         key={index}
-                        className="w-4 h-4"
+                        className={`w-4 h-4 ${
+                          index === 0
+                            ? "rounded-l-md"
+                            : index === 4
+                            ? "rounded-r-md"
+                            : "rounded-none"
+                        }`}
                         style={{ backgroundColor: color }}
                       ></div>
                     ))}
@@ -113,8 +119,8 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <div className="flex justify-between items-center">
-                <span className="text-color3">Easy mode? </span>
-                <span className="text-color3 capitalize">
+                <span className="text-black">Easy mode? </span>
+                <span className="text-black capitalize">
                   {state.easyMode ? "Yes" : "No"}
                 </span>
               </div>
@@ -135,7 +141,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           </AccordionTab>
 
           <AccordionTab
-            header={<span className="text-color3">Keyboard shortcuts</span>}
+            header={<span className="text-black">Keyboard shortcuts</span>}
           >
             <div>
               <KeyboardShortcuts />

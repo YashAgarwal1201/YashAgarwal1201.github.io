@@ -7,6 +7,7 @@ export type Action<T> = { type: string; payload?: T };
 export interface State {
   [key: string]: any;
   themeSelected: string;
+  selectedContentBtn: string;
   toast: Toast | null;
   modalContent: ModalContent;
   easyMode: boolean;
@@ -43,13 +44,6 @@ export interface ModalContent {
   header: any;
   body: any;
 }
-
-// export interface FormattedData {
-//   [objectName: string]: {
-//     count: number;
-//     pts: Point[];
-//   };
-// }
 
 export type dispatchParamType = {
   type: string;
