@@ -8,7 +8,7 @@ const ContactLinks = ({ contactContent }: { contactContent: any }) => {
   const { showToast } = useAppContext();
 
   return (
-    <div className="flex justify-center gap-x-1 mb-10 sm:mb-0">
+    <div className="flex justify-center gap-x-1 ">
       {contactContent.map(
         (
           values: { type: string; title: string; link: string },
@@ -33,7 +33,7 @@ const ContactLinks = ({ contactContent }: { contactContent: any }) => {
                   }
                 }}
               >
-                <span className="pi pi-envelope md:text-2xl"></span>
+                <span className="pi pi-envelope text-xl md:text-2xl"></span>
               </Button>
             );
           } else {
@@ -45,7 +45,7 @@ const ContactLinks = ({ contactContent }: { contactContent: any }) => {
                 to={values.link}
                 target="_blank"
               >
-                <span className={`pi pi-${values.type} md:text-2xl`}></span>
+                <span className={`pi pi-${values.type} text-xl md:text-2xl`}></span>
               </Link>
             );
           }

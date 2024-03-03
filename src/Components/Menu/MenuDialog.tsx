@@ -39,6 +39,11 @@ const themes = [
     value: "vintage",
     colors: ["#f5e1b3", "#dbb070", "#5a888a", "#5f588a", "#b8556c"],
   },
+  {
+    name: "Fall",
+    value: "fall",
+    colors: ["#A1A365", "#D4985D", "#FFEFC2", "#8C584A", "#333846"],
+  },
 ];
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
@@ -93,7 +98,11 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
                       ? "text-blue-800 font-semibold cursor-default"
                       : "text-[#010101] font-normal cursor-pointer"
                   }`}
-                  onClick={() => state.themeSelected !== theme.value ? handleThemeChange(theme.value) : ''}
+                  onClick={() =>
+                    state.themeSelected !== theme.value
+                      ? handleThemeChange(theme.value)
+                      : ""
+                  }
                 >
                   <span>{theme.name}</span>
                   <div className="flex items-center rounded-md border-2">

@@ -88,7 +88,7 @@ const FeedbackFormDialog = ({
 
               <input
                 title="Name"
-                className="h-10 px-4 bg-color3 text-color1 rounded-lg"
+                className="h-10 px-4 bg-color3 text-color1 rounded-md"
                 type="text"
                 name="Name"
               />
@@ -107,14 +107,14 @@ const FeedbackFormDialog = ({
           <div className="w-full h-12 flex flex-row-reverse justify-center items-center gap-x-4">
             <Button
               title="click to send"
-              icon="pi pi-send"
+              icon={<span className="material-symbols-rounded mr-2">send</span>}
               className="h-full px-5 bg-color4 text-color1"
               label="Submit"
               type="submit"
             />
             <Button
               title="click to delete everything"
-              icon="pi pi-trash"
+              icon={<span className="material-symbols-rounded mr-2">delete</span>}
               className="h-full px-5 bg-transparent text-color4"
               label="Delete"
               type="reset"

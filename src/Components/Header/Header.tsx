@@ -23,43 +23,43 @@ export const Header = ({
       <div className="w-full lg:w-[75px] h-[60px] lg:h-full flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
         <Button
           title="Home page"
-          icon="pi pi-home"
+          icon={<span className="material-symbols-rounded">home</span>}
           className={`${
             state.selectedContentBtn === "home"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16 `}
+          } w-14 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("home");
           }}
         />
         <Button
           title="About me"
-          icon="pi pi-user"
+          icon={<span className="material-symbols-rounded">person</span>}
           className={`${
             state.selectedContentBtn === "about"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16 `}
+          } w-14 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("about");
           }}
         />
         <Button
           title="Give feedback"
-          icon="pi pi-comment"
+          icon={<span className="material-symbols-rounded">mail</span>}
           className={`${
             state.selectedContentBtn === "feedback"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16 `}
+          } w-14 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("feedback");
           }}
         />
         <Button
           title="Settings & others"
-          icon="pi pi-cog"
+          icon={<span className="material-symbols-rounded">settings</span>}
           className={`${normalButtonStyles} hover:border-color5  w-14 lg:w-16 h-full lg:h-16 lg:hidden`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
@@ -67,8 +67,8 @@ export const Header = ({
       <div className="hidden lg:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
         <Button
           title="Settings & others"
-          icon="pi pi-cog"
-          className={`${normalButtonStyles} hover:border-transparent  w-14 lg:w-16 h-full lg:h-16 `}
+          icon={<span className="material-symbols-rounded">settings</span>}
+          className={`${normalButtonStyles} hover:border-transparent  w-14 lg:w-16 h-full lg:h-16`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>

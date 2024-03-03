@@ -8,11 +8,11 @@
 
 @layer base {
   html {
-    --color1: #0a0a0a;
-    --color2: #171717;
-    --color3: #404040;
-    --color4: #a3a3a3;
-    --color5: #fafafa;
+    --color1: #a1a365;
+    --color2: #d4985d;
+    --color3: #ffefc2;
+    --color4: #8c584a;
+    --color5: #333846;
   }
   html[data-theme="dark"] {
     --color1: #0a0a0a;
@@ -37,7 +37,7 @@
   }
   html[data-theme="seafog"] {
     --color1: #7da5aa;
-    --color2: #B8CAD0;
+    --color2: #b8cad0;
     --color3: #d5e1e4;
     --color4: #eeeadd;
     --color5: #404040;
@@ -48,6 +48,13 @@
     --color3: #5a888a;
     --color4: #5f588a;
     --color5: #b8556c;
+  }
+  html[data-theme="fall"] {
+    --color1: #a1a365;
+    --color2: #d4985d;
+    --color3: #ffefc2;
+    --color4: #8c584a;
+    --color5: #333846;
   }
 }
 
