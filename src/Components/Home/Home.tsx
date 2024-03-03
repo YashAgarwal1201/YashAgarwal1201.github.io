@@ -22,7 +22,7 @@ function Home({ reference }: HomeProps) {
         </p>
       </div>
       <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-end items-end bg-transparent">
-        <div className="hidden md:block w-[80%] md:w-[500px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+        <div className="hidden md:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 bg-color2 z-10 shadow-md">
@@ -40,7 +40,7 @@ function Home({ reference }: HomeProps) {
         <div className="block md:hidden w-full h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont pattern absolute m-auto top-0 left-0 bottom-0 bg-color3"></div>
           <div className="cont pattern absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
-          <div className="w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 rounded-2xl bg-color2 z-10 shadow-md">
+          <div className="w-[250px] sm:w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 rounded-2xl bg-color2 z-10 shadow-md">
             <img
               alt="img"
               src={logoo}

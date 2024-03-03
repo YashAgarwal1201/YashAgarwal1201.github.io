@@ -51,7 +51,7 @@ const MoreDetailsDialog = ({
                   {values?.year}
                 </h3>
                 <div className="flex flex-col">
-                  <div className="ml-12 md:text-base flex flex-col gap-y-2">
+                  <div className="ml-8 sm:ml-12 md:text-base flex flex-col gap-y-2">
                     <p className="flex items-center gap-x-5">
                       <span>{values?.description}</span>
                       {state.modalContent?.header.includes("Projects") && (
