@@ -87,6 +87,10 @@ ul {
   list-style-type: disc;
 }
 
+.p-inputswitch-checked .p-inputswitch-slider {
+  background-color: rgb(30 64 175);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .p-button:hover,
   a:hover {

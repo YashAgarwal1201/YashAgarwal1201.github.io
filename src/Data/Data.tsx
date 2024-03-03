@@ -75,7 +75,7 @@ export const aboutInfo = [
       {
         year: "2024 - present",
         description: "THEWEDOGRAPHY portfolio website.",
-        link: ""
+        link: "",
       },
     ],
   },
@@ -92,3 +92,36 @@ export const feedback = {
     bcc: "legoyashx@yahoo.com",
   },
 };
+
+export const themes = [
+  {
+    name: "Google",
+    value: "google",
+    colors: ["#FAFAFA", "#FBBC05", "#34A853", "#4285F4", "#EA4335"],
+  },
+  {
+    name: "Classic Night",
+    value: "night",
+    colors: ["#0a0a0a", "#171717", "#404040", "#a3a3a3", "#fafafa"],
+  },
+  {
+    name: "Classic Light",
+    value: "light",
+    colors: ["#fafafa", "#a3a3a3", "#404040", "#171717", "#0a0a0a"],
+  },
+  {
+    name: "Sea Fog",
+    value: "seafog",
+    colors: ["#7da5aa", "#B8CAD0", "#d5e1e4", "#eeeadd", "#404040"],
+  },
+  {
+    name: "Vintage",
+    value: "vintage",
+    colors: ["#f5e1b3", "#dbb070", "#5a888a", "#5f588a", "#b8556c"],
+  },
+  {
+    name: "Fall",
+    value: "fall",
+    colors: ["#A1A365", "#D4985D", "#FFEFC2", "#8C584A", "#333846"],
+  },
+];

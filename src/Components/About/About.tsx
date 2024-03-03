@@ -23,14 +23,14 @@ const ScrollLeftRightBtns = ({
         disabled={isScrollLeftDisabled}
         icon="pi pi-chevron-left"
         className="py-3 bg-color3 text-color1 rounded-full"
-        onClick={() => scrollLeftRight(-100)}
+        onClick={() => scrollLeftRight(-200)}
         title="scroll left"
       />
       <Button
         disabled={isScrollRightDisabled}
         icon="pi pi-chevron-right"
         className="py-3 bg-color3 text-color1 rounded-full"
-        onClick={() => scrollLeftRight(100)}
+        onClick={() => scrollLeftRight(200)}
         title="scroll right"
       />
     </>
@@ -45,7 +45,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const [activeDotIndex, setActiveDotIndex] = useState(0);
 
   const detailsSubContainersStyles =
-    "w-[97%] h-fit flex-shrink-0 snap-start snap-always";
+    "w-[97%] h-fit flex-shrink-0 snap-center snap-always";
 
   const handleDotClick = (index: number) => {
     const container = containerRef.current;
@@ -63,7 +63,9 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
 
   const scrollLeftRight = (offset: number) => {
     const container = containerRef.current;
+
     if (container) {
+      console.log("i am clicked");
       container.scrollBy({ left: offset, behavior: "smooth" });
 
       const isScrollLeftDisabledVar = container.scrollLeft <= 0;
@@ -75,6 +77,35 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
       setIsScrollRightDisabled(isScrollRightDisabledVar);
     }
   };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (state.selectedContentBtn === "about")
+      switch (event.key) {
+        case "ArrowLeft":
+          scrollLeftRight(-200);
+          break;
+        case "ArrowRight":
+          scrollLeftRight(200);
+          break;
+        default:
+          // Do nothing for other keys
+          break;
+      }
+  };
+
+  useEffect(() => {
+    // Existing useEffect code for scrolling
+
+    // Add event listener for keydown
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      // Cleanup function to remove the event listener
+      window.removeEventListener("keydown", handleKeyDown);
+
+      // Existing cleanup code for scrolling event listener, if any
+    };
+  }, [scrollLeftRight]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,69 +161,68 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             <div className="mt-10 sm:mt-16 flex space-x-3">
               {aboutInfo.map((values, key) => {
                 // if (values.header) {
-                  return (
-                    <div className={detailsSubContainersStyles} key={key}>
-                      <h2
-                        className={`${
-                          state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
-                        } text-2xl md:text-3xl font-medium text-color3 select-none`}
-                      >
-                        {values.header}
-                      </h2>
-                      <div
-                        className={` ${
-                          activeDotIndex === key ? "active-section" : ""
-                        } h-[225px] sm:h-[245px] p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
-                      >
-                        {!values.header.includes("Contact") && (
-                          <Button
-                            title="Click to expand"
-                            icon="pi pi-arrows-h"
-                            className={`absolute -top-6 ${
-                              state.easyMode
-                                ? "left-5 right-auto"
-                                : "left-auto right-5"
-                            } py-3 rounded-full bg-color3 text-color1 -rotate-45`}
-                            onClick={() => {
-                              setExpandAboutDialog(true);
-                              dispatch({
-                                type: "SET_MODAL_CONTENT",
-                                payload: {
-                                  header: values.header,
-                                  body: values.content,
-                                } as any,
-                              });
-                            }}
-                          />
-                        )}
-                        {!values.header.includes("Contact") ? (
-                          values.content?.map(
-                            (val: any, k) =>
-                              val.year &&
-                              val.description && (
-                                <div key={k} className="flex flex-col gap-y-3">
-                                  <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
-                                    {val.year ? val.year : ""}
-                                  </h3>
-                                  <div className="flex">
-                                    <p className="ml-8 sm:ml-12 md:text-base">
-                                      {val.description}
-                                    </p>
-                                  </div>
+                return (
+                  <div className={detailsSubContainersStyles} key={key}>
+                    <h2
+                      className={`${
+                        state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
+                      } text-2xl md:text-3xl font-medium text-color3 select-none`}
+                    >
+                      {values.header}
+                    </h2>
+                    <div
+                      className={` ${
+                        activeDotIndex === key ? "active-section" : ""
+                      } h-[225px] sm:h-[245px] p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
+                    >
+                      {!values.header.includes("Contact") && (
+                        <Button
+                          title="Click to expand"
+                          icon="pi pi-arrows-h"
+                          className={`absolute -top-6 ${
+                            state.easyMode
+                              ? "left-5 right-auto"
+                              : "left-auto right-5"
+                          } py-3 rounded-full bg-color3 text-color1 -rotate-45`}
+                          onClick={() => {
+                            setExpandAboutDialog(true);
+                            dispatch({
+                              type: "SET_MODAL_CONTENT",
+                              payload: {
+                                header: values.header,
+                                body: values.content,
+                              } as any,
+                            });
+                          }}
+                        />
+                      )}
+                      {!values.header.includes("Contact") ? (
+                        values.content?.map(
+                          (val: any, k) =>
+                            val.year &&
+                            val.description && (
+                              <div key={k} className="flex flex-col gap-y-3">
+                                <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                                  {val.year ? val.year : ""}
+                                </h3>
+                                <div className="flex">
+                                  <p className="ml-8 sm:ml-12 md:text-base">
+                                    {val.description}
+                                  </p>
                                 </div>
-                              )
-                          )
-                        ) : (
-                          <ContactLinks
-                            key={key}
-                            contactContent={values.content}
-                          />
-                        )}
-                      </div>
+                              </div>
+                            )
+                        )
+                      ) : (
+                        <ContactLinks
+                          key={key}
+                          contactContent={values.content}
+                        />
+                      )}
                     </div>
-                  );
-                }
-              )}
+                  </div>
+                );
+              })}
             </div>
             {/* dots */}
             <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 md:left-auto right-0">
