@@ -57,7 +57,7 @@ const FeedbackFormDialog = ({
           </>
         }
         className={`aboutDialog ${
-          state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
+          state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[85%] mdl:w-[75%] lg:w-[65%]"
         } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
         position={
           window.innerWidth < 768

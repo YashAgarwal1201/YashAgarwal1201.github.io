@@ -4,10 +4,10 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 import { Dialog } from "primereact/dialog";
 import { InputSwitch } from "primereact/inputswitch";
 
+import { themes } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import { KeyboardShortcuts } from "../KeyboardShortcuts/KeyboardShortcuts";
 import "./MenuDialog.scss";
-import { themes } from "../../Data/Data";
 
 type MenuDialogProps = {
   showMenuDialog: boolean;
@@ -34,7 +34,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       draggable={false}
       header={<div className="text-color1">Settings Menu</div>}
       className={`aboutDialog ${
-        state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
+        state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[85%] mdl:w-[75%] lg:w-[65%]"
       } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
       position={
         window.innerWidth < 768 ? "bottom" : state.easyMode ? "right" : "center"

@@ -33,7 +33,7 @@ const MoreDetailsDialog = ({
         // className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
         // position={window.innerWidth < 768 ? "bottom" : "center"}
         className={`aboutDialog ${
-          state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[65%]"
+          state.easyMode ? "w-full md:w-1/2" : "w-full md:w-[85%] mdl:w-[75%] lg:w-[65%]"
         } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
         position={
           window.innerWidth < 768
@@ -66,14 +66,14 @@ const MoreDetailsDialog = ({
                     </p>
                     {values?.projects && (
                       <ul className="ml-4">
-                        {values.projects.map((content: any, k: any) => (
+                        {values.projects.map((content: string, k: number) => (
                           <li key={k}>{content}</li>
                         ))}
                       </ul>
                     )}
                     {values?.certifications && (
                       <ul className="ml-4">
-                        {values.certifications.map((content: any, k: any) => (
+                        {values.certifications.map((content: string, k: number) => (
                           <li key={k}>{content}</li>
                         ))}
                       </ul>

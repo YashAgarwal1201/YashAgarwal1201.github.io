@@ -75,7 +75,7 @@ export const aboutInfo = [
       {
         year: "2024 - present",
         description: "THEWEDOGRAPHY portfolio website.",
-        link: "",
+        link: "https://thewedography.vercel.app/",
       },
     ],
   },

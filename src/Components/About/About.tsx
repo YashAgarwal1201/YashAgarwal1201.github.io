@@ -43,6 +43,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
+  const [lessThan768px, setLessThan768px] = useState(false);
 
   const detailsSubContainersStyles =
     "w-[97%] h-fit flex-shrink-0 snap-center snap-always";
@@ -136,12 +137,29 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setLessThan768px(window.innerHeight < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div
       ref={reference}
       className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
     >
-      <div className="w-full md:w-1/2 h-full md:px-5 pt-10 sm:pt-20 flex flex-col justify-start items-center gap-y-5">
+      <div
+        className={`w-full mdl:w-1/2 h-full md:px-5 ${
+          lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
+        } flex flex-col justify-start items-center gap-y-5`}
+      >
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
           A little bit,
           <br />
@@ -158,7 +176,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             id="aboutContent"
             ref={containerRef}
           >
-            <div className="mt-10 sm:mt-16 flex space-x-3">
+            <div
+              className={`${
+                lessThan768px ? "mt-2" : "mt-10 sm:mt-16"
+              } flex space-x-3`}
+            >
               {aboutInfo.map((values, key) => {
                 // if (values.header) {
                 return (
@@ -173,7 +195,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                     <div
                       className={` ${
                         activeDotIndex === key ? "active-section" : ""
-                      } h-[225px] sm:h-[245px] p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
+                      } ${lessThan768px ? "h-[225px] sm:h-[245px]" : "h-[245px] sm:h-[275px]"} p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
                     >
                       {!values.header.includes("Contact") && (
                         <Button
@@ -225,7 +247,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
               })}
             </div>
             {/* dots */}
-            <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 md:left-auto right-0">
+            <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 mdl:left-auto right-0">
               {Object.keys(aboutInfo)?.map((keys, index) => (
                 <div
                   key={keys}
@@ -240,7 +262,7 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
             </div>
           </div>
 
-          <div className="absolute top-0 bottom-0 right-0 flex md:hidden flex-col-reverse gap-2">
+          <div className="absolute top-0 bottom-0 md:bottom-5 right-0 flex mdl:hidden flex-col-reverse gap-2">
             <ScrollLeftRightBtns
               isScrollLeftDisabled={isScrollLeftDisabled}
               isScrollRightDisabled={isScrollRightDisabled}
@@ -250,8 +272,8 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
         </div>
       </div>
 
-      <div className="w-0 md:w-1/2 h-1/2 md:h-full hidden md:flex justify-end items-end bg-transparent">
-        <div className="hidden md:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+      <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden md:flex justify-end items-end bg-transparent">
+        <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">

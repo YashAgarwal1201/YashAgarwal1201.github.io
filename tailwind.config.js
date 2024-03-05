@@ -16,7 +16,11 @@ export default {
         color4: "var(--color4)",
         color5: "var(--color5)",
       },
+      screens: {
+        mdl: "896px",
+      },
     },
+    
   },
   plugins: [],
 };

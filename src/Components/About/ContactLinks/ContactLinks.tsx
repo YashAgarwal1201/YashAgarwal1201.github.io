@@ -1,7 +1,6 @@
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 
-// import { aboutInfo } from "../../../Data/Data";
 import { useAppContext } from "../../../Services/AppContext";
 
 const ContactLinks = ({ contactContent }: { contactContent: any }) => {
