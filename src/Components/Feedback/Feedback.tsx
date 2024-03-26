@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { FeedbackProps } from "../../Services/Interfaces";
 
-function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
+const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
   const [lessThan768px, setLessThan768px] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -64,6 +64,6 @@ function Feedback({ reference, setExpandFeedbackDialog }: FeedbackProps) {
       </div>
     </div>
   );
-}
+};
 
 export default Feedback;

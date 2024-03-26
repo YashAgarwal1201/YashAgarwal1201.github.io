@@ -5,8 +5,9 @@ import { primaryInfo } from "../../Data/Data";
 import "./Home.scss";
 import { HomeProps } from "../../Services/Interfaces";
 
-function Home({ reference }: HomeProps) {
+const Home = ({ reference }: HomeProps) => {
   const [lessThan768px, setLessThan768px] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       setLessThan768px(window.innerHeight < 768);
@@ -19,6 +20,7 @@ function Home({ reference }: HomeProps) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <div
       ref={reference}
@@ -49,7 +51,7 @@ function Home({ reference }: HomeProps) {
               alt="img"
               src={logoo}
               className="h-full m-auto rounded-md"
-              loading="lazy"
+              // loading="lazy"
             />
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
@@ -64,13 +66,13 @@ function Home({ reference }: HomeProps) {
               alt="img"
               src={logoo}
               className="h-full m-auto rounded-md"
-              loading="lazy"
+              // loading="lazy"
             />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;

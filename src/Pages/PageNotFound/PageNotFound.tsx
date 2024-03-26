@@ -2,7 +2,7 @@ import { startTransition } from "react";
 
 import { Button } from "primereact/button";
 
-const PageNotFound = () => {
+const PageNotFound: React.FC = () => {
   return (
     <div
       className={`w-screen h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
