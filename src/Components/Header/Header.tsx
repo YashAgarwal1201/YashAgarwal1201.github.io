@@ -1,4 +1,5 @@
 import { Button } from "primereact/button";
+
 import { useAppContext } from "../../Services/AppContext";
 
 type HeaderProps = {
@@ -7,7 +8,7 @@ type HeaderProps = {
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Header = ({
+const Header = ({
   setSelectedButton,
   showMenuDialog,
   setShowMenuDialog,

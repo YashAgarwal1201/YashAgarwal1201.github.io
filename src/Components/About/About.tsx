@@ -15,7 +15,7 @@ const ScrollLeftRightBtns = ({
 }: {
   isScrollLeftDisabled: boolean;
   isScrollRightDisabled: boolean;
-  scrollLeftRight: any;
+  scrollLeftRight: (offset: number) => void;
 }) => {
   return (
     <>
@@ -37,7 +37,7 @@ const ScrollLeftRightBtns = ({
   );
 };
 
-function About({ reference, setExpandAboutDialog }: AboutProps) {
+const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
   const { state, dispatch } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
@@ -95,16 +95,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
   };
 
   useEffect(() => {
-    // Existing useEffect code for scrolling
-
-    // Add event listener for keydown
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       // Cleanup function to remove the event listener
       window.removeEventListener("keydown", handleKeyDown);
-
-      // Existing cleanup code for scrolling event listener, if any
     };
   }, [scrollLeftRight]);
 
@@ -195,7 +190,11 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
                     <div
                       className={` ${
                         activeDotIndex === key ? "active-section" : ""
-                      } ${lessThan768px ? "h-[225px] sm:h-[245px]" : "h-[245px] sm:h-[275px]"} p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
+                      } ${
+                        lessThan768px
+                          ? "h-[225px] sm:h-[245px]"
+                          : "h-[245px] sm:h-[275px]"
+                      } p-2 flex flex-col gap-y-3 justify-center bg-color2 rounded-md relative border-2 border-transparent`}
                     >
                       {!values.header.includes("Contact") && (
                         <Button
@@ -291,6 +290,6 @@ function About({ reference, setExpandAboutDialog }: AboutProps) {
       </div>
     </div>
   );
-}
+};
 
 export default About;

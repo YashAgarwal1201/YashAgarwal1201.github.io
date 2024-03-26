@@ -13,7 +13,11 @@ import {
 const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_${window.name}`)
   ? JSON.parse(localStorage.getItem(`yashAppData`) as string) //(`yashAppData_${window.name}`) as string)
   : {
-      themeSelected: "fall",
+      themeSelected:
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "night"
+          : "fall", //"fall",
       selectedContentBtn: "home",
       toast: null,
       modalContent: {

@@ -1,4 +1,4 @@
-export const KeyboardShortcuts = () => {
+const KeyboardShortcuts = () => {
   const kbdStyles = "px-2 py-1 font-semibold text-color4 bg-color1 rounded-md";
   return (
     <div>
@@ -23,3 +23,5 @@ export const KeyboardShortcuts = () => {
     </div>
   );
 };
+
+export default KeyboardShortcuts;

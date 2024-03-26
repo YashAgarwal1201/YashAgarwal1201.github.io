@@ -4,7 +4,6 @@ import { Toast } from "primereact/toast";
 import { Outlet } from "react-router-dom";
 
 import { useAppContext } from "./Services/AppContext";
-
 import "./App.scss";
 import ErrorBoundary from "./Services/ErrorBoundary";
 

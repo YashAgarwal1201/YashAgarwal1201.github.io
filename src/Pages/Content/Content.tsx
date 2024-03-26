@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { debounce } from "lodash";
 
-import { Header } from "./../../Components/Header/Header";
+import Header from "./../../Components/Header/Header";
 import "./Content.scss";
 import About from "../../Components/About/About";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";

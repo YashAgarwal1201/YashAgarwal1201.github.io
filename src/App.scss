@@ -58,6 +58,75 @@
   }
 }
 
+// @layer base {
+//   /* Default theme based on preferred color scheme */
+//   html {
+//     --color1: #a1a365;
+//     --color2: #d4985d;
+//     --color3: #ffefc2;
+//     --color4: #8c584a;
+//     --color5: #333846;
+//   }
+
+//   /* Dark mode */
+//   @media (prefers-color-scheme: dark) {
+//     html:not([data-theme]),
+//     html[data-theme="night"] {
+//       --color1: #0a0a0a;
+//       --color2: #171717;
+//       --color3: #404040;
+//       --color4: #a3a3a3;
+//       --color5: #fafafa;
+//     }
+//   }
+
+//   /* Fall mode */
+//   html[data-theme="fall"] {
+//     --color1: #a1a365;
+//     --color2: #d4985d;
+//     --color3: #ffefc2;
+//     --color4: #8c584a;
+//     --color5: #333846;
+//   }
+
+//   /* Google mode */
+//   html[data-theme="google"] {
+//     --color1: #fafafa;
+//     --color2: #fbbc05;
+//     --color3: #34a853;
+//     --color4: #4285f4;
+//     --color5: #ea4335;
+//   }
+
+//   /* Seafog mode */
+//   html[data-theme="seafog"] {
+//     --color1: #7da5aa;
+//     --color2: #b8cad0;
+//     --color3: #d5e1e4;
+//     --color4: #eeeadd;
+//     --color5: #404040;
+//   }
+
+//   /* Vintage mode */
+//   html[data-theme="vintage"] {
+//     --color1: #f5e1b3;
+//     --color2: #dbb070;
+//     --color3: #5a888a;
+//     --color4: #5f588a;
+//     --color5: #b8556c;
+//   }
+
+//   /* Fall back to default theme */
+//   html:not([data-theme]),
+//   html:not([data-theme]):not([data-theme="night"]) {
+//     --color1: #a1a365;
+//     --color2: #d4985d;
+//     --color3: #ffefc2;
+//     --color4: #8c584a;
+//     --color5: #333846;
+//   }
+// }
+
 #root {
   height: 100dvh;
 }
