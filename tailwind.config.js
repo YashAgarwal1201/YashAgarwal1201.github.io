@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 // const colors = require("tailwindcss/colors");
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   content: [
@@ -19,8 +20,11 @@ export default {
       screens: {
         mdl: "896px",
       },
+      fontFamily: {
+        heading: ["var(--heading)", ...fontFamily.sans], // Specify backup font family as serif
+        content: ["var(--content)", ...fontFamily.serif], // Specify backup font family as sans-serif
+      },
     },
-    
   },
   plugins: [],
 };

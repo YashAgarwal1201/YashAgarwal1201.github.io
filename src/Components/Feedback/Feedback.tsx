@@ -26,12 +26,12 @@ const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5 select-none`}
       >
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading">
           Thank you,
           <br />
           for visiting this page
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content">
           also, want to share some feedback ? <br /> Please fill out this form
         </p>
       </div>

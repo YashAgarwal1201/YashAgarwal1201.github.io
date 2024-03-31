@@ -29,7 +29,7 @@ const MoreDetailsDialog = ({
         }}
         dismissableMask={true}
         draggable={false}
-        header={<div className="text-color1">{state.modalContent?.header}</div>}
+        header={<div className="text-color1 font-heading font-normal">{state.modalContent?.header}</div>}
         // className="aboutDialog w-full md:w-[65%] h-full md:h-[80%] absolute bottom-0 md:bottom-auto"
         // position={window.innerWidth < 768 ? "bottom" : "center"}
         className={`aboutDialog ${
@@ -47,10 +47,10 @@ const MoreDetailsDialog = ({
           {!state.modalContent?.header.includes("Contact") &&
             state.modalContent?.body?.map((values: any) => (
               <>
-                <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                <h3 className="w-fit pb-1 text-base md:text-lg font-medium font-heading border-b-2 border-color4">
                   {values?.year}
                 </h3>
-                <div className="flex flex-col">
+                <div className="flex flex-col font-content">
                   <div className="ml-8 sm:ml-12 md:text-base flex flex-col gap-y-2">
                     <p className="flex items-center gap-x-5">
                       <span>{values?.description}</span>
