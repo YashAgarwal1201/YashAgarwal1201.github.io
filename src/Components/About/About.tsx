@@ -155,12 +155,12 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5`}
       >
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl select-none">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading select-none">
           A little bit,
           <br />
           about me...
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 select-none">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
           my education, working experience,
           <br />
           contact and resume
@@ -183,7 +183,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                     <h2
                       className={`${
                         state.easyMode ? "mr-2 ml-0 text-right" : "ml-2 mr-0"
-                      } text-2xl md:text-3xl font-medium text-color3 select-none`}
+                      } text-2xl md:text-3xl font-medium text-color3 font-heading select-none`}
                     >
                       {values.header}
                     </h2>
@@ -223,11 +223,11 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                             val.year &&
                             val.description && (
                               <div key={k} className="flex flex-col gap-y-3">
-                                <h3 className="w-fit pb-1 text-base md:text-lg font-medium border-b-2 border-color4">
+                                <h3 className="w-fit pb-1 text-base md:text-lg font-medium font-heading border-b-2 border-color4">
                                   {val.year ? val.year : ""}
                                 </h3>
                                 <div className="flex">
-                                  <p className="ml-8 sm:ml-12 md:text-base">
+                                  <p className="ml-8 sm:ml-12 md:text-base font-content">
                                     {val.description}
                                   </p>
                                 </div>

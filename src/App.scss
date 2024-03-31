@@ -1,3 +1,7 @@
+// @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&display=swap');
+
+
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
 @import "primereact/resources/themes/tailwind-light/theme.css";
@@ -13,6 +17,9 @@
     --color3: #ffefc2;
     --color4: #8c584a;
     --color5: #333846;
+
+    --content: "Cabin", sans-serif;
+    --heading: "Sniglet", cursive;
   }
   html[data-theme="night"] {
     --color1: #0a0a0a;
