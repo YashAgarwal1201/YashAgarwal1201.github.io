@@ -22,6 +22,7 @@ export default {
       },
       fontFamily: {
         heading: ["var(--heading)", ...fontFamily.sans], // Specify backup font family as serif
+        subheading: ["var(--subheading)", ...fontFamily.sans],
         content: ["var(--content)", ...fontFamily.serif], // Specify backup font family as sans-serif
       },
     },

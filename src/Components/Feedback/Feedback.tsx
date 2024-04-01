@@ -27,12 +27,16 @@ const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
         } flex flex-col justify-start items-center gap-y-5 select-none`}
       >
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading">
-          Thank you,
+          <span className="font-subheading text-color3">Thank you,</span>
           <br />
           for visiting this page
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content">
-          also, want to share some feedback ? <br /> Please fill out this form
+          also,{" "}
+          <span className="font-subheading text-color3">
+            want to share some feedback ?
+          </span>{" "}
+          <br /> Please fill out this form.
         </p>
       </div>
       <div className="w-full mdl:w-1/2 h-1/2 mdl:h-full flex justify-end items-end bg-transparent">

@@ -34,12 +34,21 @@ const Home = ({ reference }: HomeProps) => {
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading select-none">
           Hey everyone,
           <br />
-          myself {primaryInfo.name}
+          myself{" "}
+          <span className="font-subheading text-color3">
+            {primaryInfo.name}
+          </span>
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
-          and, I am currently working as {primaryInfo.currentPosition}
+          and, I am currently working as{" "}
+          <span className="font-subheading text-color3">
+            {primaryInfo.currentPosition}
+          </span>
           <br />
-          <span className="pi pi-at"></span> {primaryInfo.currentOrganisation}
+          <span className="pi pi-at"></span>{" "}
+          <span className="font-subheading text-color3">
+            {primaryInfo.currentOrganisation}
+          </span>
         </p>
       </div>
       <div className="w-full mdl:w-1/2 h-1/2 mdl:h-full flex justify-end items-end bg-transparent">

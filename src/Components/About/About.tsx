@@ -66,7 +66,6 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
     const container = containerRef.current;
 
     if (container) {
-      console.log("i am clicked");
       container.scrollBy({ left: offset, behavior: "smooth" });
 
       const isScrollLeftDisabledVar = container.scrollLeft <= 0;
@@ -158,7 +157,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
         <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading select-none">
           A little bit,
           <br />
-          about me...
+          <span className="font-subheading text-color3">about me...</span>
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
           my education, working experience,
@@ -223,7 +222,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                             val.year &&
                             val.description && (
                               <div key={k} className="flex flex-col gap-y-3">
-                                <h3 className="w-fit pb-1 text-base md:text-lg font-medium font-heading border-b-2 border-color4">
+                                <h3 className="w-fit pb-1 text-base md:text-lg lg:text-xl font-medium font-subheading border-b-2 border-color4">
                                   {val.year ? val.year : ""}
                                 </h3>
                                 <div className="flex">

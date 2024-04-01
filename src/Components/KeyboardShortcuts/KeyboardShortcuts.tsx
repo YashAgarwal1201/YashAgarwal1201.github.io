@@ -1,5 +1,5 @@
 const KeyboardShortcuts = () => {
-  const kbdStyles = "px-2 py-1 font-semibold text-color4 bg-color1 rounded-md";
+  const kbdStyles = "px-2 py-1 font-medium text-color4 bg-color1 rounded-md font-heading";
   return (
     <div>
       <ul className="px-3 flex flex-col gap-y-4">

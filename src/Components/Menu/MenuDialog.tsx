@@ -33,7 +33,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       onHide={() => setShowMenuDialog(!showMenuDialog)}
       dismissableMask={true}
       draggable={false}
-      header={<div className="text-color1">Settings Menu</div>}
+      header={<div className="text-color1 lg:text-3xl font-heading font-normal">Settings Menu</div>}
       className={`aboutDialog ${
         state.easyMode
           ? "w-full md:w-1/2"
@@ -47,7 +47,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
         <Accordion className="flex flex-col gap-y-2">
           <AccordionTab
             header={
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black">Theme</span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
@@ -74,7 +74,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
                       : ""
                   }
                 >
-                  <span>{theme.name}</span>
+                  <span className="font-content">{theme.name}</span>
                   <div className="flex items-center rounded-md border-2">
                     {theme.colors?.map((color, index) => (
                       <div
@@ -97,15 +97,15 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
           <AccordionTab
             header={
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black">Easy mode? </span>
-                <span className="text-black capitalize">
+                <span className="text-black capitalize font-subheading">
                   {state.easyMode ? "Yes" : "No"}
                 </span>
               </div>
             }
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center font-content">
               <span>Use easy mode?</span>
               <InputSwitch
                 checked={state.easyMode}
@@ -115,9 +115,9 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           </AccordionTab>
 
           <AccordionTab
-            header={<span className="text-black">Keyboard shortcuts</span>}
+            header={<span className="text-black font-heading font-medium">Keyboard shortcuts</span>}
           >
-            <div>
+            <div className="font-content">
               <KeyboardShortcuts />
             </div>
           </AccordionTab>
