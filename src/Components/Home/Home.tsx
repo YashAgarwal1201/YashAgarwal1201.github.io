@@ -31,22 +31,22 @@ const Home = ({ reference }: HomeProps) => {
           lessThan768px ? "pt-10" : "pt-20"
         } flex flex-col justify-start items-center gap-y-5`}
       >
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading select-none">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl text-color3 font-heading select-none">
           Hey everyone,
           <br />
           myself{" "}
-          <span className="font-subheading text-color3">
+          <span className="font-subheading text-color5">
             {primaryInfo.name}
           </span>
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color3 font-content select-none">
           and, I am currently working as{" "}
-          <span className="font-subheading text-color3">
+          <span className="font-subheading text-color4">
             {primaryInfo.currentPosition}
           </span>
           <br />
           <span className="pi pi-at"></span>{" "}
-          <span className="font-subheading text-color3">
+          <span className="font-subheading text-color4">
             {primaryInfo.currentOrganisation}
           </span>
         </p>
