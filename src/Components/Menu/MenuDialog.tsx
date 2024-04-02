@@ -33,7 +33,11 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       onHide={() => setShowMenuDialog(!showMenuDialog)}
       dismissableMask={true}
       draggable={false}
-      header={<div className="text-color1 lg:text-3xl font-heading font-normal">Settings Menu</div>}
+      header={
+        <div className="text-color1 lg:text-3xl font-heading font-normal">
+          Settings Menu
+        </div>
+      }
       className={`aboutDialog ${
         state.easyMode
           ? "w-full md:w-1/2"
@@ -44,7 +48,15 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       }
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto">
-        <Accordion className="flex flex-col gap-y-2">
+        <Accordion
+          collapseIcon={
+            <span className="material-symbols-rounded">expand_less</span>
+          }
+          expandIcon={
+            <span className="material-symbols-rounded">expand_more</span>
+          }
+          className="flex flex-col gap-y-2"
+        >
           <AccordionTab
             header={
               <div className="flex justify-between items-center font-heading font-medium">
@@ -115,7 +127,11 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           </AccordionTab>
 
           <AccordionTab
-            header={<span className="text-black font-heading font-medium">Keyboard shortcuts</span>}
+            header={
+              <span className="text-black font-heading font-medium">
+                Keyboard shortcuts
+              </span>
+            }
           >
             <div className="font-content">
               <KeyboardShortcuts />

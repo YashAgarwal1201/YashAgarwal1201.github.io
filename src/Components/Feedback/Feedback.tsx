@@ -26,14 +26,14 @@ const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5 select-none`}
       >
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading">
-          <span className="font-subheading text-color3">Thank you,</span>
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl text-color3 font-heading">
+          <span className="font-subheading text-color5">Thank you,</span>
           <br />
           for visiting this page
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content">
+        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color3 font-content">
           also,{" "}
-          <span className="font-subheading text-color3">
+          <span className="font-subheading text-color4">
             want to share some feedback ?
           </span>{" "}
           <br /> Please fill out this form.
@@ -48,7 +48,9 @@ const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
             className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none shadow-md"
             onClick={() => setExpandFeedbackDialog(true)}
           >
-            <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>
+            <span className="m-auto text-4xl md:text-5xl material-symbols-rounded">
+              edit_document
+            </span>
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
@@ -62,7 +64,9 @@ const Feedback = ({ reference, setExpandFeedbackDialog }: FeedbackProps) => {
             className="w-[200px] sm:w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center rounded-2xl bg-color2 z-10 cursor-pointer shadow-md select-none"
             onClick={() => setExpandFeedbackDialog(true)}
           >
-            <span className="m-auto text-4xl md:text-5xl pi pi-file-edit"></span>
+            <span className="m-auto text-4xl md:text-5xl material-symbols-rounded">
+              edit_document
+            </span>
           </div>
         </div>
       </div>

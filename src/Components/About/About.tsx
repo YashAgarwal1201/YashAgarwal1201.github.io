@@ -21,15 +21,19 @@ const ScrollLeftRightBtns = ({
     <>
       <Button
         disabled={isScrollLeftDisabled}
-        icon="pi pi-chevron-left"
-        className="py-3 bg-color3 text-color1 rounded-full"
+        icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
+        rounded
+        className="py-3 bg-color3 text-color1"
         onClick={() => scrollLeftRight(-200)}
         title="scroll left"
       />
       <Button
         disabled={isScrollRightDisabled}
-        icon="pi pi-chevron-right"
-        className="py-3 bg-color3 text-color1 rounded-full"
+        icon={
+          <span className="material-symbols-rounded">arrow_forward_ios</span>
+        }
+        rounded
+        className="py-3 bg-color3 text-color1"
         onClick={() => scrollLeftRight(200)}
         title="scroll right"
       />
@@ -154,10 +158,10 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5`}
       >
-        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl font-heading select-none">
+        <h1 className="w-full text-3xl sm:text-4xl lg:text-6xl text-color3 font-heading select-none">
           A little bit,
           <br />
-          <span className="font-subheading text-color3">about me...</span>
+          <span className="font-subheading text-color5">about me...</span>
         </h1>
         <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
           my education, working experience,
@@ -198,12 +202,16 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                       {!values.header.includes("Contact") && (
                         <Button
                           title="Click to expand"
-                          icon="pi pi-arrows-h"
+                          icon={
+                            <span className="material-symbols-rounded">
+                              expand_content
+                            </span>
+                          }
                           className={`absolute -top-6 ${
                             state.easyMode
                               ? "left-5 right-auto"
                               : "left-auto right-5"
-                          } py-3 rounded-full bg-color3 text-color1 -rotate-45`}
+                          } py-3 rounded-full bg-color3 text-color1`}
                           onClick={() => {
                             setExpandAboutDialog(true);
                             dispatch({

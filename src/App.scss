@@ -1,9 +1,5 @@
 // @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-// @import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&display=swap');
-
-@import url("https://fonts.googleapis.com/css2?family=Sacramento&family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
@@ -138,9 +134,9 @@
 //   }
 // }
 
-#root {
-  height: 100dvh;
-}
+// #root {
+//   height: 100dvh;
+// }
 
 * {
   scroll-behavior: smooth;
@@ -159,16 +155,21 @@
   z-index: 10000;
 }
 
+.p-inputswitch-checked {
+  .p-inputswitch-slider {
+    background-color: var(--color3);
+  }
+  .p-inputswitch-slider::before {
+    background-color: var(--color5);
+  }
+}
+
 a {
   font-style: oblique;
 }
 
 ul {
   list-style-type: disc;
-}
-
-.p-inputswitch-checked .p-inputswitch-slider {
-  background-color: rgb(30 64 175);
 }
 
 @media (hover: hover) and (pointer: fine) {

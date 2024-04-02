@@ -2,9 +2,11 @@
   width: 8px;
 }
 .contentBody::-webkit-scrollbar-thumb {
+  cursor: pointer;
   width: 8px;
   background-color: var(--color4);
   border-radius: 8px;
+  border: 1px solid var(--color1);
 }
 .contentBody::-webkit-scrollbar-thumb:hover {
   background-color: var(--color5);
