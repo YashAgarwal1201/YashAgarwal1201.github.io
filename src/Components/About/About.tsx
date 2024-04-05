@@ -23,7 +23,7 @@ const ScrollLeftRightBtns = ({
         disabled={isScrollLeftDisabled}
         icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
         rounded
-        className="py-3 bg-color3 text-color1"
+        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
         onClick={() => scrollLeftRight(-200)}
         title="scroll left"
       />
@@ -33,7 +33,7 @@ const ScrollLeftRightBtns = ({
           <span className="material-symbols-rounded">arrow_forward_ios</span>
         }
         rounded
-        className="py-3 bg-color3 text-color1"
+        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
         onClick={() => scrollLeftRight(200)}
         title="scroll right"
       />
@@ -42,7 +42,7 @@ const ScrollLeftRightBtns = ({
 };
 
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
-  const { state, dispatch } = useAppContext();
+  const { state, setModalContent } = useAppContext();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
@@ -214,12 +214,9 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                           } py-3 rounded-full bg-color3 text-color1`}
                           onClick={() => {
                             setExpandAboutDialog(true);
-                            dispatch({
-                              type: "SET_MODAL_CONTENT",
-                              payload: {
-                                header: values.header,
-                                body: values.content,
-                              } as any,
+                            setModalContent({
+                              header: values.header,
+                              body: values.content,
                             });
                           }}
                         />
@@ -278,7 +275,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
         </div>
       </div>
 
-      <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden md:flex justify-end items-end bg-transparent">
+      <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden mdl:flex justify-end items-end bg-transparent">
         <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>

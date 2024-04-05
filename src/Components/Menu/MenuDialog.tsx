@@ -15,15 +15,15 @@ type MenuDialogProps = {
 };
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
-  const { state, dispatch, showToast } = useAppContext();
+  const { state, showToast, setThemeSelected, setEasyMode } = useAppContext();
 
   const handleThemeChange = (themeValue: string) => {
-    dispatch({ type: "SET_THEME_SELECTED", payload: themeValue });
+    setThemeSelected(themeValue);
     showToast("success", "Success", "Theme changed!");
   };
 
   const handleEasyModeChange = (value: boolean) => {
-    dispatch({ type: "SET_EASY_MODE", payload: value });
+    setEasyMode(value);
     showToast("success", "Success", `Easy mode turned ${value ? "On" : "Off"}`);
   };
 

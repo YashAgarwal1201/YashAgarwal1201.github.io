@@ -32,6 +32,10 @@ export type ActionType =
 export interface AppContextType {
   state: State;
   dispatch: Dispatch<Action<ActionType>>;
+  setThemeSelected: (payload: string) => void;
+  setEasyMode: (payload: boolean) => void;
+  setSelectedContent: (payload: string) => void;
+  setModalContent: (payload: ModalContent) => void;
   showToast: (
     severity: "success" | "info" | "warn" | "error" | undefined,
     summary: "Success" | "Info" | "Warning" | "Error",
@@ -41,7 +45,7 @@ export interface AppContextType {
 }
 
 export interface ModalContent {
-  header: any;
+  header: string;
   body: any;
 }
 

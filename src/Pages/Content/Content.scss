@@ -26,7 +26,6 @@
   }
   @media screen and (max-width: 768px) {
     .p-dialog-content {
-      // border-radius: 0px;
       padding: 8px;
     }
   }
@@ -34,7 +33,6 @@
 .p-component-overlay {
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
-  // cursor: pointer;
 }
 
 .p-accordion-tab .p-accordion-header-link {

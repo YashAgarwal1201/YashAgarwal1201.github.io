@@ -6,7 +6,7 @@ import {
   Action,
   ActionType,
   AppContextType,
-  // ModalContent,
+  ModalContent,
   State,
 } from "./Interfaces";
 
@@ -52,7 +52,7 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
     case "SET_MODAL_CONTENT": {
       return {
         ...state,
-        modalContent: action.payload as any,
+        modalContent: action.payload as ModalContent,
       };
     }
 
@@ -71,6 +71,10 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
 const AppContext = createContext<AppContextType>({
   state: initialState,
   dispatch: () => null,
+  setSelectedContent: () => null,
+  setThemeSelected: () => null,
+  setModalContent: () => null,
+  setEasyMode: () => null,
   showToast: () => null,
 });
 
@@ -89,9 +93,29 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     state.toast?.show({ severity, summary, detail, life });
   };
 
+  const setSelectedContent = (payload: string) => {
+    dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload });
+  };
+
+  const setThemeSelected = (payload: string) => {
+    dispatch({ type: "SET_THEME_SELECTED", payload });
+  };
+
+  const setModalContent = (payload: ModalContent) => {
+    dispatch({ type: "SET_MODAL_CONTENT", payload });
+  };
+
+  const setEasyMode = (payload: boolean) => {
+    dispatch({ type: "SET_EASY_MODE", payload });
+  };
+
   const contextValue: AppContextType = {
     state,
     dispatch,
+    setSelectedContent,
+    setThemeSelected,
+    setModalContent,
+    setEasyMode,
     showToast,
   };
 
