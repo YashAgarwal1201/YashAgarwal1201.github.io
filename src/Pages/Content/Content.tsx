@@ -17,7 +17,7 @@ type KeyMapProp = {
 };
 
 const Content: React.FC = () => {
-  const { state, dispatch, showToast } = useAppContext();
+  const { state, showToast, setSelectedContent, setEasyMode } = useAppContext();
   // const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
   const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
@@ -34,7 +34,7 @@ const Content: React.FC = () => {
   };
 
   const handleButtonClick = (section: string) => {
-    dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload: section });
+    setSelectedContent(section);
     const targetRef = sectionRefs[section];
     targetRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -72,22 +72,15 @@ const Content: React.FC = () => {
           if (entry.isIntersecting) {
             switch (entry.target) {
               case homeRef.current: {
-                // setSelectedButton("home");
-                dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload: "home" });
+                setSelectedContent("home");
                 break;
               }
               case aboutRef.current: {
-                dispatch({
-                  type: "SET_SELECTED_CONTENT_BTN",
-                  payload: "about",
-                });
+                setSelectedContent("about");
                 break;
               }
               case feedbackRef.current: {
-                dispatch({
-                  type: "SET_SELECTED_CONTENT_BTN",
-                  payload: "feedback",
-                });
+                setSelectedContent("feedback");
                 break;
               }
               default:
@@ -116,7 +109,6 @@ const Content: React.FC = () => {
       K: "keyboardShortcuts",
       M: "menu",
       E: "easyMode",
-      // T: "theme",
     };
 
     const key = event.key?.toUpperCase();
@@ -129,10 +121,7 @@ const Content: React.FC = () => {
       if (section === "menu" || section === "keyboardShortcuts") {
         setShowMenuDialog(!showMenuDialog);
       } else if (section === "easyMode") {
-        dispatch({
-          type: "SET_EASY_MODE",
-          payload: state.easyMode ? false : true,
-        });
+        setEasyMode(state.easyMode ? false : true);
         showToast(
           "success",
           "Success",
