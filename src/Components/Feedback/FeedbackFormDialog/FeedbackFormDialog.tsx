@@ -68,7 +68,7 @@ const FeedbackFormDialog = ({
         }
       >
         <form
-          className="h-full p-2 md:p-4 flex flex-col gap-y-6 text-color5 bg-color2 rounded-md overflow-y-auto"
+          className="h-full p-2 md:p-4 flex flex-col gap-y-6 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col md:flex-row gap-x-3 gap-y-3">

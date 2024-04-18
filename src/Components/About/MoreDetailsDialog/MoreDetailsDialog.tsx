@@ -45,7 +45,7 @@ const MoreDetailsDialog = ({
         }
       >
         {state.modalContent?.body ? (
-          <div className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto">
+          <div className="h-full p-2 md:p-4 flex flex-col gap-y-3 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
             {!state.modalContent?.header?.includes("Contact") &&
               state.modalContent?.body?.map((values: any) => (
                 <>

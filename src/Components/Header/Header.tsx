@@ -61,7 +61,7 @@ const Header = ({
         <Button
           title="Settings & others"
           icon={<span className="material-symbols-rounded">settings</span>}
-          className={`${normalButtonStyles} hover:border-color5  w-14 lg:w-16 h-full lg:h-16 lg:hidden`}
+          className={`${normalButtonStyles} hover:border-transparent  w-14 lg:w-16 h-full lg:h-16 lg:hidden`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
