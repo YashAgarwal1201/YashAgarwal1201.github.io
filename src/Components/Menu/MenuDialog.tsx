@@ -47,7 +47,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
         window.innerWidth < 768 ? "bottom" : state.easyMode ? "right" : "center"
       }
     >
-      <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto">
+      <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
         <Accordion
           collapseIcon={
             <span className="material-symbols-rounded">expand_less</span>

@@ -65,7 +65,11 @@ export const aboutInfo = [
       {
         year: "July, 2022 - present",
         description: "Associate UI Developer @ Techolution, India.",
-        projects: ["Alan for talent fountain", "Owens & Minor"],
+        projects: [
+          "Alan for talent fountain",
+          "Owens & Minor",
+          "Techolution website",
+        ],
       },
     ],
   },

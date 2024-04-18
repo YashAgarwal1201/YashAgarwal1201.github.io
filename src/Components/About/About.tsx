@@ -211,7 +211,8 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                             state.easyMode
                               ? "left-5 right-auto"
                               : "left-auto right-5"
-                          } py-3 rounded-full bg-color3 text-color1`}
+                            } p-1 sm:p-3 bg-color3 text-color1 text-xs sm:text-sm`}
+                          rounded
                           onClick={() => {
                             setExpandAboutDialog(true);
                             setModalContent({
