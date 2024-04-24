@@ -7,6 +7,7 @@ import ContactLinks from "./ContactLinks/ContactLinks";
 import { aboutInfo } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import { AboutProps } from "../../Services/Interfaces";
+import OtherProjects from "./OtherProjects/OtherProject";
 
 const ScrollLeftRightBtns = ({
   isScrollLeftDisabled,
@@ -211,7 +212,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                             state.easyMode
                               ? "left-5 right-auto"
                               : "left-auto right-5"
-                            } p-1 sm:p-3 bg-color3 text-color1 text-xs sm:text-sm`}
+                          } p-1 sm:p-3 bg-color3 text-color1 text-xs sm:text-sm`}
                           rounded
                           onClick={() => {
                             setExpandAboutDialog(true);
@@ -222,7 +223,8 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                           }}
                         />
                       )}
-                      {!values.header.includes("Contact") ? (
+                      {!values.header.includes("Contact") &&
+                      !values.header.includes("Other") ? (
                         values.content?.map(
                           (val: any, k) =>
                             val.year &&
@@ -239,11 +241,13 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                               </div>
                             )
                         )
-                      ) : (
+                      ) : values.header.includes("Contact") ? (
                         <ContactLinks
                           key={key}
                           contactContent={values.content}
                         />
+                      ) : (
+                        <OtherProjects key={key} content={values.content} />
                       )}
                     </div>
                   </div>
