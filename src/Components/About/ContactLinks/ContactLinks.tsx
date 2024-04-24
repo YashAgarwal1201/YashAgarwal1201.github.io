@@ -44,7 +44,9 @@ const ContactLinks = ({ contactContent }: { contactContent: any }) => {
                 to={values.link}
                 target="_blank"
               >
-                <span className={`pi pi-${values.type} text-xl md:text-2xl`}></span>
+                <span
+                  className={`pi pi-${values.type} text-xl md:text-2xl`}
+                ></span>
               </Link>
             );
           }
