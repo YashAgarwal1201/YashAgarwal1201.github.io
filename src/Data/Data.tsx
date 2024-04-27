@@ -78,6 +78,11 @@ export const aboutInfo = [
     content: [
       {
         year: "2024 - present",
+        description: "Project Banana",
+        link: "https://project-bananaa.vercel.app/",
+      },
+      {
+        year: "2024 - present",
         description: "THEWEDOGRAPHY portfolio website.",
         link: "https://thewedography.vercel.app/",
       },
@@ -85,6 +90,11 @@ export const aboutInfo = [
         year: "2023 - present",
         description: "Project Pineapple",
         link: "https://project-pineapple.vercel.app/",
+      },
+      {
+        year: "2024 - present",
+        description: "Project Cranberry",
+        link: "https://project-cranberry.vercel.app/",
       },
     ],
   },
