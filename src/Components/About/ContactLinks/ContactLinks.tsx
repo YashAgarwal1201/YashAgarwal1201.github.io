@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import { useAppContext } from "../../../Services/AppContext";
 
-const ContactLinks = ({ contactContent }: { contactContent: any }) => {
+const ContactLinks = ({ content }: { content: any }) => {
   const { showToast } = useAppContext();
 
   return (
     <div className="flex justify-center gap-x-1 ">
-      {contactContent.map(
+      {content.map(
         (
           values: { type: string; title: string; link: string },
           key: number
