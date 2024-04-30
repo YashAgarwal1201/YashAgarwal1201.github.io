@@ -6,7 +6,7 @@ import "./About.scss";
 import ContactLinks from "./ContactLinks/ContactLinks";
 import { aboutInfo } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
-import { AboutProps } from "../../Services/Interfaces";
+import { AboutProps, ModalContent } from "../../Services/Interfaces";
 import OtherProjects from "./OtherProjects/OtherProject";
 
 const ScrollLeftRightBtns = ({
@@ -81,6 +81,11 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
         container.scrollWidth - container.clientWidth - 1;
       setIsScrollRightDisabled(isScrollRightDisabledVar);
     }
+  };
+
+  const handleExpandAboutDialogBtn = (content: ModalContent) => {
+    setExpandAboutDialog(true);
+    setModalContent(content);
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -214,13 +219,19 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                               : "left-auto right-5"
                           } p-1 sm:p-3 bg-color3 text-color1 text-xs sm:text-sm`}
                           rounded
-                          onClick={() => {
-                            setExpandAboutDialog(true);
-                            setModalContent({
+                          // onClick={() => {
+                          //   setExpandAboutDialog(true);
+                          //   setModalContent({
+                          //     header: values.header,
+                          //     body: values.content,
+                          //   });
+                          // }}
+                          onClick={() =>
+                            handleExpandAboutDialogBtn({
                               header: values.header,
                               body: values.content,
-                            });
-                          }}
+                            })
+                          }
                         />
                       )}
                       {!values.header.includes("Contact") &&
@@ -242,12 +253,18 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                             )
                         )
                       ) : values.header.includes("Contact") ? (
-                        <ContactLinks
-                          key={key}
-                          contactContent={values.content}
-                        />
+                        <ContactLinks key={key} content={values.content} />
                       ) : (
-                        <OtherProjects key={key} content={values.content} />
+                        <OtherProjects
+                          key={key}
+                          content={values.content}
+                          setExpandAboutDialog={() =>
+                            handleExpandAboutDialogBtn({
+                              header: values.header,
+                              body: values.content,
+                            })
+                          }
+                        />
                       )}
                     </div>
                   </div>
