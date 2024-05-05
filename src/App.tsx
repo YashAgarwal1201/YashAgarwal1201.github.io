@@ -22,6 +22,14 @@ function App() {
     document
       .querySelector("html")
       ?.setAttribute("data-theme", state.themeSelected);
+
+    const rootStyle = getComputedStyle(document.documentElement);
+    // Get the value of the CSS variable
+    const color1 = rootStyle.getPropertyValue("--color1").trim(); // trim to remove possible whitespace
+    // Set the content attribute of the meta tag
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", color1);
   }, [state.themeSelected]);
 
   useEffect(() => {
