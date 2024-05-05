@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 import { useAppContext } from "./Services/AppContext";
 import "./App.scss";
-import ErrorBoundary from "./Services/ErrorBoundary";
+// import ErrorBoundary from "./Services/ErrorBoundary";
 
 function App() {
   const { dispatch, state } = useAppContext();
@@ -37,12 +37,12 @@ function App() {
   }, [state]);
 
   return (
-    <ErrorBoundary>
+    // <ErrorBoundary>
       <div className="w-screen h-[100dvh]">
         <Toast ref={myToast} />
         <Outlet />
       </div>
-    </ErrorBoundary>
+    // </ErrorBoundary>
   );
 }
 

@@ -144,3 +144,5 @@ export const themes = [
     colors: ["#A1A365", "#D4985D", "#FFEFC2", "#8C584A", "#333846"],
   },
 ];
+
+export const BASE_API_LINK = "https://project-cranberry.vercel.app";
