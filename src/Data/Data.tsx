@@ -63,7 +63,7 @@ export const aboutInfo = [
         projects: ["One stop demo shop", "Employee Handbook"],
       },
       {
-        year: "July, 2022 - present",
+        year: "July, 2023 - present",
         description: "Associate UI Developer @ Techolution, India.",
         projects: [
           "Alan for talent fountain",
