@@ -117,13 +117,13 @@ export const WELCOME_MSG =
   "Hello there! \nThis is Yash Agarwal. Tell me what do you want to know about me?";
 
 export const CHAT_USER_OPTIONS = [
-  "tell me about yourself",
-  "tell me more...",
-  "your work",
-  "your education",
-  "how to connect with you",
-  "your personal projects",
-  "more options",
+  { title: "tell me about yourself", visible: true },
+  { title: "tell me more...", visible: false },
+  { title: "your work", visible: true },
+  { title: "your education", visible: true },
+  { title: "how to connect with you", visible: true },
+  { title: "your personal projects", visible: true },
+  { title: "more options", visible: true },
 ];
 
 export const CHAT_USER_MORE_OPTIONS = [

@@ -5,17 +5,18 @@ import { Button } from "primereact/button";
 
 import "./About.scss";
 
+import ChatComponent from "./ChatComponent/ChatComponent";
 import ContactLinks from "./ContactLinks/ContactLinks";
 import OtherProjects from "./OtherProjects/OtherProject";
 import {
   aboutInfo,
-  CHAT_USER_OPTIONS,
-  primaryInfo,
-  WELCOME_MSG,
+  // CHAT_USER_OPTIONS,
+  // primaryInfo,
+  // WELCOME_MSG,
 } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import {
-  AboutMessage,
+  // AboutMessage,
   AboutProps,
   ModalContent,
 } from "../../Services/Interfaces";
@@ -70,32 +71,32 @@ import {
 //   );
 // };
 
-const responses = {
-  greeting: "Hello! How can I help you today?",
-  work: "I have worked at various companies, including XYZ Corp and ABC Ltd.",
-  education:
-    "I graduated from the University of Somewhere with a degree in Computer Science.",
-  contact: "You can reach me at email@example.com.",
-  projects:
-    "I have worked on several projects, including a chat application and a portfolio website.",
-};
+// const responses = {
+//   greeting: "Hello! How can I help you today?",
+//   work: "I have worked at various companies, including XYZ Corp and ABC Ltd.",
+//   education:
+//     "I graduated from the University of Somewhere with a degree in Computer Science.",
+//   contact: "You can reach me at email@example.com.",
+//   projects:
+//     "I have worked on several projects, including a chat application and a portfolio website.",
+// };
 
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
   const {
     state,
     setModalContent,
     // setSelectedAboutSectionBtn,
-    setMessages,
-    showToast,
+    // setMessages,
+    // showToast,
   } = useAppContext();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   // const textRef = useRef(null);
-  const lastPairRef = useRef<HTMLDivElement>(null);
+  // const lastPairRef = useRef<HTMLDivElement>(null);
 
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
-  const [showOptions, setShowOptions] = useState(true);
+  // const [showOptions, setShowOptions] = useState(true);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const [lessThan768px, setLessThan768px] = useState(false);
 
@@ -203,61 +204,66 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (state.messages?.length > 0) {
-      // console.log(55);
-      scrollToLastPair();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (state.messages?.length > 0) {
+  //     // console.log(55);
+  //     scrollToLastPair();
+  //   }
+  // }, []);
 
-  const getResponse = (query: string) => {
-    if (query.includes("about yourself")) {
-      return `Hey, this is ${primaryInfo.name}. I work as an ${primaryInfo.currentPosition} @ ${primaryInfo.currentOrganisation}`;
-    }
-    return query;
-  };
+  // const getResponse = (query: string) => {
+  //   if (query.includes("about yourself")) {
+  //     // Object.keys(CHAT_USER_OPTIONS).map((val, key) =>
+  //     //   CHAT_USER_OPTIONS[key].title.includes("about yourself")
+  //     //     ? (CHAT_USER_OPTIONS[key].visible = false)
+  //     //     : ""
+  //     // );
+  //     return `Hey, this is ${primaryInfo.name}. I work as an ${primaryInfo.currentPosition} @ ${primaryInfo.currentOrganisation}`;
+  //   }
+  //   return query;
+  // };
 
-  const handleOptionClick = (query: string) => {
-    // console.log("option:", option);
-    scrollToLastPair();
-    setShowOptions(false);
+  // const handleOptionClick = (query: string) => {
+  //   // console.log("option:", option);
+  //   scrollToLastPair();
+  //   setShowOptions(false);
 
-    // Add user's selected option as a message
-    const userMessage: AboutMessage = {
-      content: query,
-      id: Date.now().toString(),
-      role: "user",
-    };
+  //   // Add user's selected option as a message
+  //   const userMessage: AboutMessage = {
+  //     content: query,
+  //     id: Date.now().toString(),
+  //     role: "user",
+  //   };
 
-    const response =
-      getResponse(query) || "Sorry, I don't have information on that.";
+  //   const response =
+  //     getResponse(query) || "Sorry, I don't have information on that.";
 
-    // Add bot's response as a message
-    const botMessage: AboutMessage = {
-      content: response,
-      id: (Date.now() + 1).toString(), // Ensure unique ID
-      role: "bot",
-    };
+  //   // Add bot's response as a message
+  //   const botMessage: AboutMessage = {
+  //     content: response,
+  //     id: (Date.now() + 1).toString(), // Ensure unique ID
+  //     role: "bot",
+  //   };
 
-    // Update the messages state with both messages
-    setMessages([...state.messages, userMessage, botMessage]);
-  };
+  //   // Update the messages state with both messages
+  //   setMessages([...state.messages, userMessage, botMessage]);
+  // };
 
-  const groupMessages = (messages: AboutMessage[]) => {
-    const grouped: AboutMessage[][] = [];
-    for (let i = 0; i < messages?.length; i += 2) {
-      grouped?.push(messages?.slice(i, i + 2));
-    }
-    return grouped;
-  };
+  // const groupMessages = (messages: AboutMessage[]) => {
+  //   const grouped: AboutMessage[][] = [];
+  //   for (let i = 0; i < messages?.length; i += 2) {
+  //     grouped?.push(messages?.slice(i, i + 2));
+  //   }
+  //   return grouped;
+  // };
 
-  const groupedMessages = Array.isArray(state.messages)
-    ? groupMessages(state.messages)
-    : [];
+  // const groupedMessages = Array.isArray(state.messages)
+  //   ? groupMessages(state.messages)
+  //   : [];
 
-  const scrollToLastPair = () => {
-    lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToLastPair = () => {
+  //   lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <div
@@ -403,137 +409,8 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
 
       <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden mdl:flex justify-end items-end bg-transparent">
         {/* messages container */}
-        <div className="w-full mdl:w-[90%] h-full mdl:h-[90%] m-auto pr-2 overflow-y-auto ">
-          {groupedMessages?.length > 0 ? (
-            groupedMessages?.map((value, key) => (
-              <div
-                key={key}
-                className={`
-                ${key === groupedMessages?.length - 1 ? "h-[100%]" : ""}
-                  flex flex-col gap-y-5 mb-4`}
-                ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
-              >
-                {value?.map((message, subKey) => (
-                  <>
-                    <div
-                      className={`flex flex-col gap-y-2 ${
-                        message.role === "user" ? "items-end" : "items-start"
-                      }`}
-                    >
-                      <div
-                        className={`flex ${
-                          message.role === "user"
-                            ? "flex-row-reverse"
-                            : "flex-row"
-                        } items-center gap-x-2`}
-                      >
-                        <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                        <span className="font-subheading">
-                          {message?.role === "user" ? "User" : "Yash"}
-                        </span>
-                      </div>
-                      <div
-                        className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ${
-                          message.role === "user"
-                            ? "m4-3 mdl:mr-3 bg-color3 text-color5"
-                            : "ml-3 mdl:ml-4 bg-color4 text-color1"
-                        } p-3 rounded-md font-content`}
-                      >
-                        {/* <TypeItText text={WELCOME_MSG} /> */}
-                        {message?.content}
-                      </div>
-                    </div>
-                  </>
-                ))}
-                {groupedMessages.length - 1 === key && (
-                  <div className="flex flex-col gap-y-2 items-end">
-                    <div className="flex flex-row-reverse items-center gap-x-2">
-                      <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                      <span className="font-subheading">User</span>
-                    </div>
-                    <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
-                      {/* {WELCOME_MSG} */}
-                      {CHAT_USER_OPTIONS?.map((value, key) => (
-                        <Button
-                          key={key}
-                          label={value}
-                          className={`px-3 py-2 capitalize border ${
-                            state?.selectedAboutSectionBtn?.toLowerCase() ===
-                            value?.toLowerCase()
-                              ? "block"
-                              : "block"
-                          }`}
-                          onClick={() => {
-                            // alert(88);
-                            handleOptionClick(value);
-                          }}
-                        />
-                      ))}
-                      <Button
-                        disabled={state.messages?.length === 0}
-                        icon={"pi pi-refresh"}
-                        onClick={() => {
-                          setMessages([]);
-                          showToast("success", "Success", "Messages reset");
-                        }}
-                        className="border"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))
-          ) : (
-            <div className="flex flex-col gap-y-5">
-              <div className="flex flex-col gap-y-2">
-                <div className="flex items-center gap-x-2">
-                  <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                  <span className="font-subheading">Yash</span>
-                </div>
-                <div className="w-full mdl:w-[90%] ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content">
-                  {/* <TypeItText text={WELCOME_MSG} /> */}
-                  {WELCOME_MSG}
-                </div>
-              </div>
-              <div className="flex flex-col gap-y-2 items-end">
-                <div className="flex flex-row-reverse items-center gap-x-2">
-                  <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                  <span className="font-subheading">User</span>
-                </div>
-                <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
-                  {/* {WELCOME_MSG} */}
-                  {CHAT_USER_OPTIONS?.map((value, key) => {
-                    if (!value.includes("tell me more"))
-                      return (
-                        <Button
-                          key={key}
-                          label={value}
-                          className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
-                            state?.selectedAboutSectionBtn?.toLowerCase() ===
-                            value?.toLowerCase()
-                              ? "block"
-                              : "block"
-                          }`}
-                          onClick={() => {
-                            // alert(88);
-                            handleOptionClick(value);
-                          }}
-                        />
-                      );
-                  })}
-                  {/* <Button
-                    icon={"pi pi-refresh"}
-                    onClick={() => {
-                      setMessages([]);
-                      showToast("success", "Success", "Messages reset");
-                    }}
-                    className="border"
-                  /> */}
-                </div>
-              </div>
-            </div>
-          )}{" "}
-        </div>
+
+        <ChatComponent />
         {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
