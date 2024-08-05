@@ -3,6 +3,7 @@ import React, { createContext, useReducer } from "react";
 import { Toast } from "primereact/toast/toast";
 
 import {
+  AboutMessage,
   Action,
   ActionType,
   AppContextType,
@@ -19,6 +20,8 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
           ? "night"
           : "fall", //"fall",
       selectedContentBtn: "home",
+      selectedAboutSectionbtn: "work",
+      messages: [],
       toast: null,
       modalContent: {
         header: "",
@@ -49,6 +52,20 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       };
     }
 
+    case "SET_SELECTED_ABOUT_SECTION_BTN": {
+      return {
+        ...state,
+        selectedAboutSectionBtn: action.payload as string,
+      };
+    }
+
+    case "SET_MESSAGES": {
+      return {
+        ...state,
+        messages: Array.isArray(action.payload) ? action.payload : [],
+      };
+    }
+
     case "SET_MODAL_CONTENT": {
       return {
         ...state,
@@ -72,6 +89,8 @@ const AppContext = createContext<AppContextType>({
   state: initialState,
   dispatch: () => null,
   setSelectedContent: () => null,
+  setSelectedAboutSectionBtn: () => null,
+  setMessages: () => null,
   setThemeSelected: () => null,
   setModalContent: () => null,
   setEasyMode: () => null,
@@ -97,8 +116,19 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload });
   };
 
+  const setSelectedAboutSectionBtn = (payload: string) => {
+    dispatch({ type: "SET_SELECTED_ABOUT_SECTION_BTN", payload });
+  };
+
   const setThemeSelected = (payload: string) => {
     dispatch({ type: "SET_THEME_SELECTED", payload });
+  };
+
+  const setMessages = (newMessage: AboutMessage[]) => {
+    dispatch({
+      type: "SET_MESSAGES",
+      payload: [...state.messages, newMessage],
+    });
   };
 
   const setModalContent = (payload: ModalContent) => {
@@ -113,6 +143,8 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     state,
     dispatch,
     setSelectedContent,
+    setSelectedAboutSectionBtn,
+    setMessages,
     setThemeSelected,
     setModalContent,
     setEasyMode,

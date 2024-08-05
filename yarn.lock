@@ -509,6 +509,11 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.8.tgz#8268a8c57a3e4abd25c165ecd36237db7948a55e"
   integrity sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==
 
+"@types/web-animations-js@^2.2.16":
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/@types/web-animations-js/-/web-animations-js-2.2.16.tgz#fd84c49a7a2f148b588ba8b372496162b427742f"
+  integrity sha512-ATELeWMFwj8eQiH0KmvsCl1V2lu/qx/CjOBmv4ADSZS5u8r4reMyjCXtxG7khqyiwH3IOMNdrON/Ugn94OUcRA==
+
 "@typescript-eslint/eslint-plugin@^6.0.0":
   version "6.21.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.21.0.tgz#30830c1ca81fd5f3c2714e524c4303e0194f9cd3"
@@ -2930,6 +2935,13 @@ typed-array-length@^1.0.6:
     has-proto "^1.0.3"
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
+
+typeit@^8.8.4:
+  version "8.8.4"
+  resolved "https://registry.yarnpkg.com/typeit/-/typeit-8.8.4.tgz#c1993bd7a270889d1f4042b1a5f433949020ade2"
+  integrity sha512-bD4/PNthsYj5ObPKqkARnYA7NStbYzZDe8g5odXACmFw2HKEDWSUPv275lblz6E8REr+Ji6oll/AHKmD2ONMYA==
+  dependencies:
+    "@types/web-animations-js" "^2.2.16"
 
 typescript@^5.0.2:
   version "5.5.4"

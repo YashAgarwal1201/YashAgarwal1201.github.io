@@ -1,52 +1,91 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
+import TypeIt from "typeit";
 
 import "./About.scss";
-import ContactLinks from "./ContactLinks/ContactLinks";
-import { aboutInfo } from "../../Data/Data";
-import { useAppContext } from "../../Services/AppContext";
-import { AboutProps, ModalContent } from "../../Services/Interfaces";
-import OtherProjects from "./OtherProjects/OtherProject";
 
-const ScrollLeftRightBtns = ({
-  isScrollLeftDisabled,
-  isScrollRightDisabled,
-  scrollLeftRight,
-}: {
-  isScrollLeftDisabled: boolean;
-  isScrollRightDisabled: boolean;
-  scrollLeftRight: (offset: number) => void;
-}) => {
-  return (
-    <>
-      <Button
-        disabled={isScrollLeftDisabled}
-        icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
-        rounded
-        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
-        onClick={() => scrollLeftRight(-200)}
-        title="scroll left"
-      />
-      <Button
-        disabled={isScrollRightDisabled}
-        icon={
-          <span className="material-symbols-rounded">arrow_forward_ios</span>
-        }
-        rounded
-        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
-        onClick={() => scrollLeftRight(200)}
-        title="scroll right"
-      />
-    </>
-  );
+import ContactLinks from "./ContactLinks/ContactLinks";
+import OtherProjects from "./OtherProjects/OtherProject";
+import { aboutInfo, WELCOME_MSG } from "../../Data/Data";
+import { useAppContext } from "../../Services/AppContext";
+import {
+  AboutMessage,
+  AboutProps,
+  ModalContent,
+} from "../../Services/Interfaces";
+
+const TypeItText = ({ text, speed = 50 }) => {
+  const textRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      new TypeIt(textRef.current, {
+        strings: [text],
+        speed,
+        waitUntilVisible: true,
+        loop: false,
+      }).go();
+    }
+  }, [text, speed]);
+
+  return <div ref={textRef} />;
+};
+
+// const ScrollLeftRightBtns = ({
+//   isScrollLeftDisabled,
+//   isScrollRightDisabled,
+//   scrollLeftRight,
+// }: {
+//   isScrollLeftDisabled: boolean;
+//   isScrollRightDisabled: boolean;
+//   scrollLeftRight: (offset: number) => void;
+// }) => {
+//   return (
+//     <>
+//       <Button
+//         disabled={isScrollLeftDisabled}
+//         icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
+//         rounded
+//         className="bg-color3 text-color1 shadow-md mdl:shadow-none"
+//         onClick={() => scrollLeftRight(-200)}
+//         title="scroll left"
+//       />
+//       <Button
+//         disabled={isScrollRightDisabled}
+//         icon={
+//           <span className="material-symbols-rounded">arrow_forward_ios</span>
+//         }
+//         rounded
+//         className="bg-color3 text-color1 shadow-md mdl:shadow-none"
+//         onClick={() => scrollLeftRight(200)}
+//         title="scroll right"
+//       />
+//     </>
+//   );
+// };
+
+const responses = {
+  greeting: "Hello! How can I help you today?",
+  work: "I have worked at various companies, including XYZ Corp and ABC Ltd.",
+  education:
+    "I graduated from the University of Somewhere with a degree in Computer Science.",
+  contact: "You can reach me at email@example.com.",
+  projects:
+    "I have worked on several projects, including a chat application and a portfolio website.",
 };
 
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
-  const { state, setModalContent } = useAppContext();
+  const { state, setModalContent, setSelectedAboutSectionBtn, setMessages } =
+    useAppContext();
+
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef(null);
+  const lastPairRef = useRef<HTMLDivElement>(null);
+
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
+  const [showOptions, setShowOptions] = useState(true);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const [lessThan768px, setLessThan768px] = useState(false);
 
@@ -153,6 +192,40 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleOptionClick = (option: string) => {
+    console.log("option:", option);
+    scrollToLastPair();
+    setShowOptions(false);
+
+    const response =
+      responses[option] || "Sorry, I don't have information on that.";
+
+    const newMessage: AboutMessage = {
+      content: response,
+      id: Date.now().toString(),
+      role: "bot",
+    };
+
+    setMessages(newMessage);
+    // setMessages((prevMessages) => [...prevMessages, newMessage]);
+  };
+
+  const groupMessages = (messages: AboutMessage[]) => {
+    const grouped: AboutMessage[][] = [];
+    for (let i = 0; i < messages?.length; i += 2) {
+      grouped?.push(messages?.slice(i, i + 2));
+    }
+    return grouped;
+  };
+
+  const groupedMessages = Array.isArray(state.messages)
+    ? groupMessages(state.messages)
+    : [];
+
+  const scrollToLastPair = () => {
+    lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div
@@ -287,18 +360,115 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
             </div>
           </div>
 
-          <div className="absolute top-0 bottom-0 md:bottom-5 right-0 flex mdl:hidden flex-col-reverse gap-2">
+          {/* <div className="absolute top-0 bottom-0 md:bottom-5 right-0 flex mdl:hidden flex-col-reverse gap-2">
             <ScrollLeftRightBtns
               isScrollLeftDisabled={isScrollLeftDisabled}
               isScrollRightDisabled={isScrollRightDisabled}
               scrollLeftRight={scrollLeftRight}
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden mdl:flex justify-end items-end bg-transparent">
-        <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+        {/* messages container */}
+        <div className="w-full mdl:w-[90%] h-full mdl:h-[90%] m-auto overflow-y-auto border-2">
+          {groupedMessages.length > 0 ? (
+            groupedMessages?.map((value, key) => (
+              <div
+                key={key}
+                className={`
+                ${key === groupedMessages?.length - 1 ? "h-[100%]" : ""}
+                  flex flex-col gap-y-5`}
+                ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
+              >
+                {value?.map((message, subKey) => (
+                  <>
+                    <div className="flex flex-col gap-y-2">
+                      <div className="flex items-center gap-x-2">
+                        <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                        <span className="font-subheading">{message?.role}</span>
+                      </div>
+                      <div className="w-full mdl:w-[90%] ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content">
+                        {/* <TypeItText text={WELCOME_MSG} /> */}
+                        {message?.content}
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-y-2 items-end">
+                      <div className="flex flex-row-reverse items-center gap-x-2">
+                        <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                        <span className="font-subheading">User</span>
+                      </div>
+                      <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+                        {/* {WELCOME_MSG} */}
+                        {aboutInfo?.map((value, key) => (
+                          <Button
+                            key={key}
+                            label={value.header}
+                            className={`px-3 py-2 capitalize border ${
+                              state?.selectedAboutSectionBtn?.toLowerCase() ===
+                              value?.header?.toLowerCase()
+                                ? "block"
+                                : "block"
+                            }`}
+                            onClick={() => {
+                              // alert(88);
+                              handleOptionClick("greeting");
+                            }}
+                          />
+                        ))}
+                        <Button
+                          label={"Reset"}
+                          onClick={() => setMessages([])}
+                        />
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </div>
+            ))
+          ) : (
+            <div className="flex flex-col gap-y-5">
+              <div className="flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-2">
+                  <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                  <span className="font-subheading">Yash</span>
+                </div>
+                <div className="w-full mdl:w-[90%] ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content">
+                  {/* <TypeItText text={WELCOME_MSG} /> */}
+                  {WELCOME_MSG}
+                </div>
+              </div>
+              <div className="flex flex-col gap-y-2 items-end">
+                <div className="flex flex-row-reverse items-center gap-x-2">
+                  <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                  <span className="font-subheading">User</span>
+                </div>
+                <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+                  {/* {WELCOME_MSG} */}
+                  {aboutInfo?.map((value, key) => (
+                    <Button
+                      key={key}
+                      label={value.header}
+                      className={`px-3 py-2 capitalize border ${
+                        state?.selectedAboutSectionBtn?.toLowerCase() ===
+                        value?.header?.toLowerCase()
+                          ? "block"
+                          : "block"
+                      }`}
+                      onClick={() => {
+                        // alert(88);
+                        handleOptionClick("greeting");
+                      }}
+                    />
+                  ))}
+                  <Button label={"Reset"} onClick={() => setMessages([])} />
+                </div>
+              </div>
+            </div>
+          )}{" "}
+        </div>
+        {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">
@@ -312,7 +482,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

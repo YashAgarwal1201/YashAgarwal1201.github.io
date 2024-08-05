@@ -8,6 +8,8 @@ export interface State {
   [key: string]: any;
   themeSelected: string;
   selectedContentBtn: string;
+  selectedAboutSectionBtn: string;
+  messages: AboutMessage[];
   toast: Toast | null;
   modalContent: ModalContent;
   easyMode: boolean;
@@ -26,6 +28,8 @@ export type ActionType =
   | string
   | null
   | ToastInterface
+  | AboutMessage
+  | AboutMessage[]
   | { title: string; url: string; type: string }
   | { key: string; value: boolean };
 
@@ -35,7 +39,9 @@ export interface AppContextType {
   setThemeSelected: (payload: string) => void;
   setEasyMode: (payload: boolean) => void;
   setSelectedContent: (payload: string) => void;
+  setSelectedAboutSectionBtn: (payload: string) => void;
   setModalContent: (payload: ModalContent) => void;
+  setMessages: (payload: AboutMessage[]) => void;
   showToast: (
     severity: "success" | "info" | "warn" | "error" | undefined,
     summary: "Success" | "Info" | "Warning" | "Error",
@@ -65,4 +71,10 @@ export type AboutProps = {
 export type FeedbackProps = {
   reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type AboutMessage = {
+  content: string;
+  id: string;
+  role: string;
 };

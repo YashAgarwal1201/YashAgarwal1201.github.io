@@ -34,6 +34,25 @@ const contactLinks = [
 
 export const aboutInfo = [
   {
+    header: "Work",
+    content: [
+      {
+        year: "December, 2022 - June, 2023",
+        description: "UI Developer - Intern @ Techolution, India.",
+        projects: ["One stop demo shop", "Employee Handbook"],
+      },
+      {
+        year: "July, 2023 - present",
+        description: "Associate UI Developer @ Techolution, India.",
+        projects: [
+          "Alan for talent fountain",
+          "Owens & Minor",
+          "Techolution website",
+        ],
+      },
+    ],
+  },
+  {
     header: "Education",
     content: [
       {
@@ -54,25 +73,7 @@ export const aboutInfo = [
       },
     ],
   },
-  {
-    header: "Work",
-    content: [
-      {
-        year: "December, 2022 - June, 2023",
-        description: "UI Developer - Intern @ Techolution, India.",
-        projects: ["One stop demo shop", "Employee Handbook"],
-      },
-      {
-        year: "July, 2023 - present",
-        description: "Associate UI Developer @ Techolution, India.",
-        projects: [
-          "Alan for talent fountain",
-          "Owens & Minor",
-          "Techolution website",
-        ],
-      },
-    ],
-  },
+
   {
     header: "Other Projects",
     content: [
@@ -111,6 +112,9 @@ export const feedback = {
     bcc: "legoyashx@yahoo.com",
   },
 };
+
+export const WELCOME_MSG =
+  "Hello there! \nThis is Yash Agarwal. Tell me what do you want to know about me?";
 
 export const themes = [
   {
