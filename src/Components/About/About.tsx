@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
-import TypeIt from "typeit";
+// import TypeIt from "typeit";
 
 import "./About.scss";
 
 import ContactLinks from "./ContactLinks/ContactLinks";
 import OtherProjects from "./OtherProjects/OtherProject";
-import { aboutInfo, WELCOME_MSG } from "../../Data/Data";
+import {
+  aboutInfo,
+  CHAT_USER_OPTIONS,
+  primaryInfo,
+  WELCOME_MSG,
+} from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import {
   AboutMessage,
@@ -15,22 +20,22 @@ import {
   ModalContent,
 } from "../../Services/Interfaces";
 
-const TypeItText = ({ text, speed = 50 }) => {
-  const textRef = useRef<HTMLDivElement | null>(null);
+// const TypeItText = ({ text, speed = 50 }) => {
+//   const textRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (textRef.current) {
-      new TypeIt(textRef.current, {
-        strings: [text],
-        speed,
-        waitUntilVisible: true,
-        loop: false,
-      }).go();
-    }
-  }, [text, speed]);
+//   useEffect(() => {
+//     if (textRef.current) {
+//       new TypeIt(textRef.current, {
+//         strings: [text],
+//         speed,
+//         waitUntilVisible: true,
+//         loop: false,
+//       }).go();
+//     }
+//   }, [text, speed]);
 
-  return <div ref={textRef} />;
-};
+//   return <div ref={textRef} />;
+// };
 
 // const ScrollLeftRightBtns = ({
 //   isScrollLeftDisabled,
@@ -76,11 +81,16 @@ const responses = {
 };
 
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
-  const { state, setModalContent, setSelectedAboutSectionBtn, setMessages } =
-    useAppContext();
+  const {
+    state,
+    setModalContent,
+    // setSelectedAboutSectionBtn,
+    setMessages,
+    showToast,
+  } = useAppContext();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef(null);
+  // const textRef = useRef(null);
   const lastPairRef = useRef<HTMLDivElement>(null);
 
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
@@ -193,22 +203,44 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
     };
   }, []);
 
-  const handleOptionClick = (option: string) => {
-    console.log("option:", option);
+  useEffect(() => {
+    if (state.messages?.length > 0) {
+      // console.log(55);
+      scrollToLastPair();
+    }
+  }, []);
+
+  const getResponse = (query: string) => {
+    if (query.includes("about yourself")) {
+      return `Hey, this is ${primaryInfo.name}. I work as an ${primaryInfo.currentPosition} @ ${primaryInfo.currentOrganisation}`;
+    }
+    return query;
+  };
+
+  const handleOptionClick = (query: string) => {
+    // console.log("option:", option);
     scrollToLastPair();
     setShowOptions(false);
 
-    const response =
-      responses[option] || "Sorry, I don't have information on that.";
-
-    const newMessage: AboutMessage = {
-      content: response,
+    // Add user's selected option as a message
+    const userMessage: AboutMessage = {
+      content: query,
       id: Date.now().toString(),
+      role: "user",
+    };
+
+    const response =
+      getResponse(query) || "Sorry, I don't have information on that.";
+
+    // Add bot's response as a message
+    const botMessage: AboutMessage = {
+      content: response,
+      id: (Date.now() + 1).toString(), // Ensure unique ID
       role: "bot",
     };
 
-    setMessages(newMessage);
-    // setMessages((prevMessages) => [...prevMessages, newMessage]);
+    // Update the messages state with both messages
+    setMessages([...state.messages, userMessage, botMessage]);
   };
 
   const groupMessages = (messages: AboutMessage[]) => {
@@ -247,7 +279,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           <br />
           contact and resume
         </p>
-        <div className="relative w-full h-full">
+        <div className="block mdl:hidden relative w-full h-full">
           <div
             className="w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
             id="aboutContent"
@@ -344,7 +376,6 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                 );
               })}
             </div>
-            {/* dots */}
             <div className="flex justify-center items-center gap-x-2 mt-6 absolute left-0 mdl:left-auto right-0">
               {Object.keys(aboutInfo)?.map((keys, index) => (
                 <div
@@ -372,59 +403,84 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
 
       <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden mdl:flex justify-end items-end bg-transparent">
         {/* messages container */}
-        <div className="w-full mdl:w-[90%] h-full mdl:h-[90%] m-auto overflow-y-auto border-2">
-          {groupedMessages.length > 0 ? (
+        <div className="w-full mdl:w-[90%] h-full mdl:h-[90%] m-auto pr-2 overflow-y-auto ">
+          {groupedMessages?.length > 0 ? (
             groupedMessages?.map((value, key) => (
               <div
                 key={key}
                 className={`
                 ${key === groupedMessages?.length - 1 ? "h-[100%]" : ""}
-                  flex flex-col gap-y-5`}
+                  flex flex-col gap-y-5 mb-4`}
                 ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
               >
                 {value?.map((message, subKey) => (
                   <>
-                    <div className="flex flex-col gap-y-2">
-                      <div className="flex items-center gap-x-2">
+                    <div
+                      className={`flex flex-col gap-y-2 ${
+                        message.role === "user" ? "items-end" : "items-start"
+                      }`}
+                    >
+                      <div
+                        className={`flex ${
+                          message.role === "user"
+                            ? "flex-row-reverse"
+                            : "flex-row"
+                        } items-center gap-x-2`}
+                      >
                         <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                        <span className="font-subheading">{message?.role}</span>
+                        <span className="font-subheading">
+                          {message?.role === "user" ? "User" : "Yash"}
+                        </span>
                       </div>
-                      <div className="w-full mdl:w-[90%] ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content">
+                      <div
+                        className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ${
+                          message.role === "user"
+                            ? "m4-3 mdl:mr-3 bg-color3 text-color5"
+                            : "ml-3 mdl:ml-4 bg-color4 text-color1"
+                        } p-3 rounded-md font-content`}
+                      >
                         {/* <TypeItText text={WELCOME_MSG} /> */}
                         {message?.content}
                       </div>
                     </div>
-                    <div className="flex flex-col gap-y-2 items-end">
-                      <div className="flex flex-row-reverse items-center gap-x-2">
-                        <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                        <span className="font-subheading">User</span>
-                      </div>
-                      <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
-                        {/* {WELCOME_MSG} */}
-                        {aboutInfo?.map((value, key) => (
-                          <Button
-                            key={key}
-                            label={value.header}
-                            className={`px-3 py-2 capitalize border ${
-                              state?.selectedAboutSectionBtn?.toLowerCase() ===
-                              value?.header?.toLowerCase()
-                                ? "block"
-                                : "block"
-                            }`}
-                            onClick={() => {
-                              // alert(88);
-                              handleOptionClick("greeting");
-                            }}
-                          />
-                        ))}
-                        <Button
-                          label={"Reset"}
-                          onClick={() => setMessages([])}
-                        />
-                      </div>
-                    </div>
                   </>
                 ))}
+                {groupedMessages.length - 1 === key && (
+                  <div className="flex flex-col gap-y-2 items-end">
+                    <div className="flex flex-row-reverse items-center gap-x-2">
+                      <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                      <span className="font-subheading">User</span>
+                    </div>
+                    <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+                      {/* {WELCOME_MSG} */}
+                      {CHAT_USER_OPTIONS?.map((value, key) => (
+                        <Button
+                          key={key}
+                          label={value}
+                          className={`px-3 py-2 capitalize border ${
+                            state?.selectedAboutSectionBtn?.toLowerCase() ===
+                            value?.toLowerCase()
+                              ? "block"
+                              : "block"
+                          }`}
+                          onClick={() => {
+                            // alert(88);
+                            handleOptionClick(value);
+                          }}
+                        />
+                      ))}
+                      <Button
+                        disabled={state.messages?.length === 0}
+                        icon={"pi pi-refresh"}
+                        onClick={() => {
+                          setMessages([]);
+                          showToast("success", "Success", "Messages reset");
+                        }}
+                        className="border"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             ))
           ) : (
@@ -446,23 +502,33 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
                 </div>
                 <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
                   {/* {WELCOME_MSG} */}
-                  {aboutInfo?.map((value, key) => (
-                    <Button
-                      key={key}
-                      label={value.header}
-                      className={`px-3 py-2 capitalize border ${
-                        state?.selectedAboutSectionBtn?.toLowerCase() ===
-                        value?.header?.toLowerCase()
-                          ? "block"
-                          : "block"
-                      }`}
-                      onClick={() => {
-                        // alert(88);
-                        handleOptionClick("greeting");
-                      }}
-                    />
-                  ))}
-                  <Button label={"Reset"} onClick={() => setMessages([])} />
+                  {CHAT_USER_OPTIONS?.map((value, key) => {
+                    if (!value.includes("tell me more"))
+                      return (
+                        <Button
+                          key={key}
+                          label={value}
+                          className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
+                            state?.selectedAboutSectionBtn?.toLowerCase() ===
+                            value?.toLowerCase()
+                              ? "block"
+                              : "block"
+                          }`}
+                          onClick={() => {
+                            // alert(88);
+                            handleOptionClick(value);
+                          }}
+                        />
+                      );
+                  })}
+                  {/* <Button
+                    icon={"pi pi-refresh"}
+                    onClick={() => {
+                      setMessages([]);
+                      showToast("success", "Success", "Messages reset");
+                    }}
+                    className="border"
+                  /> */}
                 </div>
               </div>
             </div>

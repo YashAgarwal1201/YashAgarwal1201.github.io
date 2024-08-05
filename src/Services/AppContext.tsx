@@ -127,7 +127,7 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const setMessages = (newMessage: AboutMessage[]) => {
     dispatch({
       type: "SET_MESSAGES",
-      payload: [...state.messages, newMessage],
+      payload: newMessage, //[...state.messages, newMessage],
     });
   };
 

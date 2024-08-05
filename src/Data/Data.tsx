@@ -116,6 +116,22 @@ export const feedback = {
 export const WELCOME_MSG =
   "Hello there! \nThis is Yash Agarwal. Tell me what do you want to know about me?";
 
+export const CHAT_USER_OPTIONS = [
+  "tell me about yourself",
+  "tell me more...",
+  "your work",
+  "your education",
+  "how to connect with you",
+  "your personal projects",
+  "more options",
+];
+
+export const CHAT_USER_MORE_OPTIONS = [
+  "tell me about your faviourite movies",
+  "can you suggest me some?",
+  "Do you play sports?",
+];
+
 export const themes = [
   {
     name: "Google",

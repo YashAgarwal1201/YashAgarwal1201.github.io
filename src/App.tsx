@@ -16,6 +16,10 @@ function App() {
       type: "SET_TOAST_REF",
       payload: myToast.current as Toast,
     });
+
+    if (!state.messages) {
+      localStorage.removeItem(`yashAppData`);
+    }
   }, []);
 
   useEffect(() => {
@@ -38,10 +42,10 @@ function App() {
 
   return (
     // <ErrorBoundary>
-      <div className="w-screen h-[100dvh]">
-        <Toast ref={myToast} />
-        <Outlet />
-      </div>
+    <div className="w-screen h-[100dvh]">
+      <Toast ref={myToast} />
+      <Outlet />
+    </div>
     // </ErrorBoundary>
   );
 }
