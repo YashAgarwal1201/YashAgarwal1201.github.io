@@ -13,7 +13,6 @@ import { AboutMessage } from "../../../Services/Interfaces";
 const ChatComponent = () => {
   const {
     state,
-    // setModalContent,
     // setSelectedAboutSectionBtn,
     setMessages,
     showToast,
@@ -26,10 +25,10 @@ const ChatComponent = () => {
       // console.log(55);
       scrollToLastPair();
     }
-  }, []);
+  }, [state.messages]);
 
   const getResponse = (query: string) => {
-    if (query.includes("about yourself")) {
+    if (query?.toLowerCase()?.includes("about yourself")) {
       // Object.keys(CHAT_USER_OPTIONS).map((val, key) =>
       //   CHAT_USER_OPTIONS[key].title.includes("about yourself")
       //     ? (CHAT_USER_OPTIONS[key].visible = false)
@@ -103,7 +102,7 @@ const ChatComponent = () => {
                 <div
                   className={`flex ${
                     message.role === "user" ? "flex-row-reverse" : "flex-row"
-                  } items-center gap-x-2`}
+                  } items-center gap-x-2  text-xs sm:text-sm md:text-base`}
                 >
                   <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
                   <span className="font-subheading">
@@ -111,7 +110,7 @@ const ChatComponent = () => {
                   </span>
                 </div>
                 <div
-                  className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ${
+                  className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit  text-xs sm:text-sm md:text-base ${
                     message.role === "user"
                       ? "m4-3 mdl:mr-3 bg-color3 text-color5"
                       : "ml-3 mdl:ml-4 bg-color4 text-color1"
@@ -124,7 +123,7 @@ const ChatComponent = () => {
             ))}
             {groupedMessages.length - 1 === key && (
               <div className="flex flex-col gap-y-2 items-end">
-                <div className="flex flex-row-reverse items-center gap-x-2">
+                <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
                   <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
                   <span className="font-subheading">User</span>
                 </div>
@@ -136,7 +135,7 @@ const ChatComponent = () => {
                         <Button
                           key={key}
                           label={value.title}
-                          className={`px-3 py-2 capitalize border ${
+                          className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
                             state?.selectedAboutSectionBtn?.toLowerCase() ===
                             value?.title?.toLowerCase()
                               ? "block"
@@ -166,17 +165,17 @@ const ChatComponent = () => {
       ) : (
         <div className="flex flex-col gap-y-5">
           <div className="flex flex-col gap-y-2">
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center gap-x-2  text-xs sm:text-sm md:text-base">
               <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
               <span className="font-subheading">Yash</span>
             </div>
-            <div className="w-full mdl:w-[90%] ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content">
+            <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ml-3 mdl:ml-4 bg-color3 p-3 rounded-md font-content  text-xs sm:text-sm md:text-base">
               {/* <TypeItText text={WELCOME_MSG} /> */}
               {WELCOME_MSG}
             </div>
           </div>
           <div className="flex flex-col gap-y-2 items-end">
-            <div className="flex flex-row-reverse items-center gap-x-2">
+            <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
               <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
               <span className="font-subheading">User</span>
             </div>

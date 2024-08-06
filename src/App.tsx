@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import Cookies from "js-cookie";
 import { Toast } from "primereact/toast";
 import { Outlet } from "react-router-dom";
 
@@ -36,8 +37,37 @@ function App() {
       ?.setAttribute("content", color1);
   }, [state.themeSelected]);
 
+  // useEffect(() => {
+  //   localStorage.setItem(`yashAppData`, JSON.stringify(state));
+  // }, [state]);
+
+  // useEffect(() => {
+  //   Cookies.set("yashAppData", JSON.stringify(state), { expires: 1 / 24 }); // Expires in 7 days
+  // }, [state]);
+
   useEffect(() => {
-    localStorage.setItem(`yashAppData`, JSON.stringify(state));
+    // Check for the cookie ID
+    const cookieId = Cookies.get("appId");
+    const localStorageData = localStorage.getItem("yashAppData");
+
+    if (cookieId) {
+      // Update localStorage if cookie ID is present
+      if (localStorageData) {
+        const parsedData = JSON.parse(localStorageData);
+        if (parsedData) {
+          localStorage.setItem("yashAppData", JSON.stringify(state));
+        }
+      } else {
+        localStorage.setItem("yashAppData", JSON.stringify(state));
+      }
+    } else {
+      // Clear localStorage if cookie ID is not present
+      localStorage.clear();
+      // Generate a new unique ID and set it in the cookie
+      const newId = Date.now().toString();
+      Cookies.set("appId", newId, { expires: 2 / 24 }); // Set cookie for 7 days
+      localStorage.setItem("yashAppData", JSON.stringify(state));
+    }
   }, [state]);
 
   return (

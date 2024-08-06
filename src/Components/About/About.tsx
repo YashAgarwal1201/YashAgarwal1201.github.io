@@ -71,28 +71,10 @@ import {
 //   );
 // };
 
-// const responses = {
-//   greeting: "Hello! How can I help you today?",
-//   work: "I have worked at various companies, including XYZ Corp and ABC Ltd.",
-//   education:
-//     "I graduated from the University of Somewhere with a degree in Computer Science.",
-//   contact: "You can reach me at email@example.com.",
-//   projects:
-//     "I have worked on several projects, including a chat application and a portfolio website.",
-// };
-
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
-  const {
-    state,
-    setModalContent,
-    // setSelectedAboutSectionBtn,
-    // setMessages,
-    // showToast,
-  } = useAppContext();
+  const { state, setModalContent } = useAppContext();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  // const textRef = useRef(null);
-  // const lastPairRef = useRef<HTMLDivElement>(null);
 
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
@@ -204,74 +186,13 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (state.messages?.length > 0) {
-  //     // console.log(55);
-  //     scrollToLastPair();
-  //   }
-  // }, []);
-
-  // const getResponse = (query: string) => {
-  //   if (query.includes("about yourself")) {
-  //     // Object.keys(CHAT_USER_OPTIONS).map((val, key) =>
-  //     //   CHAT_USER_OPTIONS[key].title.includes("about yourself")
-  //     //     ? (CHAT_USER_OPTIONS[key].visible = false)
-  //     //     : ""
-  //     // );
-  //     return `Hey, this is ${primaryInfo.name}. I work as an ${primaryInfo.currentPosition} @ ${primaryInfo.currentOrganisation}`;
-  //   }
-  //   return query;
-  // };
-
-  // const handleOptionClick = (query: string) => {
-  //   // console.log("option:", option);
-  //   scrollToLastPair();
-  //   setShowOptions(false);
-
-  //   // Add user's selected option as a message
-  //   const userMessage: AboutMessage = {
-  //     content: query,
-  //     id: Date.now().toString(),
-  //     role: "user",
-  //   };
-
-  //   const response =
-  //     getResponse(query) || "Sorry, I don't have information on that.";
-
-  //   // Add bot's response as a message
-  //   const botMessage: AboutMessage = {
-  //     content: response,
-  //     id: (Date.now() + 1).toString(), // Ensure unique ID
-  //     role: "bot",
-  //   };
-
-  //   // Update the messages state with both messages
-  //   setMessages([...state.messages, userMessage, botMessage]);
-  // };
-
-  // const groupMessages = (messages: AboutMessage[]) => {
-  //   const grouped: AboutMessage[][] = [];
-  //   for (let i = 0; i < messages?.length; i += 2) {
-  //     grouped?.push(messages?.slice(i, i + 2));
-  //   }
-  //   return grouped;
-  // };
-
-  // const groupedMessages = Array.isArray(state.messages)
-  //   ? groupMessages(state.messages)
-  //   : [];
-
-  // const scrollToLastPair = () => {
-  //   lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
-
   return (
     <div
       ref={reference}
-      className="w-full h-full p-2 md:pb-1 md:pr-1 flex justify-center items-center snap-center snap-always"
+      className="w-full h-full p-2 md:pb-1 md:pr-1 flex flex-col mdl:flex-row justify-start mdl:justify-center items-center snap-center snap-always"
     >
       <div
-        className={`w-full mdl:w-1/2 h-full md:px-5 ${
+        className={`w-full mdl:w-1/2 h-fit mdl:h-full md:px-5 ${
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5`}
       >
@@ -285,7 +206,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           <br />
           contact and resume
         </p>
-        <div className="block mdl:hidden relative w-full h-full">
+        <div className="hidden mdl:hidden relative w-full h-full">
           <div
             className="w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
             id="aboutContent"
@@ -407,7 +328,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
         </div>
       </div>
 
-      <div className="w-0 mdl:w-1/2 h-1/2 mdl:h-full hidden mdl:flex justify-end items-end bg-transparent">
+      <div className="w-full mdl:w-1/2 h-auto mdl:h-full my-4 mdl:my-0 flex justify-end items-end bg-transparent">
         {/* messages container */}
 
         <ChatComponent />
