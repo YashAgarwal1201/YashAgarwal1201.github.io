@@ -3,7 +3,6 @@ import React, { createContext, useReducer } from "react";
 import { Toast } from "primereact/toast/toast";
 
 import {
-  AboutMessage,
   Action,
   ActionType,
   AppContextType,
@@ -21,7 +20,6 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
           : "fall", //"fall",
       selectedContentBtn: "home",
       selectedAboutSectionbtn: "work",
-      messages: [],
       toast: null,
       modalContent: {
         header: "",
@@ -59,13 +57,6 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       };
     }
 
-    case "SET_MESSAGES": {
-      return {
-        ...state,
-        messages: Array.isArray(action.payload) ? action.payload : [],
-      };
-    }
-
     case "SET_MODAL_CONTENT": {
       return {
         ...state,
@@ -90,7 +81,6 @@ const AppContext = createContext<AppContextType>({
   dispatch: () => null,
   setSelectedContent: () => null,
   setSelectedAboutSectionBtn: () => null,
-  setMessages: () => null,
   setThemeSelected: () => null,
   setModalContent: () => null,
   setEasyMode: () => null,
@@ -124,13 +114,6 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "SET_THEME_SELECTED", payload });
   };
 
-  const setMessages = (newMessage: AboutMessage[]) => {
-    dispatch({
-      type: "SET_MESSAGES",
-      payload: newMessage, //[...state.messages, newMessage],
-    });
-  };
-
   const setModalContent = (payload: ModalContent) => {
     dispatch({ type: "SET_MODAL_CONTENT", payload });
   };
@@ -144,7 +127,6 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch,
     setSelectedContent,
     setSelectedAboutSectionBtn,
-    setMessages,
     setThemeSelected,
     setModalContent,
     setEasyMode,

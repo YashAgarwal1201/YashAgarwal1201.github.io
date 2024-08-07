@@ -9,7 +9,6 @@ export interface State {
   themeSelected: string;
   selectedContentBtn: string;
   selectedAboutSectionBtn: string;
-  messages: AboutMessage[];
   toast: Toast | null;
   modalContent: ModalContent;
   easyMode: boolean;
@@ -41,7 +40,7 @@ export interface AppContextType {
   setSelectedContent: (payload: string) => void;
   setSelectedAboutSectionBtn: (payload: string) => void;
   setModalContent: (payload: ModalContent) => void;
-  setMessages: (payload: AboutMessage[]) => void;
+
   showToast: (
     severity: "success" | "info" | "warn" | "error" | undefined,
     summary: "Success" | "Info" | "Warning" | "Error",

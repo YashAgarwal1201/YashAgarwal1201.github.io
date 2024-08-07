@@ -20,8 +20,8 @@ function App() {
       payload: myToast.current as Toast,
     });
 
-    if (!state.messages) {
-      localStorage.removeItem(`yashAppData`);
+    if (!messageState.messages) {
+      sessionStorage.removeItem(`yashAppData`);
     }
   }, []);
 

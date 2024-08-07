@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
-// import TypeIt from "typeit";
 
 import "./About.scss";
 
@@ -10,66 +9,43 @@ import ContactLinks from "./ContactLinks/ContactLinks";
 import OtherProjects from "./OtherProjects/OtherProject";
 import {
   aboutInfo,
-  // CHAT_USER_OPTIONS,
   // primaryInfo,
-  // WELCOME_MSG,
 } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
-import {
-  // AboutMessage,
-  AboutProps,
-  ModalContent,
-} from "../../Services/Interfaces";
+import { AboutProps, ModalContent } from "../../Services/Interfaces";
 
-// const TypeItText = ({ text, speed = 50 }) => {
-//   const textRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     if (textRef.current) {
-//       new TypeIt(textRef.current, {
-//         strings: [text],
-//         speed,
-//         waitUntilVisible: true,
-//         loop: false,
-//       }).go();
-//     }
-//   }, [text, speed]);
-
-//   return <div ref={textRef} />;
-// };
-
-// const ScrollLeftRightBtns = ({
-//   isScrollLeftDisabled,
-//   isScrollRightDisabled,
-//   scrollLeftRight,
-// }: {
-//   isScrollLeftDisabled: boolean;
-//   isScrollRightDisabled: boolean;
-//   scrollLeftRight: (offset: number) => void;
-// }) => {
-//   return (
-//     <>
-//       <Button
-//         disabled={isScrollLeftDisabled}
-//         icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
-//         rounded
-//         className="bg-color3 text-color1 shadow-md mdl:shadow-none"
-//         onClick={() => scrollLeftRight(-200)}
-//         title="scroll left"
-//       />
-//       <Button
-//         disabled={isScrollRightDisabled}
-//         icon={
-//           <span className="material-symbols-rounded">arrow_forward_ios</span>
-//         }
-//         rounded
-//         className="bg-color3 text-color1 shadow-md mdl:shadow-none"
-//         onClick={() => scrollLeftRight(200)}
-//         title="scroll right"
-//       />
-//     </>
-//   );
-// };
+const ScrollLeftRightBtns = ({
+  isScrollLeftDisabled,
+  isScrollRightDisabled,
+  scrollLeftRight,
+}: {
+  isScrollLeftDisabled: boolean;
+  isScrollRightDisabled: boolean;
+  scrollLeftRight: (offset: number) => void;
+}) => {
+  return (
+    <>
+      <Button
+        disabled={isScrollLeftDisabled}
+        icon={<span className="material-symbols-rounded">arrow_back_ios</span>}
+        rounded
+        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
+        onClick={() => scrollLeftRight(-200)}
+        title="scroll left"
+      />
+      <Button
+        disabled={isScrollRightDisabled}
+        icon={
+          <span className="material-symbols-rounded">arrow_forward_ios</span>
+        }
+        rounded
+        className="bg-color3 text-color1 shadow-md mdl:shadow-none"
+        onClick={() => scrollLeftRight(200)}
+        title="scroll right"
+      />
+    </>
+  );
+};
 
 const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
   const { state, setModalContent } = useAppContext();
@@ -78,7 +54,6 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
 
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
-  // const [showOptions, setShowOptions] = useState(true);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const [lessThan768px, setLessThan768px] = useState(false);
 
@@ -201,7 +176,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           <br />
           <span className="font-subheading text-color5">about me...</span>
         </h1>
-        <p className="w-full text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
+        <p className="w-full hidden mdl:block text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
           my education, working experience,
           <br />
           contact and resume
@@ -318,21 +293,21 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
             </div>
           </div>
 
-          {/* <div className="absolute top-0 bottom-0 md:bottom-5 right-0 flex mdl:hidden flex-col-reverse gap-2">
+          <div className="absolute top-0 bottom-0 md:bottom-5 right-0 hidden mdl:hidden flex-col-reverse gap-2">
             <ScrollLeftRightBtns
               isScrollLeftDisabled={isScrollLeftDisabled}
               isScrollRightDisabled={isScrollRightDisabled}
               scrollLeftRight={scrollLeftRight}
             />
-          </div> */}
+          </div>
         </div>
       </div>
 
       <div className="w-full mdl:w-1/2 h-auto mdl:h-full my-4 mdl:my-0 flex justify-end items-end bg-transparent">
         {/* messages container */}
-
         <ChatComponent />
-        {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+
+        <div className="hidden mdl:hidden w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">
@@ -346,7 +321,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -97,14 +97,15 @@ import {
   MessageState,
 } from "./MessagesTypesAndInterfaces";
 import { CHAT_USER_OPTIONS } from "../../Data/Data";
+import { AboutMessage } from "../Interfaces";
 
 const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
   ? JSON.parse(sessionStorage.getItem(`yashAppMsgData`) as string)
   : {
+      messages: [],
       showOptions: true,
       options: CHAT_USER_OPTIONS,
       showMoreOptions: false,
-      // messages: [],
     };
 
 const reducer = (
@@ -112,6 +113,14 @@ const reducer = (
   action: Action<ActionType>
 ): MessageState => {
   switch (action.type) {
+    case "SET_MESSAGES": {
+      return {
+        ...messageState,
+        messages: Array.isArray(action.payload)
+          ? (action.payload as AboutMessage[])
+          : [],
+      };
+    }
     case "SET_CHAT_OPTIONS": {
       return { ...messageState, options: action.payload as ChatOption[] };
     }
@@ -129,6 +138,7 @@ const reducer = (
 const MsgAppContext = createContext<AppContextType>({
   messageState: initialState,
   dispatch: () => null,
+  setMessages: () => null,
   setShowOptions: () => null,
   setShowMoreOptions: () => null,
   // setMessages: () => null,
@@ -138,6 +148,13 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [messageState, dispatch] = useReducer(reducer, initialState);
+
+  const setMessages = (newMessage: AboutMessage[]) => {
+    dispatch({
+      type: "SET_MESSAGES",
+      payload: newMessage, //[...state.messages, newMessage],
+    });
+  };
 
   const setShowOptions = (showOptions: boolean) => {
     dispatch({ type: "SET_SHOW_OPTIONS", payload: showOptions });
@@ -157,6 +174,7 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const contextValue: AppContextType = {
     messageState,
     dispatch,
+    setMessages,
     setShowOptions,
     setShowMoreOptions,
     // setMessages,

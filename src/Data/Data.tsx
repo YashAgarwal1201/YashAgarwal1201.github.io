@@ -132,6 +132,14 @@ export const CHAT_USER_MORE_OPTIONS = [
   "Do you play sports?",
 ];
 
+export const TECHOLUTION_PROJECTS = [
+  "Owens & Minors",
+  "One Stop Demo Shop",
+  "Alan for Talent Fountain",
+  "Employee Handbook",
+  "Techolution Website",
+];
+
 export const themes = [
   {
     name: "Google",

@@ -1,9 +1,12 @@
 import { Dispatch } from "react";
 
+import { AboutMessage } from "../Interfaces";
+
 export type Action<T> = { type: string; payload?: T };
 
 export interface MessageState {
   [key: string]: any;
+  messages: AboutMessage[];
   showOptions: boolean;
   options: ChatOption[];
   showMoreOptions: boolean;
@@ -20,13 +23,14 @@ export type ActionType =
   | null
   | ChatOption
   | ChatOption[]
-  // | AboutMessage
-  // | AboutMessage[]
+  | AboutMessage
+  | AboutMessage[]
   | { key: string; value: boolean };
 
 export interface AppContextType {
   messageState: MessageState;
   dispatch: Dispatch<Action<ActionType>>;
+  setMessages: (payload: AboutMessage[]) => void;
   setShowOptions: (showOptions: boolean) => void;
   setShowMoreOptions: (showMoreOptions: boolean) => void;
 }
@@ -36,9 +40,3 @@ export type dispatchParamType = {
   contextStateKey: string;
   payload: any;
 };
-
-// export type AboutMessage = {
-//   content: string;
-//   id: string;
-//   role: string;
-// };
