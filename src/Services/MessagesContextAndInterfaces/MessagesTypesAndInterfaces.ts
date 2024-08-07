@@ -1,58 +1,34 @@
-import { Dispatch, RefObject } from "react";
-
-import { Toast } from "primereact/toast";
+import { Dispatch } from "react";
 
 export type Action<T> = { type: string; payload?: T };
 
-export interface State {
+export interface MessageState {
   [key: string]: any;
-  themeSelected: string;
-  selectedContentBtn: string;
-  selectedAboutSectionBtn: string;
-  messages: AboutMessage[];
-  toast: Toast | null;
-  modalContent: ModalContent;
-  easyMode: boolean;
+  showOptions: boolean;
+  options: ChatOption[];
+  showMoreOptions: boolean;
 }
 
-export interface ToastInterface {
-  severity: "success" | "info" | "warn" | "error" | undefined;
-  summary: "Success" | "Info" | "Warning" | "Error";
-  detail: string;
-  life?: number;
-}
+export type ChatOption = {
+  title: string;
+  visible: boolean;
+};
 
 export type ActionType =
-  | Toast
   | boolean
   | string
   | null
-  | ToastInterface
-  | AboutMessage
-  | AboutMessage[]
-  | { title: string; url: string; type: string }
+  | ChatOption
+  | ChatOption[]
+  // | AboutMessage
+  // | AboutMessage[]
   | { key: string; value: boolean };
 
 export interface AppContextType {
-  state: State;
+  messageState: MessageState;
   dispatch: Dispatch<Action<ActionType>>;
-  setThemeSelected: (payload: string) => void;
-  setEasyMode: (payload: boolean) => void;
-  setSelectedContent: (payload: string) => void;
-  setSelectedAboutSectionBtn: (payload: string) => void;
-  setModalContent: (payload: ModalContent) => void;
-  setMessages: (payload: AboutMessage[]) => void;
-  showToast: (
-    severity: "success" | "info" | "warn" | "error" | undefined,
-    summary: "Success" | "Info" | "Warning" | "Error",
-    detail: string,
-    life?: number
-  ) => void;
-}
-
-export interface ModalContent {
-  header: string;
-  body: any;
+  setShowOptions: (showOptions: boolean) => void;
+  setShowMoreOptions: (showMoreOptions: boolean) => void;
 }
 
 export type dispatchParamType = {
@@ -61,20 +37,8 @@ export type dispatchParamType = {
   payload: any;
 };
 
-export type HomeProps = { reference: RefObject<HTMLDivElement> };
-
-export type AboutProps = {
-  reference: RefObject<HTMLDivElement>;
-  setExpandAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export type FeedbackProps = {
-  reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
-  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export type AboutMessage = {
-  content: string;
-  id: string;
-  role: string;
-};
+// export type AboutMessage = {
+//   content: string;
+//   id: string;
+//   role: string;
+// };

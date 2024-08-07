@@ -1,169 +1,184 @@
+// import React, { createContext, useReducer } from "react";
+
+// import {
+//   // AboutMessage,
+//   Action,
+//   ActionType,
+//   AppContextType,
+//   ChatOption,
+//   MessageState,
+// } from "./MessagesTypesAndInterfaces";
+// import { CHAT_USER_OPTIONS } from "../../Data/Data";
+
+// const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
+//   ? JSON.parse(sessionStorage.getItem(`yashAppMsgData`) as string)
+//   : {
+//       showOptions: true,
+//       options: CHAT_USER_OPTIONS,
+//       // messages: [],
+//     };
+
+// const reducer = (
+//   messageState: MessageState,
+//   action: Action<ActionType> | any
+// ): MessageState => {
+//   // const { contextStateKey, payload } = (action?.payload as 'contextStateKey' | 'payload') ?? {};
+
+//   switch (action.type) {
+
+//     case "SET_CHAT_OPTIONS": {
+//       return { ...messageState, options: action.payload as ChatOption[] };
+//     }
+//     case "SET_SHOW_OPTIONS": {
+//       return { ...messageState, showOptions: action.payload as boolean };
+//     }
+
+//     default:
+//       return messageState;
+//   }
+// };
+
+// const MsgAppContext = createContext<AppContextType>({
+//   messageState: initialState,
+//   dispatch: () => null,
+//   setShowOptions: () => null
+//   // setMessages: () => null,
+// });
+
+// const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
+//   children,
+// }) => {
+//   const [messageState, dispatch] = useReducer(reducer, initialState);
+
+//   const setShowOptions: (showOptions: boolean) => {
+//     dispatch({type: "SET_SHOW_OPTIONS", payload: showOptions})
+//   }
+
+//   // const setMessages = (newMessage: AboutMessage[]) => {
+//   //   dispatch({
+//   //     type: "SET_MESSAGES",
+//   //     payload: newMessage, //[...state.messages, newMessage],
+//   //   });
+//   // };
+
+//   const contextValue: AppContextType = {
+//     messageState,
+//     dispatch,
+//     setShowOptions
+//     // setMessages,
+//   };
+
+//   return (
+//     <MsgAppContext.Provider value={contextValue}>
+//       {children}
+//     </MsgAppContext.Provider>
+//   );
+// };
+
+// const useAppContext = () => {
+//   const context = React.useContext<AppContextType>(MsgAppContext);
+
+//   if (context === undefined) {
+//     throw new Error("useAppContext must be used within a AppContextProvider");
+//   }
+
+//   return context;
+// };
+
+// export { MsgAppContext, MsgAppContextProvider, useAppContext };
+
 import React, { createContext, useReducer } from "react";
 
-import { Toast } from "primereact/toast/toast";
-
 import {
-  AboutMessage,
   Action,
   ActionType,
   AppContextType,
-  ModalContent,
-  State,
-} from "./Interfaces";
+  ChatOption,
+  MessageState,
+} from "./MessagesTypesAndInterfaces";
+import { CHAT_USER_OPTIONS } from "../../Data/Data";
 
-const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_${window.name}`)
-  ? JSON.parse(localStorage.getItem(`yashAppData`) as string) //(`yashAppData_${window.name}`) as string)
+const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
+  ? JSON.parse(sessionStorage.getItem(`yashAppMsgData`) as string)
   : {
-      themeSelected:
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "night"
-          : "fall", //"fall",
-      selectedContentBtn: "home",
-      selectedAboutSectionbtn: "work",
-      messages: [],
-      toast: null,
-      modalContent: {
-        header: "",
-        body: "",
-      },
-      easyMode: false,
+      showOptions: true,
+      options: CHAT_USER_OPTIONS,
+      showMoreOptions: false,
+      // messages: [],
     };
 
-const reducer = (state: State, action: Action<ActionType> | any): State => {
-  // const { contextStateKey, payload } = (action?.payload as 'contextStateKey' | 'payload') ?? {};
-
+const reducer = (
+  messageState: MessageState,
+  action: Action<ActionType>
+): MessageState => {
   switch (action.type) {
-    case "SET_TOAST_REF": {
-      return { ...state, toast: action.payload as Toast };
+    case "SET_CHAT_OPTIONS": {
+      return { ...messageState, options: action.payload as ChatOption[] };
     }
-
-    case "SET_THEME_SELECTED": {
-      return {
-        ...state,
-        themeSelected: action.payload as string,
-      };
+    case "SET_SHOW_OPTIONS": {
+      return { ...messageState, showOptions: action.payload as boolean };
     }
-
-    case "SET_SELECTED_CONTENT_BTN": {
-      return {
-        ...state,
-        selectedContentBtn: action.payload as string,
-      };
+    case "SET_SHOW_MORE_OPTIONS": {
+      return { ...messageState, showMoreOptions: action.payload as boolean };
     }
-
-    case "SET_SELECTED_ABOUT_SECTION_BTN": {
-      return {
-        ...state,
-        selectedAboutSectionBtn: action.payload as string,
-      };
-    }
-
-    case "SET_MESSAGES": {
-      return {
-        ...state,
-        messages: Array.isArray(action.payload) ? action.payload : [],
-      };
-    }
-
-    case "SET_MODAL_CONTENT": {
-      return {
-        ...state,
-        modalContent: action.payload as ModalContent,
-      };
-    }
-
-    case "SET_EASY_MODE": {
-      return {
-        ...state,
-        easyMode: action.payload as boolean,
-      };
-    }
-
     default:
-      return state;
+      return messageState;
   }
 };
 
-const AppContext = createContext<AppContextType>({
-  state: initialState,
+const MsgAppContext = createContext<AppContextType>({
+  messageState: initialState,
   dispatch: () => null,
-  setSelectedContent: () => null,
-  setSelectedAboutSectionBtn: () => null,
-  setMessages: () => null,
-  setThemeSelected: () => null,
-  setModalContent: () => null,
-  setEasyMode: () => null,
-  showToast: () => null,
+  setShowOptions: () => null,
+  setShowMoreOptions: () => null,
+  // setMessages: () => null,
 });
 
-const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
+const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [messageState, dispatch] = useReducer(reducer, initialState);
 
-  const showToast = (
-    severity: "success" | "info" | "warn" | "error" | undefined,
-    summary: "Success" | "Info" | "Warning" | "Error",
-    detail: string,
-    life?: number
-  ) => {
-    // state.toast?.clear();
-    state.toast?.show({ severity, summary, detail, life });
+  const setShowOptions = (showOptions: boolean) => {
+    dispatch({ type: "SET_SHOW_OPTIONS", payload: showOptions });
   };
 
-  const setSelectedContent = (payload: string) => {
-    dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload });
+  const setShowMoreOptions = (showMoreOptions: boolean) => {
+    dispatch({ type: "SET_SHOW_MORE_OPTIONS", payload: showMoreOptions });
   };
 
-  const setSelectedAboutSectionBtn = (payload: string) => {
-    dispatch({ type: "SET_SELECTED_ABOUT_SECTION_BTN", payload });
-  };
-
-  const setThemeSelected = (payload: string) => {
-    dispatch({ type: "SET_THEME_SELECTED", payload });
-  };
-
-  const setMessages = (newMessage: AboutMessage[]) => {
-    dispatch({
-      type: "SET_MESSAGES",
-      payload: newMessage, //[...state.messages, newMessage],
-    });
-  };
-
-  const setModalContent = (payload: ModalContent) => {
-    dispatch({ type: "SET_MODAL_CONTENT", payload });
-  };
-
-  const setEasyMode = (payload: boolean) => {
-    dispatch({ type: "SET_EASY_MODE", payload });
-  };
+  // const setMessages = (newMessage: AboutMessage[]) => {
+  //   dispatch({
+  //     type: "SET_MESSAGES",
+  //     payload: newMessage, //[...state.messages, newMessage],
+  //   });
+  // };
 
   const contextValue: AppContextType = {
-    state,
+    messageState,
     dispatch,
-    setSelectedContent,
-    setSelectedAboutSectionBtn,
-    setMessages,
-    setThemeSelected,
-    setModalContent,
-    setEasyMode,
-    showToast,
+    setShowOptions,
+    setShowMoreOptions,
+    // setMessages,
   };
 
   return (
-    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
+    <MsgAppContext.Provider value={contextValue}>
+      {children}
+    </MsgAppContext.Provider>
   );
 };
 
-const useAppContext = () => {
-  const context = React.useContext<AppContextType>(AppContext);
+const useMsgAppContext = () => {
+  const context = React.useContext(MsgAppContext);
 
   if (context === undefined) {
-    throw new Error("useAppContext must be used within a AppContextProvider");
+    throw new Error(
+      "useAppContext must be used within a MsgAppContextProvider"
+    );
   }
 
   return context;
 };
 
-export { AppContext, AppContextProvider, useAppContext };
+export { MsgAppContext, MsgAppContextProvider, useMsgAppContext };

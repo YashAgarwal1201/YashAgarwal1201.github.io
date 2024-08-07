@@ -9,6 +9,7 @@ import {
 } from "../../../Data/Data";
 import { useAppContext } from "../../../Services/AppContext";
 import { AboutMessage } from "../../../Services/Interfaces";
+import { useMsgAppContext } from "../../../Services/MessagesContextAndInterfaces/MessagesContext";
 
 const ChatComponent = () => {
   const {
@@ -17,6 +18,8 @@ const ChatComponent = () => {
     setMessages,
     showToast,
   } = useAppContext();
+
+  const { messageState } = useMsgAppContext();
 
   const lastPairRef = useRef<HTMLDivElement>(null);
 
@@ -128,26 +131,26 @@ const ChatComponent = () => {
                   <span className="font-subheading">User</span>
                 </div>
                 <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
-                  {/* {WELCOME_MSG} */}
-                  {CHAT_USER_OPTIONS?.map((value, key) => {
-                    if (value.visible)
-                      return (
-                        <Button
-                          key={key}
-                          label={value.title}
-                          className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
-                            state?.selectedAboutSectionBtn?.toLowerCase() ===
-                            value?.title?.toLowerCase()
-                              ? "block"
-                              : "block"
-                          }`}
-                          onClick={() => {
-                            // alert(88);
-                            handleOptionClick(value.title);
-                          }}
-                        />
-                      );
-                  })}
+                  {messageState.showOptions &&
+                    CHAT_USER_OPTIONS?.map((value, key) => {
+                      if (value.visible)
+                        return (
+                          <Button
+                            key={key}
+                            label={value.title}
+                            className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
+                              state?.selectedAboutSectionBtn?.toLowerCase() ===
+                              value?.title?.toLowerCase()
+                                ? "block"
+                                : "block"
+                            }`}
+                            onClick={() => {
+                              // alert(88);
+                              handleOptionClick(value.title);
+                            }}
+                          />
+                        );
+                    })}
                   <Button
                     disabled={state.messages?.length === 0}
                     icon={"pi pi-refresh"}
@@ -181,25 +184,26 @@ const ChatComponent = () => {
             </div>
             <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
               {/* {WELCOME_MSG} */}
-              {CHAT_USER_OPTIONS?.map((value, key) => {
-                if (value?.visible)
-                  return (
-                    <Button
-                      key={key}
-                      label={value.title}
-                      className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
-                        state?.selectedAboutSectionBtn?.toLowerCase() ===
-                        value?.title?.toLowerCase()
-                          ? "block"
-                          : "block"
-                      }`}
-                      onClick={() => {
-                        // alert(88);
-                        handleOptionClick(value.title);
-                      }}
-                    />
-                  );
-              })}
+              {messageState.showOptions &&
+                CHAT_USER_OPTIONS?.map((value, key) => {
+                  if (value?.visible)
+                    return (
+                      <Button
+                        key={key}
+                        label={value?.title}
+                        className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border ${
+                          state?.selectedAboutSectionBtn?.toLowerCase() ===
+                          value?.title?.toLowerCase()
+                            ? "block"
+                            : "block"
+                        }`}
+                        onClick={() => {
+                          // alert(88);
+                          handleOptionClick(value?.title);
+                        }}
+                      />
+                    );
+                })}
               {/* <Button
             icon={"pi pi-refresh"}
             onClick={() => {
