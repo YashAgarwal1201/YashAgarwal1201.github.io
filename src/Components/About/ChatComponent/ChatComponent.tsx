@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 
 import { Button } from "primereact/button";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 import {
-  aboutInfo,
   CHAT_USER_OPTIONS,
   primaryInfo,
   TECHOLUTION_PROJECTS,
@@ -12,7 +13,6 @@ import {
 import { useAppContext } from "../../../Services/AppContext";
 import { AboutMessage } from "../../../Services/Interfaces";
 import { useMsgAppContext } from "../../../Services/MessagesContextAndInterfaces/MessagesContext";
-import ContactLinks from "../ContactLinks/ContactLinks";
 
 // const TypeItText = ({ text, speed = 50 }) => {
 //   const textRef = useRef<HTMLDivElement | null>(null);
@@ -44,60 +44,53 @@ const ChatComponent = () => {
     }
   }, [messageState.messages]);
 
-  const getResponse = (query: string) => {
-    if (query?.toLowerCase()?.includes("about yourself")) {
-      return `Hey, this is ${primaryInfo.name}. I work as an ${primaryInfo.currentPosition} @ ${primaryInfo.currentOrganisation}.`;
-    } else if (query?.toLowerCase()?.includes("your work")) {
-      return (
-        <>
-          <p>
-            I am currently working as an {primaryInfo.currentPosition} at{" "}
-            {primaryInfo.currentOrganisation}
-          </p>
-          <div>
-            <p>
-              At {primaryInfo.currentOrganisation}, I have worked on projects
-              like:
-            </p>
-            <ul>
-              {TECHOLUTION_PROJECTS.map((values, key) => (
-                <li key={key} className="list-inside">
-                  {values}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      );
-    } else if (query?.toLowerCase()?.includes("connect with you")) {
-      return (
-        <>
-          <p>Connect with me:</p>
-          <ContactLinks content={aboutInfo[aboutInfo.length - 1].content} />
-        </>
-      );
-    } else if (query?.toLowerCase()?.includes("your education")) {
-      return (
-        <>
-          <p>My education:</p>
-          <ul>
-            <li className="list-inside">
-              I have completed my graduation in Bachelor of Techology in 2022
-              from DIT University, Dehradun, India.
-            </li>
-            <li className="list-inside">
-              Before that In 2018, I completed my Intermediate (12th standard)
-              education from Modern Era Public School, Bijnor, India.
-            </li>
-          </ul>
-        </>
-      );
+  const getResponse = (query: string): string => {
+    const lowerQuery = query?.toLowerCase();
+
+    if (lowerQuery?.includes("about yourself")) {
+      return `Hey, this is **${primaryInfo.name}**. I work as an **${primaryInfo.currentPosition}** @ **${primaryInfo.currentOrganisation}**.`;
+    } else if (lowerQuery?.includes("your work")) {
+      return `
+  I am currently working as an **${primaryInfo.currentPosition}** at **${
+        primaryInfo.currentOrganisation
+      }**.
+  
+  Here are some projects I've worked on at ${primaryInfo.currentOrganisation}:
+  
+  * ${TECHOLUTION_PROJECTS.join("\n* ")}
+          `;
+    } else if (lowerQuery?.includes("connect with you")) {
+      return `
+  Connect with me:
+  <div className="flex items-center justify-center gap-x-2">
+  <a href="mailto:legoyashx@hotmail.com" title="Click to copy my email id" className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"><span
+                  className="pi pi-envelope text-xl md:text-2xl"
+                ></span></a>
+<a href="https://www.linkedin.com/in/yash-a-a669b2237" title="Click to view my LinkedIn profile" target="_blank" className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"><span
+                  className="pi pi-linkedin text-xl md:text-2xl"
+                ></span></a>
+<a href="https://github.com/YashAgarwal1201" title="Click to check my GitHub profile" target="_blank" className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"><span
+                  className="pi pi-github text-xl md:text-2xl"
+                ></span></a>
+<a href="https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link" title="Click to see my resume" target="_blank" className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"><span
+                  className="pi pi-id-card text-xl md:text-2xl"
+                ></span></a>
+<a href="https://t.me/legoyashx" title="Click to connect on Telegram" target="_blank" className="w-12 md:w-16 h-12 md:h-16 flex justify-center items-center bg-color4 text-color1 text-xl md:text-2xl rounded-full cursor-pointer"><span
+                  className="pi pi-telegram text-xl md:text-2xl"
+                ></span></a>
+</div>
+          `;
+    } else if (lowerQuery?.includes("your education")) {
+      return `
+  ## My Education:
+  
+  * I completed my graduation in Bachelor of Technology in 2022 from DIT University, Dehradun, India.
+  * Before that, in 2018, I completed my Intermediate (12th standard) education from Modern Era Public School, Bijnor, India.
+          `;
     } else {
-      return (
-        <>
-          <p>Sorry but no info right now</p>
-        </>
-      );
+      return `
+  Sorry, but I don't have any information on that right now.
+          `;
     }
   };
 
@@ -149,8 +142,8 @@ const ChatComponent = () => {
           <div
             key={key}
             className={`
-        ${key === groupedMessages?.length - 1 ? "h-[100%]" : ""}
-          flex flex-col gap-y-5 mb-4`}
+        ${key === groupedMessages?.length - 1 ? "h-[99%] mb-0" : "mb-4"}
+          flex flex-col gap-y-5`}
             ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
           >
             {value?.map((message, subKey) => (
@@ -178,7 +171,10 @@ const ChatComponent = () => {
                   } p-3 rounded-md font-content`}
                 >
                   {/* <TypeItText text={WELCOME_MSG} /> */}
-                  {message?.content}
+                  {/* {message?.content} */}
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                    {message?.content}
+                  </ReactMarkdown>
                 </div>
               </div>
             ))}
