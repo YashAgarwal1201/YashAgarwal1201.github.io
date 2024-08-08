@@ -47,12 +47,17 @@ const ChatComponent = ({
   const lastPairRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    scrollToLastPair();
+    // scrollToLastPair();
+    setTimeout(() => {
+      scrollToLastPair();
+    }, 1000);
   }, []);
 
   useEffect(() => {
     if (messageState.messages?.length > 0) {
+      // setTimeout(() => {
       scrollToLastPair();
+      // }, 1000);
     }
   }, [messageState.messages]);
 
@@ -123,7 +128,7 @@ const ChatComponent = ({
         window.innerWidth < 768 ? "bottom" : state.easyMode ? "right" : "center"
       }
     >
-      <div className="w-full h-full m-auto p-2 overflow-y-auto  bg-color2 shadow-md rounded-md">
+      <div className="w-full h-full m-auto p-2 overflow-y-auto  bg-color2 shadow-md rounded-md contentBody">
         {groupedMessages?.length > 0 ? (
           groupedMessages?.map((value, key) => (
             <div
@@ -171,7 +176,7 @@ const ChatComponent = ({
                     <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
                     <span className="font-subheading">User</span>
                   </div>
-                  <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+                  <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content text-color5">
                     {messageState.showOptions
                       ? CHAT_USER_OPTIONS?.map((value, key) => {
                           if (value.visible)
