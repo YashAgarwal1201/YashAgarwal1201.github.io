@@ -20,8 +20,8 @@ const Header = ({
     "text-color5 bg-transparent border-2 border-transparent";
 
   return (
-    <div className="w-full lg:w-[75px] h-[60px] lg:h-full relative">
-      <div className="w-full lg:w-[75px] h-[60px] lg:h-full flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
+    <div className="w-full lg:w-[75px] h-12 lg:h-full relative">
+      <div className="w-full lg:w-[75px] h-12 lg:h-full flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
         <Button
           title="Home page"
           icon={<span className="material-symbols-rounded">home</span>}
@@ -29,7 +29,7 @@ const Header = ({
             state.selectedContentBtn === "home"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16`}
+          } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("home");
           }}
@@ -41,7 +41,7 @@ const Header = ({
             state.selectedContentBtn === "about"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16`}
+          } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("about");
           }}
@@ -53,7 +53,7 @@ const Header = ({
             state.selectedContentBtn === "feedback"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-14 lg:w-16 h-full lg:h-16`}
+          } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("feedback");
           }}
@@ -61,7 +61,7 @@ const Header = ({
         <Button
           title="Settings & others"
           icon={<span className="material-symbols-rounded">settings</span>}
-          className={`${normalButtonStyles} hover:border-transparent  w-14 lg:w-16 h-full lg:h-16 lg:hidden`}
+          className={`${normalButtonStyles} hover:border-transparent  w-12 lg:w-16 h-full lg:h-16 lg:hidden`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>
@@ -69,7 +69,7 @@ const Header = ({
         <Button
           title="Settings & others"
           icon={<span className="material-symbols-rounded">settings</span>}
-          className={`${normalButtonStyles} hover:border-transparent  w-14 lg:w-16 h-full lg:h-16`}
+          className={`${normalButtonStyles} hover:border-transparent  w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>

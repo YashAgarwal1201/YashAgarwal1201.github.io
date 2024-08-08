@@ -1,4 +1,4 @@
-import { Dispatch, RefObject } from "react";
+import React, { Dispatch, ReactElement, RefObject } from "react";
 
 import { Toast } from "primereact/toast";
 
@@ -8,6 +8,7 @@ export interface State {
   [key: string]: any;
   themeSelected: string;
   selectedContentBtn: string;
+  selectedAboutSectionBtn: string;
   toast: Toast | null;
   modalContent: ModalContent;
   easyMode: boolean;
@@ -26,6 +27,8 @@ export type ActionType =
   | string
   | null
   | ToastInterface
+  | AboutMessage
+  | AboutMessage[]
   | { title: string; url: string; type: string }
   | { key: string; value: boolean };
 
@@ -35,7 +38,9 @@ export interface AppContextType {
   setThemeSelected: (payload: string) => void;
   setEasyMode: (payload: boolean) => void;
   setSelectedContent: (payload: string) => void;
+  setSelectedAboutSectionBtn: (payload: string) => void;
   setModalContent: (payload: ModalContent) => void;
+
   showToast: (
     severity: "success" | "info" | "warn" | "error" | undefined,
     summary: "Success" | "Info" | "Warning" | "Error",
@@ -65,4 +70,10 @@ export type AboutProps = {
 export type FeedbackProps = {
   reference: RefObject<HTMLDivElement>; //React.MutableRefObject<null>;
   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type AboutMessage = {
+  content: any;
+  id: string;
+  role: string;
 };

@@ -19,6 +19,7 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
           ? "night"
           : "fall", //"fall",
       selectedContentBtn: "home",
+      selectedAboutSectionbtn: "work",
       toast: null,
       modalContent: {
         header: "",
@@ -49,6 +50,13 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       };
     }
 
+    case "SET_SELECTED_ABOUT_SECTION_BTN": {
+      return {
+        ...state,
+        selectedAboutSectionBtn: action.payload as string,
+      };
+    }
+
     case "SET_MODAL_CONTENT": {
       return {
         ...state,
@@ -72,6 +80,7 @@ const AppContext = createContext<AppContextType>({
   state: initialState,
   dispatch: () => null,
   setSelectedContent: () => null,
+  setSelectedAboutSectionBtn: () => null,
   setThemeSelected: () => null,
   setModalContent: () => null,
   setEasyMode: () => null,
@@ -97,6 +106,10 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload });
   };
 
+  const setSelectedAboutSectionBtn = (payload: string) => {
+    dispatch({ type: "SET_SELECTED_ABOUT_SECTION_BTN", payload });
+  };
+
   const setThemeSelected = (payload: string) => {
     dispatch({ type: "SET_THEME_SELECTED", payload });
   };
@@ -113,6 +126,7 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     state,
     dispatch,
     setSelectedContent,
+    setSelectedAboutSectionBtn,
     setThemeSelected,
     setModalContent,
     setEasyMode,

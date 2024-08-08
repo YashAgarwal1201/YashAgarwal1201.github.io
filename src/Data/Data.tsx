@@ -34,6 +34,25 @@ const contactLinks = [
 
 export const aboutInfo = [
   {
+    header: "Work",
+    content: [
+      {
+        year: "December, 2022 - June, 2023",
+        description: "UI Developer - Intern @ Techolution, India.",
+        projects: ["One stop demo shop", "Employee Handbook"],
+      },
+      {
+        year: "July, 2023 - present",
+        description: "Associate UI Developer @ Techolution, India.",
+        projects: [
+          "Alan for talent fountain",
+          "Owens & Minor",
+          "Techolution website",
+        ],
+      },
+    ],
+  },
+  {
     header: "Education",
     content: [
       {
@@ -54,25 +73,7 @@ export const aboutInfo = [
       },
     ],
   },
-  {
-    header: "Work",
-    content: [
-      {
-        year: "December, 2022 - June, 2023",
-        description: "UI Developer - Intern @ Techolution, India.",
-        projects: ["One stop demo shop", "Employee Handbook"],
-      },
-      {
-        year: "July, 2023 - present",
-        description: "Associate UI Developer @ Techolution, India.",
-        projects: [
-          "Alan for talent fountain",
-          "Owens & Minor",
-          "Techolution website",
-        ],
-      },
-    ],
-  },
+
   {
     header: "Other Projects",
     content: [
@@ -111,6 +112,34 @@ export const feedback = {
     bcc: "legoyashx@yahoo.com",
   },
 };
+
+export const WELCOME_MSG =
+  "Hello there! \nThis is Yash Agarwal. Tell me what do you want to know about me?";
+
+export const CHAT_USER_OPTIONS = [
+  { title: "tell me about yourself", visible: true },
+  { title: "tell me more...", visible: false },
+  { title: "your work", visible: true },
+  { title: "your education", visible: true },
+  { title: "how to connect with you", visible: true },
+  { title: "your personal projects", visible: false },
+  { title: "more options", visible: false },
+];
+
+export const CHAT_USER_MORE_OPTIONS = [
+  { title: "tell me about your favorite movies", visible: true },
+  { title: "can you suggest me some?", visible: false },
+  { title: "Do you play sports?", visible: true },
+  { title: "previous options", visible: false },
+];
+
+export const TECHOLUTION_PROJECTS = [
+  "Owens & Minors",
+  "One Stop Demo Shop",
+  "Alan for Talent Fountain",
+  "Employee Handbook",
+  "Techolution Website",
+];
 
 export const themes = [
   {
