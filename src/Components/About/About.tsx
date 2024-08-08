@@ -54,6 +54,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
 
   const [isScrollLeftDisabled, setIsScrollLeftDisabled] = useState(true);
   const [isScrollRightDisabled, setIsScrollRightDisabled] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const [lessThan768px, setLessThan768px] = useState(false);
 
@@ -304,10 +305,11 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
       </div>
 
       <div className="w-full mdl:w-1/2 h-auto mdl:h-full my-4 mdl:my-0 flex justify-end items-end bg-transparent">
+        {/* <div className="w-full mdl:w-1/2 h-1/2 mdl:h-full flex justify-end items-end bg-transparent"> */}
         {/* messages container */}
         <ChatComponent />
 
-        <div className="hidden mdl:hidden w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+        {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div className="cont m-auto top-0 left-0 right-0 bottom-0 flex justify-center p-3 bg-color2 z-10 shadow-md">
@@ -321,7 +323,37 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           </div>
           <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
+        </div> */}
+
+        {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+          <div className="cont absolute top-0 left-0 bg-color3"></div>
+          <div className="cont absolute top-0 right-0 bg-transparent"></div>
+          <div
+            title="Click to open form dialog"
+            className="cont m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center bg-color2 z-10 cursor-pointer select-none shadow-md"
+            onClick={() => setShowChat(true)}
+          >
+            <span className="m-auto text-4xl md:text-5xl material-symbols-rounded">
+              chat
+            </span>
+          </div>
+          <div className="cont hidden md:block absolute bottom-0 left-0 bg-transparent"></div>
+          <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
         </div>
+
+        <div className="block mdl:hidden w-full h-full mdl:h-auto m-auto mdl:m-0 aspect-auto mdl:aspect-square relative">
+          <div className="cont absolute m-auto top-0 left-0 bottom-0 bg-color3"></div>
+          <div className="cont absolute m-auto top-0 right-0 bottom-0 bg-color3 "></div>
+          <div
+            title="Click to open form dialog"
+            className="w-[200px] sm:w-[300px] aspect-square absolute m-auto top-0 left-0 right-0 bottom-0 p-3 flex justify-center rounded-2xl bg-color2 z-10 cursor-pointer shadow-md select-none"
+            onClick={() => setShowChat(true)}
+          >
+            <span className="m-auto text-4xl md:text-5xl material-symbols-rounded">
+              chat
+            </span>
+          </div>
+        </div> */}
       </div>
     </div>
   );

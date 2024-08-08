@@ -10,6 +10,7 @@ export interface MessageState {
   showOptions: boolean;
   options: ChatOption[];
   showMoreOptions: boolean;
+  moreOptions: ChatOption[];
 }
 
 export type ChatOption = {

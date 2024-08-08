@@ -96,7 +96,7 @@ import {
   ChatOption,
   MessageState,
 } from "./MessagesTypesAndInterfaces";
-import { CHAT_USER_OPTIONS } from "../../Data/Data";
+import { CHAT_USER_MORE_OPTIONS, CHAT_USER_OPTIONS } from "../../Data/Data";
 import { AboutMessage } from "../Interfaces";
 
 const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
@@ -106,6 +106,7 @@ const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
       showOptions: true,
       options: CHAT_USER_OPTIONS,
       showMoreOptions: false,
+      moreOptions: CHAT_USER_MORE_OPTIONS,
     };
 
 const reducer = (

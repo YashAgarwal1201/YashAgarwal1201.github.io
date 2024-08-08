@@ -122,14 +122,15 @@ export const CHAT_USER_OPTIONS = [
   { title: "your work", visible: true },
   { title: "your education", visible: true },
   { title: "how to connect with you", visible: true },
-  { title: "your personal projects", visible: true },
-  { title: "more options", visible: true },
+  { title: "your personal projects", visible: false },
+  { title: "more options", visible: false },
 ];
 
 export const CHAT_USER_MORE_OPTIONS = [
-  "tell me about your faviourite movies",
-  "can you suggest me some?",
-  "Do you play sports?",
+  { title: "tell me about your favorite movies", visible: true },
+  { title: "can you suggest me some?", visible: false },
+  { title: "Do you play sports?", visible: true },
+  { title: "previous options", visible: false },
 ];
 
 export const TECHOLUTION_PROJECTS = [
