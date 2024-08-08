@@ -1,10 +1,14 @@
 import { primaryInfo, TECHOLUTION_PROJECTS } from "../../../Data/Data";
 
-export const getResponse = (
-  query: string,
+export const getResponse = ({
+  query,
   setShowOptions,
-  setShowMoreOptions
-): string => {
+  setShowMoreOptions,
+}: {
+  query: string;
+  setShowOptions: any;
+  setShowMoreOptions: any;
+}) => {
   const lowerQuery = query?.toLowerCase();
 
   if (lowerQuery?.includes("about yourself")) {
@@ -55,9 +59,11 @@ Connect with me:
     // console.log(88);
     setShowMoreOptions(true);
     setShowOptions(false);
+    // return ''
   } else if (lowerQuery?.includes("previous options")) {
     setShowOptions(true);
     setShowMoreOptions(false);
+    // return ''
   } else {
     return `
 Sorry, but I don't have any information on that right now.

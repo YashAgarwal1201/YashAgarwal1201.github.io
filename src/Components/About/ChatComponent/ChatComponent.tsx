@@ -74,8 +74,11 @@ const ChatComponent = ({
     };
 
     const response =
-      getResponse(query, setShowOptions, setShowMoreOptions) ||
-      "Sorry, I don't have information on that.";
+      getResponse({
+        query: query,
+        setShowOptions,
+        setShowMoreOptions,
+      }) || "Sorry, I don't have information on that.";
 
     // Add bot's response as a message
     const botMessage: AboutMessage = {
@@ -199,11 +202,11 @@ const ChatComponent = ({
                                       .toLowerCase()
                                       .includes("previous options")
                                   ) {
-                                    getResponse(
-                                      value.title,
+                                    getResponse({
+                                      query: value.title,
                                       setShowOptions,
-                                      setShowMoreOptions
-                                    );
+                                      setShowMoreOptions,
+                                    });
                                   } else {
                                     handleOptionClick(value.title);
                                   }
@@ -233,11 +236,11 @@ const ChatComponent = ({
                                       .toLowerCase()
                                       .includes("previous options")
                                   ) {
-                                    getResponse(
-                                      value.title,
+                                    getResponse({
+                                      query: value.title,
                                       setShowOptions,
-                                      setShowMoreOptions
-                                    );
+                                      setShowMoreOptions,
+                                    });
                                   } else {
                                     handleOptionClick(value.title);
                                   }
@@ -303,11 +306,11 @@ const ChatComponent = ({
                                   .toLowerCase()
                                   .includes("previous options")
                               ) {
-                                getResponse(
-                                  value.title,
+                                getResponse({
+                                  query: value.title,
                                   setShowOptions,
-                                  setShowMoreOptions
-                                );
+                                  setShowMoreOptions,
+                                });
                               } else {
                                 handleOptionClick(value.title);
                               }
@@ -337,11 +340,11 @@ const ChatComponent = ({
                                   .toLowerCase()
                                   .includes("previous options")
                               ) {
-                                getResponse(
-                                  value.title,
+                                getResponse({
+                                  query: value.title,
                                   setShowOptions,
-                                  setShowMoreOptions
-                                );
+                                  setShowMoreOptions,
+                                });
                               } else {
                                 handleOptionClick(value.title);
                               }
