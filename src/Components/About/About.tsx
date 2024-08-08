@@ -168,7 +168,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
       className="w-full h-full p-2 md:pb-1 md:pr-1 flex flex-col mdl:flex-row justify-start mdl:justify-center items-center snap-center snap-always"
     >
       <div
-        className={`w-full mdl:w-1/2 h-fit mdl:h-full md:px-5 ${
+        className={`w-full mdl:w-1/2 h-full md:px-5 ${
           lessThan768px ? "pt-5 sm:pt-10" : "pt-10 sm:pt-20"
         } flex flex-col justify-start items-center gap-y-5`}
       >
@@ -177,7 +177,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           <br />
           <span className="font-subheading text-color5">about me...</span>
         </h1>
-        <p className="w-full hidden mdl:block text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
+        <p className="w-full block text-base sm:text-lg lg:text-xl text-right text-color4 font-content select-none">
           my education, working experience,
           <br />
           contact and resume
@@ -304,10 +304,10 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
         </div>
       </div>
 
-      <div className="w-full mdl:w-1/2 h-auto mdl:h-full my-4 mdl:my-0 flex justify-end items-end bg-transparent">
-        {/* <div className="w-full mdl:w-1/2 h-1/2 mdl:h-full flex justify-end items-end bg-transparent"> */}
+      {/* <div className="w-full mdl:w-1/2 h-auto mdl:h-full my-4 mdl:my-0 flex justify-end items-end bg-transparent"> */}
+      <div className="w-full mdl:w-1/2 h-1/2 mdl:h-full flex justify-end items-end bg-transparent">
         {/* messages container */}
-        <ChatComponent />
+        <ChatComponent showChat={showChat} setShowChat={setShowChat} />
 
         {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
@@ -325,7 +325,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
           <div className="cont hidden md:block absolute bottom-0 right-0 bg-transparent md:bg-color3"></div>
         </div> */}
 
-        {/* <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
+        <div className="hidden mdl:block w-[80%] md:w-[500px] 2xl:w-[600px] h-full md:h-auto m-auto md:m-0 aspect-auto md:aspect-square relative">
           <div className="cont absolute top-0 left-0 bg-color3"></div>
           <div className="cont absolute top-0 right-0 bg-transparent"></div>
           <div
@@ -353,7 +353,7 @@ const About = ({ reference, setExpandAboutDialog }: AboutProps) => {
               chat
             </span>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
