@@ -1,8 +1,9 @@
 import React from "react";
 
 import { Accordion, AccordionTab } from "primereact/accordion";
-import { Dialog } from "primereact/dialog";
+// import { Dialog } from "primereact/dialog";
 import { InputSwitch } from "primereact/inputswitch";
+import { Sidebar } from "primereact/sidebar";
 
 import { themes } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
@@ -28,24 +29,22 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   };
 
   return (
-    <Dialog
+    <Sidebar
       visible={showMenuDialog}
       onHide={() => setShowMenuDialog(!showMenuDialog)}
-      dismissableMask={true}
+      dismissable={true}
       draggable={false}
       header={
         <div className="text-color1 lg:text-3xl font-heading font-normal">
-          Settings Menu
+          More Options
         </div>
       }
       className={`aboutDialog ${
         state.easyMode
           ? "w-full md:w-1/2"
           : "w-full md:w-[85%] mdl:w-[75%] lg:w-[65%]"
-      } h-full md:h-[80%] absolute bottom-0 md:bottom-auto`}
-      position={
-        window.innerWidth < 768 ? "bottom" : state.easyMode ? "right" : "center"
-      }
+      } h-full absolute bottom-0 md:bottom-auto`}
+      position={"right"}
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
         <Accordion
@@ -139,7 +138,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           </AccordionTab>
         </Accordion>
       </div>
-    </Dialog>
+    </Sidebar>
   );
 };
 
