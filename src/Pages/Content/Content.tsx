@@ -6,10 +6,12 @@ import Header from "./../../Components/Header/Header";
 import "./Content.scss";
 import About from "../../Components/About/About";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
+import MainChatComponent from "../../Components/Chat/MainChatComponent";
 import Feedback from "../../Components/Feedback/Feedback";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
 import Home from "../../Components/Home/Home";
 import MenuDialog from "../../Components/Menu/MenuDialog";
+import ProfileComponent from "../../Components/Profile/ProfileComponent";
 import { useAppContext } from "../../Services/AppContext";
 
 type KeyMapProp = {
@@ -39,66 +41,66 @@ const Content: React.FC = () => {
     targetRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5, // Adjust this threshold as needed
-    };
+  // useEffect(() => {
+  //   const observerOptions = {
+  //     root: null,
+  //     rootMargin: "0px",
+  //     threshold: 0.5, // Adjust this threshold as needed
+  //   };
 
-    // const observer = new IntersectionObserver((entries) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.isIntersecting) {
-    //       switch (entry.target) {
-    //         case homeRef.current:
-    //           setSelectedButton("home");
-    //           break;
-    //         case aboutRef.current:
-    //           setSelectedButton("about");
-    //           break;
-    //         case feedbackRef.current:
-    //           setSelectedButton("feedback");
-    //           break;
-    //         default:
-    //           break;
-    //       }
-    //     }
-    //   });
-    // }, observerOptions);
+  //   // const observer = new IntersectionObserver((entries) => {
+  //   //   entries.forEach((entry) => {
+  //   //     if (entry.isIntersecting) {
+  //   //       switch (entry.target) {
+  //   //         case homeRef.current:
+  //   //           setSelectedButton("home");
+  //   //           break;
+  //   //         case aboutRef.current:
+  //   //           setSelectedButton("about");
+  //   //           break;
+  //   //         case feedbackRef.current:
+  //   //           setSelectedButton("feedback");
+  //   //           break;
+  //   //         default:
+  //   //           break;
+  //   //       }
+  //   //     }
+  //   //   });
+  //   // }, observerOptions);
 
-    const observer = new IntersectionObserver((entries) => {
-      debounce(() => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            switch (entry.target) {
-              case homeRef.current: {
-                setSelectedContent("home");
-                break;
-              }
-              case aboutRef.current: {
-                setSelectedContent("about");
-                break;
-              }
-              case feedbackRef.current: {
-                setSelectedContent("feedback");
-                break;
-              }
-              default:
-                break;
-            }
-          }
-        });
-      }, 100)();
-    }, observerOptions);
+  //   const observer = new IntersectionObserver((entries) => {
+  //     debounce(() => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           switch (entry.target) {
+  //             case homeRef.current: {
+  //               setSelectedContent("home");
+  //               break;
+  //             }
+  //             case aboutRef.current: {
+  //               setSelectedContent("about");
+  //               break;
+  //             }
+  //             case feedbackRef.current: {
+  //               setSelectedContent("feedback");
+  //               break;
+  //             }
+  //             default:
+  //               break;
+  //           }
+  //         }
+  //       });
+  //     }, 100)();
+  //   }, observerOptions);
 
-    observer.observe(homeRef.current!);
-    observer.observe(aboutRef.current!);
-    observer.observe(feedbackRef.current!);
+  //   observer.observe(homeRef.current!);
+  //   observer.observe(aboutRef.current!);
+  //   observer.observe(feedbackRef.current!);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const keyMap: KeyMapProp = {
@@ -157,7 +159,7 @@ const Content: React.FC = () => {
 
   return (
     <div
-      className={`w-full h-[100dvh] flex flex-col-reverse lg:flex-row items-center bg-color1`}
+      className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
       <Header
         // selectedButton={selectedButton}
@@ -169,7 +171,7 @@ const Content: React.FC = () => {
       <div
         className={`contentBody h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}
       >
-        <Home reference={homeRef} />
+        {/* <Home reference={homeRef} />
         <About
           reference={aboutRef}
           setExpandAboutDialog={setExpandAboutDialog}
@@ -177,7 +179,13 @@ const Content: React.FC = () => {
         <Feedback
           reference={feedbackRef}
           setExpandFeedbackDialog={setExpandFeedbackDialog}
-        />
+        /> */}
+
+        {state.selectedContentBtn !== "profile" ? (
+          <MainChatComponent />
+        ) : (
+          <ProfileComponent />
+        )}
       </div>
       {expandAboutDialog && (
         <MoreDetailsDialog

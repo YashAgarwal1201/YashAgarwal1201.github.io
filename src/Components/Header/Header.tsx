@@ -20,30 +20,44 @@ const Header = ({
     "text-color5 bg-transparent border-2 border-transparent";
 
   return (
-    <div className="w-full lg:w-[75px] h-12 lg:h-full relative">
-      <div className="w-full lg:w-[75px] h-12 lg:h-full flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
+    <div className="w-full lg:w-[75px] h-12 lg:h-full flex flex-row mdl:flex-col justify-between items-center">
+      <div className="w-auto lg:w-[75px] h-12 lg:h-auto flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
         <Button
-          title="Home page"
-          icon={<span className="material-symbols-rounded">home</span>}
+          title="Profile view"
+          icon={<span className="material-symbols-rounded">chevron_left</span>}
           className={`${
-            state.selectedContentBtn === "home"
+            state.selectedContentBtn === "profile"
               ? selectedButtonStyles
               : normalButtonStyles
+          } ${
+            state.selectedContentBtn === "profile" ? "flex" : "hidden"
           } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
-            setSelectedButton("home");
+            setSelectedButton("default");
           }}
         />
         <Button
-          title="About me"
-          icon={<span className="material-symbols-rounded">person</span>}
+          title="Profile view"
+          icon={<span className="material-symbols-rounded">home</span>}
           className={`${
-            state.selectedContentBtn === "about"
+            state.selectedContentBtn === "profile"
               ? selectedButtonStyles
               : normalButtonStyles
           } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
-            setSelectedButton("about");
+            setSelectedButton("profile");
+          }}
+        />
+        <Button
+          title="Download Resume"
+          icon={<span className="material-symbols-rounded">download</span>}
+          className={`${
+            state.selectedContentBtn === "resume"
+              ? selectedButtonStyles
+              : normalButtonStyles
+          } hidden md:flex w-12 lg:w-16 h-full lg:h-16`}
+          onClick={() => {
+            setSelectedButton("resume");
           }}
         />
         <Button
@@ -53,22 +67,16 @@ const Header = ({
             state.selectedContentBtn === "feedback"
               ? selectedButtonStyles
               : normalButtonStyles
-          } w-12 lg:w-16 h-full lg:h-16`}
+          }  hidden md:flex w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("feedback");
           }}
         />
-        <Button
-          title="Settings & others"
-          icon={<span className="material-symbols-rounded">settings</span>}
-          className={`${normalButtonStyles} hover:border-transparent  w-12 lg:w-16 h-full lg:h-16 lg:hidden`}
-          onClick={() => setShowMenuDialog(!showMenuDialog)}
-        />
       </div>
-      <div className="hidden lg:block absolute w-fit h-fit bottom-0 md:bottom-2 left-auto md:left-0 right-2 md:right-0 m-auto">
+      <div className="w-fit h-fit">
         <Button
           title="Settings & others"
-          icon={<span className="material-symbols-rounded">settings</span>}
+          icon={<span className="material-symbols-rounded">more_vert</span>}
           className={`${normalButtonStyles} hover:border-transparent  w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
