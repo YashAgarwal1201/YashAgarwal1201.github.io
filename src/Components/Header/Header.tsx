@@ -38,11 +38,15 @@ const Header = ({
         />
         <Button
           title="Profile view"
-          icon={<span className="material-symbols-rounded">home</span>}
+          icon={
+            <span className="material-symbols-rounded">account_circle</span>
+          }
           className={`${
             state.selectedContentBtn === "profile"
               ? selectedButtonStyles
               : normalButtonStyles
+          } ${
+            state.selectedContentBtn === "profile" ? "hidden" : "flex"
           } w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             setSelectedButton("profile");

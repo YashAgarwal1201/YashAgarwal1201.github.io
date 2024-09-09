@@ -2,13 +2,16 @@ import React from "react";
 
 import { Accordion, AccordionTab } from "primereact/accordion";
 // import { Dialog } from "primereact/dialog";
+import { Card } from "primereact/card";
 import { InputSwitch } from "primereact/inputswitch";
 import { Sidebar } from "primereact/sidebar";
 
 import { themes } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
+
 import "./MenuDialog.scss";
+import { Button } from "primereact/button";
 
 type MenuDialogProps = {
   showMenuDialog: boolean;
@@ -42,7 +45,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       className={`aboutDialog ${
         state.easyMode
           ? "w-full md:w-1/2"
-          : "w-full md:w-[85%] mdl:w-[75%] lg:w-[65%]"
+          : "w-full md:w-[70%] mdl:w-[60%] lg:w-[50%]"
       } h-full absolute bottom-0 md:bottom-auto`}
       position={"right"}
     >
@@ -59,7 +62,9 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <div className="flex justify-between items-center font-heading font-medium">
-                <span className="text-black">Theme</span>
+                <span className="text-black font-subheading not-italic">
+                  Theme
+                </span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
                   <div className="w-4 h-4 bg-color2"></div>
@@ -109,8 +114,10 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <div className="flex justify-between items-center font-heading font-medium">
-                <span className="text-black">Easy mode? </span>
-                <span className="text-black capitalize font-subheading">
+                <span className="text-black font-subheading not-italic">
+                  Easy mode?{" "}
+                </span>
+                <span className="text-black capitalize font-content not-italic">
                   {state.easyMode ? "Yes" : "No"}
                 </span>
               </div>
@@ -127,13 +134,31 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
 
           <AccordionTab
             header={
-              <span className="text-black font-heading font-medium">
+              <span className="text-black font-subheading font-medium not-italic">
                 Keyboard shortcuts
               </span>
             }
           >
             <div className="font-content">
               <KeyboardShortcuts />
+            </div>
+          </AccordionTab>
+
+          <AccordionTab
+            header={
+              <span className="text-black font-subheading font-medium not-italic">
+                Download Resume
+              </span>
+            }
+          >
+            <div className="font-content flex justify-between items-center">
+              <p>Click the button to download resume</p>
+              <Button
+                icon={"pi pi-download"}
+                onClick={() => {
+                  showToast("info", "Info", "Under development");
+                }}
+              />
             </div>
           </AccordionTab>
         </Accordion>

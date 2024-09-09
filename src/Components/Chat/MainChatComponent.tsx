@@ -107,9 +107,11 @@ const MainChatComponent = () => {
                       message.role === "user" ? "flex-row-reverse" : "flex-row"
                     } items-center gap-x-2  text-sm md:text-base`}
                   >
-                    <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
+                    <span className="material-symbols-rounded bg-color4 text-color1 rounded-full p-2 mdl:p-3">
+                      person
+                    </span>
                     <span className="font-subheading">
-                      {message?.role === "user" ? "User" : "Yash"}
+                      {message?.role === "user" ? "You" : "Yash Agarwal"}
                     </span>
                   </div>
                   <div
@@ -127,20 +129,22 @@ const MainChatComponent = () => {
                   </div>
                 </div>
               ))}
-              {groupedMessages.length - 1 === key && (
+              {groupedMessages?.length - 1 === key && (
                 <div className="flex flex-col gap-y-2 items-end">
                   <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
-                    <span className="pi pi-user bg-color4 text-color1 rounded-full p-2 mdl:p-3"></span>
-                    <span className="font-subheading">User</span>
+                    <span className="material-symbols-rounded bg-color4 text-color1 rounded-full p-2 mdl:p-3">
+                      person
+                    </span>
+                    <span className="font-subheading">You</span>
                   </div>
                   <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content text-color5">
-                    {messageState.showOptions
+                    {messageState?.showOptions
                       ? CHAT_USER_OPTIONS?.map((value, key) => {
-                          if (value.visible)
+                          if (value?.visible)
                             return (
                               <Button
                                 key={key}
-                                label={value.title}
+                                label={value?.title}
                                 className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
                                   state?.selectedAboutSectionBtn?.toLowerCase() ===
                                   value?.title?.toLowerCase()
@@ -223,8 +227,10 @@ const MainChatComponent = () => {
           <div className="flex flex-col gap-y-5">
             <div className="flex flex-col gap-y-2">
               <div className="flex items-center gap-x-2  text-sm md:text-base">
-                <span className="pi pi-user bg-color3 text-color1 rounded-full p-2 mdl:p-3"></span>
-                <span className="font-subheading">Yash</span>
+                <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
+                  person
+                </span>
+                <span className="font-subheading">Yash Agarwal</span>
               </div>
               <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ml-3 mdl:ml-4 bg-color4 p-3 rounded-md font-content text-color1 text-sm md:text-base">
                 {/* <TypeItText text={WELCOME_MSG} /> */}
@@ -233,8 +239,10 @@ const MainChatComponent = () => {
             </div>
             <div className="flex flex-col gap-y-2 items-end">
               <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
-                <span className="pi pi-user bg-color3 text-color1 rounded-full p-2 mdl:p-3"></span>
-                <span className="font-subheading">User</span>
+                <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
+                  person
+                </span>
+                <span className="font-subheading">You</span>
               </div>
               <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
                 {/* {WELCOME_MSG} */}
