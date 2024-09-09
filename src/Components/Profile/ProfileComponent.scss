@@ -1,0 +1,46 @@
+.profile-component {
+  .p-tabview {
+    .p-tabview-nav {
+      background-color: transparent;
+      height: fit-content;
+      padding: 0px 1rem;
+
+      .p-tabview-selected {
+        background-color: var(--color3);
+        border-radius: 0.5rem;
+
+        .p-tabview-nav-link {
+          color: var(--color5);
+        }
+      }
+
+      .p-tabview-nav-link {
+        background-color: transparent;
+        color: var(--color4);
+        font-weight: normal;
+        height: 100%;
+        font-style: normal;
+      }
+    }
+
+    .p-tabview-panels {
+      background-color: transparent;
+      padding: 0px;
+
+      .p-card {
+        background-color: var(--color4);
+
+        .p-card-title {
+          font-family: var(--subheading);
+          font-weight: 500;
+          color: var(--color2);
+        }
+
+        .p-card-content {
+          font-family: var(--content);
+          color: var(--color1);
+        }
+      }
+    }
+  }
+}
