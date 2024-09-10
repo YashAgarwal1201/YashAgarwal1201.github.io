@@ -2,7 +2,7 @@
   .p-tabview {
     .p-tabview-nav {
       background-color: transparent;
-      height: fit-content;
+      height: auto;
       padding: 0px 1rem;
 
       .p-tabview-selected {
@@ -34,11 +34,22 @@
           font-family: var(--subheading);
           font-weight: 500;
           color: var(--color2);
+          font-size: 1.5rem;
         }
 
         .p-card-content {
           font-family: var(--content);
           color: var(--color1);
+          font-size: 1.125rem;
+        }
+
+        @media screen and (max-width: 896px) {
+          .p-card-title {
+            font-size: 1.25rem;
+          }
+          .p-card-content {
+            font-size: 1rem;
+          }
         }
       }
     }

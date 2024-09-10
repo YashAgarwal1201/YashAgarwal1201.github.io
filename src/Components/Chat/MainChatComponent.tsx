@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
 import ReactMarkdown from "react-markdown";
@@ -20,7 +20,30 @@ const MainChatComponent = () => {
   const { messageState, setMessages, setShowOptions, setShowMoreOptions } =
     useMsgAppContext();
 
+  const [msgContainerHeight, setMsgContainerHeight] = useState<number>(0);
+
   const lastPairRef = useRef<HTMLDivElement>(null);
+  const userOptionsContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (userOptionsContainerRef.current) {
+        setMsgContainerHeight(userOptionsContainerRef.current.clientHeight);
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    if (userOptionsContainerRef.current) {
+      resizeObserver.observe(userOptionsContainerRef.current);
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      if (userOptionsContainerRef.current) {
+        resizeObserver.unobserve(userOptionsContainerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // scrollToLastPair();
@@ -83,9 +106,14 @@ const MainChatComponent = () => {
     lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // const msgContainerHeight = userOptionsContainerRef?.current?.clientHeight;
+
   return (
-    <div className="w-full h-full p-1 sm:p-2 md:pb-1 md:pr-1 flex flex-col-reverse md:flex-col mdl:flex-row items-center snap-start snap-always border">
-      <div className="w-full h-full m-auto p-2 overflow-y-auto  shadow-md rounded-md contentBody">
+    <div className="w-full h-full flex flex-col items-center snap-start snap-always border">
+      <div
+        className="w-full m-auto p-2 overflow-y-auto  shadow-md rounded-md contentBody"
+        style={{ height: `calc(100% - ${msgContainerHeight}px)` }}
+      >
         {groupedMessages?.length > 0 ? (
           groupedMessages?.map((value, key) => (
             <div
@@ -129,98 +157,6 @@ const MainChatComponent = () => {
                   </div>
                 </div>
               ))}
-              {groupedMessages?.length - 1 === key && (
-                <div className="flex flex-col gap-y-2 items-end">
-                  <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
-                    <span className="material-symbols-rounded bg-color4 text-color1 rounded-full p-2 mdl:p-3">
-                      person
-                    </span>
-                    <span className="font-subheading">You</span>
-                  </div>
-                  <div className="w-[97%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content text-color5">
-                    {messageState?.showOptions
-                      ? CHAT_USER_OPTIONS?.map((value, key) => {
-                          if (value?.visible)
-                            return (
-                              <Button
-                                key={key}
-                                label={value?.title}
-                                className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
-                                  state?.selectedAboutSectionBtn?.toLowerCase() ===
-                                  value?.title?.toLowerCase()
-                                    ? "block"
-                                    : "block"
-                                }`}
-                                onClick={() => {
-                                  if (
-                                    value.title
-                                      .toLowerCase()
-                                      .includes("more options") ||
-                                    value.title
-                                      .toLowerCase()
-                                      .includes("previous options")
-                                  ) {
-                                    getResponse({
-                                      query: value.title,
-                                      setShowOptions,
-                                      setShowMoreOptions,
-                                    });
-                                  } else {
-                                    handleOptionClick(value.title);
-                                  }
-                                }}
-                              />
-                            );
-                        })
-                      : messageState.showMoreOptions
-                      ? CHAT_USER_MORE_OPTIONS?.map((value, key) => {
-                          if (value.visible)
-                            return (
-                              <Button
-                                key={key}
-                                label={value.title}
-                                className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
-                                  state?.selectedAboutSectionBtn?.toLowerCase() ===
-                                  value?.title?.toLowerCase()
-                                    ? "block"
-                                    : "block"
-                                }`}
-                                onClick={() => {
-                                  if (
-                                    value.title
-                                      .toLowerCase()
-                                      .includes("more options") ||
-                                    value.title
-                                      .toLowerCase()
-                                      .includes("previous options")
-                                  ) {
-                                    getResponse({
-                                      query: value.title,
-                                      setShowOptions,
-                                      setShowMoreOptions,
-                                    });
-                                  } else {
-                                    handleOptionClick(value.title);
-                                  }
-                                }}
-                              />
-                            );
-                        })
-                      : ""}
-                    <Button
-                      disabled={messageState.messages?.length === 0}
-                      icon={"pi pi-refresh"}
-                      onClick={() => {
-                        setMessages([]);
-                        setShowMoreOptions(false);
-                        setShowOptions(true);
-                        showToast("success", "Success", "Messages reset");
-                      }}
-                      className="px-3 py-2 border border-color5"
-                    />
-                  </div>
-                </div>
-              )}
             </div>
           ))
         ) : (
@@ -237,88 +173,103 @@ const MainChatComponent = () => {
                 {WELCOME_MSG}
               </div>
             </div>
-            <div className="flex flex-col gap-y-2 items-end">
-              <div className="flex flex-row-reverse items-center gap-x-2  text-xs sm:text-sm md:text-base">
-                <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
-                  person
-                </span>
-                <span className="font-subheading">You</span>
-              </div>
-              <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
-                {/* {WELCOME_MSG} */}
-                {messageState.showOptions
-                  ? CHAT_USER_OPTIONS?.map((value, key) => {
-                      if (value?.visible)
-                        return (
-                          <Button
-                            key={key}
-                            label={value?.title}
-                            className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
-                              state?.selectedAboutSectionBtn?.toLowerCase() ===
-                              value?.title?.toLowerCase()
-                                ? "block"
-                                : "block"
-                            }`}
-                            onClick={() => {
-                              if (
-                                value.title
-                                  .toLowerCase()
-                                  .includes("more options") ||
-                                value.title
-                                  .toLowerCase()
-                                  .includes("previous options")
-                              ) {
-                                getResponse({
-                                  query: value.title,
-                                  setShowOptions,
-                                  setShowMoreOptions,
-                                });
-                              } else {
-                                handleOptionClick(value.title);
-                              }
-                            }}
-                          />
-                        );
-                    })
-                  : messageState.moreOptions
-                  ? CHAT_USER_MORE_OPTIONS?.map((value, key) => {
-                      if (value?.visible)
-                        return (
-                          <Button
-                            key={key}
-                            label={value?.title}
-                            className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
-                              state?.selectedAboutSectionBtn?.toLowerCase() ===
-                              value?.title?.toLowerCase()
-                                ? "block"
-                                : "block"
-                            }`}
-                            onClick={() => {
-                              if (
-                                value.title
-                                  .toLowerCase()
-                                  .includes("more options") ||
-                                value.title
-                                  .toLowerCase()
-                                  .includes("previous options")
-                              ) {
-                                getResponse({
-                                  query: value.title,
-                                  setShowOptions,
-                                  setShowMoreOptions,
-                                });
-                              } else {
-                                handleOptionClick(value.title);
-                              }
-                            }}
-                          />
-                        );
-                    })
-                  : ""}
-              </div>
-            </div>
           </div>
         )}{" "}
+      </div>
+
+      {/* user options */}
+      <div
+        className="w-full h-fit flex flex-col gap-y-2 items-end"
+        ref={userOptionsContainerRef}
+      >
+        <div className="h-full p-3 flex flex-row-reverse items-end gap-x-2  text-xs sm:text-sm md:text-base">
+          <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
+            person
+          </span>
+          <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+            {/* {WELCOME_MSG} */}
+            {messageState.showOptions
+              ? CHAT_USER_OPTIONS?.map((value, key) => {
+                  if (value?.visible)
+                    return (
+                      <Button
+                        key={key}
+                        label={value?.title}
+                        className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
+                          state?.selectedAboutSectionBtn?.toLowerCase() ===
+                          value?.title?.toLowerCase()
+                            ? "block"
+                            : "block"
+                        }`}
+                        onClick={() => {
+                          if (
+                            value.title
+                              .toLowerCase()
+                              .includes("more options") ||
+                            value.title
+                              .toLowerCase()
+                              .includes("previous options")
+                          ) {
+                            getResponse({
+                              query: value.title,
+                              setShowOptions,
+                              setShowMoreOptions,
+                            });
+                          } else {
+                            handleOptionClick(value.title);
+                          }
+                        }}
+                      />
+                    );
+                })
+              : messageState.moreOptions
+              ? CHAT_USER_MORE_OPTIONS?.map((value, key) => {
+                  if (value?.visible)
+                    return (
+                      <Button
+                        key={key}
+                        label={value?.title}
+                        className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
+                          state?.selectedAboutSectionBtn?.toLowerCase() ===
+                          value?.title?.toLowerCase()
+                            ? "block"
+                            : "block"
+                        }`}
+                        onClick={() => {
+                          if (
+                            value.title
+                              .toLowerCase()
+                              .includes("more options") ||
+                            value.title
+                              .toLowerCase()
+                              .includes("previous options")
+                          ) {
+                            getResponse({
+                              query: value.title,
+                              setShowOptions,
+                              setShowMoreOptions,
+                            });
+                          } else {
+                            handleOptionClick(value.title);
+                          }
+                        }}
+                      />
+                    );
+                })
+              : ""}
+            <Button
+              disabled={messageState.messages?.length === 0}
+              icon={"pi pi-refresh"}
+              onClick={() => {
+                setMessages([]);
+                setShowMoreOptions(false);
+                setShowOptions(true);
+                showToast("success", "Success", "Messages reset");
+              }}
+              className="px-3 py-2 border border-color5"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
