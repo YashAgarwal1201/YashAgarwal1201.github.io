@@ -193,12 +193,7 @@ const Content: React.FC = () => {
           setExpandAboutDialog={setExpandAboutDialog}
         />
       )}
-      {expandFeedbackDialog && (
-        <FeedbackFormDialog
-          expandFeedbackDialog={expandFeedbackDialog}
-          setExpandFeedbackDialog={setExpandFeedbackDialog}
-        />
-      )}
+      {state.showFeedbackDialog && <FeedbackFormDialog />}
       {showMenuDialog && (
         <MenuDialog
           showMenuDialog={showMenuDialog}

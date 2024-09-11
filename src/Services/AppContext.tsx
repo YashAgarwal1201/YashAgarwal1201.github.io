@@ -18,6 +18,7 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "night"
           : "fall", //"fall",
+      showFeedbackDialog: false,
       selectedContentBtn: "home",
       selectedAboutSectionbtn: "work",
       toast: null,
@@ -64,6 +65,13 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       };
     }
 
+    case "SET_SHOW_FEEDBACK_DIALOG": {
+      return {
+        ...state,
+        showFeedbackDialog: action.payload as boolean,
+      };
+    }
+
     case "SET_EASY_MODE": {
       return {
         ...state,
@@ -83,6 +91,7 @@ const AppContext = createContext<AppContextType>({
   setSelectedAboutSectionBtn: () => null,
   setThemeSelected: () => null,
   setModalContent: () => null,
+  setShowFeedbackDialog: () => null,
   setEasyMode: () => null,
   showToast: () => null,
 });
@@ -118,6 +127,10 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "SET_MODAL_CONTENT", payload });
   };
 
+  const setShowFeedbackDialog = (payload: boolean) => {
+    dispatch({ type: "SET_SHOW_FEEDBACK_DIALOG", payload });
+  };
+
   const setEasyMode = (payload: boolean) => {
     dispatch({ type: "SET_EASY_MODE", payload });
   };
@@ -125,6 +138,7 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const contextValue: AppContextType = {
     state,
     dispatch,
+    setShowFeedbackDialog,
     setSelectedContent,
     setSelectedAboutSectionBtn,
     setThemeSelected,

@@ -2,7 +2,8 @@ import React from "react";
 
 import { Accordion, AccordionTab } from "primereact/accordion";
 // import { Dialog } from "primereact/dialog";
-import { Card } from "primereact/card";
+import { Button } from "primereact/button";
+// import { Card } from "primereact/card";
 import { InputSwitch } from "primereact/inputswitch";
 import { Sidebar } from "primereact/sidebar";
 
@@ -11,7 +12,6 @@ import { useAppContext } from "../../Services/AppContext";
 import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
 
 import "./MenuDialog.scss";
-import { Button } from "primereact/button";
 
 type MenuDialogProps = {
   showMenuDialog: boolean;
