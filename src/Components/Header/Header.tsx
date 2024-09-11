@@ -13,7 +13,7 @@ const Header = ({
   showMenuDialog,
   setShowMenuDialog,
 }: HeaderProps) => {
-  const { state } = useAppContext();
+  const { state, setShowFeedbackDialog } = useAppContext();
   const selectedButtonStyles =
     "text-color1 bg-color4 border-2 border-solid border-color4 shadow-md";
   const normalButtonStyles =
@@ -68,12 +68,10 @@ const Header = ({
           title="Give feedback"
           icon={<span className="material-symbols-rounded">mail</span>}
           className={`${
-            state.selectedContentBtn === "feedback"
-              ? selectedButtonStyles
-              : normalButtonStyles
+            state.showFeedbackDialog ? selectedButtonStyles : normalButtonStyles
           }  hidden md:flex w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
-            setSelectedButton("feedback");
+            setShowFeedbackDialog(true);
           }}
         />
       </div>

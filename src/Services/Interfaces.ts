@@ -7,6 +7,7 @@ export type Action<T> = { type: string; payload?: T };
 export interface State {
   [key: string]: any;
   themeSelected: string;
+  showFeedbackDialog: boolean;
   selectedContentBtn: string;
   selectedAboutSectionBtn: string;
   toast: Toast | null;
@@ -37,6 +38,7 @@ export interface AppContextType {
   dispatch: Dispatch<Action<ActionType>>;
   setThemeSelected: (payload: string) => void;
   setEasyMode: (payload: boolean) => void;
+  setShowFeedbackDialog: (payload: boolean) => void;
   setSelectedContent: (payload: string) => void;
   setSelectedAboutSectionBtn: (payload: string) => void;
   setModalContent: (payload: ModalContent) => void;
