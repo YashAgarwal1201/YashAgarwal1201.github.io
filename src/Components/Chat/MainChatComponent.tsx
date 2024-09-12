@@ -109,9 +109,9 @@ const MainChatComponent = () => {
   // const msgContainerHeight = userOptionsContainerRef?.current?.clientHeight;
 
   return (
-    <div className="w-full h-full flex flex-col items-center snap-start snap-always border">
+    <div className="w-full h-full flex flex-col items-center">
       <div
-        className="w-full m-auto p-2 overflow-y-auto  shadow-md rounded-md contentBody"
+        className="w-full m-auto p-2 overflow-y-auto contentBody"
         style={{ height: `calc(100% - ${msgContainerHeight}px)` }}
       >
         {groupedMessages?.length > 0 ? (
@@ -125,7 +125,7 @@ const MainChatComponent = () => {
             >
               {value?.map((message, subKey) => (
                 <div
-                  className={`flex flex-col gap-y-2 ${
+                  className={`flex flex-col gap-y-2 sm:gap-y-3 mdl:gap-y-4 ${
                     message.role === "user" ? "items-end" : "items-start"
                   }`}
                   key={subKey}
@@ -133,24 +133,23 @@ const MainChatComponent = () => {
                   <div
                     className={`flex ${
                       message.role === "user" ? "flex-row-reverse" : "flex-row"
-                    } items-center gap-x-2  text-sm md:text-base`}
+                    } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm lg:text-base 2xl:text-lg`}
                   >
-                    <span className="material-symbols-rounded bg-color4 text-color1 rounded-full p-2 mdl:p-3">
+                    <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
                       person
                     </span>
-                    <span className="font-subheading">
+                    <span className="font-subheading text-color4">
                       {message?.role === "user" ? "You" : "Yash Agarwal"}
                     </span>
                   </div>
                   <div
-                    className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit  text-sm md:text-base ${
+                    className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit  text-base lg:text-lg 2xl:text-xl ${
                       message.role === "user"
-                        ? "m4-3 mdl:mr-3 bg-color3 text-color1"
+                        ? "m4-3 mdl:mr-3 bg-color2 text-color4"
                         : "ml-3 mdl:ml-4 bg-color4 text-color1"
                     } p-3 rounded-md font-content`}
                   >
                     {/* <TypeItText text={WELCOME_MSG} /> */}
-                    {/* {message?.content} */}
                     <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                       {message?.content}
                     </ReactMarkdown>
@@ -162,13 +161,15 @@ const MainChatComponent = () => {
         ) : (
           <div className="flex flex-col gap-y-5">
             <div className="flex flex-col gap-y-2">
-              <div className="flex items-center gap-x-2  text-sm md:text-base">
-                <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
+              <div className="flex items-center gap-x-2 text-sm lg:text-base 2xl:text-lg">
+                <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
                   person
                 </span>
-                <span className="font-subheading">Yash Agarwal</span>
+                <span className="font-subheading text-color4">
+                  Yash Agarwal
+                </span>
               </div>
-              <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ml-3 mdl:ml-4 bg-color4 p-3 rounded-md font-content text-color1 text-sm md:text-base">
+              <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ml-3 mdl:ml-4 bg-color4 p-3 rounded-md font-content text-color1 text-base lg:text-lg 2xl:text-xl">
                 {/* <TypeItText text={WELCOME_MSG} /> */}
                 {WELCOME_MSG}
               </div>
@@ -183,7 +184,7 @@ const MainChatComponent = () => {
         ref={userOptionsContainerRef}
       >
         <div className="h-full p-3 flex flex-row-reverse items-end gap-x-2  text-xs sm:text-sm md:text-base">
-          <span className="material-symbols-rounded bg-color3 text-color1 rounded-full p-2 mdl:p-3">
+          <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
             person
           </span>
           <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
@@ -195,7 +196,7 @@ const MainChatComponent = () => {
                       <Button
                         key={key}
                         label={value?.title}
-                        className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
+                        className={`px-3 py-2 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
                           state?.selectedAboutSectionBtn?.toLowerCase() ===
                           value?.title?.toLowerCase()
                             ? "block"
@@ -229,7 +230,7 @@ const MainChatComponent = () => {
                       <Button
                         key={key}
                         label={value?.title}
-                        className={`px-3 py-2 capitalize text-xs sm:text-sm md:text-base border border-color5 ${
+                        className={`px-3 py-2 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
                           state?.selectedAboutSectionBtn?.toLowerCase() ===
                           value?.title?.toLowerCase()
                             ? "block"

@@ -4,7 +4,106 @@ export const primaryInfo = {
   currentOrganisation: "Techolution, India",
 };
 
-const contactLinks = [
+export const ABOUT_EDUCATION = [
+  {
+    year: "2007 - 2018",
+    institution: "Modern Era Public School, Bijnor.",
+  },
+  {
+    year: "2018 - 2022",
+    institution: "DIT Univeristy, Dehradun.",
+    description: "Bachelor of Technology in Computer Science & Engineering",
+  },
+];
+
+export const ABOUT_WORK = [
+  {
+    year: "July, 2023 - present",
+    position: "Associate UI Developer, Techolution India",
+    projects: [
+      "Alan for Talet Fountain",
+      "Owens & Minor",
+      "Techolution Website",
+    ],
+  },
+  {
+    year: "December, 2022 - June, 2023",
+    position: "UI Developer - Intern, Techolution India",
+    projects: ["One stop demo shop", "HR Employee Handbook"],
+  },
+];
+
+export const ABOUT_OTHER_PROJECTS = [
+  {
+    year: "2024",
+    projects: [
+      {
+        title: "Project Banana",
+        posterLink: "https://project-bananaa.vercel.app/",
+        description: "",
+      },
+      {
+        title: "The Wedography Portfolio",
+        posterLink: "https://thewedography.vercel.app/",
+        description: "",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    projects: [
+      {
+        title: "Project Pineapple",
+        posterLink: "https://project-pineapple.vercel.app/",
+      },
+    ],
+  },
+];
+
+export const ABOUT_ME = [
+  {
+    header: "Education",
+    content: ABOUT_EDUCATION,
+  },
+  {
+    header: "Work",
+    content: ABOUT_WORK,
+  },
+  {
+    header: "Other Projects",
+    content: ABOUT_OTHER_PROJECTS,
+  },
+];
+
+export const ABOUT_CONTACT = [
+  {
+    link: "legoyashx@hotmail.com",
+    type: "email",
+    title: "Click to copy my email id",
+  },
+  {
+    link: "https://www.linkedin.com/in/yash-a-a669b2237",
+    type: "linkedin",
+    title: "Click to view my linkedIn profile",
+  },
+  {
+    link: "https://github.com/YashAgarwal1201",
+    type: "github",
+    title: "Click to check my github profile",
+  },
+  {
+    link: "https://drive.google.com/file/d/1d7Ha14j-KYxfmVHf8Fi7RvaioUzGDw_u/view?usp=share_link",
+    type: "id-card",
+    title: "Click to see my resume",
+  },
+  {
+    link: "https://t.me/legoyashx",
+    type: "telegram",
+    title: "Click to connect on telegram",
+  },
+];
+
+export const contactLinks = [
   {
     link: "legoyashx@hotmail.com",
     type: "email",
