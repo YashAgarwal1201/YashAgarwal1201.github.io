@@ -13,6 +13,7 @@ import { useAppContext } from "../../Services/AppContext";
 import { AboutMessage } from "../../Services/Interfaces";
 import { useMsgAppContext } from "../../Services/MessagesContextAndInterfaces/MessagesContext";
 import { getResponse } from "../About/ChatComponent/GetResponses";
+import TypeIt from "typeit-react";
 
 const MainChatComponent = () => {
   const { state, showToast } = useAppContext();
@@ -21,6 +22,8 @@ const MainChatComponent = () => {
     useMsgAppContext();
 
   const [msgContainerHeight, setMsgContainerHeight] = useState<number>(0);
+  const [startNewMessageAnimation, setStartNewMessageAnimation] =
+    useState<boolean>(false);
 
   const lastPairRef = useRef<HTMLDivElement>(null);
   const userOptionsContainerRef = useRef<HTMLDivElement>(null);
@@ -60,6 +63,10 @@ const MainChatComponent = () => {
     }
   }, [messageState.messages]);
 
+  // useEffect(() => {
+  //   setTimeout
+  // })
+
   const handleOptionClick = (query: string) => {
     scrollToLastPair();
     // setShowOptions(false);
@@ -88,6 +95,15 @@ const MainChatComponent = () => {
 
     // Update the messages state with both messages
     setMessages([...messageState.messages, userMessage, botMessage]);
+    setStartNewMessageAnimation(true);
+
+    const TIMEOUT =
+      response?.length < 1500 ? 20 * response.length : response.length;
+
+    // Stop the animation after a short delay
+    setTimeout(() => {
+      setStartNewMessageAnimation(false);
+    }, TIMEOUT);
   };
 
   const groupMessages = (messages: AboutMessage[]) => {
@@ -106,12 +122,10 @@ const MainChatComponent = () => {
     lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // const msgContainerHeight = userOptionsContainerRef?.current?.clientHeight;
-
   return (
     <div className="w-full h-full flex flex-col items-center">
       <div
-        className="w-full m-auto p-2 overflow-y-auto contentBody"
+        className="w-full m-auto px-2 py-2 sm:pr-3 sm:py-3 mdl:pr-4 mdl:py-4 overflow-y-auto contentBody"
         style={{ height: `calc(100% - ${msgContainerHeight}px)` }}
       >
         {groupedMessages?.length > 0 ? (
@@ -119,7 +133,7 @@ const MainChatComponent = () => {
             <div
               key={key}
               className={`
-        ${key === groupedMessages?.length - 1 ? "h-[99%] mb-0" : "mb-4"}
+        ${key === groupedMessages?.length - 1 ? "h-[100%] mb-0" : "mb-4"}
           flex flex-col gap-y-5`}
               ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
             >
@@ -147,12 +161,27 @@ const MainChatComponent = () => {
                       message.role === "user"
                         ? "m4-3 mdl:mr-3 bg-color2 text-color4"
                         : "ml-3 mdl:ml-4 bg-color4 text-color1"
-                    } p-3 rounded-md font-content`}
+                    } p-3 rounded-md font-content *:mb-1`}
                   >
-                    {/* <TypeItText text={WELCOME_MSG} /> */}
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                      {message?.content}
-                    </ReactMarkdown>
+                    {startNewMessageAnimation &&
+                    message.role === "bot" &&
+                    key === groupedMessages?.length - 1 ? (
+                      <TypeIt
+                        options={{
+                          speed: 10,
+                          waitUntilVisible: true,
+                          cursor: false,
+                        }}
+                      >
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                          {message?.content}
+                        </ReactMarkdown>
+                      </TypeIt>
+                    ) : (
+                      <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                        {message?.content}
+                      </ReactMarkdown>
+                    )}
                   </div>
                 </div>
               ))}
@@ -170,8 +199,15 @@ const MainChatComponent = () => {
                 </span>
               </div>
               <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit ml-3 mdl:ml-4 bg-color4 p-3 rounded-md font-content text-color1 text-base lg:text-lg 2xl:text-xl">
-                {/* <TypeItText text={WELCOME_MSG} /> */}
-                {WELCOME_MSG}
+                <TypeIt
+                  options={{
+                    speed: 10,
+                    waitUntilVisible: true,
+                    cursor: false,
+                  }}
+                >
+                  {WELCOME_MSG}
+                </TypeIt>
               </div>
             </div>
           </div>
