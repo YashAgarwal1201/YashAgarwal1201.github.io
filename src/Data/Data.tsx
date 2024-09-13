@@ -79,7 +79,7 @@ export const ABOUT_CONTACT = [
   {
     link: "legoyashx@hotmail.com",
     type: "email",
-    title: "Click to copy my email id",
+    title: "Click to open email client",
   },
   {
     link: "https://www.linkedin.com/in/yash-a-a669b2237",
