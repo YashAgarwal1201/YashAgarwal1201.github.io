@@ -9,6 +9,7 @@ import { Sidebar } from "primereact/sidebar";
 
 import { themes } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
+import { useMsgAppContext } from "../../Services/MessagesContextAndInterfaces/MessagesContext";
 import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
 
 import "./MenuDialog.scss";
@@ -20,6 +21,7 @@ type MenuDialogProps = {
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   const { state, showToast, setThemeSelected, setEasyMode } = useAppContext();
+  const { messageState, setSelectedChatAppearance } = useMsgAppContext();
 
   const handleThemeChange = (themeValue: string) => {
     setThemeSelected(themeValue);
@@ -42,7 +44,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           More Options
         </div>
       }
-      className={`aboutDialog ${
+      className={`aboutDialog min-w-fit ${
         state.easyMode
           ? "w-full md:w-1/2"
           : "w-full md:w-[70%] mdl:w-[60%] lg:w-[50%]"
@@ -159,6 +161,79 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
                   showToast("info", "Info", "Under development");
                 }}
               />
+            </div>
+          </AccordionTab>
+
+          <AccordionTab
+            header={
+              <span className="text-black font-subheading font-medium not-italic">
+                Chat View
+              </span>
+            }
+          >
+            <div className="font-content flex flex-col gap-y-10 justify-between">
+              <p>Select the chat appearance</p>
+
+              <div className="flex flex-wrap justify-center items-center gap-3">
+                <Button
+                  className={`min-w-[275px] flex flex-col ${
+                    messageState.selectedChatAppearance === "default"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                  onClick={() => setSelectedChatAppearance("default")}
+                >
+                  <div className="w-full flex flex-col gap-y-4 bg-color4 p-3 rounded-md">
+                    {[1, 2].map((key) => (
+                      <div
+                        key={key}
+                        className={`flex flex-col ${
+                          key === 1 ? "items-start" : "items-end"
+                        } gap-y-2 `}
+                      >
+                        <div
+                          className={`flex ${
+                            key === 1 ? "flex-row" : "flex-row-reverse"
+                          } items-center gap-x-2`}
+                        >
+                          <span className="pi pi-user p-2 rounded-full bg-color1 text-color5"></span>
+                          <span className="block rounded-md w-16 h-5 bg-color3"></span>
+                        </div>
+                        <div
+                          className={`${
+                            key === 1 ? "ml-4 mr-0" : "ml-0 mr-4"
+                          } rounded-md bg-color2 w-1/2 h-7`}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="">Default</p>
+                </Button>
+
+                <Button
+                  className={`min-w-[275px] flex flex-col ${
+                    messageState.selectedChatAppearance === "compact"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                  onClick={() => setSelectedChatAppearance("compact")}
+                >
+                  <div className="w-full flex flex-col gap-y-4 bg-color4 p-3 rounded-md">
+                    {[1, 2].map((key) => (
+                      <div key={key} className={`flex flex-col  gap-y-2 `}>
+                        <div className={`flex flex-row items-center gap-x-2`}>
+                          <span className="pi pi-user p-2 rounded-full bg-color1 text-color5"></span>
+                          <span className="block rounded-md w-16 h-5 bg-color3"></span>
+                        </div>
+                        <div
+                          className={`ml-4 mr-0 rounded-md bg-color2 w-1/2 h-7`}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="">Compact</p>
+                </Button>
+              </div>
             </div>
           </AccordionTab>
         </Accordion>

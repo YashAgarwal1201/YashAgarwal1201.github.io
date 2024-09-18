@@ -107,6 +107,7 @@ const initialState: MessageState = sessionStorage.getItem(`yashAppMsgData`)
       options: CHAT_USER_OPTIONS,
       showMoreOptions: false,
       moreOptions: CHAT_USER_MORE_OPTIONS,
+      selectedChatAppearance: "default",
     };
 
 const reducer = (
@@ -131,6 +132,14 @@ const reducer = (
     case "SET_SHOW_MORE_OPTIONS": {
       return { ...messageState, showMoreOptions: action.payload as boolean };
     }
+
+    case "SET_SELECTED_CHAT_APPEARANCE": {
+      return {
+        ...messageState,
+        selectedChatAppearance: action.payload as string,
+      };
+    }
+
     default:
       return messageState;
   }
@@ -142,6 +151,7 @@ const MsgAppContext = createContext<AppContextType>({
   setMessages: () => null,
   setShowOptions: () => null,
   setShowMoreOptions: () => null,
+  setSelectedChatAppearance: () => null,
   // setMessages: () => null,
 });
 
@@ -165,6 +175,10 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "SET_SHOW_MORE_OPTIONS", payload: showMoreOptions });
   };
 
+  const setSelectedChatAppearance = (payload: string) => {
+    dispatch({ type: "SET_SELECTED_CHAT_APPEARANCE", payload });
+  };
+
   // const setMessages = (newMessage: AboutMessage[]) => {
   //   dispatch({
   //     type: "SET_MESSAGES",
@@ -178,6 +192,7 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     setMessages,
     setShowOptions,
     setShowMoreOptions,
+    setSelectedChatAppearance,
     // setMessages,
   };
 

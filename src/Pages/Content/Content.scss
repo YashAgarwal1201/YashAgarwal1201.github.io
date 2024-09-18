@@ -12,6 +12,11 @@
   background-color: var(--color5);
 }
 
+[data-typeit-id]:before {
+  content: none !important;
+  display: none !important;
+}
+
 .aboutDialog {
   background-color: transparent;
   .p-dialog-header,
