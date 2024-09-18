@@ -20,7 +20,13 @@ type MenuDialogProps = {
 };
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
-  const { state, showToast, setThemeSelected, setEasyMode } = useAppContext();
+  const {
+    state,
+    showToast,
+    setThemeSelected,
+    setEasyMode,
+    setShowFeedbackDialog,
+  } = useAppContext();
   const { messageState, setSelectedChatAppearance } = useMsgAppContext();
 
   const handleThemeChange = (themeValue: string) => {
@@ -54,7 +60,9 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
         <Accordion
           collapseIcon={
-            <span className="material-symbols-rounded">expand_less</span>
+            <span className="material-symbols-rounded text-color1">
+              expand_less
+            </span>
           }
           expandIcon={
             <span className="material-symbols-rounded">expand_more</span>
@@ -65,7 +73,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             header={
               <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black font-subheading not-italic">
-                  Theme
+                  Change theme
                 </span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
@@ -117,7 +125,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             header={
               <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black font-subheading not-italic">
-                  Easy mode?{" "}
+                  Use easy mode?{" "}
                 </span>
                 <span className="text-black capitalize font-content not-italic">
                   {state.easyMode ? "Yes" : "No"}
@@ -149,7 +157,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <span className="text-black font-subheading font-medium not-italic">
-                Download Resume
+                View my resume
               </span>
             }
           >
@@ -167,7 +175,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <span className="text-black font-subheading font-medium not-italic">
-                Chat View
+                Change chat appearance
               </span>
             }
           >
@@ -236,6 +244,23 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
               </div>
             </div>
           </AccordionTab>
+
+          <AccordionTab
+            className="menu-feedback-btn block md:hidden"
+            headerTemplate={
+              <span
+                className="h-full text-black font-subheading font-medium not-italic"
+                onClick={() => {
+                  setShowMenuDialog(false);
+                  setShowFeedbackDialog(true);
+                }}
+              >
+                Have something to say?
+              </span>
+            }
+            contentClassName="hidden"
+            headerClassName="bg-pink-400"
+          ></AccordionTab>
         </Accordion>
       </div>
     </Sidebar>

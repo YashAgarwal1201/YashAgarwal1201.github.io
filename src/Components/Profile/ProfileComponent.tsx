@@ -68,7 +68,7 @@ const OtherProjects = () => {
   ));
 };
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <Card>
       <div className="w-full flex justify-center items-center gap-x-3 flex-wrap">
@@ -78,7 +78,7 @@ const Contact = () => {
             title={value.title}
             href={value.type === "email" ? `mailto:${value.link}` : value.link}
             target="_blank"
-            className={`w-20 aspect-square flex justify-center items-center p-2 sm:p-3 mdl:p-4 bg-color2 cursor-pointer rounded-full text-2xl text-color4`}
+            className={`w-20 aspect-square flex justify-center items-center p-2 sm:p-3 mdl:p-4 bg-color3 cursor-pointer rounded-full text-2xl text-color4`}
           >
             <span
               className={`pi pi-${
@@ -105,9 +105,14 @@ const ProfileComponent = () => {
             <p className="text-lg sm:text-xl mdl:text:2xl font-subheading">
               Associate UI developer
             </p>
-            <p className="text-base sm:text-lg mdl:text-xl font-subheading">
+            <a
+              className="text-base sm:text-lg mdl:text-xl font-subheading not-italic"
+              href="https://www.techolution.com/"
+              target="_blank"
+              rel="noopener"
+            >
               <span className="pi pi-at"></span> Techolution, India
-            </p>
+            </a>
           </div>
         </div>
       </div>

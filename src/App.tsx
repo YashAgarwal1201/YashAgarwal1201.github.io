@@ -7,7 +7,6 @@ import { Outlet } from "react-router-dom";
 import { useAppContext } from "./Services/AppContext";
 import "./App.scss";
 import { useMsgAppContext } from "./Services/MessagesContextAndInterfaces/MessagesContext";
-// import ErrorBoundary from "./Services/ErrorBoundary";
 
 function App() {
   const { dispatch, state } = useAppContext();
@@ -43,10 +42,6 @@ function App() {
   //   localStorage.setItem(`yashAppData`, JSON.stringify(state));
   // }, [state]);
 
-  // useEffect(() => {
-  //   Cookies.set("yashAppData", JSON.stringify(state), { expires: 1 / 24 }); // Expires in 7 days
-  // }, [state]);
-
   useEffect(() => {
     // Check for the cookie ID
     const cookieId = Cookies.get("appId");
@@ -77,12 +72,10 @@ function App() {
   }, [messageState]);
 
   return (
-    // <ErrorBoundary>
     <div className="w-screen h-[100dvh]">
       <Toast ref={myToast} />
       <Outlet />
     </div>
-    // </ErrorBoundary>
   );
 }
 

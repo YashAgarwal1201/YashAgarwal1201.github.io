@@ -63,10 +63,6 @@ const MainChatComponent = () => {
     }
   }, [messageState.messages]);
 
-  // useEffect(() => {
-  //   setTimeout
-  // })
-
   const handleOptionClick = (query: string) => {
     scrollToLastPair();
     // setShowOptions(false);
