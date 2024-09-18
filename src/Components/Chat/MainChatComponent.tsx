@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "primereact/button";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import TypeIt from "typeit-react";
 
 import {
   CHAT_USER_MORE_OPTIONS,
@@ -13,7 +14,6 @@ import { useAppContext } from "../../Services/AppContext";
 import { AboutMessage } from "../../Services/Interfaces";
 import { useMsgAppContext } from "../../Services/MessagesContextAndInterfaces/MessagesContext";
 import { getResponse } from "../About/ChatComponent/GetResponses";
-import TypeIt from "typeit-react";
 
 const MainChatComponent = () => {
   const { state, showToast } = useAppContext();
@@ -63,10 +63,6 @@ const MainChatComponent = () => {
     }
   }, [messageState.messages]);
 
-  // useEffect(() => {
-  //   setTimeout
-  // })
-
   const handleOptionClick = (query: string) => {
     scrollToLastPair();
     // setShowOptions(false);
@@ -103,7 +99,7 @@ const MainChatComponent = () => {
     // Stop the animation after a short delay
     setTimeout(() => {
       setStartNewMessageAnimation(false);
-    }, TIMEOUT);
+    }, TIMEOUT * 1000);
   };
 
   const groupMessages = (messages: AboutMessage[]) => {
@@ -140,13 +136,19 @@ const MainChatComponent = () => {
               {value?.map((message, subKey) => (
                 <div
                   className={`flex flex-col gap-y-2 sm:gap-y-3 mdl:gap-y-4 ${
-                    message.role === "user" ? "items-end" : "items-start"
+                    message.role === "user" &&
+                    messageState.selectedChatAppearance !== "compact"
+                      ? "items-end"
+                      : "items-start"
                   }`}
                   key={subKey}
                 >
                   <div
                     className={`flex ${
-                      message.role === "user" ? "flex-row-reverse" : "flex-row"
+                      message.role === "user" &&
+                      messageState.selectedChatAppearance !== "compact"
+                        ? "flex-row-reverse"
+                        : "flex-row"
                     } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm lg:text-base 2xl:text-lg`}
                   >
                     <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
@@ -159,8 +161,14 @@ const MainChatComponent = () => {
                   <div
                     className={`max-w-full sm:max-w-[90%] md:max-w-[80%] mdl:max-w-[70%] lg:max-w-[70%] w-fit  text-base lg:text-lg 2xl:text-xl ${
                       message.role === "user"
-                        ? "m4-3 mdl:mr-3 bg-color2 text-color4"
-                        : "ml-3 mdl:ml-4 bg-color4 text-color1"
+                        ? "bg-color2 text-color4"
+                        : "bg-color4 text-color1"
+                    } ${
+                      messageState.selectedChatAppearance === "compact"
+                        ? "ml-3 mdl:ml-4"
+                        : message.role === "user"
+                        ? "mr-3 mdl:mr-4"
+                        : "ml-3 mdl:ml-4"
                     } p-3 rounded-md font-content *:mb-1`}
                   >
                     {startNewMessageAnimation &&

@@ -9,6 +9,7 @@ import { Sidebar } from "primereact/sidebar";
 
 import { themes } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
+import { useMsgAppContext } from "../../Services/MessagesContextAndInterfaces/MessagesContext";
 import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
 
 import "./MenuDialog.scss";
@@ -19,7 +20,14 @@ type MenuDialogProps = {
 };
 
 const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
-  const { state, showToast, setThemeSelected, setEasyMode } = useAppContext();
+  const {
+    state,
+    showToast,
+    setThemeSelected,
+    setEasyMode,
+    setShowFeedbackDialog,
+  } = useAppContext();
+  const { messageState, setSelectedChatAppearance } = useMsgAppContext();
 
   const handleThemeChange = (themeValue: string) => {
     setThemeSelected(themeValue);
@@ -42,7 +50,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           More Options
         </div>
       }
-      className={`aboutDialog ${
+      className={`aboutDialog min-w-fit ${
         state.easyMode
           ? "w-full md:w-1/2"
           : "w-full md:w-[70%] mdl:w-[60%] lg:w-[50%]"
@@ -52,7 +60,9 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
         <Accordion
           collapseIcon={
-            <span className="material-symbols-rounded">expand_less</span>
+            <span className="material-symbols-rounded text-color1">
+              expand_less
+            </span>
           }
           expandIcon={
             <span className="material-symbols-rounded">expand_more</span>
@@ -63,7 +73,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             header={
               <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black font-subheading not-italic">
-                  Theme
+                  Change theme
                 </span>
                 <div className="flex items-center rounded-md border-2">
                   <div className="w-4 h-4 bg-color1 rounded-l-md"></div>
@@ -115,7 +125,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             header={
               <div className="flex justify-between items-center font-heading font-medium">
                 <span className="text-black font-subheading not-italic">
-                  Easy mode?{" "}
+                  Use easy mode?{" "}
                 </span>
                 <span className="text-black capitalize font-content not-italic">
                   {state.easyMode ? "Yes" : "No"}
@@ -147,7 +157,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           <AccordionTab
             header={
               <span className="text-black font-subheading font-medium not-italic">
-                Download Resume
+                View my resume
               </span>
             }
           >
@@ -161,6 +171,96 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
               />
             </div>
           </AccordionTab>
+
+          <AccordionTab
+            header={
+              <span className="text-black font-subheading font-medium not-italic">
+                Change chat appearance
+              </span>
+            }
+          >
+            <div className="font-content flex flex-col gap-y-10 justify-between">
+              <p>Select the chat appearance</p>
+
+              <div className="flex flex-wrap justify-center items-center gap-3">
+                <Button
+                  className={`min-w-[275px] flex flex-col ${
+                    messageState.selectedChatAppearance === "default"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                  onClick={() => setSelectedChatAppearance("default")}
+                >
+                  <div className="w-full flex flex-col gap-y-4 bg-color4 p-3 rounded-md">
+                    {[1, 2].map((key) => (
+                      <div
+                        key={key}
+                        className={`flex flex-col ${
+                          key === 1 ? "items-start" : "items-end"
+                        } gap-y-2 `}
+                      >
+                        <div
+                          className={`flex ${
+                            key === 1 ? "flex-row" : "flex-row-reverse"
+                          } items-center gap-x-2`}
+                        >
+                          <span className="pi pi-user p-2 rounded-full bg-color1 text-color5"></span>
+                          <span className="block rounded-md w-16 h-5 bg-color3"></span>
+                        </div>
+                        <div
+                          className={`${
+                            key === 1 ? "ml-4 mr-0" : "ml-0 mr-4"
+                          } rounded-md bg-color2 w-1/2 h-7`}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="">Default</p>
+                </Button>
+
+                <Button
+                  className={`min-w-[275px] flex flex-col ${
+                    messageState.selectedChatAppearance === "compact"
+                      ? "text-blue-800 font-semibold cursor-default"
+                      : "text-[#010101] font-normal cursor-pointer"
+                  }`}
+                  onClick={() => setSelectedChatAppearance("compact")}
+                >
+                  <div className="w-full flex flex-col gap-y-4 bg-color4 p-3 rounded-md">
+                    {[1, 2].map((key) => (
+                      <div key={key} className={`flex flex-col  gap-y-2 `}>
+                        <div className={`flex flex-row items-center gap-x-2`}>
+                          <span className="pi pi-user p-2 rounded-full bg-color1 text-color5"></span>
+                          <span className="block rounded-md w-16 h-5 bg-color3"></span>
+                        </div>
+                        <div
+                          className={`ml-4 mr-0 rounded-md bg-color2 w-1/2 h-7`}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="">Compact</p>
+                </Button>
+              </div>
+            </div>
+          </AccordionTab>
+
+          <AccordionTab
+            className="menu-feedback-btn block md:hidden"
+            headerTemplate={
+              <span
+                className="h-full text-black font-subheading font-medium not-italic"
+                onClick={() => {
+                  setShowMenuDialog(false);
+                  setShowFeedbackDialog(true);
+                }}
+              >
+                Have something to say?
+              </span>
+            }
+            contentClassName="hidden"
+            headerClassName="bg-pink-400"
+          ></AccordionTab>
         </Accordion>
       </div>
     </Sidebar>

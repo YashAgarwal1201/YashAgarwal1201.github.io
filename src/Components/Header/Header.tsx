@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { useAppContext } from "../../Services/AppContext";
 
 type HeaderProps = {
-  setSelectedButton: (section: string) => void; //React.Dispatch<React.SetStateAction<string>>;
+  setSelectedButton: (section: string) => void;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -44,6 +44,7 @@ const Header = ({
           }}
         />
         <Button
+          disabled={true}
           title="Download Resume"
           icon={<span className="material-symbols-rounded">download</span>}
           className={`${

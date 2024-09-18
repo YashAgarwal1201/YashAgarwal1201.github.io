@@ -37,11 +37,11 @@ export const ABOUT_OTHER_PROJECTS = [
   {
     year: "2024",
     projects: [
-      {
-        title: "Project Banana",
-        posterLink: "https://project-bananaa.vercel.app/",
-        description: "",
-      },
+      // {
+      //   title: "Project Banana",
+      //   posterLink: "https://project-bananaa.vercel.app/",
+      //   description: "",
+      // },
       {
         title: "The Wedography Portfolio",
         posterLink: "https://thewedography.vercel.app/",

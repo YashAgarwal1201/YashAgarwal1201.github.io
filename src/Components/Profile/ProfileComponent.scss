@@ -6,17 +6,17 @@
       padding: 0px 1rem;
 
       .p-tabview-selected {
-        background-color: var(--color3);
+        background-color: var(--color4);
         border-radius: 0.5rem;
 
         .p-tabview-nav-link {
-          color: var(--color5);
+          color: var(--color1);
         }
       }
 
       .p-tabview-nav-link {
         background-color: transparent;
-        color: var(--color4);
+        color: var(--color5);
         font-weight: normal;
         height: 100%;
         font-style: normal;
@@ -28,18 +28,18 @@
       padding: 0px;
 
       .p-card {
-        background-color: var(--color4);
+        background-color: var(--color2);
 
         .p-card-title {
           font-family: var(--subheading);
           font-weight: 500;
-          color: var(--color2);
+          color: var(--color4);
           font-size: 1.5rem;
         }
 
         .p-card-content {
           font-family: var(--content);
-          color: var(--color1);
+          color: var(--color5);
           font-size: 1.125rem;
         }
 

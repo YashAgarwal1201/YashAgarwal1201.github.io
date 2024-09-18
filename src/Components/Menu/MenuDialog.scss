@@ -6,7 +6,34 @@
     }
     .p-highlight {
         background-color: rgb(30 64 175);
-        color: #FFFFFF;
+        color: #ffffff;
         cursor: default;
+    }
+}
+
+.p-highlight {
+    border-bottom-left-radius: 12px;
+}
+
+// .p-accordion-tab-active
+.menu-feedback-btn {
+    border-radius: 1rem;
+
+    .p-accordion-header-link {
+        border-radius: 8px;
+    }
+
+    a {
+        padding: 0px;
+        width: 100%;
+        pointer-events: none;
+        .material-symbols-rounded {
+            visibility: hidden;
+        }
+        span:nth-child(2) {
+            padding: 1.25rem;
+            pointer-events: all;
+            width: 100%;
+        }
     }
 }
