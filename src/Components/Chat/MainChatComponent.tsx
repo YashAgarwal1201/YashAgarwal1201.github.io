@@ -303,6 +303,7 @@ const MainChatComponent = () => {
                 })
               : ""}
             <Button
+              title="reset chat"
               disabled={messageState.messages?.length === 0}
               icon={"pi pi-refresh"}
               onClick={() => {
