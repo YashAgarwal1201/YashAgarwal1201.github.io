@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
+import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import TypeIt from "typeit-react";
@@ -75,12 +76,18 @@ const MainChatComponent = () => {
       role: "user",
     };
 
-    const response =
+    const response = ReactDOMServer.renderToStaticMarkup(
       getResponse({
         query: query,
         setShowOptions,
         setShowMoreOptions,
-      }) || "Sorry, I don't have information on that.";
+      }) || "Sorry, I don't have information on that."
+    );
+    // getResponse({
+    //   query: query,
+    //   setShowOptions,
+    //   setShowMoreOptions,
+    // }) || "Sorry, I don't have information on that.";
 
     // Add bot's response as a message
     const botMessage: AboutMessage = {
