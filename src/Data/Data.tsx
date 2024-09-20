@@ -21,7 +21,7 @@ export const ABOUT_WORK = [
     year: "July, 2023 - present",
     position: "Associate UI Developer, Techolution India",
     projects: [
-      "Alan for Talet Fountain",
+      "Alan for Talent Fountain",
       "Owens & Minor",
       "Techolution Website",
     ],

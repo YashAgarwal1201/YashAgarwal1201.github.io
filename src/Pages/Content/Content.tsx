@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 
-import Header from "./../../Components/Header/Header";
 import "./Content.scss";
-import About from "../../Components/About/About";
+// import About from "../../Components/About/About";
 import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import MainChatComponent from "../../Components/Chat/MainChatComponent";
-import Feedback from "../../Components/Feedback/Feedback";
+// import Feedback from "../../Components/Feedback/Feedback";
 import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
-import Home from "../../Components/Home/Home";
+// import Home from "../../Components/Home/Home";
 import MenuDialog from "../../Components/Menu/MenuDialog";
 import ProfileComponent from "../../Components/Profile/ProfileComponent";
 import { useAppContext } from "../../Services/AppContext";
+import Header from "./../../Components/Header/Header";
 
 type KeyMapProp = {
   [key: string]: string;
@@ -22,7 +22,7 @@ const Content: React.FC = () => {
   const { state, showToast, setSelectedContent, setEasyMode } = useAppContext();
   // const [selectedButton, setSelectedButton] = useState<string>("home");
   const [expandAboutDialog, setExpandAboutDialog] = useState(false);
-  const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
+  // const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
   const [showMenuDialog, setShowMenuDialog] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
