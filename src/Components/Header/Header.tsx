@@ -3,17 +3,13 @@ import { Button } from "primereact/button";
 import { useAppContext } from "../../Services/AppContext";
 
 type HeaderProps = {
-  setSelectedButton: (section: string) => void;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Header = ({
-  setSelectedButton,
-  showMenuDialog,
-  setShowMenuDialog,
-}: HeaderProps) => {
-  const { state, setShowFeedbackDialog, showToast } = useAppContext();
+const Header = ({ showMenuDialog, setShowMenuDialog }: HeaderProps) => {
+  const { state, setShowFeedbackDialog, showToast, setSelectedContent } =
+    useAppContext();
 
   const selectedButtonStyles =
     "text-color1 bg-color4 border-2 border-solid border-color4 shadow-md";
@@ -21,7 +17,7 @@ const Header = ({
     "text-color5 bg-transparent border-2 border-transparent";
 
   return (
-    <div className="w-full lg:w-[75px] h-12 lg:h-full flex flex-row mdl:flex-col justify-between items-center">
+    <div className="w-full lg:w-[75px] h-12 lg:h-full flex flex-row lg:flex-col justify-between items-center">
       <div className="w-auto lg:w-[75px] h-12 lg:h-auto flex flex-row lg:flex-col items-center justify-center gap-y-0 md:gap-y-1 gap-x-1 lg:gap-x-0">
         <Button
           title={
@@ -37,9 +33,9 @@ const Header = ({
           className={`${normalButtonStyles} w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             if (state.selectedContentBtn === "profile") {
-              setSelectedButton("default");
+              setSelectedContent("default");
             } else {
-              setSelectedButton("profile");
+              setSelectedContent("profile");
             }
           }}
         />
@@ -66,11 +62,11 @@ const Header = ({
           }}
         />
       </div>
-      <div className="w-fit h-fit">
+      <div className="w-auto lg:w-[75px] h-12 lg:h-auto">
         <Button
           title="Settings & others"
           icon={<span className="material-symbols-rounded">more_vert</span>}
-          className={`${normalButtonStyles} hover:border-transparent  w-12 lg:w-16 h-full lg:h-16`}
+          className={`${normalButtonStyles} hover:border-transparent flex  w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>

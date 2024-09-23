@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 
-import { BASE_API_LINK } from "../../../Data/Data";
-import { useAppContext } from "../../../Services/AppContext";
+import { BASE_API_LINK } from "../../Data/Data";
+import { useAppContext } from "../../Services/AppContext";
 
 // type FeedbackFormDialogProps = {
 //   expandFeedbackDialog: boolean;

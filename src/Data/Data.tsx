@@ -6,13 +6,13 @@ export const primaryInfo = {
 
 export const ABOUT_EDUCATION = [
   {
-    year: "2007 - 2018",
-    institution: "Modern Era Public School, Bijnor.",
-  },
-  {
     year: "2018 - 2022",
     institution: "DIT Univeristy, Dehradun.",
     description: "Bachelor of Technology in Computer Science & Engineering",
+  },
+  {
+    year: "2007 - 2018",
+    institution: "Modern Era Public School, Bijnor.",
   },
 ];
 
@@ -60,21 +60,6 @@ export const ABOUT_OTHER_PROJECTS = [
   },
 ];
 
-export const ABOUT_ME = [
-  {
-    header: "Education",
-    content: ABOUT_EDUCATION,
-  },
-  {
-    header: "Work",
-    content: ABOUT_WORK,
-  },
-  {
-    header: "Other Projects",
-    content: ABOUT_OTHER_PROJECTS,
-  },
-];
-
 export const ABOUT_CONTACT = [
   {
     link: "legoyashx@hotmail.com",
@@ -101,6 +86,22 @@ export const ABOUT_CONTACT = [
     type: "telegram",
     title: "Click to connect on telegram",
   },
+];
+
+export const ABOUT_ME = [
+  {
+    header: "Education",
+    content: ABOUT_EDUCATION,
+  },
+  {
+    header: "Work",
+    content: ABOUT_WORK,
+  },
+  {
+    header: "Other Projects",
+    content: ABOUT_OTHER_PROJECTS,
+  },
+  { header: "Contact & Resume", content: ABOUT_CONTACT },
 ];
 
 export const contactLinks = [
@@ -211,9 +212,6 @@ export const feedback = {
     bcc: "legoyashx@yahoo.com",
   },
 };
-
-export const WELCOME_MSG =
-  "Hello there! \nThis is Yash Agarwal. Tell me what do you want to know about me?";
 
 export const CHAT_USER_OPTIONS = [
   { title: "tell me about yourself", visible: true },

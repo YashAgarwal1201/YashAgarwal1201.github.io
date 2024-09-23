@@ -15,11 +15,16 @@ import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
 import "./MenuDialog.scss";
 
 type MenuDialogProps = {
+  showKeyboardShortcuts: boolean;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
+const MenuDialog = ({
+  showKeyboardShortcuts,
+  showMenuDialog,
+  setShowMenuDialog,
+}: MenuDialogProps) => {
   const {
     state,
     showToast,
@@ -42,7 +47,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
   return (
     <Sidebar
       visible={showMenuDialog}
-      onHide={() => setShowMenuDialog(!showMenuDialog)}
+      onHide={() => setShowMenuDialog(false)}
       dismissable={true}
       draggable={false}
       header={
@@ -50,11 +55,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
           More Options
         </div>
       }
-      className={`aboutDialog min-w-fit ${
-        state.easyMode
-          ? "w-full md:w-1/2"
-          : "w-full md:w-[70%] mdl:w-[60%] lg:w-[50%]"
-      } h-full absolute bottom-0 md:bottom-auto`}
+      className={`aboutDialog min-w-fit w-full md:w-[70%] mdl:w-[60%] lg:w-[50%] h-full absolute bottom-0 md:bottom-auto`}
       position={"right"}
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
@@ -68,6 +69,7 @@ const MenuDialog = ({ showMenuDialog, setShowMenuDialog }: MenuDialogProps) => {
             <span className="material-symbols-rounded">expand_more</span>
           }
           className="flex flex-col gap-y-2"
+          activeIndex={showKeyboardShortcuts ? 2 : -1}
         >
           <AccordionTab
             header={
