@@ -6,15 +6,14 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import TypeIt from "typeit-react";
 
-import {
-  CHAT_USER_MORE_OPTIONS,
-  CHAT_USER_OPTIONS,
-  WELCOME_MSG,
-} from "../../Data/Data";
+import { CHAT_USER_MORE_OPTIONS, CHAT_USER_OPTIONS } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
+import {
+  getResponse,
+  WELCOME_MSG,
+} from "../../Services/GetResponses/GetResponses";
 import { AboutMessage } from "../../Services/Interfaces";
 import { useMsgAppContext } from "../../Services/MessagesContextAndInterfaces/MessagesContext";
-import { getResponse } from "../About/ChatComponent/GetResponses";
 
 const MainChatComponent = () => {
   const { state, showToast } = useAppContext();

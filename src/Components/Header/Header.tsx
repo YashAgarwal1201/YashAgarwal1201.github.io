@@ -3,17 +3,13 @@ import { Button } from "primereact/button";
 import { useAppContext } from "../../Services/AppContext";
 
 type HeaderProps = {
-  setSelectedButton: (section: string) => void;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Header = ({
-  setSelectedButton,
-  showMenuDialog,
-  setShowMenuDialog,
-}: HeaderProps) => {
-  const { state, setShowFeedbackDialog, showToast } = useAppContext();
+const Header = ({ showMenuDialog, setShowMenuDialog }: HeaderProps) => {
+  const { state, setShowFeedbackDialog, showToast, setSelectedContent } =
+    useAppContext();
 
   const selectedButtonStyles =
     "text-color1 bg-color4 border-2 border-solid border-color4 shadow-md";
@@ -37,9 +33,9 @@ const Header = ({
           className={`${normalButtonStyles} w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => {
             if (state.selectedContentBtn === "profile") {
-              setSelectedButton("default");
+              setSelectedContent("default");
             } else {
-              setSelectedButton("profile");
+              setSelectedContent("profile");
             }
           }}
         />

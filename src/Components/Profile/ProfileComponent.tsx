@@ -118,7 +118,7 @@ const ProfileComponent = () => {
       </div>
 
       <div className="w-full h-auto flex flex-col gap-y-4">
-        <TabView className="bg-transparent">
+        <TabView className="bg-transparent" activeIndex={2}>
           {ABOUT_ME?.filter(
             (values) => !values?.header?.toLowerCase()?.includes("contact")
           )?.map((values, keys) => (
@@ -128,6 +128,17 @@ const ProfileComponent = () => {
               contentClassName="p-4 bg-color2"
               headerClassName="p-0 h-10 md:h-12 lg:h-14 bg-transparent text-color1 text-base sm:text-lg mdl:text-xl font-content font-normal"
               key={keys}
+              leftIcon={
+                values.header.toLowerCase()?.includes("work") ? (
+                  <span className="material-symbols-rounded">work_history</span>
+                ) : values.header.toLowerCase()?.includes("projects") ? (
+                  <span className="material-symbols-rounded">code</span>
+                ) : values.header.toLowerCase()?.includes("education") ? (
+                  <span className="material-symbols-rounded">school</span>
+                ) : (
+                  ""
+                )
+              }
             >
               {values.header.toLowerCase()?.includes("work") ? (
                 <Work />
@@ -144,7 +155,10 @@ const ProfileComponent = () => {
             header={aboutInfo[aboutInfo.length - 1]?.header}
             className="w-full flex flex-col gap-2 bg-transparent"
             contentClassName="p-4 bg-color2"
-            headerClassName="p-0 h-10 md:h-12 lg:h-14 bg-transparent text-color1 text-lg sm:text-xl mdl: text-2xl font-content font-normal"
+            headerClassName="p-0 h-10 md:h-12 lg:h-14 flex gap-x-5 bg-transparent text-color1 text-lg sm:text-xl mdl: text-2xl font-content font-normal"
+            leftIcon={
+              <span className="material-symbols-rounded">alternate_email</span>
+            }
           >
             <Contact />
           </TabPanel>

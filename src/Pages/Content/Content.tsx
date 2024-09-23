@@ -3,12 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 // import { debounce } from "lodash";
 
 import "./Content.scss";
-// import About from "../../Components/About/About";
-import MoreDetailsDialog from "../../Components/About/MoreDetailsDialog/MoreDetailsDialog";
 import MainChatComponent from "../../Components/Chat/MainChatComponent";
-// import Feedback from "../../Components/Feedback/Feedback";
-import FeedbackFormDialog from "../../Components/Feedback/FeedbackFormDialog/FeedbackFormDialog";
-// import Home from "../../Components/Home/Home";
+import FeedbackFormDialog from "../../Components/FeedbackFormDialog/FeedbackFormDialog";
 import MenuDialog from "../../Components/Menu/MenuDialog";
 import ProfileComponent from "../../Components/Profile/ProfileComponent";
 import { useAppContext } from "../../Services/AppContext";
@@ -19,10 +15,13 @@ type KeyMapProp = {
 };
 
 const Content: React.FC = () => {
-  const { state, showToast, setSelectedContent, setEasyMode } = useAppContext();
-  // const [selectedButton, setSelectedButton] = useState<string>("home");
-  const [expandAboutDialog, setExpandAboutDialog] = useState(false);
-  // const [expandFeedbackDialog, setExpandFeedbackDialog] = useState(false);
+  const {
+    state,
+    showToast,
+    setSelectedContent,
+    setEasyMode,
+    setShowFeedbackDialog,
+  } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
@@ -111,6 +110,7 @@ const Content: React.FC = () => {
       K: "keyboardShortcuts",
       M: "menu",
       E: "easyMode",
+      P: "profileView",
     };
 
     const key = event.key?.toUpperCase();
@@ -129,6 +129,12 @@ const Content: React.FC = () => {
           "Success",
           `Easy mode turned ${state.easyMode ? "Off" : "On"}`
         );
+      } else if (section === "profileView" || section === "about") {
+        setSelectedContent("profile");
+      } else if (section === "home") {
+        setSelectedContent("default");
+      } else if (section === "feedback") {
+        setShowFeedbackDialog(true);
       } else {
         handleButtonClick(section);
       }
@@ -162,8 +168,6 @@ const Content: React.FC = () => {
       className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
       <Header
-        // selectedButton={selectedButton}
-        setSelectedButton={handleButtonClick}
         showMenuDialog={showMenuDialog}
         setShowMenuDialog={setShowMenuDialog}
       />
@@ -187,12 +191,7 @@ const Content: React.FC = () => {
           <ProfileComponent />
         )}
       </div>
-      {expandAboutDialog && (
-        <MoreDetailsDialog
-          expandAboutDialog={expandAboutDialog}
-          setExpandAboutDialog={setExpandAboutDialog}
-        />
-      )}
+
       {state.showFeedbackDialog && <FeedbackFormDialog />}
       {showMenuDialog && (
         <MenuDialog
