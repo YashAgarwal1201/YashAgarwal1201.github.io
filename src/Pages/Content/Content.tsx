@@ -7,6 +7,7 @@ import MainChatComponent from "../../Components/Chat/MainChatComponent";
 import FeedbackFormDialog from "../../Components/FeedbackFormDialog/FeedbackFormDialog";
 import MenuDialog from "../../Components/Menu/MenuDialog";
 import ProfileComponent from "../../Components/Profile/ProfileComponent";
+import { ABOUT_ME } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import Header from "./../../Components/Header/Header";
 
@@ -23,6 +24,8 @@ const Content: React.FC = () => {
     setShowFeedbackDialog,
   } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -104,13 +107,15 @@ const Content: React.FC = () => {
   const handleKeyPress = (event: KeyboardEvent) => {
     const keyMap: KeyMapProp = {
       H: "home",
-      A: "about",
-      W: "about",
+      C: "contact",
+      W: "work",
+      O: "other projects",
       F: "feedback",
       K: "keyboardShortcuts",
       M: "menu",
-      E: "easyMode",
+      E: "education",
       P: "profileView",
+      Z: "easyMode",
     };
 
     const key = event.key?.toUpperCase();
@@ -120,21 +125,37 @@ const Content: React.FC = () => {
       // handleButtonClick(section);
 
       // Uncomment the following line if you want to display something with the "K" key
-      if (section === "menu" || section === "keyboardShortcuts") {
+      if (section === "menu") {
         setShowMenuDialog(!showMenuDialog);
+        setShowKeyboardShortcuts(false);
       } else if (section === "easyMode") {
-        setEasyMode(state.easyMode ? false : true);
+        setEasyMode(!state.easyMode);
         showToast(
           "success",
           "Success",
           `Easy mode turned ${state.easyMode ? "Off" : "On"}`
         );
-      } else if (section === "profileView" || section === "about") {
+        return; // Exit here if this condition is met
+      } else if (section === "profileView") {
+        setSelectedContent("profile");
+      } else if (
+        section === "work" ||
+        section === "other projects" ||
+        section === "contact"
+      ) {
+        setSelectedTab(
+          ABOUT_ME?.findIndex((val) =>
+            val.header?.toLowerCase()?.includes(section)
+          )
+        );
         setSelectedContent("profile");
       } else if (section === "home") {
         setSelectedContent("default");
       } else if (section === "feedback") {
         setShowFeedbackDialog(true);
+      } else if (section === "keyboardShortcuts") {
+        setShowMenuDialog(true);
+        setShowKeyboardShortcuts(true);
       } else {
         handleButtonClick(section);
       }
@@ -188,17 +209,17 @@ const Content: React.FC = () => {
         {state.selectedContentBtn !== "profile" ? (
           <MainChatComponent />
         ) : (
-          <ProfileComponent />
+          <ProfileComponent selectedTab={selectedTab} />
         )}
       </div>
 
-      {state.showFeedbackDialog && <FeedbackFormDialog />}
-      {showMenuDialog && (
-        <MenuDialog
-          showMenuDialog={showMenuDialog}
-          setShowMenuDialog={setShowMenuDialog}
-        />
-      )}
+      <FeedbackFormDialog />
+
+      <MenuDialog
+        showKeyboardShortcuts={showKeyboardShortcuts}
+        showMenuDialog={showMenuDialog}
+        setShowMenuDialog={setShowMenuDialog}
+      />
     </div>
   );
 };

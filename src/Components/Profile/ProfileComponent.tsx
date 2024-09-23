@@ -92,7 +92,8 @@ export const Contact = () => {
   );
 };
 
-const ProfileComponent = () => {
+const ProfileComponent = ({ selectedTab }) => {
+  console.log(selectedTab);
   return (
     <div className="profile-component w-full h-full flex flex-col items-center gap-y-3 overflow-auto">
       <div className="w-full ">
@@ -118,7 +119,10 @@ const ProfileComponent = () => {
       </div>
 
       <div className="w-full h-auto flex flex-col gap-y-4">
-        <TabView className="bg-transparent" activeIndex={2}>
+        <TabView
+          className="bg-transparent"
+          activeIndex={selectedTab > -1 ? selectedTab : 0}
+        >
           {ABOUT_ME?.filter(
             (values) => !values?.header?.toLowerCase()?.includes("contact")
           )?.map((values, keys) => (

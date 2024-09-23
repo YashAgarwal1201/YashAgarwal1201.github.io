@@ -60,21 +60,6 @@ export const ABOUT_OTHER_PROJECTS = [
   },
 ];
 
-export const ABOUT_ME = [
-  {
-    header: "Education",
-    content: ABOUT_EDUCATION,
-  },
-  {
-    header: "Work",
-    content: ABOUT_WORK,
-  },
-  {
-    header: "Other Projects",
-    content: ABOUT_OTHER_PROJECTS,
-  },
-];
-
 export const ABOUT_CONTACT = [
   {
     link: "legoyashx@hotmail.com",
@@ -101,6 +86,22 @@ export const ABOUT_CONTACT = [
     type: "telegram",
     title: "Click to connect on telegram",
   },
+];
+
+export const ABOUT_ME = [
+  {
+    header: "Education",
+    content: ABOUT_EDUCATION,
+  },
+  {
+    header: "Work",
+    content: ABOUT_WORK,
+  },
+  {
+    header: "Other Projects",
+    content: ABOUT_OTHER_PROJECTS,
+  },
+  { header: "Contact & Resume", content: ABOUT_CONTACT },
 ];
 
 export const contactLinks = [

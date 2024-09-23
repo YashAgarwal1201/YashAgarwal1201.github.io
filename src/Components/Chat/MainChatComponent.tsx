@@ -233,11 +233,11 @@ const MainChatComponent = () => {
         className="w-full h-fit flex flex-col gap-y-2 items-end"
         ref={userOptionsContainerRef}
       >
-        <div className="h-full p-3 flex flex-row-reverse items-end gap-x-2  text-xs sm:text-sm md:text-base">
+        <div className="w-full h-full p-3 flex flex-row-reverse items-end gap-x-2  text-xs sm:text-sm md:text-base">
           <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
             person
           </span>
-          <div className="w-full mdl:w-[90%] mr-3 mdl:mr-4 flex flex-wrap gap-2 justify-end font-content">
+          <div className="w-full mr-3 mdl:mr-4 overflow-auto flex gap-2 font-content">
             {/* {WELCOME_MSG} */}
             {messageState.showOptions
               ? CHAT_USER_OPTIONS?.map((value, key) => {
@@ -246,7 +246,7 @@ const MainChatComponent = () => {
                       <Button
                         key={key}
                         label={value?.title}
-                        className={`px-3 py-2 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
+                        className={`px-3 py-2 flex-auto flex-shrink-0 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
                           state?.selectedAboutSectionBtn?.toLowerCase() ===
                           value?.title?.toLowerCase()
                             ? "block"
@@ -318,7 +318,7 @@ const MainChatComponent = () => {
                 setShowOptions(true);
                 showToast("success", "Success", "Messages reset");
               }}
-              className="px-3 py-2 border border-color5"
+              className="px-3 py-2 flex-auto flex-shrink-0 border border-color5"
             />
           </div>
         </div>

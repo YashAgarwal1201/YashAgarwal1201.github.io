@@ -12,6 +12,10 @@
         .p-tabview-nav-link {
           color: var(--color1);
         }
+
+        @media screen and (max-width: 640px) {
+          border-radius: 0.275rem;
+        }
       }
 
       .p-tabview-nav-link {
