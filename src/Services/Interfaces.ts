@@ -7,6 +7,11 @@ export type Action<T> = { type: string; payload?: T };
 export interface State {
   [key: string]: any;
   themeSelected: string;
+  landingScreen: {
+    showLandingScreen: boolean;
+    neverShowLandingScreen: boolean;
+  };
+  showFeedbackDialog: boolean;
   selectedContentBtn: string;
   selectedAboutSectionBtn: string;
   toast: Toast | null;
@@ -30,13 +35,17 @@ export type ActionType =
   | AboutMessage
   | AboutMessage[]
   | { title: string; url: string; type: string }
-  | { key: string; value: boolean };
+  | { key: string; value: boolean }
+  | { showLandingScreen: boolean; neverShowLandingScreen: boolean };
 
 export interface AppContextType {
   state: State;
   dispatch: Dispatch<Action<ActionType>>;
   setThemeSelected: (payload: string) => void;
+  setShowLandingScreen: (payload: boolean) => void;
+  setNeverShowLandingScreen: (payload: boolean) => void;
   setEasyMode: (payload: boolean) => void;
+  setShowFeedbackDialog: (payload: boolean) => void;
   setSelectedContent: (payload: string) => void;
   setSelectedAboutSectionBtn: (payload: string) => void;
   setModalContent: (payload: ModalContent) => void;

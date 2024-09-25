@@ -11,6 +11,7 @@ export interface MessageState {
   options: ChatOption[];
   showMoreOptions: boolean;
   moreOptions: ChatOption[];
+  selectedChatAppearance: string;
 }
 
 export type ChatOption = {
@@ -34,6 +35,7 @@ export interface AppContextType {
   setMessages: (payload: AboutMessage[]) => void;
   setShowOptions: (showOptions: boolean) => void;
   setShowMoreOptions: (showMoreOptions: boolean) => void;
+  setSelectedChatAppearance: (payload: string) => void;
 }
 
 export type dispatchParamType = {

@@ -12,20 +12,29 @@
   background-color: var(--color5);
 }
 
+[data-typeit-id]:before {
+  content: none !important;
+  display: none !important;
+}
+
 .aboutDialog {
-  .p-dialog-header {
+  background-color: transparent;
+  .p-dialog-header,
+  .p-sidebar-header {
     background-color: var(--color3);
     color: var(--color1);
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
   }
-  .p-dialog-content {
+  .p-dialog-content,
+  .p-sidebar-content {
     background-color: var(--color3);
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
   @media screen and (max-width: 768px) {
-    .p-dialog-content {
+    .p-dialog-content,
+    .p-sidebar-content {
       padding: 8px;
     }
   }
@@ -68,4 +77,24 @@ li {
     width: 6px;
     border-radius: 6px;
   }
+}
+
+/* Define the gradient animation */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Class for the animated gradient background */
+.moving-gradient-bg {
+  background: linear-gradient(270deg, var(--color4), var(--color5));
+  background-size: 800% 800%;
+  animation: gradient-move 4s ease infinite; /* 8s animation duration */
 }
