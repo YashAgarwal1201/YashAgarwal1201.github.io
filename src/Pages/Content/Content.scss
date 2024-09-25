@@ -78,3 +78,23 @@ li {
     border-radius: 6px;
   }
 }
+
+/* Define the gradient animation */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Class for the animated gradient background */
+.moving-gradient-bg {
+  background: linear-gradient(270deg, var(--color4), var(--color5));
+  background-size: 800% 800%;
+  animation: gradient-move 4s ease infinite; /* 8s animation duration */
+}

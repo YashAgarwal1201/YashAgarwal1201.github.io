@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
+import { ScrollTop } from "primereact/scrolltop";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -135,7 +136,7 @@ const MainChatComponent = () => {
             <div
               key={key}
               className={`
-        ${key === groupedMessages?.length - 1 ? "h-[100%] mb-0" : "mb-4"}
+        ${key === groupedMessages?.length - 1 ? "h-[96%] mb-0" : "mb-4"}
           flex flex-col gap-y-5`}
               ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
             >
@@ -226,6 +227,12 @@ const MainChatComponent = () => {
             </div>
           </div>
         )}{" "}
+        <ScrollTop
+          target="parent"
+          threshold={200}
+          className="bg-color3 right-0 left-full"
+          icon="pi pi-angle-up text-base"
+        />
       </div>
 
       {/* user options */}

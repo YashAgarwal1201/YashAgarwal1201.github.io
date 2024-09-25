@@ -3,13 +3,18 @@ import React, { useEffect, useRef, useState } from "react";
 // import { debounce } from "lodash";
 
 import "./Content.scss";
+import { Button } from "primereact/button";
+import { Checkbox } from "primereact/checkbox";
+
 import MainChatComponent from "../../Components/Chat/MainChatComponent";
 import FeedbackFormDialog from "../../Components/FeedbackFormDialog/FeedbackFormDialog";
 import MenuDialog from "../../Components/Menu/MenuDialog";
 import ProfileComponent from "../../Components/Profile/ProfileComponent";
 import { ABOUT_ME } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
+import MyImg from "./../../assets/logoo.jpg";
 import Header from "./../../Components/Header/Header";
+import TypeIt from "typeit-react";
 
 type KeyMapProp = {
   [key: string]: string;
@@ -19,6 +24,8 @@ const Content: React.FC = () => {
   const { state, setSelectedContent, setShowFeedbackDialog } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [showContent, setShowContent] = useState(false);
+  const [checked, setChecked] = useState<boolean>(false);
   const [openMenuPanel, setOpenMenuPanel] = useState(-1);
 
   const homeRef = useRef<HTMLDivElement>(null);
@@ -182,7 +189,7 @@ const Content: React.FC = () => {
     scrollToSavedSection();
   }, []);
 
-  return (
+  return showContent ? (
     <div
       className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
@@ -219,6 +226,47 @@ const Content: React.FC = () => {
         setOpenMenuPanel={setOpenMenuPanel}
         setShowMenuDialog={setShowMenuDialog}
       />
+    </div>
+  ) : (
+    <div className="w-full h-full flex flex-col bg-color1">
+      <div className="w-full h-[85%] flex flex-col items-center justify-center gap-10">
+        <div className="w-[200px] aspect-square">
+          <img
+            className="w-full aspect-square object-cover rounded-md"
+            src={MyImg}
+            alt="yash agarwal"
+          ></img>
+        </div>
+        <h1 className="font-heading text-2xl sm:text-3xl mdl:text-4xl text-color5">
+          <TypeIt
+            options={{
+              speed: 30,
+              waitUntilVisible: true,
+              cursor: false,
+            }}
+          >
+            Hey, myself yash agarwal, and this is my portfolio project
+          </TypeIt>
+        </h1>
+        <Button
+          icon={<span className="material-symbols-rounded">chevron_right</span>}
+          // label="Take me there"
+          rounded
+          className="mt-20 moving-gradient-bg text-color1"
+          size="large"
+          onClick={() => setShowContent(true)}
+        />
+      </div>
+      <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
+        <Checkbox
+          onChange={(e) => setChecked(e?.checked)}
+          checked={checked}
+          // className="bg-color3 rounded-none"
+        ></Checkbox>
+        <span className="font-content text-color4">
+          Don't show this to me again
+        </span>
+      </div>
     </div>
   );
 };
