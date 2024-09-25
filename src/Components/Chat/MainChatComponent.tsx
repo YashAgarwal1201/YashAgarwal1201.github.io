@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
+import { ScrollTop } from "primereact/scrolltop";
 import ReactDOMServer from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -135,7 +136,7 @@ const MainChatComponent = () => {
             <div
               key={key}
               className={`
-        ${key === groupedMessages?.length - 1 ? "h-[100%] mb-0" : "mb-4"}
+        ${key === groupedMessages?.length - 1 ? "h-[96%] mb-0" : "mb-4"}
           flex flex-col gap-y-5`}
               ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
             >
@@ -226,6 +227,12 @@ const MainChatComponent = () => {
             </div>
           </div>
         )}{" "}
+        <ScrollTop
+          target="parent"
+          threshold={200}
+          className="bg-color3 right-0 left-full"
+          icon="pi pi-angle-up text-base"
+        />
       </div>
 
       {/* user options */}
@@ -237,7 +244,7 @@ const MainChatComponent = () => {
           <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
             person
           </span>
-          <div className="w-full mr-3 mdl:mr-4 overflow-auto flex gap-2 font-content">
+          <div className="w-full mr-3 mdl:mr-4 overflow-auto scrollbar-none flex flex-row mdl:flex-row-reverse gap-2 font-content">
             {/* {WELCOME_MSG} */}
             {messageState.showOptions
               ? CHAT_USER_OPTIONS?.map((value, key) => {
@@ -246,7 +253,7 @@ const MainChatComponent = () => {
                       <Button
                         key={key}
                         label={value?.title}
-                        className={`px-3 py-2 flex-auto flex-shrink-0 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
+                        className={`px-3 py-2 flex-shrink-0 flex-grow-0 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
                           state?.selectedAboutSectionBtn?.toLowerCase() ===
                           value?.title?.toLowerCase()
                             ? "block"
@@ -318,7 +325,7 @@ const MainChatComponent = () => {
                 setShowOptions(true);
                 showToast("success", "Success", "Messages reset");
               }}
-              className="px-3 py-2 flex-auto flex-shrink-0 border border-color5"
+              className="px-3 py-2  flex-shrink-0 flex-grow-0 border border-color5"
             />
           </div>
         </div>

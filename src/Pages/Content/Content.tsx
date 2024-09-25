@@ -3,12 +3,17 @@ import React, { useEffect, useRef, useState } from "react";
 // import { debounce } from "lodash";
 
 import "./Content.scss";
+import { Button } from "primereact/button";
+import { Checkbox } from "primereact/checkbox";
+import TypeIt from "typeit-react";
+
 import MainChatComponent from "../../Components/Chat/MainChatComponent";
 import FeedbackFormDialog from "../../Components/FeedbackFormDialog/FeedbackFormDialog";
 import MenuDialog from "../../Components/Menu/MenuDialog";
 import ProfileComponent from "../../Components/Profile/ProfileComponent";
 import { ABOUT_ME } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
+import MyImg from "./../../assets/logoo.jpg";
 import Header from "./../../Components/Header/Header";
 
 type KeyMapProp = {
@@ -18,14 +23,16 @@ type KeyMapProp = {
 const Content: React.FC = () => {
   const {
     state,
-    showToast,
     setSelectedContent,
-    setEasyMode,
     setShowFeedbackDialog,
+    setNeverShowLandingScreen,
+    setShowLandingScreen,
   } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
-  const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
+  // const [showContent, setShowContent] = useState(false);
+  // const [checked, setChecked] = useState<boolean>(false);
+  const [openMenuPanel, setOpenMenuPanel] = useState(-1);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -106,6 +113,7 @@ const Content: React.FC = () => {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const keyMap: KeyMapProp = {
+      A: "appearance",
       H: "home",
       C: "contact",
       W: "work",
@@ -114,6 +122,7 @@ const Content: React.FC = () => {
       K: "keyboardShortcuts",
       M: "menu",
       E: "education",
+      T: "theme",
       P: "profileView",
       Z: "easyMode",
     };
@@ -127,15 +136,16 @@ const Content: React.FC = () => {
       // Uncomment the following line if you want to display something with the "K" key
       if (section === "menu") {
         setShowMenuDialog(!showMenuDialog);
-        setShowKeyboardShortcuts(false);
+        setOpenMenuPanel(-1);
+      } else if (section === "appearance") {
+        setShowMenuDialog(true);
+        setOpenMenuPanel(4);
+      } else if (section == "theme") {
+        setShowMenuDialog(true);
+        setOpenMenuPanel(0);
       } else if (section === "easyMode") {
-        setEasyMode(!state.easyMode);
-        showToast(
-          "success",
-          "Success",
-          `Easy mode turned ${state.easyMode ? "Off" : "On"}`
-        );
-        return; // Exit here if this condition is met
+        setShowMenuDialog(true);
+        setOpenMenuPanel(1);
       } else if (section === "profileView") {
         setSelectedContent("profile");
       } else if (
@@ -155,7 +165,8 @@ const Content: React.FC = () => {
         setShowFeedbackDialog(true);
       } else if (section === "keyboardShortcuts") {
         setShowMenuDialog(true);
-        setShowKeyboardShortcuts(true);
+        // setShowKeyboardShortcuts(true);
+        setOpenMenuPanel(2);
       } else {
         handleButtonClick(section);
       }
@@ -184,7 +195,8 @@ const Content: React.FC = () => {
     scrollToSavedSection();
   }, []);
 
-  return (
+  return !state.landingScreen.showLandingScreen ||
+    state.landingScreen.neverShowLandingScreen ? (
     <div
       className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
@@ -216,10 +228,52 @@ const Content: React.FC = () => {
       <FeedbackFormDialog />
 
       <MenuDialog
-        showKeyboardShortcuts={showKeyboardShortcuts}
         showMenuDialog={showMenuDialog}
+        openMenuPanel={openMenuPanel}
+        setOpenMenuPanel={setOpenMenuPanel}
         setShowMenuDialog={setShowMenuDialog}
       />
+    </div>
+  ) : (
+    <div className="w-full h-full flex flex-col bg-color1">
+      <div className="w-full h-[85%] flex flex-col items-center justify-center gap-10">
+        <div className="w-[200px] aspect-square">
+          <img
+            className="w-full aspect-square object-cover rounded-md"
+            src={MyImg}
+            alt="yash agarwal"
+          ></img>
+        </div>
+        <h1 className="font-heading text-2xl sm:text-3xl mdl:text-4xl text-color5">
+          <TypeIt
+            options={{
+              speed: 30,
+              waitUntilVisible: true,
+              cursor: false,
+            }}
+          >
+            Hey, myself yash agarwal, and this is my portfolio project
+          </TypeIt>
+        </h1>
+        <Button
+          icon={<span className="material-symbols-rounded">chevron_right</span>}
+          // label="Take me there"
+          rounded
+          className="mt-20 moving-gradient-bg text-color1"
+          size="large"
+          onClick={() => setShowLandingScreen(false)}
+        />
+      </div>
+      <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
+        <Checkbox
+          onChange={(e) => setNeverShowLandingScreen(e.checked)}
+          checked={state.landingScreen.neverShowLandingScreen}
+          // className="bg-color3 rounded-none"
+        ></Checkbox>
+        <span className="font-content text-color4">
+          Don't show this to me again
+        </span>
+      </div>
     </div>
   );
 };

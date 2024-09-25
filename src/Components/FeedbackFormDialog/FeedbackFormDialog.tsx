@@ -6,11 +6,6 @@ import { Dialog } from "primereact/dialog";
 import { BASE_API_LINK } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 
-// type FeedbackFormDialogProps = {
-//   expandFeedbackDialog: boolean;
-//   setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
-// };
-
 const FeedbackFormDialog = () => {
   const { state, showToast, setShowFeedbackDialog } = useAppContext();
 
@@ -20,7 +15,6 @@ const FeedbackFormDialog = () => {
     event.preventDefault();
     const userEmailId = event.target?.Email?.value;
     const userName = event.target?.Name?.value;
-    // const bcc = feedback?.content?.bcc;
     const message = event.target?.Msg?.value;
 
     // const emailBody = encodeURIComponent(
@@ -69,7 +63,6 @@ const FeedbackFormDialog = () => {
     } catch (error) {
       setLoading(false);
       console.error("Error:", error);
-      // showToast("error", "Error", error as string);
     }
   };
 

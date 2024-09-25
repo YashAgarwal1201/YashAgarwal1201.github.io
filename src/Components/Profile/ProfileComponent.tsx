@@ -10,6 +10,7 @@ import {
   aboutInfo,
 } from "../../Data/Data";
 import "./ProfileComponent.scss";
+import MyImg from "./../../assets/logoo.jpg";
 
 const Work = () => {
   return ABOUT_WORK?.map((val, key) => (
@@ -93,12 +94,18 @@ export const Contact = () => {
 };
 
 const ProfileComponent = ({ selectedTab }) => {
-  console.log(selectedTab);
+  // console.log(selectedTab);
   return (
     <div className="profile-component w-full h-full flex flex-col items-center gap-y-3 overflow-auto">
       <div className="w-full ">
         <div className="w-full h-full mdl:h-[400px] py-10 mdl:py-4 flex flex-col mdl:flex-row justify-center items-center gap-2 mdl:gap-4 lg:gap-7 ">
-          <div className="w-[80%] max-w-[200px] h-auto aspect-square border rounded-md"></div>
+          <div className="w-[80%] max-w-[200px] h-auto aspect-square rounded-md">
+            <img
+              className="w-full aspect-square object-cover rounded-md"
+              src={MyImg}
+              alt="yash agarwal"
+            />
+          </div>
           <div className="flex flex-col items-center mdl:items-start gap-2">
             <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
               Yash Agarwal
