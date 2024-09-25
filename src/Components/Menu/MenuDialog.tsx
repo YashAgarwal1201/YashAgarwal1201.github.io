@@ -15,14 +15,16 @@ import KeyboardShortcuts from "../KeyboardShortcuts/KeyboardShortcuts";
 import "./MenuDialog.scss";
 
 type MenuDialogProps = {
-  showKeyboardShortcuts: boolean;
+  openMenuPanel: number;
+  setOpenMenuPanel: React.Dispatch<React.SetStateAction<number>>;
   showMenuDialog: boolean;
   setShowMenuDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const MenuDialog = ({
-  showKeyboardShortcuts,
   showMenuDialog,
+  openMenuPanel,
+  setOpenMenuPanel,
   setShowMenuDialog,
 }: MenuDialogProps) => {
   const {
@@ -47,7 +49,10 @@ const MenuDialog = ({
   return (
     <Sidebar
       visible={showMenuDialog}
-      onHide={() => setShowMenuDialog(false)}
+      onHide={() => {
+        setShowMenuDialog(false);
+        setOpenMenuPanel(-1);
+      }}
       dismissable={true}
       draggable={false}
       header={
@@ -69,7 +74,8 @@ const MenuDialog = ({
             <span className="material-symbols-rounded">expand_more</span>
           }
           className="flex flex-col gap-y-2"
-          activeIndex={showKeyboardShortcuts ? 2 : -1}
+          // activeIndex={showKeyboardShortcuts ? 2 : -1}
+          activeIndex={openMenuPanel}
         >
           <AccordionTab
             header={

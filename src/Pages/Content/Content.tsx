@@ -16,16 +16,10 @@ type KeyMapProp = {
 };
 
 const Content: React.FC = () => {
-  const {
-    state,
-    showToast,
-    setSelectedContent,
-    setEasyMode,
-    setShowFeedbackDialog,
-  } = useAppContext();
+  const { state, setSelectedContent, setShowFeedbackDialog } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
-  const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
+  const [openMenuPanel, setOpenMenuPanel] = useState(-1);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -106,6 +100,7 @@ const Content: React.FC = () => {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const keyMap: KeyMapProp = {
+      A: "appearance",
       H: "home",
       C: "contact",
       W: "work",
@@ -114,6 +109,7 @@ const Content: React.FC = () => {
       K: "keyboardShortcuts",
       M: "menu",
       E: "education",
+      T: "theme",
       P: "profileView",
       Z: "easyMode",
     };
@@ -127,15 +123,16 @@ const Content: React.FC = () => {
       // Uncomment the following line if you want to display something with the "K" key
       if (section === "menu") {
         setShowMenuDialog(!showMenuDialog);
-        setShowKeyboardShortcuts(false);
+        setOpenMenuPanel(-1);
+      } else if (section === "appearance") {
+        setShowMenuDialog(true);
+        setOpenMenuPanel(4);
+      } else if (section == "theme") {
+        setShowMenuDialog(true);
+        setOpenMenuPanel(0);
       } else if (section === "easyMode") {
-        setEasyMode(!state.easyMode);
-        showToast(
-          "success",
-          "Success",
-          `Easy mode turned ${state.easyMode ? "Off" : "On"}`
-        );
-        return; // Exit here if this condition is met
+        setShowMenuDialog(true);
+        setOpenMenuPanel(1);
       } else if (section === "profileView") {
         setSelectedContent("profile");
       } else if (
@@ -155,7 +152,8 @@ const Content: React.FC = () => {
         setShowFeedbackDialog(true);
       } else if (section === "keyboardShortcuts") {
         setShowMenuDialog(true);
-        setShowKeyboardShortcuts(true);
+        // setShowKeyboardShortcuts(true);
+        setOpenMenuPanel(2);
       } else {
         handleButtonClick(section);
       }
@@ -216,8 +214,9 @@ const Content: React.FC = () => {
       <FeedbackFormDialog />
 
       <MenuDialog
-        showKeyboardShortcuts={showKeyboardShortcuts}
         showMenuDialog={showMenuDialog}
+        openMenuPanel={openMenuPanel}
+        setOpenMenuPanel={setOpenMenuPanel}
         setShowMenuDialog={setShowMenuDialog}
       />
     </div>
