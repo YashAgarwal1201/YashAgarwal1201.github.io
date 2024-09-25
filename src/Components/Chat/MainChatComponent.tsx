@@ -244,7 +244,7 @@ const MainChatComponent = () => {
           <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
             person
           </span>
-          <div className="w-full mr-3 mdl:mr-4 overflow-auto flex flex-row mdl:flex-row-reverse gap-2 font-content">
+          <div className="w-full mr-3 mdl:mr-4 overflow-auto scrollbar-none flex flex-row mdl:flex-row-reverse gap-2 font-content">
             {/* {WELCOME_MSG} */}
             {messageState.showOptions
               ? CHAT_USER_OPTIONS?.map((value, key) => {
@@ -325,7 +325,7 @@ const MainChatComponent = () => {
                 setShowOptions(true);
                 showToast("success", "Success", "Messages reset");
               }}
-              className="px-3 py-2 flex-auto flex-grow-0 border border-color5"
+              className="px-3 py-2  flex-shrink-0 flex-grow-0 border border-color5"
             />
           </div>
         </div>
