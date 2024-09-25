@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Content.scss";
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
+import TypeIt from "typeit-react";
 
 import MainChatComponent from "../../Components/Chat/MainChatComponent";
 import FeedbackFormDialog from "../../Components/FeedbackFormDialog/FeedbackFormDialog";
@@ -14,18 +15,23 @@ import { ABOUT_ME } from "../../Data/Data";
 import { useAppContext } from "../../Services/AppContext";
 import MyImg from "./../../assets/logoo.jpg";
 import Header from "./../../Components/Header/Header";
-import TypeIt from "typeit-react";
 
 type KeyMapProp = {
   [key: string]: string;
 };
 
 const Content: React.FC = () => {
-  const { state, setSelectedContent, setShowFeedbackDialog } = useAppContext();
+  const {
+    state,
+    setSelectedContent,
+    setShowFeedbackDialog,
+    setNeverShowLandingScreen,
+    setShowLandingScreen,
+  } = useAppContext();
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
-  const [showContent, setShowContent] = useState(false);
-  const [checked, setChecked] = useState<boolean>(false);
+  // const [showContent, setShowContent] = useState(false);
+  // const [checked, setChecked] = useState<boolean>(false);
   const [openMenuPanel, setOpenMenuPanel] = useState(-1);
 
   const homeRef = useRef<HTMLDivElement>(null);
@@ -189,7 +195,8 @@ const Content: React.FC = () => {
     scrollToSavedSection();
   }, []);
 
-  return showContent ? (
+  return !state.landingScreen.showLandingScreen ||
+    state.landingScreen.neverShowLandingScreen ? (
     <div
       className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
@@ -254,13 +261,13 @@ const Content: React.FC = () => {
           rounded
           className="mt-20 moving-gradient-bg text-color1"
           size="large"
-          onClick={() => setShowContent(true)}
+          onClick={() => setShowLandingScreen(false)}
         />
       </div>
       <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
         <Checkbox
-          onChange={(e) => setChecked(e?.checked)}
-          checked={checked}
+          onChange={(e) => setNeverShowLandingScreen(e.checked)}
+          checked={state.landingScreen.neverShowLandingScreen}
           // className="bg-color3 rounded-none"
         ></Checkbox>
         <span className="font-content text-color4">

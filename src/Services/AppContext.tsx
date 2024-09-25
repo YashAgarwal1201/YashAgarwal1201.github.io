@@ -18,6 +18,10 @@ const initialState: State = localStorage.getItem(`yashAppData`) //(`yashAppData_
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "night"
           : "fall", //"fall",
+      landingScreen: {
+        showLandingScreen: true,
+        neverShowLandingScreen: false,
+      },
       showFeedbackDialog: false,
       selectedContentBtn: "home",
       selectedAboutSectionbtn: "work",
@@ -41,6 +45,26 @@ const reducer = (state: State, action: Action<ActionType> | any): State => {
       return {
         ...state,
         themeSelected: action.payload as string,
+      };
+    }
+
+    case "SET_SHOW_LANDING_SCREEN": {
+      return {
+        ...state,
+        landingScreen: {
+          ...state.landingScreen,
+          showLandingScreen: action.payload as boolean,
+        },
+      };
+    }
+
+    case "SET_NEVER_SHOW_LANDING_SCREEN": {
+      return {
+        ...state,
+        landingScreen: {
+          ...state.landingScreen,
+          neverShowLandingScreen: action.payload as boolean,
+        },
       };
     }
 
@@ -90,6 +114,8 @@ const AppContext = createContext<AppContextType>({
   setSelectedContent: () => null,
   setSelectedAboutSectionBtn: () => null,
   setThemeSelected: () => null,
+  setShowLandingScreen: () => null, // New method
+  setNeverShowLandingScreen: () => null,
   setModalContent: () => null,
   setShowFeedbackDialog: () => null,
   setEasyMode: () => null,
@@ -111,16 +137,24 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     state.toast?.show({ severity, summary, detail, life });
   };
 
+  const setThemeSelected = (payload: string) => {
+    dispatch({ type: "SET_THEME_SELECTED", payload });
+  };
+
+  const setShowLandingScreen = (payload: boolean) => {
+    dispatch({ type: "SET_SHOW_LANDING_SCREEN", payload });
+  };
+
+  const setNeverShowLandingScreen = (payload: boolean) => {
+    dispatch({ type: "SET_NEVER_SHOW_LANDING_SCREEN", payload });
+  };
+
   const setSelectedContent = (payload: string) => {
     dispatch({ type: "SET_SELECTED_CONTENT_BTN", payload });
   };
 
   const setSelectedAboutSectionBtn = (payload: string) => {
     dispatch({ type: "SET_SELECTED_ABOUT_SECTION_BTN", payload });
-  };
-
-  const setThemeSelected = (payload: string) => {
-    dispatch({ type: "SET_THEME_SELECTED", payload });
   };
 
   const setModalContent = (payload: ModalContent) => {
@@ -138,10 +172,13 @@ const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const contextValue: AppContextType = {
     state,
     dispatch,
+    setThemeSelected,
+    setShowLandingScreen, // New method
+    setNeverShowLandingScreen, // New method
     setShowFeedbackDialog,
     setSelectedContent,
     setSelectedAboutSectionBtn,
-    setThemeSelected,
+
     setModalContent,
     setEasyMode,
     showToast,
