@@ -67,8 +67,6 @@ const MainChatComponent = () => {
   const handleOptionClick = (query: string) => {
     scrollToLastPair();
     // setShowOptions(false);
-
-    // if(query.includes("more options") || query.includes("previous options"))
     // Add user's selected option as a message
     const userMessage: AboutMessage = {
       content: query,
@@ -83,11 +81,6 @@ const MainChatComponent = () => {
         setShowMoreOptions,
       }) || "Sorry, I don't have information on that."
     );
-    // getResponse({
-    //   query: query,
-    //   setShowOptions,
-    //   setShowMoreOptions,
-    // }) || "Sorry, I don't have information on that.";
 
     // Add bot's response as a message
     const botMessage: AboutMessage = {
@@ -125,6 +118,13 @@ const MainChatComponent = () => {
     lastPairRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const resetChatHandeler = () => {
+    setMessages([]);
+    setShowMoreOptions(false);
+    setShowOptions(true);
+    showToast("success", "Success", "Messages reset");
+  };
+
   return (
     <div className="w-full h-full flex flex-col items-center">
       <div
@@ -156,7 +156,7 @@ const MainChatComponent = () => {
                       messageState.selectedChatAppearance !== "compact"
                         ? "flex-row-reverse"
                         : "flex-row"
-                    } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm lg:text-base 2xl:text-lg`}
+                    } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm md:text-base lg:text-lg 2xl:text-xl`}
                   >
                     <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
                       person
@@ -226,7 +226,7 @@ const MainChatComponent = () => {
               </div>
             </div>
           </div>
-        )}{" "}
+        )}
         <ScrollTop
           target="parent"
           threshold={200}
@@ -245,7 +245,6 @@ const MainChatComponent = () => {
             person
           </span>
           <div className="w-full mr-3 mdl:mr-4 overflow-auto scrollbar-none flex flex-row mdl:flex-row-reverse gap-2 font-content">
-            {/* {WELCOME_MSG} */}
             {messageState.showOptions
               ? CHAT_USER_OPTIONS?.map((value, key) => {
                   if (value?.visible)
@@ -296,11 +295,11 @@ const MainChatComponent = () => {
                         onClick={() => {
                           if (
                             value.title
-                              .toLowerCase()
-                              .includes("more options") ||
+                              ?.toLowerCase()
+                              ?.includes("more options") ||
                             value.title
-                              .toLowerCase()
-                              .includes("previous options")
+                              ?.toLowerCase()
+                              ?.includes("previous options")
                           ) {
                             getResponse({
                               query: value.title,
@@ -319,12 +318,7 @@ const MainChatComponent = () => {
               title="reset chat"
               disabled={messageState.messages?.length === 0}
               icon={"pi pi-refresh"}
-              onClick={() => {
-                setMessages([]);
-                setShowMoreOptions(false);
-                setShowOptions(true);
-                showToast("success", "Success", "Messages reset");
-              }}
+              onClick={() => resetChatHandeler()}
               className="px-3 py-2  flex-shrink-0 flex-grow-0 border border-color5"
             />
           </div>

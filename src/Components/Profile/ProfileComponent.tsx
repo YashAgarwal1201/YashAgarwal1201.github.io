@@ -47,8 +47,8 @@ const OtherProjects = () => {
   return ABOUT_OTHER_PROJECTS?.map((val, key) => (
     <Card key={key} title={val.year}>
       <div className="w-full ps-3 sm:ps-4 md:ps-6 mdl:ps-7 ld:ps-10 2xl:ps-14 flex gap-x-3 flex-wrap">
-        {val.projects.length > 0 &&
-          val.projects.map((v, k) => (
+        {val?.projects?.length > 0 &&
+          val?.projects?.map((v, k) => (
             <a
               href={v.posterLink}
               target="_blank"
@@ -151,15 +151,13 @@ const ProfileComponent = ({ selectedTab }) => {
                 )
               }
             >
-              {values.header.toLowerCase()?.includes("work") ? (
-                <Work />
-              ) : values.header.toLowerCase()?.includes("projects") ? (
+              {values.header?.toLowerCase()?.includes("work") ? <Work /> : null}
+              {values.header?.toLowerCase()?.includes("projects") ? (
                 <OtherProjects />
-              ) : values.header.toLowerCase()?.includes("education") ? (
+              ) : null}
+              {values.header?.toLowerCase()?.includes("education") ? (
                 <Education />
-              ) : (
-                ""
-              )}
+              ) : null}
             </TabPanel>
           ))}
           <TabPanel
