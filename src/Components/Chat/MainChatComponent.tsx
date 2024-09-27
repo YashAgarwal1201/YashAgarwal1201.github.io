@@ -156,7 +156,7 @@ const MainChatComponent = () => {
                       messageState.selectedChatAppearance !== "compact"
                         ? "flex-row-reverse"
                         : "flex-row"
-                    } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm lg:text-base 2xl:text-lg`}
+                    } items-center gap-x-2 sm:gap-x-3 mdl:gap-x-4 text-sm md:text-base lg:text-lg 2xl:text-xl`}
                   >
                     <span className="material-symbols-rounded bg-color3 text-color4 rounded-full p-2 mdl:p-3">
                       person

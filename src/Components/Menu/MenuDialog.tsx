@@ -60,7 +60,7 @@ const MenuDialog = ({
           More Options
         </div>
       }
-      className={`aboutDialog min-w-fit w-full md:w-[70%] mdl:w-[60%] lg:w-[50%] h-full absolute bottom-0 md:bottom-auto`}
+      className={`aboutDialog min-w-fit w-full md:w-[70%] mdl:w-[60%] lg:w-[50%] 2xl:w-[40%] h-full absolute bottom-0 md:bottom-auto`}
       position={"right"}
     >
       <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
