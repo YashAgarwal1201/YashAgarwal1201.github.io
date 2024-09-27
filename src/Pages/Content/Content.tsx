@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// import { debounce } from "lodash";
-
 import "./Content.scss";
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
@@ -28,6 +26,7 @@ const Content: React.FC = () => {
     setNeverShowLandingScreen,
     setShowLandingScreen,
   } = useAppContext();
+
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   // const [showContent, setShowContent] = useState(false);
@@ -50,67 +49,6 @@ const Content: React.FC = () => {
     targetRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // useEffect(() => {
-  //   const observerOptions = {
-  //     root: null,
-  //     rootMargin: "0px",
-  //     threshold: 0.5, // Adjust this threshold as needed
-  //   };
-
-  //   // const observer = new IntersectionObserver((entries) => {
-  //   //   entries.forEach((entry) => {
-  //   //     if (entry.isIntersecting) {
-  //   //       switch (entry.target) {
-  //   //         case homeRef.current:
-  //   //           setSelectedButton("home");
-  //   //           break;
-  //   //         case aboutRef.current:
-  //   //           setSelectedButton("about");
-  //   //           break;
-  //   //         case feedbackRef.current:
-  //   //           setSelectedButton("feedback");
-  //   //           break;
-  //   //         default:
-  //   //           break;
-  //   //       }
-  //   //     }
-  //   //   });
-  //   // }, observerOptions);
-
-  //   const observer = new IntersectionObserver((entries) => {
-  //     debounce(() => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           switch (entry.target) {
-  //             case homeRef.current: {
-  //               setSelectedContent("home");
-  //               break;
-  //             }
-  //             case aboutRef.current: {
-  //               setSelectedContent("about");
-  //               break;
-  //             }
-  //             case feedbackRef.current: {
-  //               setSelectedContent("feedback");
-  //               break;
-  //             }
-  //             default:
-  //               break;
-  //           }
-  //         }
-  //       });
-  //     }, 100)();
-  //   }, observerOptions);
-
-  //   observer.observe(homeRef.current!);
-  //   observer.observe(aboutRef.current!);
-  //   observer.observe(feedbackRef.current!);
-
-  //   return () => {
-  //     observer.disconnect();
-  //   };
-  // }, []);
-
   const handleKeyPress = (event: KeyboardEvent) => {
     const keyMap: KeyMapProp = {
       A: "appearance",
@@ -131,9 +69,6 @@ const Content: React.FC = () => {
     const section = keyMap[key];
 
     if (section && event.shiftKey) {
-      // handleButtonClick(section);
-
-      // Uncomment the following line if you want to display something with the "K" key
       if (section === "menu") {
         setShowMenuDialog(!showMenuDialog);
         setOpenMenuPanel(-1);
@@ -165,7 +100,6 @@ const Content: React.FC = () => {
         setShowFeedbackDialog(true);
       } else if (section === "keyboardShortcuts") {
         setShowMenuDialog(true);
-        // setShowKeyboardShortcuts(true);
         setOpenMenuPanel(2);
       } else {
         handleButtonClick(section);
@@ -181,19 +115,19 @@ const Content: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const scrollToSavedSection = () => {
-      const sectionRef = sectionRefs[state.selectedContentBtn];
-      if (sectionRef && sectionRef.current) {
-        sectionRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const scrollToSavedSection = () => {
+  //     const sectionRef = sectionRefs[state.selectedContentBtn];
+  //     if (sectionRef && sectionRef.current) {
+  //       sectionRef.current.scrollIntoView({
+  //         behavior: "smooth",
+  //         block: "start",
+  //       });
+  //     }
+  //   };
 
-    scrollToSavedSection();
-  }, []);
+  //   scrollToSavedSection();
+  // }, []);
 
   return !state.landingScreen.showLandingScreen ||
     state.landingScreen.neverShowLandingScreen ? (
@@ -208,16 +142,6 @@ const Content: React.FC = () => {
       <div
         className={`contentBody h-full w-full text-color5 overflow-y-auto snap-y snap-mandatory`}
       >
-        {/* <Home reference={homeRef} />
-        <About
-          reference={aboutRef}
-          setExpandAboutDialog={setExpandAboutDialog}
-        />
-        <Feedback
-          reference={feedbackRef}
-          setExpandFeedbackDialog={setExpandFeedbackDialog}
-        /> */}
-
         {state.selectedContentBtn !== "profile" ? (
           <MainChatComponent />
         ) : (
@@ -256,8 +180,8 @@ const Content: React.FC = () => {
           </TypeIt>
         </h1>
         <Button
+          title="click to proceed"
           icon={<span className="material-symbols-rounded">chevron_right</span>}
-          // label="Take me there"
           rounded
           className="mt-20 moving-gradient-bg text-color1"
           size="large"
@@ -266,7 +190,7 @@ const Content: React.FC = () => {
       </div>
       <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
         <Checkbox
-          onChange={(e) => setNeverShowLandingScreen(e.checked)}
+          onChange={(e) => setNeverShowLandingScreen(e.checked as boolean)}
           checked={state.landingScreen.neverShowLandingScreen}
           // className="bg-color3 rounded-none"
         ></Checkbox>
