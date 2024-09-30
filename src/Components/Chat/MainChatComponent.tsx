@@ -246,72 +246,70 @@ const MainChatComponent = () => {
           </span>
           <div className="w-full mr-3 mdl:mr-4 overflow-auto scrollbar-none flex flex-row mdl:flex-row-reverse gap-2 font-content">
             {messageState.showOptions
-              ? CHAT_USER_OPTIONS?.map((value, key) => {
-                  if (value?.visible)
-                    return (
-                      <Button
-                        key={key}
-                        label={value?.title}
-                        className={`px-3 py-2 flex-shrink-0 flex-grow-0 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
-                          state?.selectedAboutSectionBtn?.toLowerCase() ===
-                          value?.title?.toLowerCase()
-                            ? "block"
-                            : "block"
-                        }`}
-                        onClick={() => {
-                          if (
-                            value.title
-                              .toLowerCase()
-                              .includes("more options") ||
-                            value.title
-                              .toLowerCase()
-                              .includes("previous options")
-                          ) {
-                            getResponse({
-                              query: value.title,
-                              setShowOptions,
-                              setShowMoreOptions,
-                            });
-                          } else {
-                            handleOptionClick(value.title);
-                          }
-                        }}
-                      />
-                    );
+              ? CHAT_USER_OPTIONS?.filter(
+                  (value) => value.visible === true
+                )?.map((value, key) => {
+                  return (
+                    <Button
+                      key={key}
+                      label={value?.title}
+                      className={`px-3 py-2 flex-shrink-0 flex-grow-0 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
+                        state?.selectedAboutSectionBtn?.toLowerCase() ===
+                        value?.title?.toLowerCase()
+                          ? "block"
+                          : "block"
+                      }`}
+                      onClick={() => {
+                        if (
+                          value.title.toLowerCase().includes("more options") ||
+                          value.title.toLowerCase().includes("previous options")
+                        ) {
+                          getResponse({
+                            query: value.title,
+                            setShowOptions,
+                            setShowMoreOptions,
+                          });
+                        } else {
+                          handleOptionClick(value.title);
+                        }
+                      }}
+                    />
+                  );
                 })
               : messageState.moreOptions
-              ? CHAT_USER_MORE_OPTIONS?.map((value, key) => {
-                  if (value?.visible)
-                    return (
-                      <Button
-                        key={key}
-                        label={value?.title}
-                        className={`px-3 py-2 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
-                          state?.selectedAboutSectionBtn?.toLowerCase() ===
-                          value?.title?.toLowerCase()
-                            ? "block"
-                            : "block"
-                        }`}
-                        onClick={() => {
-                          if (
-                            value.title
-                              ?.toLowerCase()
-                              ?.includes("more options") ||
-                            value.title
-                              ?.toLowerCase()
-                              ?.includes("previous options")
-                          ) {
-                            getResponse({
-                              query: value.title,
-                              setShowOptions,
-                              setShowMoreOptions,
-                            });
-                          } else {
-                            handleOptionClick(value.title);
-                          }
-                        }}
-                      />
-                    );
+              ? CHAT_USER_MORE_OPTIONS?.filter(
+                  (value) => value.visible === true
+                )?.map((value, key) => {
+                  return (
+                    <Button
+                      key={key}
+                      label={value?.title}
+                      className={`px-3 py-2 capitalize text-sm sm:text-base 2xl:text-lg border border-color5 ${
+                        state?.selectedAboutSectionBtn?.toLowerCase() ===
+                        value?.title?.toLowerCase()
+                          ? "block"
+                          : "block"
+                      }`}
+                      onClick={() => {
+                        if (
+                          value.title
+                            ?.toLowerCase()
+                            ?.includes("more options") ||
+                          value.title
+                            ?.toLowerCase()
+                            ?.includes("previous options")
+                        ) {
+                          getResponse({
+                            query: value.title,
+                            setShowOptions,
+                            setShowMoreOptions,
+                          });
+                        } else {
+                          handleOptionClick(value.title);
+                        }
+                      }}
+                    />
+                  );
                 })
               : ""}
             <Button

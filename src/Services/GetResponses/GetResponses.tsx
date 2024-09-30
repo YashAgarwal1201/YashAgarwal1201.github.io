@@ -61,14 +61,13 @@ export const getResponse = ({ query, setShowOptions, setShowMoreOptions }) => {
       </div>
     );
   } else if (lowerQuery?.includes("connect with you")) {
-    return <div className="bg-color4">{Contact()}</div>;
+    return (
+      <div className="bg-color4">
+        <p className="pb-2">You can use these options:</p>
+        {Contact()}
+      </div>
+    );
   } else if (lowerQuery?.includes("your education")) {
-    //     return `
-    // ## My Education:
-
-    // * I completed my graduation in Bachelor of Technology in 2022 from DIT University &#127979;, Dehradun, India.
-    // * Before that, in 2018, I completed my Intermediate (12th standard) education from Modern Era Public School &#127979;, Bijnor, India.
-    //     `;
     return (
       <div>
         <p className="font-subheading">My Education:</p>
@@ -107,6 +106,10 @@ export const getResponse = ({ query, setShowOptions, setShowMoreOptions }) => {
     setShowMoreOptions(false);
     return "";
   } else {
-    return `Sorry, but I don't have any information on that right now.`;
+    return (
+      <div>
+        Sorry &#128532;, but I don't have any information on that right now.
+      </div>
+    );
   }
 };

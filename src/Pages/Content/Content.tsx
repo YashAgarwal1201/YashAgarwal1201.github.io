@@ -24,13 +24,14 @@ const Content: React.FC = () => {
     setSelectedContent,
     setShowFeedbackDialog,
     setNeverShowLandingScreen,
-    setShowLandingScreen,
+    // setShowLandingScreen,
   } = useAppContext();
 
   const [showMenuDialog, setShowMenuDialog] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [showLandingScreen, setShowLandingScreen] = useState(true);
   // const [showContent, setShowContent] = useState(false);
-  // const [checked, setChecked] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(false);
   const [openMenuPanel, setOpenMenuPanel] = useState(-1);
 
   const homeRef = useRef<HTMLDivElement>(null);
@@ -129,8 +130,7 @@ const Content: React.FC = () => {
   //   scrollToSavedSection();
   // }, []);
 
-  return !state.landingScreen.showLandingScreen ||
-    state.landingScreen.neverShowLandingScreen ? (
+  return state.landingScreen.neverShowLandingScreen || !showLandingScreen ? (
     <div
       className={`w-full h-[100dvh] flex flex-col lg:flex-row items-center bg-color1`}
     >
@@ -168,7 +168,7 @@ const Content: React.FC = () => {
             alt="yash agarwal"
           ></img>
         </div>
-        <h1 className="font-heading text-2xl sm:text-3xl mdl:text-4xl text-color5">
+        <h1 className="font-heading text-2xl sm:text-3xl mdl:text-4xl text-color5 text-center px-2 sm:px-4 md:px-5">
           <TypeIt
             options={{
               speed: 30,
@@ -185,13 +185,20 @@ const Content: React.FC = () => {
           rounded
           className="mt-20 moving-gradient-bg text-color1"
           size="large"
-          onClick={() => setShowLandingScreen(false)}
+          onClick={() => {
+            if (checked) {
+              setNeverShowLandingScreen(true);
+              setShowLandingScreen(false);
+            } else {
+              setShowLandingScreen(false);
+            }
+          }}
         />
       </div>
       <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
         <Checkbox
-          onChange={(e) => setNeverShowLandingScreen(e.checked as boolean)}
-          checked={state.landingScreen.neverShowLandingScreen}
+          onChange={(e) => setChecked(e.checked as boolean)}
+          checked={checked}
           // className="bg-color3 rounded-none"
         ></Checkbox>
         <span className="font-content text-color4">
