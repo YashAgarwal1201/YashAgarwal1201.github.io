@@ -63,7 +63,6 @@ const MsgAppContext = createContext<AppContextType>({
   setShowOptions: () => null,
   setShowMoreOptions: () => null,
   setSelectedChatAppearance: () => null,
-  // setMessages: () => null,
 });
 
 const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -74,7 +73,7 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const setMessages = (newMessage: AboutMessage[]) => {
     dispatch({
       type: "SET_MESSAGES",
-      payload: newMessage, //[...state.messages, newMessage],
+      payload: newMessage,
     });
   };
 
@@ -89,13 +88,6 @@ const MsgAppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const setSelectedChatAppearance = (payload: string) => {
     dispatch({ type: "SET_SELECTED_CHAT_APPEARANCE", payload });
   };
-
-  // const setMessages = (newMessage: AboutMessage[]) => {
-  //   dispatch({
-  //     type: "SET_MESSAGES",
-  //     payload: newMessage, //[...state.messages, newMessage],
-  //   });
-  // };
 
   const contextValue: AppContextType = {
     messageState,
