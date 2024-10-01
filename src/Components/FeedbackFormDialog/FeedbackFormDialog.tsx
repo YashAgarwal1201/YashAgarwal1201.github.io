@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 
-import { BASE_API_LINK } from "../../../Data/Data";
-import { useAppContext } from "../../../Services/AppContext";
+import { BASE_API_LINK } from "../../Data/Data";
+import { useAppContext } from "../../Services/AppContext";
 
-type FeedbackFormDialogProps = {
-  expandFeedbackDialog: boolean;
-  setExpandFeedbackDialog: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const FeedbackFormDialog = ({
-  expandFeedbackDialog,
-  setExpandFeedbackDialog,
-}: FeedbackFormDialogProps) => {
-  const { state, showToast } = useAppContext();
+const FeedbackFormDialog = () => {
+  const { state, showToast, setShowFeedbackDialog } = useAppContext();
 
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +15,6 @@ const FeedbackFormDialog = ({
     event.preventDefault();
     const userEmailId = event.target?.Email?.value;
     const userName = event.target?.Name?.value;
-    // const bcc = feedback?.content?.bcc;
     const message = event.target?.Msg?.value;
 
     // const emailBody = encodeURIComponent(
@@ -53,7 +44,9 @@ const FeedbackFormDialog = ({
         setLoading(false);
         event.target?.reset();
 
-        setExpandFeedbackDialog(!expandFeedbackDialog);
+        // setExpandFeedbackDialog(!expandFeedbackDialog);
+        // setSelectedContent("");
+        setShowFeedbackDialog(!state.showFeedbackDialog);
 
         showToast("success", "Success", "Form submitted");
       } else {
@@ -70,17 +63,14 @@ const FeedbackFormDialog = ({
     } catch (error) {
       setLoading(false);
       console.error("Error:", error);
-      // showToast("error", "Error", error as string);
     }
   };
 
   return (
     <div className="relative">
       <Dialog
-        visible={expandFeedbackDialog}
-        onHide={() => {
-          setExpandFeedbackDialog(!expandFeedbackDialog);
-        }}
+        visible={state.showFeedbackDialog}
+        onHide={() => setShowFeedbackDialog(!state.showFeedbackDialog)}
         dismissableMask={true}
         draggable={false}
         header={

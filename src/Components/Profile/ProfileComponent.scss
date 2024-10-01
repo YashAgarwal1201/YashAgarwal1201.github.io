@@ -1,0 +1,65 @@
+.profile-component {
+  .p-tabview {
+    .p-tabview-nav {
+      background-color: transparent;
+      height: auto;
+      padding: 0px 1rem;
+
+      .p-tabview-selected {
+        background-color: var(--color4);
+        border-radius: 0.5rem;
+
+        .p-tabview-nav-link {
+          color: var(--color1);
+        }
+
+        @media screen and (max-width: 640px) {
+          border-radius: 0.275rem;
+        }
+      }
+
+      .p-tabview-nav-link {
+        background-color: transparent;
+        color: var(--color5);
+        font-weight: normal;
+        height: 100%;
+        font-style: normal;
+
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+      }
+    }
+
+    .p-tabview-panels {
+      background-color: transparent;
+      padding: 0px;
+
+      .p-card {
+        background-color: var(--color2);
+
+        .p-card-title {
+          font-family: var(--subheading);
+          font-weight: 500;
+          color: var(--color4);
+          font-size: 1.5rem;
+        }
+
+        .p-card-content {
+          font-family: var(--content);
+          color: var(--color5);
+          font-size: 1.125rem;
+        }
+
+        @media screen and (max-width: 896px) {
+          .p-card-title {
+            font-size: 1.25rem;
+          }
+          .p-card-content {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
