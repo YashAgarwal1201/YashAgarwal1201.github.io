@@ -75,7 +75,7 @@ const FeedbackFormDialog = () => {
         draggable={false}
         header={
           <>
-            <div className="text-color1 lg:text-3xl font-heading font-normal">
+            <div className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium">
               Please fill out this form
             </div>
           </>
@@ -92,9 +92,10 @@ const FeedbackFormDialog = () => {
             ? "right"
             : "center"
         }
+        closeIcon={<span className="material-symbols-rounded">close</span>}
       >
         <form
-          className="h-full p-2 md:p-4 flex flex-col gap-y-6 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md"
+          className="h-full p-2 md:p-4 flex flex-col gap-y-6 text-color5 bg-color3 rounded-md overflow-y-auto shadow-md"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col md:flex-row gap-x-3 gap-y-3">
@@ -106,7 +107,7 @@ const FeedbackFormDialog = () => {
               <input
                 disabled={loading}
                 title="Email address"
-                className="h-10 px-4 bg-color3 text-color4 text-base md:text-lg rounded-lg font-content"
+                className="h-10 px-4 bg-color2 text-color4 text-base md:text-lg rounded-lg font-content"
                 type="email"
                 name="Email"
                 required
@@ -120,7 +121,7 @@ const FeedbackFormDialog = () => {
               <input
                 disabled={loading}
                 title="Name"
-                className="h-10 px-4 bg-color3 text-color4 text-base md:text-lg rounded-md font-content"
+                className="h-10 px-4 bg-color2 text-color4 text-base md:text-lg rounded-md font-content"
                 type="text"
                 name="Name"
               />
@@ -134,7 +135,7 @@ const FeedbackFormDialog = () => {
             <textarea
               disabled={loading}
               title="You message"
-              className="h-40 p-4 bg-color3 text-color4 text-base md:text-lg font-content rounded-lg resize-none"
+              className="h-40 p-4 bg-color2 text-color4 text-base md:text-lg font-content rounded-lg resize-none"
               name="Msg"
               required
             ></textarea>
@@ -148,7 +149,7 @@ const FeedbackFormDialog = () => {
                   send
                 </span>
               }
-              className="h-full px-5 bg-color4 text-color1"
+              className="h-full px-5 bg-color1 text-color4"
               label="Submit"
               type="submit"
             />
@@ -160,7 +161,7 @@ const FeedbackFormDialog = () => {
                   delete
                 </span>
               }
-              className="h-full px-5 bg-transparent text-color4"
+              className="h-full px-5 bg-transparent text-color1"
               label="Delete"
               type="reset"
             />
