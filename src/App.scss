@@ -1,5 +1,5 @@
-// @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sacramento&family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Sacramento&family=Cabin+Condensed:wght@400;500;600;700&family=Sniglet:wght@400;800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&display=swap");
 
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
@@ -11,14 +11,19 @@
 
 @layer base {
   html {
-    --color1: #a1a365;
-    --color2: #d4985d;
-    --color3: #ffefc2;
-    --color4: #8c584a;
-    --color5: #333846;
+    // --color1: #a1a365;
+    // --color2: #d4985d;
+    // --color3: #ffefc2;
+    // --color4: #8c584a;
+    // --color5: #333846;
+    --color1: #0a0a0a;
+    --color2: #171717;
+    --color3: #404040;
+    --color4: #a3a3a3;
+    --color5: #fafafa;
 
-    --content: "Cabin", sans-serif;
-    --heading: "Sniglet", cursive;
+    --content: "Nunito", sans-serif;
+    --heading: "Quicksand", cursive;
     --subheading: "Josefin Sans", cursive;
   }
   html[data-theme="night"] {
@@ -144,7 +149,9 @@
 
 .p-button:focus,
 .p-inputtext:enabled:focus,
-.p-link:focus {
+.p-link:focus,
+input:focus,
+textarea:focus {
   box-shadow: none !important;
   outline: none !important;
   border-color: #353735;

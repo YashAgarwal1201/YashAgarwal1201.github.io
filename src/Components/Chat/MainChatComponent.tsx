@@ -136,7 +136,7 @@ const MainChatComponent = () => {
             <div
               key={key}
               className={`
-        ${key === groupedMessages?.length - 1 ? "h-[96%] mb-0" : "mb-4"}
+        ${key === groupedMessages?.length - 1 ? "h-full mb-0" : "mb-4"}
           flex flex-col gap-y-5`}
               ref={key === groupedMessages?.length - 1 ? lastPairRef : null}
             >
@@ -230,8 +230,12 @@ const MainChatComponent = () => {
         <ScrollTop
           target="parent"
           threshold={200}
-          className="bg-color3 right-0 left-full"
-          icon="pi pi-angle-up text-base"
+          className="h-0 right-0 left-full"
+          icon={
+            <span className="h-10 w-10 rounded-full bg-color4 text-color1 flex justify-center items-center material-symbols-rounded">
+              keyboard_arrow_up
+            </span>
+          }
         />
       </div>
 
