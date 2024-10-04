@@ -66,7 +66,7 @@ const Header = ({ showMenuDialog, setShowMenuDialog }: HeaderProps) => {
         <Button
           title="Settings & others"
           icon={<span className="material-symbols-rounded">more_vert</span>}
-          className={`${normalButtonStyles} hover:border-transparent flex  w-12 lg:w-16 h-full lg:h-16`}
+          className={`${normalButtonStyles} flex  w-12 lg:w-16 h-full lg:h-16`}
           onClick={() => setShowMenuDialog(!showMenuDialog)}
         />
       </div>

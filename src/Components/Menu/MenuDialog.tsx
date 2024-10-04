@@ -56,14 +56,15 @@ const MenuDialog = ({
       dismissable={true}
       draggable={false}
       header={
-        <div className="text-color1 lg:text-3xl font-heading font-normal">
+        <div className="text-xl sm:text-2xl lg:text-3xl font-heading font-normal">
           More Options
         </div>
       }
       className={`aboutDialog min-w-fit w-full md:w-[70%] mdl:w-[60%] lg:w-[50%] 2xl:w-[40%] h-full absolute bottom-0 md:bottom-auto`}
       position={"right"}
+      closeIcon={<span className="material-symbols-rounded">close</span>}
     >
-      <div className="h-full p-2 md:p-4 text-color5 bg-color2 rounded-md overflow-y-auto shadow-md">
+      <div className="h-full p-2 md:p-4 text-color5 bg-color3 rounded-md overflow-y-auto shadow-md">
         <Accordion
           collapseIcon={
             <span className="material-symbols-rounded text-color1">
@@ -254,22 +255,51 @@ const MenuDialog = ({
           </AccordionTab>
 
           <AccordionTab
-            className="menu-feedback-btn block md:hidden"
-            headerTemplate={
-              <span
-                className="h-full text-black font-subheading font-medium not-italic"
-                onClick={() => {
-                  setShowMenuDialog(false);
-                  setShowFeedbackDialog(true);
-                }}
-              >
-                Have something to say?
+            className=""
+            header={
+              <span className="text-black font-subheading font-medium not-italic">
+                Clear data
               </span>
             }
-            contentClassName="hidden"
-            headerClassName="bg-pink-400"
-          ></AccordionTab>
+          >
+            <div className="flex flex-col flex-wrap gap-y-4">
+              <span>
+                Do you want to clear the data, related to this website?
+              </span>
+
+              <Button
+                icon={
+                  <span className="material-symbols-rounded mr-2">delete</span>
+                }
+                label={"Clear data"}
+                className="w-fit bg-color1 text-color5 px-6 py-3 font-content font-sm sm:font-base rounded-md"
+                onClick={() => {
+                  localStorage.removeItem("yashAppData");
+                  sessionStorage.removeItem("yashAppMsgData");
+
+                  showToast("info", "Info", "Cleared site data");
+                }}
+              />
+            </div>
+          </AccordionTab>
         </Accordion>
+
+        <AccordionTab
+          className="menu-feedback-btn block md:hidden"
+          headerTemplate={
+            <span
+              className="h-full text-black font-subheading font-medium not-italic"
+              onClick={() => {
+                setShowMenuDialog(false);
+                setShowFeedbackDialog(true);
+              }}
+            >
+              Have something to say?
+            </span>
+          }
+          contentClassName="hidden"
+          headerClassName="bg-pink-400"
+        ></AccordionTab>
       </div>
     </Sidebar>
   );
