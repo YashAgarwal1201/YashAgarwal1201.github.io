@@ -254,22 +254,51 @@ const MenuDialog = ({
           </AccordionTab>
 
           <AccordionTab
-            className="menu-feedback-btn block md:hidden"
-            headerTemplate={
-              <span
-                className="h-full text-black font-subheading font-medium not-italic"
-                onClick={() => {
-                  setShowMenuDialog(false);
-                  setShowFeedbackDialog(true);
-                }}
-              >
-                Have something to say?
+            className=""
+            header={
+              <span className="text-black font-subheading font-medium not-italic">
+                Clear data
               </span>
             }
-            contentClassName="hidden"
-            headerClassName="bg-pink-400"
-          ></AccordionTab>
+          >
+            <div className="flex flex-col flex-wrap gap-y-4">
+              <span>
+                Do you want to clear the data, related to this website?
+              </span>
+
+              <Button
+                icon={
+                  <span className="material-symbols-rounded mr-2">delete</span>
+                }
+                label={"Clear data"}
+                className="w-fit bg-color1 text-color5 px-6 py-3 font-content font-sm sm:font-base rounded-md"
+                onClick={() => {
+                  localStorage.removeItem("yashAppData");
+                  sessionStorage.removeItem("yashAppMsgData");
+
+                  showToast("info", "Info", "Cleared site data");
+                }}
+              />
+            </div>
+          </AccordionTab>
         </Accordion>
+
+        <AccordionTab
+          className="menu-feedback-btn block md:hidden"
+          headerTemplate={
+            <span
+              className="h-full text-black font-subheading font-medium not-italic"
+              onClick={() => {
+                setShowMenuDialog(false);
+                setShowFeedbackDialog(true);
+              }}
+            >
+              Have something to say?
+            </span>
+          }
+          contentClassName="hidden"
+          headerClassName="bg-pink-400"
+        ></AccordionTab>
       </div>
     </Sidebar>
   );

@@ -168,7 +168,7 @@ const Content: React.FC = () => {
             alt="yash agarwal"
           ></img>
         </div>
-        <h1 className="font-heading text-2xl sm:text-3xl mdl:text-4xl text-color5 text-center px-2 sm:px-4 md:px-5">
+        <h1 className="font-heading h-12 text-2xl sm:text-3xl mdl:text-4xl text-color5 text-center px-2 sm:px-4 md:px-5">
           <TypeIt
             options={{
               speed: 30,
