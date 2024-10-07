@@ -69,6 +69,10 @@ li {
   list-style-position: inside;
 }
 
+.slide-up {
+  animation: slideUp 0.5s forwards;
+}
+
 @media screen and (max-width: 768px) {
   .contentBody::-webkit-scrollbar {
     width: 6px;
@@ -76,6 +80,15 @@ li {
   .contentBody::-webkit-scrollbar-thumb {
     width: 6px;
     border-radius: 6px;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
   }
 }
 

@@ -33,6 +33,7 @@ const Content: React.FC = () => {
   // const [showContent, setShowContent] = useState(false);
   const [checked, setChecked] = useState<boolean>(false);
   const [openMenuPanel, setOpenMenuPanel] = useState(-1);
+  const [isSlidingUp, setIsSlidingUp] = useState(false);
 
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -116,19 +117,15 @@ const Content: React.FC = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const scrollToSavedSection = () => {
-  //     const sectionRef = sectionRefs[state.selectedContentBtn];
-  //     if (sectionRef && sectionRef.current) {
-  //       sectionRef.current.scrollIntoView({
-  //         behavior: "smooth",
-  //         block: "start",
-  //       });
-  //     }
-  //   };
-
-  //   scrollToSavedSection();
-  // }, []);
+  const handleProceedClick = () => {
+    setIsSlidingUp(true); // Trigger slide-up animation
+    setTimeout(() => {
+      if (checked) {
+        setNeverShowLandingScreen(true);
+      }
+      setShowLandingScreen(false);
+    }, 500); // Adjust timeout to match CSS animation duration
+  };
 
   return state.landingScreen.neverShowLandingScreen || !showLandingScreen ? (
     <div
@@ -159,7 +156,12 @@ const Content: React.FC = () => {
       />
     </div>
   ) : (
-    <div className="w-full h-full flex flex-col bg-color1">
+    // <div className="w-full h-full flex flex-col bg-color1">
+    <div
+      className={`w-full h-full flex flex-col bg-color1 ${
+        isSlidingUp ? "slide-up" : ""
+      }`}
+    >
       <div className="w-full h-[85%] flex flex-col items-center justify-center gap-10">
         <div className="w-[200px] aspect-square">
           <img
@@ -185,14 +187,15 @@ const Content: React.FC = () => {
           rounded
           className="mt-20 moving-gradient-bg text-color1"
           size="large"
-          onClick={() => {
-            if (checked) {
-              setNeverShowLandingScreen(true);
-              setShowLandingScreen(false);
-            } else {
-              setShowLandingScreen(false);
-            }
-          }}
+          // onClick={() => {
+          //   if (checked) {
+          //     setNeverShowLandingScreen(true);
+          //     setShowLandingScreen(false);
+          //   } else {
+          //     setShowLandingScreen(false);
+          //   }
+          // }}
+          onClick={handleProceedClick}
         />
       </div>
       <div className="w-full h-[15%] flex justify-center items-center gap-x-2">
