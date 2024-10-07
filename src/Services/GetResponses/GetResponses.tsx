@@ -4,8 +4,7 @@ import { ABOUT_EDUCATION, ABOUT_WORK, primaryInfo } from "../../Data/Data";
 export const WELCOME_MSG = (
   <div>
     <p>
-      Hello there &#128075;, Myself Yash Agarwal. Tell me what can i tell you
-      about me ?
+      Hello there &#128075;, Myself Yash Agarwal. What can i tell you about me?
     </p>
   </div>
 );
