@@ -88,7 +88,8 @@ const Content: React.FC = () => {
       } else if (
         section === "work" ||
         section === "other projects" ||
-        section === "contact"
+        section === "contact" ||
+        section === "education"
       ) {
         setSelectedTab(
           ABOUT_ME?.findIndex((val) =>
@@ -142,7 +143,10 @@ const Content: React.FC = () => {
         {state.selectedContentBtn !== "profile" ? (
           <MainChatComponent />
         ) : (
-          <ProfileComponent selectedTab={selectedTab} />
+          <ProfileComponent
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          />
         )}
       </div>
 
