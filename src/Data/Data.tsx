@@ -90,13 +90,14 @@ export const ABOUT_CONTACT = [
 
 export const ABOUT_ME = [
   {
-    header: "Education",
-    content: ABOUT_EDUCATION,
-  },
-  {
     header: "Work",
     content: ABOUT_WORK,
   },
+  {
+    header: "Education",
+    content: ABOUT_EDUCATION,
+  },
+
   {
     header: "Other Projects",
     content: ABOUT_OTHER_PROJECTS,
