@@ -88,7 +88,7 @@ function App() {
   }, [messageState]);
 
   return (
-    <div className="w-screen h-[100dvh]">
+    <div className="w-screen h-[100dvh] bg-color1">
       <Toast ref={myToast} />
       <Outlet />
     </div>
